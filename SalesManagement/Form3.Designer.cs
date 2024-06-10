@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             btnVoltar = new Button();
+            listComerciais = new ListView();
+            btnNovoComercial = new Button();
             SuspendLayout();
             // 
             // btnVoltar
@@ -41,11 +43,31 @@
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
             // 
+            // listComerciais
+            // 
+            listComerciais.Location = new Point(12, 106);
+            listComerciais.Name = "listComerciais";
+            listComerciais.Size = new Size(776, 332);
+            listComerciais.TabIndex = 2;
+            listComerciais.UseCompatibleStateImageBehavior = false;
+            listComerciais.SelectedIndexChanged += listComerciais_SelectedIndexChanged;
+            // 
+            // btnNovoComercial
+            // 
+            btnNovoComercial.Location = new Point(12, 77);
+            btnNovoComercial.Name = "btnNovoComercial";
+            btnNovoComercial.Size = new Size(136, 23);
+            btnNovoComercial.TabIndex = 3;
+            btnNovoComercial.Text = "Novo Comercial";
+            btnNovoComercial.UseVisualStyleBackColor = true;
+            // 
             // FormVendedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnNovoComercial);
+            Controls.Add(listComerciais);
             Controls.Add(btnVoltar);
             Name = "FormVendedores";
             Text = "Painel de Vendedores";
@@ -55,5 +77,7 @@
         #endregion
 
         private Button btnVoltar;
+        private ListView listComerciais;
+        private Button btnNovoComercial;
     }
 }
