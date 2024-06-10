@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -10,7 +11,8 @@ namespace SalesManagement
 {
     class DatabaseHelper
     {
-        string ConnectionString = @"Data Source=DESKTOP-QJ9KR1M\SQLEXPRESS;Initial Catalog=sales-management;Integrated Security=True";
+        // Obter a string de conexão do ficheiro de configuração
+        string ConnectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         public SqlConnection GetSqlConnection()
         {
