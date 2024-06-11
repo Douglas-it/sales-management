@@ -33,6 +33,8 @@
             btnVendas = new Button();
             label1 = new Label();
             btnUtilizadores = new Button();
+            label5 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -83,17 +85,40 @@
             btnUtilizadores.Text = "Gestão de Utilizadores";
             btnUtilizadores.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(9, 33);
+            label5.Name = "label5";
+            label5.Size = new Size(782, 25);
+            label5.TabIndex = 10;
+            label5.Text = "______________________________________________________________________";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(9, 10);
+            label4.Name = "label4";
+            label4.Size = new Size(202, 25);
+            label4.TabIndex = 11;
+            label4.Text = "Gestão de Vendas";
+            // 
             // FormInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(btnUtilizadores);
             Controls.Add(label1);
             Controls.Add(btnVendas);
             Controls.Add(btnProdutos);
             Controls.Add(button1);
             Name = "FormInicial";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestão de Vendas";
             Load += FormInicial_Load;
             ResumeLayout(false);
@@ -107,5 +132,7 @@
         private Button btnVendas;
         private Label label1;
         private Button btnUtilizadores;
+        private Label label5;
+        private Label label4;
     }
 }

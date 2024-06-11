@@ -24,5 +24,10 @@ namespace SalesManagement
 
             this.Hide();
         }
+
+        private void FormVendas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

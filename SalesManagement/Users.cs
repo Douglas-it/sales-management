@@ -11,7 +11,7 @@ namespace SalesManagement
 {
     public class Utilizadores
     {
-        public static bool login(string username, string password)
+        public static bool Login(string username, string password)
         {
             try
             {

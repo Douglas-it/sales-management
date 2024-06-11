@@ -18,13 +18,38 @@ namespace SalesManagement
         public FormVendedores()
         {
             InitializeComponent();
-            listComerciais.View = View.Details;
 
-            // Cabeçalho da List View dos Comerciais
-            listComerciais.Columns.Add("ID", 50);
-            listComerciais.Columns.Add("Nome", 100);
-            listComerciais.Columns.Add("Comissão", 150);
+            // Propriedades da DataGridView
+            ListaComerciais.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ListaComerciais.AllowUserToAddRows = false;
 
+            // Adicionar colunas
+            ListaComerciais.Columns.Add("ID", "ID");
+            ListaComerciais.Columns.Add("Nome", "Nome");
+            ListaComerciais.Columns.Add("Comissao", "Comissão");
+
+            // Adição de botão de Editar
+            DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
+            editButtonColumn.Name = "Editar";
+            editButtonColumn.HeaderText = "Editar";
+            editButtonColumn.Text = "Editar";
+            editButtonColumn.UseColumnTextForButtonValue = true;
+            ListaComerciais.Columns.Add(editButtonColumn);
+
+            // Adição de botão de Eliminar
+            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
+            deleteButtonColumn.Name = "Eliminar";
+            deleteButtonColumn.HeaderText = "Eliminar";
+            deleteButtonColumn.Text = "Eliminar";
+            deleteButtonColumn.UseColumnTextForButtonValue = true;
+            ListaComerciais.Columns.Add(deleteButtonColumn);
+
+            // Load data da base de dados
+            LoadData();
+        }
+
+        private void LoadData()
+        {
             try
             {
                 // Inicializar a classe DatabaseHelper
@@ -36,31 +61,40 @@ namespace SalesManagement
                 // Obter o resultado da query
                 DataTable result = dbHelper.GetDataTable(selectQuery);
 
+                // Se o resultado não for nulo
                 if (result != null)
-                {
+                {   
+                    // Loop pelo resultado e agrupa em linhas para a tabela
                     foreach (DataRow row in result.Rows)
                     {
-                        ListViewItem item = new ListViewItem(row["Codigo"].ToString());
-                        item.SubItems.Add(row["Nome"].ToString());
-
-                        // Convert Comissao para string
-                        decimal comissao = Convert.ToDecimal(row["Comissao"]);
-                        item.SubItems.Add(comissao.ToString("F2")); // "F2" 2 casas decimais
-
-                        // Adicionar item à ListView
-                        listComerciais.Items.Add(item);
+                        ListaComerciais.Rows.Add(
+                            row["Codigo"].ToString(),
+                            row["Nome"].ToString(),
+                            Convert.ToDecimal(row["Comissao"]).ToString("F2")
+                            );
                     }
                 }
                 else
-                {
                     MessageBox.Show("Não existem vendedores na base de dados!");
-                }
-
             }
             catch (Exception ex) // Apanhar exceções
             {
                 MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
             }
+        }
+
+        private void EditItem(int rowIndex)
+        {
+            var id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
+            MessageBox.Show($"Edit item with ID: {id}");
+            // Your edit logic here
+        }
+
+        private void DeleteItem(int rowIndex)
+        {
+            var id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
+            MessageBox.Show($"Delete item with ID: {id}");
+            // Your delete logic here
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -71,9 +105,22 @@ namespace SalesManagement
             this.Hide();
         }
 
-        private void listComerciais_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListaComerciais_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            // Check if the clicked cell is a button cell
+            if (e.RowIndex >= 0)
+            {
+                if (ListaComerciais.Columns[e.ColumnIndex].Name == "Editar")
+                {
+                    // Handle the Edit button click
+                    EditItem(e.RowIndex);
+                }
+                else if (ListaComerciais.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+                    // Handle the Delete button click
+                    DeleteItem(e.RowIndex);
+                }
+            }
         }
     }
 }

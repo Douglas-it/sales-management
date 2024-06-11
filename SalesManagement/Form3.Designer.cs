@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             btnVoltar = new Button();
-            listComerciais = new ListView();
             btnNovoComercial = new Button();
+            ListaComerciais = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)ListaComerciais).BeginInit();
             SuspendLayout();
             // 
             // btnVoltar
@@ -43,15 +44,6 @@
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
             // 
-            // listComerciais
-            // 
-            listComerciais.Location = new Point(12, 106);
-            listComerciais.Name = "listComerciais";
-            listComerciais.Size = new Size(776, 332);
-            listComerciais.TabIndex = 2;
-            listComerciais.UseCompatibleStateImageBehavior = false;
-            listComerciais.SelectedIndexChanged += listComerciais_SelectedIndexChanged;
-            // 
             // btnNovoComercial
             // 
             btnNovoComercial.Location = new Point(12, 77);
@@ -61,23 +53,34 @@
             btnNovoComercial.Text = "Novo Comercial";
             btnNovoComercial.UseVisualStyleBackColor = true;
             // 
+            // ListaComerciais
+            // 
+            ListaComerciais.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ListaComerciais.Location = new Point(12, 106);
+            ListaComerciais.Name = "ListaComerciais";
+            ListaComerciais.Size = new Size(776, 332);
+            ListaComerciais.TabIndex = 4;
+            ListaComerciais.CellContentClick += ListaComerciais_CellContentClick;
+            // 
             // FormVendedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ListaComerciais);
             Controls.Add(btnNovoComercial);
-            Controls.Add(listComerciais);
             Controls.Add(btnVoltar);
             Name = "FormVendedores";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Vendedores";
+            ((System.ComponentModel.ISupportInitialize)ListaComerciais).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnVoltar;
-        private ListView listComerciais;
         private Button btnNovoComercial;
+        private DataGridView ListaComerciais;
     }
 }

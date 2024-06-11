@@ -48,7 +48,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnVoltar);
             Name = "FormVendas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Vendas";
+            Load += FormVendas_Load;
             ResumeLayout(false);
         }
 

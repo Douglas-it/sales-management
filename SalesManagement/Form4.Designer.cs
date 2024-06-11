@@ -48,7 +48,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnVoltar);
             Name = "FormProdutos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Produtos";
+            Load += FormProdutos_Load;
             ResumeLayout(false);
         }
 

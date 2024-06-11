@@ -28,27 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label2 = new Label();
             label1 = new Label();
             label3 = new Label();
             inputUsername = new TextBox();
             inputPassword = new TextBox();
             btnLogin = new Button();
+            label2 = new Label();
             SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(412, 96);
-            label2.Name = "label2";
-            label2.Size = new Size(37, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Login";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(262, 141);
+            label1.Location = new Point(29, 68);
             label1.Name = "label1";
             label1.Size = new Size(57, 15);
             label1.TabIndex = 2;
@@ -57,7 +48,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(262, 189);
+            label3.Location = new Point(29, 129);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 3;
@@ -65,21 +56,23 @@
             // 
             // inputUsername
             // 
-            inputUsername.Location = new Point(343, 138);
+            inputUsername.Location = new Point(29, 86);
             inputUsername.Name = "inputUsername";
             inputUsername.Size = new Size(185, 23);
             inputUsername.TabIndex = 4;
             // 
             // inputPassword
             // 
-            inputPassword.Location = new Point(343, 186);
+            inputPassword.Location = new Point(29, 147);
             inputPassword.Name = "inputPassword";
+            inputPassword.PasswordChar = '*';
             inputPassword.Size = new Size(185, 23);
             inputPassword.TabIndex = 5;
+            inputPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(396, 227);
+            btnLogin.Location = new Point(82, 188);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 23);
             btnLogin.TabIndex = 6;
@@ -87,18 +80,29 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(29, 27);
+            label2.Name = "label2";
+            label2.Size = new Size(51, 21);
+            label2.TabIndex = 7;
+            label2.Text = "Login";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(243, 242);
+            Controls.Add(label2);
             Controls.Add(btnLogin);
             Controls.Add(inputPassword);
             Controls.Add(inputUsername);
             Controls.Add(label3);
             Controls.Add(label1);
-            Controls.Add(label2);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestão de Vendas";
             ResumeLayout(false);
             PerformLayout();
@@ -106,11 +110,11 @@
 
         #endregion
 
-        private Label label2;
         private Label label1;
         private Label label3;
         private TextBox inputUsername;
         private TextBox inputPassword;
         private Button btnLogin;
+        private Label label2;
     }
 }

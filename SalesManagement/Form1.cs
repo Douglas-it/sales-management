@@ -21,8 +21,13 @@ namespace SalesManagement
             if (OperacoesGerais.LerStringValida(username) && OperacoesGerais.LerStringValida(password))
             {
 
-                if (Utilizadores.login(username, password)) // Chamar a função login da classe Utilizadores
+                if (Utilizadores.Login(username, password)) // Chamar a função login da classe Utilizadores
                     this.Hide(); // Esconder o form atual
+                else
+                {
+                    inputUsername.Text = "";
+                    inputPassword.Text = "";
+                }
             }
             else
                 MessageBox.Show("O formato das credências esta inválido!"); // Mostrar mensagem de erro
