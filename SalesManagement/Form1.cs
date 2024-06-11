@@ -14,7 +14,7 @@ namespace SalesManagement
         private string username;
         private string password;
 
-        private bool Login(string username, string password)
+        private void Login(string username, string password)
         {
             try
             {
@@ -38,12 +38,13 @@ namespace SalesManagement
                     FormInicial FormInicial = new FormInicial(); // Inicializar novo form
                     FormInicial.Show(); // Mostra Novo Form
 
-                    return true;
+                    this.Hide();
                 }
                 else
                 {
                     MessageBox.Show("Credenciais inválidas!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    inputUsername.Text = "";
+                    inputPassword.Text = "";
                 }
 
             }
@@ -51,27 +52,17 @@ namespace SalesManagement
             {
                 MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
             }
-            return false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // Obter o username e password
+            // Obtém o username e password
             username = inputUsername.Text;
             password = inputPassword.Text;
 
             // Verificar se o username e password são válidos
             if (OperacoesGerais.LerStringValida(username) && OperacoesGerais.LerStringValida(password))
-            {
-
-                if (Login(username, password)) // Chamar a função login da classe Utilizadores
-                    this.Hide(); // Esconder o form atual
-                else
-                {
-                    inputUsername.Text = "";
-                    inputPassword.Text = "";
-                }
-            }
+                Login(username, password); // Realiza a autenticação do Utilizador
             else
                 MessageBox.Show("O formato das credências esta inválido!"); // Mostrar mensagem de erro
         }

@@ -19,7 +19,7 @@ namespace SalesManagement
         {
             InitializeComponent();
 
-            // Propriedades da DataGridView
+            // Propriedades dataGridView
             ListaComerciais.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Resize automático das colunas
             ListaComerciais.AllowUserToAddRows = false; // Não permitir adicionar linhas
 
@@ -62,40 +62,11 @@ namespace SalesManagement
                 string selectQuery = "SELECT V.Codigo, V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendas FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor GROUP BY V.Codigo, V.Nome, V.Comissao";
 
                 // Obter o resultado da query
-                DataTable result = dbHelper.GetDataTable(selectQuery);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery);
 
-                // Se o resultado não for nulo
-                if (result != null)
-                {
-                    // Limpar a lista dos comerciais
-                    ListaComerciais.Rows.Clear();
-
-                    // Loop pelo resultado e agrupa em linhas para a tabela
-                    foreach (DataRow row in result.Rows)
-                    {
-                        decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
-                        decimal comissao = Convert.ToDecimal(row["Comissao"]);
-                        string aReceber = "0";
-
-                        // Calcula o montante a receber de comissões das vendas que efetuou
-                        if (totalVendas != 0 && comissao != 0)
-                        {
-                            decimal calculoComissao = totalVendas * comissao / 100; // Calcula o valor da comissão a receber 
-                            aReceber = calculoComissao.ToString("F2");
-                        }
-
-                        // Adiciona os dados na lista
-                        ListaComerciais.Rows.Add(
-                            row["Codigo"].ToString(),
-                            row["Nome"].ToString(),
-                            comissao.ToString("F2"),
-                            totalVendas.ToString("F2"),
-                            aReceber
-                        );
-                    }
-                }
-                else
-                    MessageBox.Show("Não existem vendedores na base de dados!");
+                // Se o resultado da não for nulo
+                if (resultado != null)
+                    preencherTabela(resultado);
             }
             catch (Exception ex) // Apanhar exceções
             {
@@ -103,6 +74,35 @@ namespace SalesManagement
             }
         }
 
+        private void preencherTabela(DataTable resultado)
+        {
+            // Limpar a lista dos comerciais
+            ListaComerciais.Rows.Clear();
+
+            // Loop pelo resultado da e agrupa em linhas para a tabela
+            foreach (DataRow row in resultado.Rows)
+            {
+                decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
+                decimal comissao = Convert.ToDecimal(row["Comissao"]);
+                string aReceber = "0";
+
+                // Calcula o montante a receber de comissões das vendas que efetuou
+                if (totalVendas != 0 && comissao != 0)
+                {
+                    decimal calculoComissao = totalVendas * comissao / 100; // Calcula o valor da comissão a receber 
+                    aReceber = calculoComissao.ToString("F2");
+                }
+
+                // Adiciona os dados na lista
+                ListaComerciais.Rows.Add(
+                    row["Codigo"].ToString(),
+                    row["Nome"].ToString(),
+                    comissao.ToString("F2") + "%",
+                    totalVendas.ToString("F2") + "€",
+                    aReceber + "€"
+                );
+            }
+        }
 
         private void ApagarComercial(string id)
         {
@@ -121,9 +121,6 @@ namespace SalesManagement
                 dbHelper.ExecuteQuery(selectQuery, param1);
 
                 MessageBox.Show("O comercial foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Limpar a lista dos comerciais
-                ListaComerciais.Rows.Clear();
 
                 // Load data de novo
                 LoadData();
@@ -153,9 +150,6 @@ namespace SalesManagement
                 dbHelper.ExecuteQuery(selectQuery, param1, param2, param3);
 
                 MessageBox.Show("O comercial foi atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Limpar a lista dos comerciais
-                ListaComerciais.Rows.Clear();
 
                 // Load data de novo
                 LoadData();
@@ -201,19 +195,15 @@ namespace SalesManagement
 
         private void ListaComerciais_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the clicked cell is a button cell
+            // Verifica se a célula clicada é um botão ou não
             if (e.RowIndex >= 0)
             {
-                if (ListaComerciais.Columns[e.ColumnIndex].Name == "Editar")
-                {
-                    // Handle the Edit button click
-                    EditItem(e.RowIndex);
-                }
-                else if (ListaComerciais.Columns[e.ColumnIndex].Name == "Eliminar")
-                {
-                    // Handle the Delete button click
-                    DeleteItem(e.RowIndex);
-                }
+                string opcao = ListaComerciais.Columns[e.ColumnIndex].Name;
+
+                if (opcao == "Editar")
+                    EditItem(e.RowIndex); // Controla o botão de Editar
+                else if (opcao == "Eliminar")
+                    DeleteItem(e.RowIndex); // Controla o botão de Eliminar
             }
         }
 
@@ -248,38 +238,11 @@ namespace SalesManagement
                     SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
 
                     // Obter o resultado da query
-                    DataTable result = dbHelper.GetDataTable(selectQuery, param1);
+                    DataTable resultado = dbHelper.GetDataTable(selectQuery, param1);
 
-                    // Se o resultado não for nulo
-                    if (result != null)
-                    {
-                        // Limpar a lista dos comerciais
-                        ListaComerciais.Rows.Clear();
-
-                        // Loop pelo resultado e agrupa em linhas para a tabela
-                        foreach (DataRow row in result.Rows)
-                        {
-                            decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
-                            decimal comissao = Convert.ToDecimal(row["Comissao"]);
-                            string aReceber = "0";
-
-                            // Calcula o montante a receber de comissões das vendas que efetuou
-                            if (totalVendas != 0 && comissao != 0)
-                            {
-                                decimal calculoComissao = totalVendas * comissao / 100; // Calcula o valor da comissão a receber 
-                                aReceber = calculoComissao.ToString("F2");
-                            }
-
-                            // Adiciona os dados na lista
-                            ListaComerciais.Rows.Add(
-                                row["Codigo"].ToString(),
-                                row["Nome"].ToString(),
-                                comissao.ToString("F2"),
-                                totalVendas.ToString("F2"),
-                                aReceber
-                            );
-                        }
-                    }
+                    // Se o resultado da tabela não for nulo
+                    if (resultado != null)
+                        preencherTabela(resultado);
                 }
                 catch (Exception ex) // Apanhar exceções
                 {
@@ -296,7 +259,6 @@ namespace SalesManagement
             ListaComerciais.Rows.Clear();
 
             LoadData();
-
         }
     }
 }
