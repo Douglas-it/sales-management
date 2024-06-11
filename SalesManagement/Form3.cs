@@ -24,9 +24,11 @@ namespace SalesManagement
             ListaComerciais.AllowUserToAddRows = false;
 
             // Adicionar colunas
-            ListaComerciais.Columns.Add("ID", "ID");
-            ListaComerciais.Columns.Add("Nome", "Nome");
-            ListaComerciais.Columns.Add("Comissao", "Comissão");
+            ListaComerciais.Columns.Add("ID", "Código");
+            ListaComerciais.Columns.Add("nome", "nome");
+            ListaComerciais.Columns.Add("comissao", "Comissão");
+            ListaComerciais.Columns.Add("totalVendas", "Total de Vendas");
+            ListaComerciais.Columns.Add("aReceber", "A Receber");
 
             // Adição de botão de Editar
             DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
@@ -56,7 +58,7 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Query para selecionar o utilizador
-                string selectQuery = "SELECT * FROM Vendedores";
+                string selectQuery = "SELECT V.Codigo, V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendas FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor GROUP BY V.Codigo, V.Nome, V.Comissao";
 
                 // Obter o resultado da query
                 DataTable result = dbHelper.GetDataTable(selectQuery);
@@ -64,18 +66,40 @@ namespace SalesManagement
                 // Se o resultado não for nulo
                 if (result != null)
                 {
+                    // Limpar a lista dos comerciais
+                    ListaComerciais.Rows.Clear();
+
                     // Loop pelo resultado e agrupa em linhas para a tabela
                     foreach (DataRow row in result.Rows)
                     {
+                        decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
+                        decimal comissao = Convert.ToDecimal(row["Comissao"]);
+                        string aReceber;
+
+                        // Calculate aReceber correctly
+                        if (totalVendas != 0 && comissao != 0)
+                        {
+                            decimal calculoComissao = totalVendas * comissao / 100; // Assuming comissao is in percentage
+                            aReceber = calculoComissao.ToString("F2");
+                        }
+                        else
+                        {
+                            aReceber = "0";
+                        }
+
                         ListaComerciais.Rows.Add(
                             row["Codigo"].ToString(),
                             row["Nome"].ToString(),
-                            Convert.ToDecimal(row["Comissao"]).ToString("F2")
-                            );
+                            comissao.ToString("F2"),
+                            totalVendas.ToString("F2"),
+                            aReceber
+                        );
                     }
                 }
                 else
+                {
                     MessageBox.Show("Não existem vendedores na base de dados!");
+                }
             }
             catch (Exception ex) // Apanhar exceções
             {
@@ -83,18 +107,92 @@ namespace SalesManagement
             }
         }
 
+
+        private void ApagarComercial(string id)
+        {
+            try
+            {
+                // Inicializar a classe DatabaseHelper
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para selecionar o utilizador
+                string selectQuery = "DELETE FROM Vendedores WHERE codigo = @codigoComercial";
+
+                // Parâmetros para a query
+                SqlParameter param1 = new SqlParameter("@codigoComercial", SqlDbType.VarChar) { Value = id };
+
+                // Obter o resultado da query
+                dbHelper.ExecuteQuery(selectQuery, param1);
+
+                MessageBox.Show("O comercial foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpar a lista dos comerciais
+                ListaComerciais.Rows.Clear();
+
+                // Load data de novo
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar apagar o comercial: " + ex.Message);
+            }
+        }
+
+        private void EditarComercial(string id, string nome, string comissao)
+        {
+            try
+            {
+                // Inicializar a classe DatabaseHelper
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para selecionar o utilizador
+                string selectQuery = "UPDATE Vendedores SET nome = @nomeComercial, comissao = @comissaoComercial WHERE codigo = @codigoComercial";
+
+                // Parâmetros para a query
+                SqlParameter param1 = new SqlParameter("@nomeComercial", SqlDbType.VarChar) { Value = nome };
+                SqlParameter param2 = new SqlParameter("@comissaoComercial", SqlDbType.Decimal) { Value = comissao };
+                SqlParameter param3 = new SqlParameter("@codigoComercial", SqlDbType.VarChar) { Value = id };
+
+                // Obter o resultado da query
+                dbHelper.ExecuteQuery(selectQuery, param1, param2, param3);
+
+                MessageBox.Show("O comercial foi atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpar a lista dos comerciais
+                ListaComerciais.Rows.Clear();
+
+                // Load data de novo
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar atualizar o comercial: " + ex.Message);
+            }
+        }
+
         private void EditItem(int rowIndex)
         {
-            var id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
-            MessageBox.Show($"Edit item with ID: {id}");
-            // Your edit logic here
+            DialogResult = MessageBox.Show($"Tem a certeza que deseja alterar?", "Alterar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (DialogResult == DialogResult.Yes)
+            {
+                string id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
+                string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
+                string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString();
+
+                EditarComercial(id, nome, comissao);
+            }
         }
 
         private void DeleteItem(int rowIndex)
         {
-            var id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
-            MessageBox.Show($"Delete item with ID: {id}");
-            // Your delete logic here
+            string id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
+            DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (DialogResult == DialogResult.Yes)
+            {
+                ApagarComercial(id);
+            }
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -129,6 +227,66 @@ namespace SalesManagement
 
             if (DialogResult == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private void btnNovoComercial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string pesquisa = inputPesquisa.Text;
+
+            if (OperacoesGerais.LerStringValida(pesquisa))
+            {
+                try
+                {
+                    // Inicializar a classe DatabaseHelper
+                    DatabaseHelper dbHelper = new DatabaseHelper();
+
+                    // Query para selecionar o utilizador
+                    string selectQuery = "SELECT * FROM Vendedores WHERE nome LIKE @pequisa OR Codigo LIKE @pequisa";
+
+                    // Parâmetros para a query
+                    SqlParameter param1 = new SqlParameter("@pequisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
+
+                    // Obter o resultado da query
+                    DataTable result = dbHelper.GetDataTable(selectQuery, param1);
+
+                    // Se o resultado não for nulo
+                    if (result != null)
+                    {
+                        // Limpar a lista dos comerciais
+                        ListaComerciais.Rows.Clear();
+
+                        // Loop pelo resultado e agrupa em linhas para a tabela
+                        foreach (DataRow row in result.Rows)
+                        {
+                            ListaComerciais.Rows.Add(
+                                row["Codigo"].ToString(),
+                                row["Nome"].ToString(),
+                                Convert.ToDecimal(row["Comissao"]).ToString("F2")
+                                );
+                        }
+                    }
+                }
+                catch (Exception ex) // Apanhar exceções
+                {
+                    MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+                }
+            }
+            else
+                MessageBox.Show("Por favor insira um nome para pesquisar!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            inputPesquisa.Text = "";
+            ListaComerciais.Rows.Clear();
+
+            LoadData();
+
         }
     }
 }

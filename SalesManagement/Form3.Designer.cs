@@ -32,6 +32,9 @@
             btnNovoComercial = new Button();
             ListaComerciais = new DataGridView();
             btnSair = new Button();
+            btnPesquisar = new Button();
+            inputPesquisa = new TextBox();
+            btnLimpar = new Button();
             ((System.ComponentModel.ISupportInitialize)ListaComerciais).BeginInit();
             SuspendLayout();
             // 
@@ -53,6 +56,7 @@
             btnNovoComercial.TabIndex = 3;
             btnNovoComercial.Text = "Novo Comercial";
             btnNovoComercial.UseVisualStyleBackColor = true;
+            btnNovoComercial.Click += btnNovoComercial_Click;
             // 
             // ListaComerciais
             // 
@@ -73,11 +77,42 @@
             btnSair.UseVisualStyleBackColor = true;
             btnSair.Click += btnSair_Click;
             // 
+            // btnPesquisar
+            // 
+            btnPesquisar.Location = new Point(651, 77);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(75, 26);
+            btnPesquisar.TabIndex = 14;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
+            // inputPesquisa
+            // 
+            inputPesquisa.Location = new Point(388, 78);
+            inputPesquisa.Name = "inputPesquisa";
+            inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
+            inputPesquisa.Size = new Size(257, 23);
+            inputPesquisa.TabIndex = 0;
+            // 
+            // btnLimpar
+            // 
+            btnLimpar.Location = new Point(732, 77);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(56, 26);
+            btnLimpar.TabIndex = 15;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
+            // 
             // FormVendedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLimpar);
+            Controls.Add(inputPesquisa);
+            Controls.Add(btnPesquisar);
             Controls.Add(btnSair);
             Controls.Add(ListaComerciais);
             Controls.Add(btnNovoComercial);
@@ -87,6 +122,7 @@
             Text = "Painel de Vendedores";
             ((System.ComponentModel.ISupportInitialize)ListaComerciais).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -95,5 +131,8 @@
         private Button btnNovoComercial;
         private DataGridView ListaComerciais;
         private Button btnSair;
+        private Button btnPesquisar;
+        private TextBox inputPesquisa;
+        private Button btnLimpar;
     }
 }

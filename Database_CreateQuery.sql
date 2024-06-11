@@ -19,11 +19,11 @@ CREATE TABLE Utilizadores (
 
 -- Criar tabela de Vendedores
 CREATE TABLE Vendedores (
-    Codigo INT PRIMARY KEY,
+    Codigo VARCHAR(50) PRIMARY KEY,
     Nome VARCHAR(255) NOT NULL,
     Comissao DECIMAL(10, 2) NOT NULL
 );
-
+  
 -- Criar tabela de Produtos
 CREATE TABLE Produtos (
     Codigo VARCHAR(50) PRIMARY KEY,
@@ -36,7 +36,7 @@ CREATE TABLE Produtos (
 -- Criar tabela de Vendas
 CREATE TABLE Vendas (
     Id INT PRIMARY KEY IDENTITY(1,1),
-    CodigoVendedor INT NOT NULL,
+    CodigoVendedor VARCHAR(50) NOT NULL,
     Zona VARCHAR(255) NOT NULL, --ID
     DataVenda DATE NOT NULL,
     Quantidade INT NOT NULL,
@@ -63,12 +63,6 @@ INSERT INTO Utilizadores (Id, Utilizador, Senha, Cargo) VALUES
 (2, 'joao.vendedor', 'senhaJoao', 2),
 (3, 'maria.vendedora', 'senhaMaria', 2);
 
--- Inserir dados na tabela Vendedores
-INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES 
-(1, 'João Silva', 5.00),
-(2, 'Maria Oliveira', 7.50),
-(3, 'Carlos Souza', 6.00);
-
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES 
 ('P001', 'Portátil Lenovo ThinkPad', 1, 1200.00),
@@ -84,3 +78,20 @@ INSERT INTO Vendas (CodigoVendedor, Zona, DataVenda, Quantidade, CodigoProduto, 
 (3, 'C', '2024-03-05', 1, 'P003', 300.00),
 (1, 'N', '2024-04-20', 5, 'P005', 500.00),
 (2, 'S', '2024-05-25', 1, 'P004', 1500.00);
+
+-- Inserir dados na tabela Vendedores
+INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES 
+(1, 'João Silva', 5.00),
+(2, 'Maria Oliveira', 7.50),
+(3, 'Carlos Souza', 6.00),
+(4, 'Dummy', '5.00'),
+(5, 'Dummy', '5.00'),
+(6, 'Dummy', '5.00'),
+(7, 'Dummy', '5.00'),
+(8, 'Dummy', '5.00'),
+(9, 'Dummy', '5.00'),
+(10, 'Dummy', '5.00'),
+(11, 'Dummy', '5.00'),
+(12, 'Dummy', '5.00'),
+(13, 'Dummy', '5.00'),
+(14, 'Dummy', '5.00');

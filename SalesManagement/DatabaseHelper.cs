@@ -19,13 +19,15 @@ namespace SalesManagement
             return new SqlConnection(ConnectionString);
         }
 
-        public void ExecuteQuery(string query)
+        public void ExecuteQuery(string query, params SqlParameter[] parameters)
         {
             using (SqlConnection connection = GetSqlConnection())
             {
                 connection.Open();
+                
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
+                    command.Parameters.AddRange(parameters);
                     command.ExecuteNonQuery();
                 }
             }
