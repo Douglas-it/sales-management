@@ -45,5 +45,17 @@ namespace SalesManagement
 
             this.Hide();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            DialogResult = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (DialogResult == DialogResult.Yes)
+                Application.Exit();
+        }
     }
 }

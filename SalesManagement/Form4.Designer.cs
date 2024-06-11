@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             btnVoltar = new Button();
+            btnSair = new Button();
             SuspendLayout();
             // 
             // btnVoltar
@@ -41,11 +42,22 @@
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
             // 
+            // btnSair
+            // 
+            btnSair.Location = new Point(713, 12);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(75, 23);
+            btnSair.TabIndex = 13;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
+            // 
             // FormProdutos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSair);
             Controls.Add(btnVoltar);
             Name = "FormProdutos";
             StartPosition = FormStartPosition.CenterScreen;
@@ -57,5 +69,6 @@
         #endregion
 
         private Button btnVoltar;
+        private Button btnSair;
     }
 }

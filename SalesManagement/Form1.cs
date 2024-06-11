@@ -11,17 +11,60 @@ namespace SalesManagement
             InitializeComponent();
         }
 
+        private string username;
+        private string password;
+
+        private bool Login(string username, string password)
+        {
+            try
+            {
+                // Inicializar a classe DatabaseHelper
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para selecionar o utilizador
+                string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @Username AND Senha= @Password";
+
+                // Parâmetros para a query
+                SqlParameter param1 = new SqlParameter("@Username", SqlDbType.VarChar) { Value = username };
+                SqlParameter param2 = new SqlParameter("@Password", SqlDbType.VarChar) { Value = password };
+
+
+                // Obter o resultado da query
+                DataTable result = dbHelper.GetDataTable(selectQuery, param1, param2);
+
+                // Se o resultado tiver 1 linha, então o utilizador existe
+                if (result.Rows.Count == 1)
+                {
+                    FormInicial FormInicial = new FormInicial(); // Inicializar novo form
+                    FormInicial.Show(); // Mostra Novo Form
+
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Credenciais inválidas!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+            }
+            catch (Exception ex) // Apanhar exceções
+            {
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+            }
+            return false;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Obter o username e password
-            string username = inputUsername.Text;
-            string password = inputPassword.Text;
+            username = inputUsername.Text;
+            password = inputPassword.Text;
 
             // Verificar se o username e password são válidos
             if (OperacoesGerais.LerStringValida(username) && OperacoesGerais.LerStringValida(password))
             {
 
-                if (Utilizadores.Login(username, password)) // Chamar a função login da classe Utilizadores
+                if (Login(username, password)) // Chamar a função login da classe Utilizadores
                     this.Hide(); // Esconder o form atual
                 else
                 {

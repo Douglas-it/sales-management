@@ -63,7 +63,7 @@ namespace SalesManagement
 
                 // Se o resultado não for nulo
                 if (result != null)
-                {   
+                {
                     // Loop pelo resultado e agrupa em linhas para a tabela
                     foreach (DataRow row in result.Rows)
                     {
@@ -121,6 +121,14 @@ namespace SalesManagement
                     DeleteItem(e.RowIndex);
                 }
             }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            DialogResult = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (DialogResult == DialogResult.Yes)
+                Application.Exit();
         }
     }
 }

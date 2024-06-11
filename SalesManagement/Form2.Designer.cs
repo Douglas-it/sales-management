@@ -35,11 +35,12 @@
             btnUtilizadores = new Button();
             label5 = new Label();
             label4 = new Label();
+            btnSair = new Button();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(313, 158);
+            button1.Location = new Point(328, 170);
             button1.Name = "button1";
             button1.Size = new Size(156, 36);
             button1.TabIndex = 0;
@@ -49,7 +50,7 @@
             // 
             // btnProdutos
             // 
-            btnProdutos.Location = new Point(313, 200);
+            btnProdutos.Location = new Point(328, 212);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.Size = new Size(156, 33);
             btnProdutos.TabIndex = 1;
@@ -59,7 +60,7 @@
             // 
             // btnVendas
             // 
-            btnVendas.Location = new Point(313, 239);
+            btnVendas.Location = new Point(328, 251);
             btnVendas.Name = "btnVendas";
             btnVendas.Size = new Size(156, 35);
             btnVendas.TabIndex = 2;
@@ -70,15 +71,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(316, 110);
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
+            label1.Location = new Point(361, 133);
             label1.Name = "label1";
-            label1.Size = new Size(153, 15);
+            label1.Size = new Size(88, 21);
             label1.TabIndex = 3;
-            label1.Text = "Bem vindo, NomeUtilizador";
+            label1.Text = "Bem vindo";
+            label1.Click += label1_Click;
             // 
             // btnUtilizadores
             // 
-            btnUtilizadores.Location = new Point(313, 280);
+            btnUtilizadores.Location = new Point(328, 292);
             btnUtilizadores.Name = "btnUtilizadores";
             btnUtilizadores.Size = new Size(156, 35);
             btnUtilizadores.TabIndex = 4;
@@ -105,11 +108,22 @@
             label4.TabIndex = 11;
             label4.Text = "Gestão de Vendas";
             // 
+            // btnSair
+            // 
+            btnSair.Location = new Point(713, 61);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(75, 23);
+            btnSair.TabIndex = 12;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
+            // 
             // FormInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSair);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(btnUtilizadores);
@@ -134,5 +148,6 @@
         private Button btnUtilizadores;
         private Label label5;
         private Label label4;
+        private Button btnSair;
     }
 }

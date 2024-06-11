@@ -31,6 +31,7 @@
             btnVoltar = new Button();
             btnNovoComercial = new Button();
             ListaComerciais = new DataGridView();
+            btnSair = new Button();
             ((System.ComponentModel.ISupportInitialize)ListaComerciais).BeginInit();
             SuspendLayout();
             // 
@@ -62,11 +63,22 @@
             ListaComerciais.TabIndex = 4;
             ListaComerciais.CellContentClick += ListaComerciais_CellContentClick;
             // 
+            // btnSair
+            // 
+            btnSair.Location = new Point(713, 9);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(75, 23);
+            btnSair.TabIndex = 13;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
+            // 
             // FormVendedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSair);
             Controls.Add(ListaComerciais);
             Controls.Add(btnNovoComercial);
             Controls.Add(btnVoltar);
@@ -82,5 +94,6 @@
         private Button btnVoltar;
         private Button btnNovoComercial;
         private DataGridView ListaComerciais;
+        private Button btnSair;
     }
 }
