@@ -20,10 +20,10 @@ namespace SalesManagement
             InitializeComponent();
 
             // Propriedades da DataGridView
-            ListaComerciais.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            ListaComerciais.AllowUserToAddRows = false;
+            ListaComerciais.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Resize automático das colunas
+            ListaComerciais.AllowUserToAddRows = false; // Não permitir adicionar linhas
 
-            // Adicionar colunas
+            // Adicionar colunas (nomes internos e visíveis)
             ListaComerciais.Columns.Add("ID", "Código");
             ListaComerciais.Columns.Add("nome", "nome");
             ListaComerciais.Columns.Add("comissao", "Comissão");
@@ -46,10 +46,11 @@ namespace SalesManagement
             deleteButtonColumn.UseColumnTextForButtonValue = true;
             ListaComerciais.Columns.Add(deleteButtonColumn);
 
-            // Load data da base de dados
+            // Carregar Dados da base de dados
             LoadData();
         }
 
+        // Função que carrega os dados da base de dados
         private void LoadData()
         {
             try
@@ -74,19 +75,16 @@ namespace SalesManagement
                     {
                         decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
                         decimal comissao = Convert.ToDecimal(row["Comissao"]);
-                        string aReceber;
+                        string aReceber = "0";
 
-                        // Calculate aReceber correctly
+                        // Calcula o montante a receber de comissões das vendas que efetuou
                         if (totalVendas != 0 && comissao != 0)
                         {
-                            decimal calculoComissao = totalVendas * comissao / 100; // Assuming comissao is in percentage
+                            decimal calculoComissao = totalVendas * comissao / 100; // Calcula o valor da comissão a receber 
                             aReceber = calculoComissao.ToString("F2");
                         }
-                        else
-                        {
-                            aReceber = "0";
-                        }
 
+                        // Adiciona os dados na lista
                         ListaComerciais.Rows.Add(
                             row["Codigo"].ToString(),
                             row["Nome"].ToString(),
@@ -97,9 +95,7 @@ namespace SalesManagement
                     }
                 }
                 else
-                {
                     MessageBox.Show("Não existem vendedores na base de dados!");
-                }
             }
             catch (Exception ex) // Apanhar exceções
             {
@@ -246,10 +242,10 @@ namespace SalesManagement
                     DatabaseHelper dbHelper = new DatabaseHelper();
 
                     // Query para selecionar o utilizador
-                    string selectQuery = "SELECT * FROM Vendedores WHERE nome LIKE @pequisa OR Codigo LIKE @pequisa";
+                    string selectQuery = "SELECT V.Codigo, V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendas FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor WHERE V.Nome LIKE @pesquisa OR V.Codigo LIKE @pesquisa GROUP BY V.Codigo, V.Nome, V.Comissao";
 
                     // Parâmetros para a query
-                    SqlParameter param1 = new SqlParameter("@pequisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
+                    SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
 
                     // Obter o resultado da query
                     DataTable result = dbHelper.GetDataTable(selectQuery, param1);
@@ -263,11 +259,25 @@ namespace SalesManagement
                         // Loop pelo resultado e agrupa em linhas para a tabela
                         foreach (DataRow row in result.Rows)
                         {
+                            decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
+                            decimal comissao = Convert.ToDecimal(row["Comissao"]);
+                            string aReceber = "0";
+
+                            // Calcula o montante a receber de comissões das vendas que efetuou
+                            if (totalVendas != 0 && comissao != 0)
+                            {
+                                decimal calculoComissao = totalVendas * comissao / 100; // Calcula o valor da comissão a receber 
+                                aReceber = calculoComissao.ToString("F2");
+                            }
+
+                            // Adiciona os dados na lista
                             ListaComerciais.Rows.Add(
                                 row["Codigo"].ToString(),
                                 row["Nome"].ToString(),
-                                Convert.ToDecimal(row["Comissao"]).ToString("F2")
-                                );
+                                comissao.ToString("F2"),
+                                totalVendas.ToString("F2"),
+                                aReceber
+                            );
                         }
                     }
                 }
