@@ -50,7 +50,7 @@
             // 
             // btnNovoComercial
             // 
-            btnNovoComercial.Location = new Point(12, 77);
+            btnNovoComercial.Location = new Point(12, 74);
             btnNovoComercial.Name = "btnNovoComercial";
             btnNovoComercial.Size = new Size(136, 23);
             btnNovoComercial.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             // btnPesquisar
             // 
-            btnPesquisar.Location = new Point(651, 77);
+            btnPesquisar.Location = new Point(651, 74);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(75, 26);
             btnPesquisar.TabIndex = 14;
@@ -89,7 +89,7 @@
             // 
             // inputPesquisa
             // 
-            inputPesquisa.Location = new Point(388, 78);
+            inputPesquisa.Location = new Point(388, 75);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
             inputPesquisa.Size = new Size(257, 23);
@@ -97,7 +97,7 @@
             // 
             // btnLimpar
             // 
-            btnLimpar.Location = new Point(732, 77);
+            btnLimpar.Location = new Point(732, 74);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(56, 26);
             btnLimpar.TabIndex = 15;

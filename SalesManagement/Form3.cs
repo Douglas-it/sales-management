@@ -25,18 +25,18 @@ namespace SalesManagement
 
             // Adicionar colunas (nomes internos e visíveis)
             ListaComerciais.Columns.Add("ID", "Código");
-            ListaComerciais.Columns.Add("nome", "nome");
+            ListaComerciais.Columns.Add("nome", "Nome");
             ListaComerciais.Columns.Add("comissao", "Comissão");
             ListaComerciais.Columns.Add("totalVendas", "Total de Vendas");
             ListaComerciais.Columns.Add("aReceber", "A Receber");
 
             // Adição de botão de Editar
-            DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn();
-            editButtonColumn.Name = "Editar";
-            editButtonColumn.HeaderText = "Editar";
-            editButtonColumn.Text = "Editar";
-            editButtonColumn.UseColumnTextForButtonValue = true;
-            ListaComerciais.Columns.Add(editButtonColumn);
+            DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
+            editButtonColumn.Name = "Editar"; // Nome da coluna
+            editButtonColumn.HeaderText = "Editar"; // Cabeçalho da coluna
+            editButtonColumn.Text = "Editar"; // Texto do botão
+            editButtonColumn.UseColumnTextForButtonValue = true; // Usar o texto da coluna para o botão
+            ListaComerciais.Columns.Add(editButtonColumn); // Adicionar a coluna à tabela
 
             // Adição de botão de Eliminar
             DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
@@ -122,7 +122,7 @@ namespace SalesManagement
 
                 MessageBox.Show("O comercial foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Load data de novo
+                // Carrega os dados novamente para atualizar a lista
                 LoadData();
             }
             catch (Exception ex)
@@ -151,7 +151,7 @@ namespace SalesManagement
 
                 MessageBox.Show("O comercial foi atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Load data de novo
+                // Carrega os dados novamente para atualizar a lista
                 LoadData();
             }
             catch (Exception ex)
@@ -217,7 +217,12 @@ namespace SalesManagement
 
         private void btnNovoComercial_Click(object sender, EventArgs e)
         {
+            NovoComercial novoComercial = new NovoComercial();
+            DialogResult = novoComercial.ShowDialog();
 
+            if (DialogResult == DialogResult.OK)
+                LoadData();
+            else { MessageBox.Show("Teste"); }
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
