@@ -7,50 +7,64 @@ namespace SalesManagement
 {
     class DatabaseHelper
     {
-        // Obter a string de conexão do ficheiro de configuração
-        string ConnectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+        // Obtém a connection string do ficheiro de configuração (app.config)
+        string ConnectionString = ConfigurationManager.ConnectionStrings["SQLConnectionString"].ConnectionString;
 
-        // Cria a conexão SQL
+        /* 
+         * Cria e retorna uma nova instancia de SqlConnection com a ConnectionString
+         * 
+         * @return SqlConnection
+         */
         public SqlConnection GetSqlConnection()
         {
             return new SqlConnection(ConnectionString);
         }
 
-
-        // Executa um Query que não retorna dados
+        /* 
+         * Executa um Query que não retorna dados
+         * 
+         * @param string query
+         * @param SqlParameter[] parameters
+         */
         public void ExecuteQuery(string query, params SqlParameter[] parameters)
         {
-            using (SqlConnection connection = GetSqlConnection())
+            using (SqlConnection connection = GetSqlConnection()) // Cria uma nova conexão
             {
-                connection.Open();
-                
-                using (SqlCommand command = new SqlCommand(query, connection))
+                connection.Open(); // Abre a conexão
+
+                using (SqlCommand command = new SqlCommand(query, connection)) // Cria um novo comando SQL
                 {
-                    command.Parameters.AddRange(parameters);
-                    command.ExecuteNonQuery();
+                    command.Parameters.AddRange(parameters); // Adiciona os parâmetros à query
+                    command.ExecuteNonQuery(); // Executa a query
                 }
             }
         }
 
-        // Executa um Query que retorna dados
+        /* 
+         * Executa um Query que retorna dados
+         * 
+         * @param string query
+         * @param SqlParameter[] parameters
+         * @return DataTable
+         */
         public DataTable GetDataTable(string query, params SqlParameter[] parameters)
         {
-            using (SqlConnection connection = GetSqlConnection())
+            using (SqlConnection connection = GetSqlConnection()) // Cria uma nova conexão
             {
-                connection.Open();
+                connection.Open(); // Abre a conexão
 
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection)) // Cria um novo comando SQL
                 {
-                    command.Parameters.AddRange(parameters);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    command.Parameters.AddRange(parameters); // Adiciona os parâmetros à query
+
+                    using (SqlDataReader reader = command.ExecuteReader()) // Executa a query e obtém o resultado
                     {
-                        DataTable result = new DataTable();
-                        result.Load(reader);
-                        return result;
+                        DataTable result = new DataTable(); // Cria uma nova DataTable
+                        result.Load(reader); // Carrega o resultado do reader para a DataTable
+                        return result; // Retorna a DataTable
                     }
                 }
             }
         }
-
     }
 }
