@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SalesManagement
 {
-    public partial class NovoComercial : Form
+    public partial class FormNovoComercial : Form
     {
-        public NovoComercial()
+        public FormNovoComercial()
         {
             InitializeComponent();
         }

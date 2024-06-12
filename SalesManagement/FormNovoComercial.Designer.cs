@@ -1,6 +1,6 @@
 ﻿namespace SalesManagement
 {
-    partial class NovoComercial
+    partial class FormNovoComercial
     {
         /// <summary>
         /// Required designer variable.

@@ -217,7 +217,7 @@ namespace SalesManagement
 
         private void btnNovoComercial_Click(object sender, EventArgs e)
         {
-            NovoComercial novoComercial = new NovoComercial();
+            FormNovoComercial novoComercial = new FormNovoComercial();
             DialogResult = novoComercial.ShowDialog();
 
             if (DialogResult == DialogResult.OK)

@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 
 namespace SalesManagement
 {
-    public partial class Form1 : System.Windows.Forms.Form
+    public partial class FormLogin : System.Windows.Forms.Form
     {
-        public Form1()
+        public FormLogin()
         {
             InitializeComponent();
         }
