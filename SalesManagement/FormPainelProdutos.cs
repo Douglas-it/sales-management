@@ -105,13 +105,13 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 //  Querry para selecionar o Produto 
-                string selectQuery = "DELETE FROM Produtos WHERE Codigo = @codigoProduto";
+                string DeleteQuery = "DELETE FROM Produtos WHERE Codigo = @codigoProduto";
 
                 // Parâmetros para a query
                 SqlParameter paramProduto = new SqlParameter("@codigoProduto", SqlDbType.VarChar) { Value = Codigo };
 
                 // Obter o resultado da query
-                dbHelper.ExecuteQuery(selectQuery, paramProduto);
+                dbHelper.ExecuteQuery(DeleteQuery, paramProduto);
 
                 MessageBox.Show("O Produto foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -121,6 +121,63 @@ namespace SalesManagement
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao tentar apagar o produto: " + ex.Message);
+            }
+        }
+
+        private void EditarProduto(string Codigo, string Nome, decimal Preco, int codigocategoria)
+        {
+            try
+            {
+                // inicializar a classe DatabaseHelper
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para atualizar o produto
+                string updateQuery = "UPDATE Produtos SET Nome = @nomeProduto, Preco = @precoProduto, CodigoCategoria = @codigoCategoria WHERE Codigo = @codigoProduto";
+
+                // Parâmetros para a query
+                SqlParameter param1 = new SqlParameter("@nomeProduto", SqlDbType.VarChar)
+                {
+                    Value = Nome
+                };
+
+                SqlParameter param2 = new SqlParameter("@precoProduto", SqlDbType.Decimal)
+                {
+                    Value = Preco
+                };
+
+                SqlParameter param3 = new SqlParameter("@codigoCategoria", SqlDbType.Int)
+                {
+                    Value = codigocategoria
+                };
+
+                SqlParameter param4 = new SqlParameter("@codigoProduto", SqlDbType.VarChar)
+                {
+                    Value = Codigo
+                };
+
+                // Funcionamento  da query
+                dbHelper.ExecuteQuery(updateQuery, param1, param2, param3, param4);
+
+                MessageBox.Show("o produto foi atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // carregar os dados para atualizar a lista 
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar atualizar o produto:" + ex.Message);
+            }
+
+        }
+
+        private void DeleteItem(int rowIndex)
+        {
+            string Codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
+            DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (DialogResult == DialogResult.Yes)
+            {
+                ApagarProduto("Codigo");
             }
         }
 
