@@ -46,9 +46,10 @@ namespace SalesManagement
             btnEliminar.UseColumnTextForButtonValue = true;
             ListaComerciais.Columns.Add(btnEliminar);
 
-            // Desativar a edição das células totalVendas e aReceber
+            // Desativar a edição das células ID, totalVendas e aReceber
             ListaComerciais.Columns["totalVendas"].ReadOnly = true;
             ListaComerciais.Columns["aReceber"].ReadOnly = true;
+            ListaComerciais.Columns["ID"].ReadOnly = true;
 
             // Carregar Dados da base de dados
             LoadData();
@@ -135,7 +136,7 @@ namespace SalesManagement
             }
         }
 
-        private void EditarComercial(string id, string nome, decimal comissao)
+        private void EditarComercial(string id,string nome, decimal comissao)
         {
             try
             {
@@ -170,25 +171,14 @@ namespace SalesManagement
 
             if (DialogResult == DialogResult.Yes)
             {
-                string id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
+                string id = ListaComerciais.Rows[rowIndex].Cells["id"].Value.ToString();
                 string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
                 string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
 
                 // Inicializa a classe DatabaseHelper
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
-                // Query para obter dados
-                string SelectQuery = "SELECT * FROM Vendedores WHERE Codigo = @id";
-
-                // Paramêtros do Query
-                SqlParameter param1 = new SqlParameter("@id", SqlDbType.VarChar) { Value = id };
-
-                // Executa o Query e retorna como result
-                DataTable result = dbHelper.GetDataTable(SelectQuery, param1);
-
-                // Se o result não tiver dados ==> Altera o comercial
-                if (result.Rows.Count == 0 || result.Rows[0]["Codigo"].ToString() == id)
-                {
+                
                     if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
                     {
                         decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
@@ -197,9 +187,6 @@ namespace SalesManagement
                     else
                         MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else
-                    MessageBox.Show("O código inserido já esta a ser utilizado!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void DeleteItem(int rowIndex)
