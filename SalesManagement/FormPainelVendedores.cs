@@ -31,20 +31,24 @@ namespace SalesManagement
             ListaComerciais.Columns.Add("aReceber", "A Receber");
 
             // Adição de botão de Editar
-            DataGridViewButtonColumn editButtonColumn = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
-            editButtonColumn.Name = "Editar"; // Nome da coluna
-            editButtonColumn.HeaderText = "Editar"; // Cabeçalho da coluna
-            editButtonColumn.Text = "Editar"; // Texto do botão
-            editButtonColumn.UseColumnTextForButtonValue = true; // Usar o texto da coluna para o botão
-            ListaComerciais.Columns.Add(editButtonColumn); // Adicionar a coluna à tabela
+            DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
+            btnEditar.Name = "Editar"; // Nome da coluna
+            btnEditar.HeaderText = "Editar"; // Cabeçalho da coluna
+            btnEditar.Text = "Editar"; // Texto do botão
+            btnEditar.UseColumnTextForButtonValue = true; // Usar o texto da coluna para o botão
+            ListaComerciais.Columns.Add(btnEditar); // Adicionar a coluna à tabela
 
             // Adição de botão de Eliminar
-            DataGridViewButtonColumn deleteButtonColumn = new DataGridViewButtonColumn();
-            deleteButtonColumn.Name = "Eliminar";
-            deleteButtonColumn.HeaderText = "Eliminar";
-            deleteButtonColumn.Text = "Eliminar";
-            deleteButtonColumn.UseColumnTextForButtonValue = true;
-            ListaComerciais.Columns.Add(deleteButtonColumn);
+            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
+            btnEliminar.Name = "Eliminar";
+            btnEliminar.HeaderText = "Eliminar";
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseColumnTextForButtonValue = true;
+            ListaComerciais.Columns.Add(btnEliminar);
+
+            // Desativar a edição das células totalVendas e aReceber
+            ListaComerciais.Columns["totalVendas"].ReadOnly = true;
+            ListaComerciais.Columns["aReceber"].ReadOnly = true;
 
             // Carregar Dados da base de dados
             LoadData();
@@ -97,8 +101,8 @@ namespace SalesManagement
                 ListaComerciais.Rows.Add(
                     row["Codigo"].ToString(),
                     row["Nome"].ToString(),
-                    comissao.ToString("F2") + "%",
-                    totalVendas.ToString("F2") + "€",
+                    Convert.ToDecimal(comissao) + "%",
+                    Convert.ToDecimal(totalVendas) + "€",
                     aReceber + "€"
                 );
             }
@@ -131,7 +135,7 @@ namespace SalesManagement
             }
         }
 
-        private void EditarComercial(string id, string nome, string comissao)
+        private void EditarComercial(string id, string nome, decimal comissao)
         {
             try
             {
@@ -168,9 +172,15 @@ namespace SalesManagement
             {
                 string id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
                 string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
-                string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString();
+                string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
 
-                EditarComercial(id, nome, comissao);
+                if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
+                {
+                    decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
+                    EditarComercial(id, nome, comissaoSemSimbolo);
+                }
+                else
+                    MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -222,7 +232,6 @@ namespace SalesManagement
 
             if (DialogResult == DialogResult.OK)
                 LoadData();
-            else { MessageBox.Show("Teste"); }
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
