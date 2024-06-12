@@ -136,7 +136,7 @@ namespace SalesManagement
             }
         }
 
-        private void EditarComercial(string id,string nome, decimal comissao)
+        private void EditarComercial(string id, string nome, decimal comissao)
         {
             try
             {
