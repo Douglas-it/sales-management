@@ -21,10 +21,10 @@ namespace SalesManagement
             ListaProdutos.AllowUserToAddRows = false; // Não Permitir add Linhas
 
             // Adicionar colunas (nomes internos visiveis)
-            ListaProdutos.Columns.Add("Codigo", "Código Do Produto");
-            ListaProdutos.Columns.Add("Nome", "Nome Do Produto");
-            ListaProdutos.Columns.Add("codigocategoria", "Categoria Do Produto");
-            ListaProdutos.Columns.Add("Preco", "Preço Do Produto ");
+            ListaProdutos.Columns.Add("Codigo", "Código");
+            ListaProdutos.Columns.Add("Nome", "Nome");
+            ListaProdutos.Columns.Add("Preco", "Preço");
+            ListaProdutos.Columns.Add("codigocategoria", "Categoria");
 
 
             // Adição de botão de Editar
@@ -57,15 +57,14 @@ namespace SalesManagement
         {
             try
             {
-
                 // inicializar a classe DatabaseHelper
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Querry para selecionar o Produto
-                string selectQuerry = "SELECT Produtos.Codigo, Produtos.Nome, Produtos.Preco, Categorias.Nome AS NomeCategoria FROM Produtos INNER JOIN Categorias ON Produtos.CodigoCategoria = Categorias.Codigo";
+                string selectQuery = "SELECT Produtos.Codigo, Produtos.Nome, Produtos.Preco, Categorias.Nome AS NomeCategoria FROM Produtos INNER JOIN Categorias ON Produtos.CodigoCategoria = Categorias.Codigo";
 
                 // obter o resultado da query
-                DataTable resultado = dbHelper.GetDataTable(selectQuerry);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery);
 
                 // Se o resultado da não for nulo
                 if (resultado != null)
@@ -74,7 +73,7 @@ namespace SalesManagement
             }
             catch (Exception ex) // apanhar exceções
             {
-                MessageBox.Show("Erro ao tentar conectar a base de dados");
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
             }
         }
 
@@ -90,11 +89,10 @@ namespace SalesManagement
                 ListaProdutos.Rows.Add(
                     row["Codigo"].ToString(),
                     row["Nome"].ToString(),
-                    row["Preco"].ToString() + "€",
-                    row["CategoriaNome"].ToString()
-                 );
+                    Convert.ToDecimal(row["Preco"]) + "€",
+                    row["NomeCategoria"].ToString()
+                    );
             }
-
         }
 
         private void ApagarProduto(string Codigo)
@@ -181,8 +179,17 @@ namespace SalesManagement
             }
         }
 
+        private void FormProdutos_Load(object sender, EventArgs e)
+        {
 
-        private void btnVoltar_Click(object sender, EventArgs e)
+        }
+
+        private void inputPesquisa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVoltar_Click_1(object sender, EventArgs e)
         {
             FormInicial FormInicial = new FormInicial();
             FormInicial.Show();
@@ -190,12 +197,7 @@ namespace SalesManagement
             this.Hide();
         }
 
-        private void FormProdutos_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSair_Click(object sender, EventArgs e)
+        private void btnSair_Click_1(object sender, EventArgs e)
         {
             DialogResult = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -203,9 +205,17 @@ namespace SalesManagement
                 Application.Exit();
         }
 
-        private void inputPesquisa_TextChanged(object sender, EventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
         {
+            inputPesquisa.Text = "";
+            ListaProdutos.Rows.Clear();
 
+            LoadData();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            // Inserir Lógica de Pesquisar Produtos @Douglas
         }
     }
 }

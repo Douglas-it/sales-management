@@ -105,7 +105,7 @@ namespace SalesManagement
                     Convert.ToDecimal(comissao) + "%",
                     Convert.ToDecimal(totalVendas) + "€",
                     aReceber + "€"
-                );
+                    );
             }
         }
 
