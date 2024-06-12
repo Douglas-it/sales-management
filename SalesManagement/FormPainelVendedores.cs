@@ -174,13 +174,31 @@ namespace SalesManagement
                 string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
                 string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
 
-                if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
+                // Inicializa a classe DatabaseHelper
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para obter dados
+                string SelectQuery = "SELECT * FROM Vendedores WHERE Codigo = @id";
+
+                // Paramêtros do Query
+                SqlParameter param1 = new SqlParameter("@id", SqlDbType.VarChar) { Value = id };
+
+                // Executa o Query e retorna como result
+                DataTable result = dbHelper.GetDataTable(SelectQuery, param1);
+
+                // Se o result não tiver dados ==> Altera o comercial
+                if (result.Rows.Count == 0 || result.Rows[0]["Codigo"].ToString() == id)
                 {
-                    decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
-                    EditarComercial(id, nome, comissaoSemSimbolo);
+                    if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
+                    {
+                        decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
+                        EditarComercial(id, nome, comissaoSemSimbolo);
+                    }
+                    else
+                        MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                    MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("O código inserido já esta a ser utilizado!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
