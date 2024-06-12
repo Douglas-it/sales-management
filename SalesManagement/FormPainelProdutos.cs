@@ -15,16 +15,16 @@ namespace SalesManagement
         public FormProdutos()
         {
             InitializeComponent();
-           // Propriedades Dara GridView
+
+           // Propriedades Para GridView
            ListaProdutos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Resize Autómatico das colunas
            ListaProdutos.AllowUserToAddRows = false; // Não Permitir add Linhas
 
-            // Adicionar colunas (nomes internos visiveis)
+            // Adicionar colunas (nomes internos e visiveis)
             ListaProdutos.Columns.Add("Codigo", "Código Do Produto");
             ListaProdutos.Columns.Add("Nome", "Nome Do Produto");
             ListaProdutos.Columns.Add("codigocategoria", "Categoria Do Produto");
             ListaProdutos.Columns.Add("Preco", "Preço Do Produto ");
-
 
             // Adição de botão de Editar
             DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
@@ -45,10 +45,8 @@ namespace SalesManagement
             // Desativar a edição do codigo do produto
             ListaProdutos.Columns["Codigo"].ReadOnly = true;
             
-
             // Carregar Dados da base de dados
             LoadData();
-
         }
 
         // Função que carrega os dados da base de dados 
@@ -56,7 +54,6 @@ namespace SalesManagement
         {
             try
             {
-
                 // inicializar a classe DatabaseHelper
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
@@ -69,7 +66,6 @@ namespace SalesManagement
                 // Se o resultado da não for nulo
                 if (resultado != null)
                     preencherTabela(resultado);
-
             }
             catch (Exception ex) // apanhar exceções
             {
@@ -87,7 +83,8 @@ namespace SalesManagement
             {
                 // Adiciona os dados a lista 
                 ListaProdutos.Rows.Add(
-                    row["Codigo"].ToString();#
+                    row["Codigo"].ToString()
+                    );
 
 
         private void btnVoltar_Click(object sender, EventArgs e)
