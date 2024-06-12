@@ -50,12 +50,13 @@
             // 
             // inputPesquisa
             // 
-            inputPesquisa.Location = new Point(443, 102);
+            inputPesquisa.Location = new Point(404, 105);
             inputPesquisa.Margin = new Padding(3, 4, 3, 4);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome ou código ou categoria";
             inputPesquisa.Size = new Size(293, 27);
             inputPesquisa.TabIndex = 16;
+            inputPesquisa.TextChanged += inputPesquisa_TextChanged;
             // 
             // btnPesquisar
             // 
