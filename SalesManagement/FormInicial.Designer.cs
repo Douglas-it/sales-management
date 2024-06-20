@@ -36,6 +36,7 @@
             label5 = new Label();
             label4 = new Label();
             btnSair = new Button();
+            btnLogout = new Button();
             SuspendLayout();
             // 
             // button1
@@ -87,6 +88,7 @@
             btnUtilizadores.TabIndex = 4;
             btnUtilizadores.Text = "Gestão de Utilizadores";
             btnUtilizadores.UseVisualStyleBackColor = true;
+            btnUtilizadores.Click += btnUtilizadores_Click;
             // 
             // label5
             // 
@@ -118,11 +120,22 @@
             btnSair.UseVisualStyleBackColor = true;
             btnSair.Click += btnSair_Click;
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(632, 61);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(75, 23);
+            btnLogout.TabIndex = 13;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // FormInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(btnSair);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -149,5 +162,6 @@
         private Label label5;
         private Label label4;
         private Button btnSair;
+        private Button btnLogout;
     }
 }

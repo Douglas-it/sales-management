@@ -27,8 +27,10 @@ namespace SalesManagement
             ListaComerciais.Columns.Add("ID", "Código");
             ListaComerciais.Columns.Add("nome", "Nome");
             ListaComerciais.Columns.Add("comissao", "Comissão");
-            ListaComerciais.Columns.Add("totalVendas", "Total de Vendas");
-            ListaComerciais.Columns.Add("aReceber", "A Receber");
+            ListaComerciais.Columns.Add("totalVendasAnual", "Total de Vendas (Anual)");
+            ListaComerciais.Columns.Add("totalVendasMes", "Total de Vendas (Mês Corrente)");
+            ListaComerciais.Columns.Add("aReceberMensal", "A Receber (Mês)");
+            ListaComerciais.Columns.Add("aReceberAnual", "Valor faturado (Anual)");
 
             // Adição de botão de Editar
             DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
@@ -47,12 +49,24 @@ namespace SalesManagement
             ListaComerciais.Columns.Add(btnEliminar);
 
             // Desativar a edição das células ID, totalVendas e aReceber
-            ListaComerciais.Columns["totalVendas"].ReadOnly = true;
-            ListaComerciais.Columns["aReceber"].ReadOnly = true;
+            ListaComerciais.Columns["totalVendasAnual"].ReadOnly = true;
+            ListaComerciais.Columns["totalVendasMes"].ReadOnly = true;
+            ListaComerciais.Columns["aReceberMensal"].ReadOnly = true;
+            ListaComerciais.Columns["aReceberAnual"].ReadOnly = true;
             ListaComerciais.Columns["ID"].ReadOnly = true;
 
             // Carregar Dados da base de dados
             LoadData();
+
+            if (!Globals.admin)
+            {
+                foreach (DataGridViewColumn column in ListaComerciais.Columns)
+                    column.ReadOnly = true;
+
+                btnNovoComercial.Enabled = false;
+                btnEliminar.Visible = false;
+                btnEditar.Visible = false;
+            }
         }
 
         // Função que carrega os dados da base de dados
@@ -64,7 +78,7 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Query para selecionar o utilizador
-                string selectQuery = "SELECT V.Codigo, V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendas FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor GROUP BY V.Codigo, V.Nome, V.Comissao";
+                string selectQuery = "SELECT V.Codigo,V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendasAnual, COALESCE(SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END), 0) as totalVendasMes FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor GROUP BY V.Codigo, V.Nome, V.Comissao";
 
                 // Obter o resultado da query
                 DataTable resultado = dbHelper.GetDataTable(selectQuery);
@@ -87,15 +101,20 @@ namespace SalesManagement
             // Loop pelo resultado da e agrupa em linhas para a tabela
             foreach (DataRow row in resultado.Rows)
             {
-                decimal totalVendas = Convert.ToDecimal(row["totalVendas"]);
+                decimal totalVendasAnual = Convert.ToDecimal(row["totalVendasAnual"]);
+                decimal totalVendasMes = Convert.ToDecimal(row["totalVendasMes"]);
                 decimal comissao = Convert.ToDecimal(row["Comissao"]);
-                string aReceber = "0";
+                string aReceberMes = "0";
+                string aReceberAnual = "0";
 
                 // Calcula o montante a receber de comissões das vendas que efetuou
-                if (totalVendas != 0 && comissao != 0)
+                if (totalVendasMes != 0 && comissao != 0)
                 {
-                    decimal calculoComissao = totalVendas * comissao / 100; // Calcula o valor da comissão a receber 
-                    aReceber = calculoComissao.ToString("F2");
+                    decimal calculoComissaoMes = totalVendasMes * comissao / 100; // Calcula o valor da comissão a receber Mensal
+                    aReceberMes = calculoComissaoMes.ToString("F2");
+
+                    decimal calculoComissaoAno = totalVendasAnual * comissao / 100; // Calcula o valor da comissão a receber Anual
+                    aReceberAnual = calculoComissaoAno.ToString("F2");
                 }
 
                 // Adiciona os dados na lista
@@ -103,8 +122,10 @@ namespace SalesManagement
                     row["Codigo"].ToString(),
                     row["Nome"].ToString(),
                     Convert.ToDecimal(comissao) + "%",
-                    Convert.ToDecimal(totalVendas) + "€",
-                    aReceber + "€"
+                    Convert.ToDecimal(totalVendasAnual) + "€",
+                    Convert.ToDecimal(totalVendasMes) + "€",
+                    aReceberMes + "€",
+                    aReceberAnual + "€"
                     );
             }
         }
@@ -178,15 +199,15 @@ namespace SalesManagement
                 // Inicializa a classe DatabaseHelper
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
-                
-                    if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
-                    {
-                        decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
-                        EditarComercial(id, nome, comissaoSemSimbolo);
-                    }
-                    else
-                        MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
+                {
+                    decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
+                    EditarComercial(id, nome, comissaoSemSimbolo);
                 }
+                else
+                    MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void DeleteItem(int rowIndex)
@@ -251,7 +272,7 @@ namespace SalesManagement
                     DatabaseHelper dbHelper = new DatabaseHelper();
 
                     // Query para selecionar o utilizador
-                    string selectQuery = "SELECT V.Codigo, V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendas FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor WHERE V.Nome LIKE @pesquisa OR V.Codigo LIKE @pesquisa GROUP BY V.Codigo, V.Nome, V.Comissao";
+                    string selectQuery = "SELECT V.Codigo,V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendasAnual, COALESCE(SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END), 0) as totalVendasMes FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor WHERE V.Nome LIKE @pesquisa OR V.Codigo LIKE @pesquisa GROUP BY V.Codigo, V.Nome, V.Comissao\r\n";
 
                     // Parâmetros para a query
                     SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
@@ -278,6 +299,11 @@ namespace SalesManagement
             ListaComerciais.Rows.Clear();
 
             LoadData();
+        }
+
+        private void FormVendedores_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -19,6 +19,8 @@ namespace SalesManagement
 
         private void FormInicial_Load(object sender, EventArgs e)
         {
+            if (!Globals.admin)
+                btnUtilizadores.Enabled = false;
 
         }
 
@@ -56,6 +58,24 @@ namespace SalesManagement
 
             if (DialogResult == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private void btnUtilizadores_Click(object sender, EventArgs e)
+        {
+            Backoffice backoffice = new Backoffice();
+            backoffice.Show();
+
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Globals.admin = false;
+
+            this.Hide();
+
+            FormLogin formLogin = new FormLogin();
+            formLogin.Show();
         }
     }
 }

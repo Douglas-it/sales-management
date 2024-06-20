@@ -35,6 +35,10 @@ namespace SalesManagement
                 // Se o resultado tiver 1 linha, então o utilizador existe
                 if (result.Rows.Count == 1)
                 {
+                    // Verifica se o utilizador é Admin ou não
+                    if (Convert.ToInt32(result.Rows[0]["Cargo"]) == 1)
+                        Globals.admin = true;
+
                     FormInicial FormInicial = new FormInicial(); // Inicializar novo form
                     FormInicial.Show(); // Mostra Novo Form
 
@@ -65,6 +69,11 @@ namespace SalesManagement
                 Login(username, password); // Realiza a autenticação do Utilizador
             else
                 MessageBox.Show("O formato das credências esta inválido!"); // Mostrar mensagem de erro
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

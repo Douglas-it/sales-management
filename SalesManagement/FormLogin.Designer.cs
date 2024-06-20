@@ -34,6 +34,7 @@
             inputPassword = new TextBox();
             btnLogin = new Button();
             label2 = new Label();
+            btnSair = new Button();
             SuspendLayout();
             // 
             // label1
@@ -72,9 +73,9 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(82, 188);
+            btnLogin.Location = new Point(29, 192);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
+            btnLogin.Size = new Size(96, 29);
             btnLogin.TabIndex = 6;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -90,18 +91,29 @@
             label2.TabIndex = 7;
             label2.Text = "Login";
             // 
-            // Form1
+            // btnSair
+            // 
+            btnSair.Location = new Point(144, 192);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(70, 29);
+            btnSair.TabIndex = 8;
+            btnSair.Text = "Sair";
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
+            // 
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(243, 242);
+            Controls.Add(btnSair);
             Controls.Add(label2);
             Controls.Add(btnLogin);
             Controls.Add(inputPassword);
             Controls.Add(inputUsername);
             Controls.Add(label3);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestão de Vendas";
             ResumeLayout(false);
@@ -116,5 +128,6 @@
         private TextBox inputPassword;
         private Button btnLogin;
         private Label label2;
+        private Button btnSair;
     }
 }

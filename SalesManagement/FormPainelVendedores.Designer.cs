@@ -120,6 +120,7 @@
             Name = "FormVendedores";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Vendedores";
+            Load += FormVendedores_Load;
             ((System.ComponentModel.ISupportInitialize)ListaComerciais).EndInit();
             ResumeLayout(false);
             PerformLayout();
