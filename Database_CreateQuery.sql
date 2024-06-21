@@ -10,7 +10,7 @@ CREATE TABLE UtilizadoresCargos (
 );
 
 CREATE TABLE Utilizadores (
-	Id INT PRIMARY KEY,
+	Id INT PRIMARY KEY IDENTITY(1,1),
 	Utilizador VARCHAR(255) NOT NULL,
 	Senha VARCHAR(255) NOT NULL,
 	Cargo INT NOT NULL,
@@ -58,10 +58,9 @@ INSERT INTO UtilizadoresCargos (CargoId, CargoNome) VALUES
 (2, 'Vendedor');
 
 -- Inserir dados na tabela Utilizadores
-INSERT INTO Utilizadores (Id, Utilizador, Senha, Cargo) VALUES
-(1, 'admin', 'senhaAdmin', 1),
-(2, 'joao.vendedor', 'senhaJoao', 2),
-(3, 'maria.vendedora', 'senhaMaria', 2);
+INSERT INTO Utilizadores (Utilizador, Senha, Cargo) VALUES
+('admin', 'admin', 1),
+('vendedor', 'vendedor', 2);
 
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES 
