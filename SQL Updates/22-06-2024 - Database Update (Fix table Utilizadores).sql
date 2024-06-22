@@ -14,3 +14,6 @@ CREATE TABLE Utilizadores (
 INSERT INTO Utilizadores (Utilizador, Senha, Cargo) VALUES
 ('admin', 'admin', 1),
 ('vendedor', 'vendedor', 2);
+
+ALTER TABLE Utilizadores
+ADD flag int; 

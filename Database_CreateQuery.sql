@@ -14,6 +14,7 @@ CREATE TABLE Utilizadores (
 	Utilizador VARCHAR(255) NOT NULL,
 	Senha VARCHAR(255) NOT NULL,
 	Cargo INT NOT NULL,
+	flag INT,
 	FOREIGN KEY (Cargo) REFERENCES UtilizadoresCargos(CargoId)
 );
 
