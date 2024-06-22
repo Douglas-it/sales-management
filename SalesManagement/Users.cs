@@ -28,7 +28,7 @@ namespace SalesManagement
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
 
-            string insertQuery = "INSERT INTO Utilizadores (Utilizador, Senha, Cargo) VALUES (@nome, @password, @cargo)";
+            string insertQuery = "INSERT INTO Utilizadores (Utilizador, Senha, Cargo, flag) VALUES (@nome, @password, @cargo, 0)";
 
             SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = utilizador };
             SqlParameter paramPassword = new SqlParameter("@password", SqlDbType.VarChar) { Value = password };
@@ -72,6 +72,45 @@ namespace SalesManagement
             {
                 nome.Items.Add(row["Utilizador"].ToString());
             }
+        }
+
+        public static DataTable ObterInformacaoUtilizador(string utilizador)
+        {
+            DatabaseHelper dbHelper = new DatabaseHelper();
+
+            string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @utilizador";
+
+            SqlParameter paramUtilizador = new SqlParameter("@utilizador", SqlDbType.VarChar) { Value = utilizador };
+
+            DataTable resultado = dbHelper.GetDataTable(selectQuery, paramUtilizador);
+
+            // Retorna as informações do utilizador
+            return resultado;
+        }
+
+        public static void AlterarUtilizador (string id, string utilizador, string cargo)
+        {
+            DatabaseHelper dbHelper = new DatabaseHelper();
+
+            string updateQuery = "UPDATE Utilizadores SET Utilizador = @utilizador, cargo = @cargo WHERE id = @id";
+
+            SqlParameter paramUtilizador = new SqlParameter("@utilizador", SqlDbType.VarChar) { Value = utilizador };
+            SqlParameter paramCargo = new SqlParameter("@cargo", SqlDbType.Int) { Value = cargo };
+            SqlParameter paramId = new SqlParameter("@id", SqlDbType.Int) { Value = id };
+
+            dbHelper.ExecuteQuery(updateQuery, paramUtilizador, paramCargo, paramId);
+
+        }
+
+        public static void AlterarSenha(string id)
+        {
+            DatabaseHelper dbHelper = new DatabaseHelper();
+
+            string updateQuery = "UPDATE Utilizadores SET flag = 1 WHERE id = @id";
+
+            SqlParameter paramId = new SqlParameter("@id", SqlDbType.Int) { Value = id };
+
+            dbHelper.ExecuteQuery(updateQuery, paramId);
         }
     }
 }

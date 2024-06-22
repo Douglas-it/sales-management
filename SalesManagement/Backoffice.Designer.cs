@@ -37,6 +37,10 @@
             btnEliminarConta = new Button();
             tabControl = new TabControl();
             tabCriarConta = new TabPage();
+            label7 = new Label();
+            textBox2 = new TextBox();
+            label5 = new Label();
+            textBox1 = new TextBox();
             btnNovoUtilizador = new Button();
             cargos = new ComboBox();
             txtRepeatPassword = new TextBox();
@@ -47,17 +51,24 @@
             label2 = new Label();
             label1 = new Label();
             tabAlterarConta = new TabPage();
-            button5 = new Button();
+            txtUserId = new TextBox();
+            checkYes = new CheckBox();
+            labelSenha = new Label();
+            btnModificarConta = new Button();
+            comboCargos = new ComboBox();
+            txtNomeUser = new TextBox();
+            labelCargo = new Label();
+            labelUser = new Label();
+            selecionarUtilizador = new ComboBox();
+            label9 = new Label();
+            btnObterDados = new Button();
             tabEliminarConta = new TabPage();
+            label8 = new Label();
+            textBox3 = new TextBox();
             selectUsername = new ComboBox();
             label6 = new Label();
             btnEliminar = new Button();
-            textBox1 = new TextBox();
-            label5 = new Label();
-            label7 = new Label();
-            textBox2 = new TextBox();
-            label8 = new Label();
-            textBox3 = new TextBox();
+            label12 = new Label();
             tabControl.SuspendLayout();
             tabCriarConta.SuspendLayout();
             tabAlterarConta.SuspendLayout();
@@ -159,6 +170,48 @@
             tabCriarConta.UseVisualStyleBackColor = true;
             tabCriarConta.Click += tabCriarConta_Click_1;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(28, 214);
+            label7.Name = "label7";
+            label7.Size = new Size(208, 18);
+            label7.TabIndex = 12;
+            label7.Text = "Tipos de cargos disponíveis";
+            // 
+            // textBox2
+            // 
+            textBox2.BorderStyle = BorderStyle.None;
+            textBox2.Location = new Point(28, 248);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(1046, 63);
+            textBox2.TabIndex = 11;
+            textBox2.Text = resources.GetString("textBox2.Text");
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(28, 37);
+            label5.Name = "label5";
+            label5.Size = new Size(242, 18);
+            label5.TabIndex = 10;
+            label5.Text = "Instruções para criar uma conta";
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Location = new Point(28, 71);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(1046, 90);
+            textBox1.TabIndex = 9;
+            textBox1.Text = resources.GetString("textBox1.Text");
+            // 
             // btnNovoUtilizador
             // 
             btnNovoUtilizador.Location = new Point(951, 528);
@@ -237,7 +290,17 @@
             // 
             // tabAlterarConta
             // 
-            tabAlterarConta.Controls.Add(button5);
+            tabAlterarConta.Controls.Add(txtUserId);
+            tabAlterarConta.Controls.Add(checkYes);
+            tabAlterarConta.Controls.Add(labelSenha);
+            tabAlterarConta.Controls.Add(btnModificarConta);
+            tabAlterarConta.Controls.Add(comboCargos);
+            tabAlterarConta.Controls.Add(txtNomeUser);
+            tabAlterarConta.Controls.Add(labelCargo);
+            tabAlterarConta.Controls.Add(labelUser);
+            tabAlterarConta.Controls.Add(selecionarUtilizador);
+            tabAlterarConta.Controls.Add(label9);
+            tabAlterarConta.Controls.Add(btnObterDados);
             tabAlterarConta.Location = new Point(4, 24);
             tabAlterarConta.Name = "tabAlterarConta";
             tabAlterarConta.Padding = new Padding(3);
@@ -247,14 +310,111 @@
             tabAlterarConta.UseVisualStyleBackColor = true;
             tabAlterarConta.Click += tabAlterarConta_Click;
             // 
-            // button5
+            // txtUserId
             // 
-            button5.Location = new Point(514, 352);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 23);
-            button5.TabIndex = 1;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
+            txtUserId.Location = new Point(1000, 250);
+            txtUserId.Name = "txtUserId";
+            txtUserId.Size = new Size(26, 23);
+            txtUserId.TabIndex = 25;
+            txtUserId.Visible = false;
+            // 
+            // checkYes
+            // 
+            checkYes.AutoSize = true;
+            checkYes.Location = new Point(202, 392);
+            checkYes.Name = "checkYes";
+            checkYes.Size = new Size(46, 19);
+            checkYes.TabIndex = 24;
+            checkYes.Text = "Sim";
+            checkYes.UseVisualStyleBackColor = true;
+            checkYes.Visible = false;
+            // 
+            // labelSenha
+            // 
+            labelSenha.AutoSize = true;
+            labelSenha.Location = new Point(202, 364);
+            labelSenha.Name = "labelSenha";
+            labelSenha.Size = new Size(342, 15);
+            labelSenha.TabIndex = 22;
+            labelSenha.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
+            labelSenha.Visible = false;
+            // 
+            // btnModificarConta
+            // 
+            btnModificarConta.Location = new Point(934, 379);
+            btnModificarConta.Name = "btnModificarConta";
+            btnModificarConta.Size = new Size(92, 32);
+            btnModificarConta.TabIndex = 21;
+            btnModificarConta.Text = "Alterar Conta";
+            btnModificarConta.UseVisualStyleBackColor = true;
+            btnModificarConta.Visible = false;
+            btnModificarConta.Click += btnModificarConta_Click;
+            // 
+            // comboCargos
+            // 
+            comboCargos.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboCargos.FormattingEnabled = true;
+            comboCargos.Location = new Point(202, 318);
+            comboCargos.Name = "comboCargos";
+            comboCargos.Size = new Size(825, 23);
+            comboCargos.TabIndex = 20;
+            comboCargos.Visible = false;
+            // 
+            // txtNomeUser
+            // 
+            txtNomeUser.Location = new Point(202, 279);
+            txtNomeUser.Name = "txtNomeUser";
+            txtNomeUser.Size = new Size(825, 23);
+            txtNomeUser.TabIndex = 17;
+            txtNomeUser.Visible = false;
+            // 
+            // labelCargo
+            // 
+            labelCargo.AutoSize = true;
+            labelCargo.Location = new Point(75, 321);
+            labelCargo.Name = "labelCargo";
+            labelCargo.Size = new Size(109, 15);
+            labelCargo.TabIndex = 16;
+            labelCargo.Text = "Cargo do Utilizador";
+            labelCargo.Visible = false;
+            // 
+            // labelUser
+            // 
+            labelUser.AutoSize = true;
+            labelUser.Location = new Point(75, 282);
+            labelUser.Name = "labelUser";
+            labelUser.Size = new Size(109, 15);
+            labelUser.TabIndex = 13;
+            labelUser.Text = "Nome de Utilizador";
+            labelUser.Visible = false;
+            // 
+            // selecionarUtilizador
+            // 
+            selecionarUtilizador.DropDownStyle = ComboBoxStyle.DropDownList;
+            selecionarUtilizador.FormattingEnabled = true;
+            selecionarUtilizador.Location = new Point(233, 109);
+            selecionarUtilizador.Name = "selecionarUtilizador";
+            selecionarUtilizador.Size = new Size(793, 23);
+            selecionarUtilizador.TabIndex = 12;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(83, 112);
+            label9.Name = "label9";
+            label9.Size = new Size(131, 15);
+            label9.TabIndex = 11;
+            label9.Text = "Selecione um Utilizador";
+            // 
+            // btnObterDados
+            // 
+            btnObterDados.Location = new Point(917, 148);
+            btnObterDados.Name = "btnObterDados";
+            btnObterDados.Size = new Size(109, 32);
+            btnObterDados.TabIndex = 10;
+            btnObterDados.Text = "Obter Dados";
+            btnObterDados.UseVisualStyleBackColor = true;
+            btnObterDados.Click += btnObterDados_Click;
             // 
             // tabEliminarConta
             // 
@@ -270,6 +430,28 @@
             tabEliminarConta.TabIndex = 2;
             tabEliminarConta.Text = "Eliminar Conta";
             tabEliminarConta.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.ForeColor = Color.Red;
+            label8.Location = new Point(29, 34);
+            label8.Name = "label8";
+            label8.Size = new Size(72, 18);
+            label8.TabIndex = 12;
+            label8.Text = "Atenção";
+            // 
+            // textBox3
+            // 
+            textBox3.BorderStyle = BorderStyle.None;
+            textBox3.Location = new Point(29, 68);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(1046, 62);
+            textBox3.TabIndex = 11;
+            textBox3.Text = "    \r\n     Ao eliminar uma conta, a mesma deixa de ter acesso ao sistema. \r\n     Caso pretenda alterar o nível de acesso de utilizador, pode utilizar a seção de \"Alterar Conta\" para o fazer.";
             // 
             // selectUsername
             // 
@@ -299,75 +481,22 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
-            // textBox1
+            // label12
             // 
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(28, 71);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(1046, 90);
-            textBox1.TabIndex = 9;
-            textBox1.Text = resources.GetString("textBox1.Text");
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(28, 37);
-            label5.Name = "label5";
-            label5.Size = new Size(242, 18);
-            label5.TabIndex = 10;
-            label5.Text = "Instruções para criar uma conta";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(28, 214);
-            label7.Name = "label7";
-            label7.Size = new Size(208, 18);
-            label7.TabIndex = 12;
-            label7.Text = "Tipos de cargos disponíveis";
-            // 
-            // textBox2
-            // 
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(28, 248);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(1046, 63);
-            textBox2.TabIndex = 11;
-            textBox2.Text = resources.GetString("textBox2.Text");
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Red;
-            label8.Location = new Point(29, 34);
-            label8.Name = "label8";
-            label8.Size = new Size(72, 18);
-            label8.TabIndex = 12;
-            label8.Text = "Atenção";
-            // 
-            // textBox3
-            // 
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Location = new Point(29, 68);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(1046, 62);
-            textBox3.TabIndex = 11;
-            textBox3.Text = "    \r\n     Ao eliminar uma conta, a mesma deixa de ter acesso ao sistema. \r\n     Caso pretenda alterar o nível de acesso de utilizador, pode utilizar a seção de \"Alterar Conta\" para o fazer.";
+            label12.AutoSize = true;
+            label12.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label12.Location = new Point(12, 64);
+            label12.Name = "label12";
+            label12.Size = new Size(92, 18);
+            label12.TabIndex = 22;
+            label12.Text = "Utilizadores";
             // 
             // Backoffice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1277, 814);
+            Controls.Add(label12);
             Controls.Add(tabControl);
             Controls.Add(btnEliminarConta);
             Controls.Add(btnAlterarConta);
@@ -381,9 +510,11 @@
             tabCriarConta.ResumeLayout(false);
             tabCriarConta.PerformLayout();
             tabAlterarConta.ResumeLayout(false);
+            tabAlterarConta.PerformLayout();
             tabEliminarConta.ResumeLayout(false);
             tabEliminarConta.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -397,7 +528,6 @@
         private TabPage tabCriarConta;
         private TabPage tabAlterarConta;
         private TabPage tabEliminarConta;
-        private Button button5;
         private Label label1;
         private ComboBox cargos;
         private TextBox txtRepeatPassword;
@@ -416,5 +546,17 @@
         private TextBox textBox2;
         private Label label8;
         private TextBox textBox3;
+        private ComboBox selecionarUtilizador;
+        private Label label9;
+        private Button btnObterDados;
+        private Label labelSenha;
+        private Button btnModificarConta;
+        private ComboBox comboCargos;
+        private TextBox txtNomeUser;
+        private Label labelCargo;
+        private Label labelUser;
+        private CheckBox checkYes;
+        private Label label12;
+        private TextBox txtUserId;
     }
 }

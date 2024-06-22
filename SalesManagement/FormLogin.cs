@@ -39,6 +39,11 @@ namespace SalesManagement
                     if (Convert.ToInt32(result.Rows[0]["Cargo"]) == 1)
                         Globals.admin = true;
 
+                    if (Convert.ToInt32(result.Rows[0]["flag"]) == 1)
+                    {
+                        MessageBox.Show("Mudar a senha!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     FormInicial FormInicial = new FormInicial(); // Inicializar novo form
                     FormInicial.Show(); // Mostra Novo Form
 
