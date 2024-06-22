@@ -9,8 +9,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace SalesManagement
 {
-    public class Users
+    public class Utilizadores
     {
+        /* 
+         * Função para verificar se o utilizador existe
+         * @param utilizador - Nome do utilizador
+         * @return bool - Retorna true se o utilizador existir, false caso contrário
+         */
         public static bool VerificarUtilizador(string utilizador)
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
@@ -24,6 +29,12 @@ namespace SalesManagement
             return resultado != null && resultado.Rows.Count > 0; // Garante que não existem rows na base de dados
         }
 
+        /*
+         * Função para registar um utilizador
+         * @param utilizador - Nome do utilizador
+         * @param password - Password do utilizador
+         * @param cargo - Cargo do utilizador
+         */
         public static void RegistarUtilizador(string utilizador, string password, string cargo)
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
@@ -37,6 +48,10 @@ namespace SalesManagement
             dbHelper.ExecuteQuery(insertQuery, paramNome, paramPassword, paramCargo);
         }
 
+        /*
+         * Função para eliminar um utilizador
+         * @param utilizador - Nome do utilizador
+         */
         public static void EliminarUtilizador(string utilizador)
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
@@ -48,6 +63,10 @@ namespace SalesManagement
             dbHelper.ExecuteQuery(deleteQuery, paramNome);
         }
 
+        /*
+         * Função para obter os utilizadores
+         * @param nome - ComboBox onde os utilizadores serão adicionados
+         */
         public static void ObterUtilizadores(ComboBox nome)
         {
             // Limpa o ComboBox 
@@ -69,11 +88,14 @@ namespace SalesManagement
 
             // Adicionar os nomes dos utilizadores ao ComboBox
             foreach (DataRow row in resultado.Rows)
-            {
                 nome.Items.Add(row["Utilizador"].ToString());
-            }
         }
 
+        /*
+         * Função para obter as informações de um utilizador
+         * @param utilizador - Nome do utilizador
+         * @return DataTable - Retorna as informações do utilizador
+         */
         public static DataTable ObterInformacaoUtilizador(string utilizador)
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
@@ -88,6 +110,12 @@ namespace SalesManagement
             return resultado;
         }
 
+        /*
+         * Função para alterar o utilizador
+         * @param id - ID do utilizador
+         * @param utilizador - Nome do utilizador
+         * @param cargo - Cargo do utilizador
+         */
         public static void AlterarUtilizador (string id, string utilizador, string cargo)
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
@@ -102,7 +130,11 @@ namespace SalesManagement
 
         }
 
-        public static void AlterarSenha(string id)
+        /*
+         * Função para alterar a senha do utilizador
+         * @param id - ID do utilizador
+         */
+        public static void AdicionarFlagSenha(string id)
         {
             DatabaseHelper dbHelper = new DatabaseHelper();
 
