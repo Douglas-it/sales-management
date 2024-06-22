@@ -36,6 +36,7 @@
             btnEliminarConta = new Button();
             tabControl = new TabControl();
             tabCriarConta = new TabPage();
+            btnNovoUtilizador = new Button();
             cargos = new ComboBox();
             txtRepeatPassword = new TextBox();
             txtPassword = new TextBox();
@@ -47,8 +48,9 @@
             tabAlterarConta = new TabPage();
             button5 = new Button();
             tabEliminarConta = new TabPage();
-            button6 = new Button();
-            btnNovoUtilizador = new Button();
+            selectUsername = new ComboBox();
+            label6 = new Label();
+            btnEliminar = new Button();
             tabControl.SuspendLayout();
             tabCriarConta.SuspendLayout();
             tabAlterarConta.SuspendLayout();
@@ -145,6 +147,16 @@
             tabCriarConta.Text = "Criar Conta";
             tabCriarConta.UseVisualStyleBackColor = true;
             // 
+            // btnNovoUtilizador
+            // 
+            btnNovoUtilizador.Location = new Point(378, 185);
+            btnNovoUtilizador.Name = "btnNovoUtilizador";
+            btnNovoUtilizador.Size = new Size(75, 23);
+            btnNovoUtilizador.TabIndex = 8;
+            btnNovoUtilizador.Text = "Criar Conta";
+            btnNovoUtilizador.UseVisualStyleBackColor = true;
+            btnNovoUtilizador.Click += btnNovoUtilizador_Click;
+            // 
             // cargos
             // 
             cargos.FormattingEnabled = true;
@@ -233,7 +245,9 @@
             // 
             // tabEliminarConta
             // 
-            tabEliminarConta.Controls.Add(button6);
+            tabEliminarConta.Controls.Add(selectUsername);
+            tabEliminarConta.Controls.Add(label6);
+            tabEliminarConta.Controls.Add(btnEliminar);
             tabEliminarConta.Location = new Point(4, 24);
             tabEliminarConta.Name = "tabEliminarConta";
             tabEliminarConta.Padding = new Padding(3);
@@ -242,24 +256,32 @@
             tabEliminarConta.Text = "Eliminar Conta";
             tabEliminarConta.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // selectUsername
             // 
-            button6.Location = new Point(514, 352);
-            button6.Name = "button6";
-            button6.Size = new Size(75, 23);
-            button6.TabIndex = 1;
-            button6.Text = "button6";
-            button6.UseVisualStyleBackColor = true;
+            selectUsername.DropDownStyle = ComboBoxStyle.DropDownList;
+            selectUsername.FormattingEnabled = true;
+            selectUsername.Location = new Point(156, 42);
+            selectUsername.Name = "selectUsername";
+            selectUsername.Size = new Size(259, 23);
+            selectUsername.TabIndex = 9;
             // 
-            // btnNovoUtilizador
+            // label6
             // 
-            btnNovoUtilizador.Location = new Point(378, 185);
-            btnNovoUtilizador.Name = "btnNovoUtilizador";
-            btnNovoUtilizador.Size = new Size(75, 23);
-            btnNovoUtilizador.TabIndex = 8;
-            btnNovoUtilizador.Text = "button1";
-            btnNovoUtilizador.UseVisualStyleBackColor = true;
-            btnNovoUtilizador.Click += btnNovoUtilizador_Click;
+            label6.AutoSize = true;
+            label6.Location = new Point(29, 42);
+            label6.Name = "label6";
+            label6.Size = new Size(109, 15);
+            label6.TabIndex = 8;
+            label6.Text = "Nome de Utilizador";
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Location = new Point(340, 71);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(75, 23);
+            btnEliminar.TabIndex = 1;
+            btnEliminar.Text = "Eliminar Conta";
+            btnEliminar.UseVisualStyleBackColor = true;
             // 
             // Backoffice
             // 
@@ -280,6 +302,7 @@
             tabCriarConta.PerformLayout();
             tabAlterarConta.ResumeLayout(false);
             tabEliminarConta.ResumeLayout(false);
+            tabEliminarConta.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -295,7 +318,6 @@
         private TabPage tabAlterarConta;
         private TabPage tabEliminarConta;
         private Button button5;
-        private Button button6;
         private Label label1;
         private ComboBox cargos;
         private TextBox txtRepeatPassword;
@@ -305,5 +327,8 @@
         private Label label3;
         private Label label2;
         private Button btnNovoUtilizador;
+        private ComboBox selectUsername;
+        private Label label6;
+        private Button btnEliminar;
     }
 }

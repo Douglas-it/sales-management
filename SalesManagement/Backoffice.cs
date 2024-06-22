@@ -62,16 +62,11 @@ namespace SalesManagement
                 SqlParameter paramProduto = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
 
                 // obter o resultado da query
-                DataTable resultado = dbHelper.GetDataTable(selectQuery);
-
-                // Garante que não existe cargos a serem mostrados
-                cargos.Items.Clear();
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramProduto);
 
                 // Se o resultado da não for nulo
                 if (resultado != null)
                     return resultado.Rows[0]["CargoId"].ToString();
-                else
-                    return null;
             }
             catch (Exception ex)
             {
@@ -112,11 +107,6 @@ namespace SalesManagement
             ListarCargos(cargos);
         }
 
-        private void tabAlterarConta_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAlterarConta_Click(object sender, EventArgs e)
         {
             HideTabs();
@@ -127,6 +117,61 @@ namespace SalesManagement
         {
             HideTabs();
             ShowTab(tabEliminarConta);
+            DataTable utilizadores = Users.ObterUtilizadores();
+            
+            foreach (DataRow row in utilizadores.Rows)
+            {
+                selectUsername.Items.Add(row["Utilizador"]);
+            }
+        }
+
+        private void btnNovoUtilizador_Click(object sender, EventArgs e)
+        {
+            string utilizador = txtUtilizador.Text;
+            string password = txtPassword.Text;
+            string repeatPassword = txtRepeatPassword.Text;
+            string cargo = cargos.Text;
+
+            if (
+                !OperacoesGerais.LerStringValida(utilizador) ||
+                !OperacoesGerais.LerStringValida(password) ||
+                !OperacoesGerais.LerStringValida(repeatPassword) ||
+                !OperacoesGerais.LerStringValida(cargo)
+                )
+            {
+                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (password != repeatPassword)
+            {
+                MessageBox.Show("As palavras-passe não coincidem!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                if (Users.VerificarUtilizador(utilizador))
+                {
+                    MessageBox.Show("O nome de utilizador escolhido já existe!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUtilizador.Text = "";
+                    return;
+                }
+
+                string cargoId = ObterCargoId(cargo);
+
+                Users.RegistarUtilizador(utilizador, password, cargoId);
+                MessageBox.Show("Utilizador criado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao criar utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabAlterarConta_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -139,45 +184,9 @@ namespace SalesManagement
 
         }
 
-        private void btnNovoUtilizador_Click(object sender, EventArgs e)
+        private void selectUsername_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (
-                string.IsNullOrEmpty(txtUtilizador.Text) || 
-                string.IsNullOrEmpty(txtPassword.Text) || 
-                string.IsNullOrEmpty(txtRepeatPassword.Text) || 
-                string.IsNullOrEmpty(cargos.Text)
-                )
-            {
-                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            if (txtPassword.Text != txtRepeatPassword.Text)
-            {
-                MessageBox.Show("As palavras-passe não coincidem!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            MessageBox.Show($"{ObterCargoId(cargos.Text)}");
-            /*
-            try
-            {
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string insertQuery = "INSERT INTO Utilizadores (Utilizador, Senha, Cargo) VALUES (@nome, @password, @cargo)";
-
-                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = txtUtilizador.Text };
-                SqlParameter paramPassword = new SqlParameter("@password", SqlDbType.VarChar) { Value = txtPassword.Text };
-                SqlParameter paramCargo = new SqlParameter("@cargo", SqlDbType.Int) { Value = ObterCargoId(cargos.Text) };
-
-                dbHelper.ExecuteQuery(insertQuery, paramNome, paramPassword, paramCargo);
-
-                MessageBox.Show("Utilizador criado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao criar utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } */
         }
     }
 }
