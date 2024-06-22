@@ -73,6 +73,7 @@
             // 
             // btnLogin
             // 
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.Location = new Point(29, 192);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(96, 29);
@@ -93,6 +94,7 @@
             // 
             // btnSair
             // 
+            btnSair.Cursor = Cursors.Hand;
             btnSair.Location = new Point(144, 192);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(70, 29);

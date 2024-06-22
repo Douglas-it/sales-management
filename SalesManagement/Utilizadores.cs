@@ -144,5 +144,28 @@ namespace SalesManagement
 
             dbHelper.ExecuteQuery(updateQuery, paramId);
         }
+
+        /*
+         * Função para alterar a senha do utilizador
+         * @param senha - Nova senha do utilizador
+         */
+        public static void AlterarSenha(string senha, string id)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string updateQuery = "UPDATE Utilizadores SET Senha=@password, flag=0 WHERE ID=@id";
+
+                SqlParameter paramPassword = new SqlParameter("@password", SqlDbType.VarChar) { Value = senha };
+                SqlParameter paramId = new SqlParameter("@id", SqlDbType.Int) { Value = Convert.ToInt32(id) };
+
+                dbHelper.ExecuteQuery(updateQuery, paramPassword, paramId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao alterar a senha - {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

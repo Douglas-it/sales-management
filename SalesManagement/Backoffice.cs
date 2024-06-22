@@ -52,7 +52,10 @@ namespace SalesManagement
         // Botão de Logout
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Globals.admin = false; // Coloca a variável admin como false
+            // Limpa as variáveis globais
+            Globals.admin = false;
+            Globals.idUtilizador = null;
+            Globals.nomeUtilizador = null;
 
             this.Hide(); // Esconde o form atual
 
@@ -69,43 +72,6 @@ namespace SalesManagement
             ShowTab(tabCriarConta); // Mostra a tab de criar conta
 
             Cargos.ListarCargos(cargos); // Lista os cargos
-        }
-
-        // Botão de mostrar a tab de alterar conta
-        private void btnAlterarConta_Click(object sender, EventArgs e)
-        {
-            HideTabs(); // Esconde todas as tabs
-
-            ShowTab(tabAlterarConta); // Mostra a tab de alterar conta
-
-            try
-            {
-                // Lista os utilizadores
-                Utilizadores.ObterUtilizadores(selecionarUtilizador);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Botão de mostrar a tab de eliminar conta
-        private void btnEliminarConta_Click(object sender, EventArgs e)
-        {
-            HideTabs(); // Esconde todas as tabs
-
-            ShowTab(tabEliminarConta); // Mostra a tab de eliminar conta
-
-            try
-            {
-                // Lista os utilizadores
-                Utilizadores.ObterUtilizadores(selectUsername);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
         // Botão de criar um novo utilizador
@@ -161,6 +127,86 @@ namespace SalesManagement
             {
                 MessageBox.Show("Erro ao criar utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Botão de mostrar a tab de alterar conta
+        private void btnAlterarConta_Click(object sender, EventArgs e)
+        {
+            HideTabs(); // Esconde todas as tabs
+
+            ShowTab(tabAlterarConta); // Mostra a tab de alterar conta
+
+            try
+            {
+                // Lista os utilizadores
+                Utilizadores.ObterUtilizadores(selecionarUtilizador);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Botão de modificar os dados de um utilizador
+        private void btnModificarConta_Click(object sender, EventArgs e)
+        {
+            string userId = txtUserId.Text;
+            string utilizador = txtNomeUser.Text;
+            string cargo = Cargos.ObterCargoId(comboCargos.Text);
+
+            // Verifica se os campos estão preenchidos corretamente
+            if (!OperacoesGerais.LerStringValida(utilizador))
+            {
+                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                // Verifica se o utilizador deve alterar a senha
+                if (checkYes.Checked)
+                    Utilizadores.AdicionarFlagSenha(userId);
+
+                // Altera os dados do utilizador
+                Utilizadores.AlterarUtilizador(userId, utilizador, cargo);
+
+                // Esconde os campos para alterar os dados
+                txtNomeUser.Visible = false;
+                labelUser.Visible = false;
+                comboCargos.Visible = false;
+                labelCargo.Visible = false;
+                labelSenha.Visible = false;
+                checkYes.Visible = false;
+                btnModificarConta.Visible = false;
+
+                // Lista os utilizadores
+                Utilizadores.ObterUtilizadores(selecionarUtilizador);
+
+                MessageBox.Show("Os dados foram atualizados com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar o utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Botão de mostrar a tab de eliminar conta
+        private void btnEliminarConta_Click(object sender, EventArgs e)
+        {
+            HideTabs(); // Esconde todas as tabs
+
+            ShowTab(tabEliminarConta); // Mostra a tab de eliminar conta
+
+            try
+            {
+                // Lista os utilizadores
+                Utilizadores.ObterUtilizadores(selectUsername);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         // Botão de eliminar um utilizador
@@ -233,49 +279,6 @@ namespace SalesManagement
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao listar a informação: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Botão de modificar os dados de um utilizador
-        private void btnModificarConta_Click(object sender, EventArgs e)
-        {
-            string userId = txtUserId.Text;
-            string utilizador = txtNomeUser.Text;
-            string cargo = Cargos.ObterCargoId(comboCargos.Text);
-
-            // Verifica se os campos estão preenchidos corretamente
-            if (!OperacoesGerais.LerStringValida(utilizador))
-            {
-                MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                // Verifica se o utilizador deve alterar a senha
-                if (checkYes.Checked)
-                    Utilizadores.AdicionarFlagSenha(userId);
-
-                // Altera os dados do utilizador
-                Utilizadores.AlterarUtilizador(userId, utilizador, cargo);
-
-                // Esconde os campos para alterar os dados
-                txtNomeUser.Visible = false;  
-                labelUser.Visible = false;
-                comboCargos.Visible = false;
-                labelCargo.Visible = false;
-                labelSenha.Visible = false;
-                checkYes.Visible = false;
-                btnModificarConta.Visible = false;
-
-                // Lista os utilizadores
-                Utilizadores.ObterUtilizadores(selecionarUtilizador);
-
-                MessageBox.Show("Os dados foram atualizados com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao atualizar o utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

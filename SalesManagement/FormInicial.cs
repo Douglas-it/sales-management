@@ -70,7 +70,10 @@ namespace SalesManagement
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            // Reset das variáveis globais
             Globals.admin = false;
+            Globals.idUtilizador = null;
+            Globals.nomeUtilizador = null;
 
             this.Hide();
 

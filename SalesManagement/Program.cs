@@ -5,6 +5,8 @@ namespace SalesManagement
     public static class Globals
     {
         public static bool admin = false;
+        public static string idUtilizador { get; set; }
+        public static string nomeUtilizador { get; set; }
     }
 
     internal static class Program

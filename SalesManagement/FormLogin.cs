@@ -35,6 +35,10 @@ namespace SalesManagement
                 // Se o resultado tiver 1 linha, então o utilizador existe
                 if (result.Rows.Count == 1)
                 {
+                    // Guardar o ID e o Nome do Utilizador
+                    Globals.idUtilizador = result.Rows[0]["Id"].ToString();
+                    Globals.nomeUtilizador = result.Rows[0]["Utilizador"].ToString();
+
                     // Verifica se o utilizador é Admin ou não
                     if (Convert.ToInt32(result.Rows[0]["Cargo"]) == 1)
                         Globals.admin = true;

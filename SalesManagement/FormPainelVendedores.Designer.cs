@@ -40,6 +40,7 @@
             // 
             // btnVoltar
             // 
+            btnVoltar.Cursor = Cursors.Hand;
             btnVoltar.Location = new Point(12, 9);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.Size = new Size(75, 23);
@@ -50,6 +51,7 @@
             // 
             // btnNovoComercial
             // 
+            btnNovoComercial.Cursor = Cursors.Hand;
             btnNovoComercial.Location = new Point(12, 74);
             btnNovoComercial.Name = "btnNovoComercial";
             btnNovoComercial.Size = new Size(136, 23);
@@ -69,6 +71,7 @@
             // 
             // btnSair
             // 
+            btnSair.Cursor = Cursors.Hand;
             btnSair.Location = new Point(713, 9);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(75, 23);
@@ -79,6 +82,7 @@
             // 
             // btnPesquisar
             // 
+            btnPesquisar.Cursor = Cursors.Hand;
             btnPesquisar.Location = new Point(651, 74);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(75, 26);
@@ -89,6 +93,7 @@
             // 
             // inputPesquisa
             // 
+            inputPesquisa.Cursor = Cursors.IBeam;
             inputPesquisa.Location = new Point(388, 75);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
@@ -97,6 +102,7 @@
             // 
             // btnLimpar
             // 
+            btnLimpar.Cursor = Cursors.Hand;
             btnLimpar.Location = new Point(732, 74);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(56, 26);

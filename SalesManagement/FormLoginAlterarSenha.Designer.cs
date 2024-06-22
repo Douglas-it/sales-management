@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             label4 = new Label();
-            btnAdicionar = new Button();
-            inputNome = new TextBox();
-            inputCodigo = new TextBox();
+            btnMudarSenha = new Button();
+            inputRepetirSenha = new TextBox();
+            inputSenha = new TextBox();
             label2 = new Label();
             label1 = new Label();
             textBox1 = new TextBox();
@@ -47,28 +47,34 @@
             label4.TabIndex = 35;
             label4.Text = "Nova palavra-passe";
             // 
-            // btnAdicionar
+            // btnMudarSenha
             // 
-            btnAdicionar.Location = new Point(378, 243);
-            btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(108, 33);
-            btnAdicionar.TabIndex = 34;
-            btnAdicionar.Text = "Mudar password";
-            btnAdicionar.UseVisualStyleBackColor = true;
+            btnMudarSenha.Cursor = Cursors.Hand;
+            btnMudarSenha.Location = new Point(378, 243);
+            btnMudarSenha.Name = "btnMudarSenha";
+            btnMudarSenha.Size = new Size(108, 33);
+            btnMudarSenha.TabIndex = 34;
+            btnMudarSenha.Text = "Mudar password";
+            btnMudarSenha.UseVisualStyleBackColor = true;
+            btnMudarSenha.Click += btnMudarSenha_Click;
             // 
-            // inputNome
+            // inputRepetirSenha
             // 
-            inputNome.Location = new Point(22, 209);
-            inputNome.Name = "inputNome";
-            inputNome.Size = new Size(464, 23);
-            inputNome.TabIndex = 32;
+            inputRepetirSenha.Cursor = Cursors.IBeam;
+            inputRepetirSenha.Location = new Point(22, 209);
+            inputRepetirSenha.Name = "inputRepetirSenha";
+            inputRepetirSenha.PasswordChar = '*';
+            inputRepetirSenha.Size = new Size(464, 23);
+            inputRepetirSenha.TabIndex = 32;
             // 
-            // inputCodigo
+            // inputSenha
             // 
-            inputCodigo.Location = new Point(22, 157);
-            inputCodigo.Name = "inputCodigo";
-            inputCodigo.Size = new Size(464, 23);
-            inputCodigo.TabIndex = 31;
+            inputSenha.Cursor = Cursors.IBeam;
+            inputSenha.Location = new Point(22, 157);
+            inputSenha.Name = "inputSenha";
+            inputSenha.PasswordChar = '*';
+            inputSenha.Size = new Size(464, 23);
+            inputSenha.TabIndex = 31;
             // 
             // label2
             // 
@@ -106,9 +112,9 @@
             ControlBox = false;
             Controls.Add(textBox1);
             Controls.Add(label4);
-            Controls.Add(btnAdicionar);
-            Controls.Add(inputNome);
-            Controls.Add(inputCodigo);
+            Controls.Add(btnMudarSenha);
+            Controls.Add(inputRepetirSenha);
+            Controls.Add(inputSenha);
             Controls.Add(label2);
             Controls.Add(label1);
             MaximizeBox = false;
@@ -123,9 +129,9 @@
         #endregion
 
         private Label label4;
-        private Button btnAdicionar;
-        private TextBox inputNome;
-        private TextBox inputCodigo;
+        private Button btnMudarSenha;
+        private TextBox inputRepetirSenha;
+        private TextBox inputSenha;
         private Label label2;
         private Label label1;
         private TextBox textBox1;
