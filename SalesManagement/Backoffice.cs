@@ -117,12 +117,15 @@ namespace SalesManagement
         {
             HideTabs();
             ShowTab(tabEliminarConta);
-            DataTable utilizadores = Users.ObterUtilizadores();
-            
-            foreach (DataRow row in utilizadores.Rows)
+            try
             {
-                selectUsername.Items.Add(row["Utilizador"]);
+                Users.ObterUtilizadores(selectUsername);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnNovoUtilizador_Click(object sender, EventArgs e)
@@ -185,6 +188,35 @@ namespace SalesManagement
         }
 
         private void selectUsername_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string utilizador = selectUsername.Text;
+
+            if (!OperacoesGerais.LerStringValida(utilizador))
+            {
+                MessageBox.Show("O utilizador não é válido");
+                return;
+            }
+
+            Users.EliminarUtilizador(utilizador);
+
+            MessageBox.Show($"O utilizador {utilizador} foi eliminado com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            try
+            {
+                Users.ObterUtilizadores(selectUsername);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabCriarConta_Click_1(object sender, EventArgs e)
         {
 
         }

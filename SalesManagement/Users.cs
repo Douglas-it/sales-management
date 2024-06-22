@@ -48,15 +48,30 @@ namespace SalesManagement
             dbHelper.ExecuteQuery(deleteQuery, paramNome);
         }
 
-        public static DataTable ObterUtilizadores ()
+        public static void ObterUtilizadores(ComboBox nome)
         {
+            // Limpa o ComboBox 
+            nome.Items.Clear();
+
             DatabaseHelper dbHelper = new DatabaseHelper();
 
             string selectQuery = "SELECT * FROM Utilizadores";
 
             DataTable resultado = dbHelper.GetDataTable(selectQuery);
+             
+            // Verifica se o resultado for nulo ou vazio
+            if (resultado == null)
+            {
+                MessageBox.Show("Não existem utilizadores na base de dados. Por favor adicione um utilizador primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                nome.Items.Add("Utilizadores não encontrados.");
+                return;
+            }
 
-            return resultado;
+            // Adicionar os nomes dos utilizadores ao ComboBox
+            foreach (DataRow row in resultado.Rows)
+            {
+                nome.Items.Add(row["Utilizador"].ToString());
+            }
         }
     }
 }
