@@ -69,6 +69,9 @@
             label6 = new Label();
             btnEliminar = new Button();
             label12 = new Label();
+            checkSim = new CheckBox();
+            label10 = new Label();
+            label11 = new Label();
             tabControl.SuspendLayout();
             tabCriarConta.SuspendLayout();
             tabAlterarConta.SuspendLayout();
@@ -148,6 +151,9 @@
             // 
             // tabCriarConta
             // 
+            tabCriarConta.Controls.Add(label11);
+            tabCriarConta.Controls.Add(checkSim);
+            tabCriarConta.Controls.Add(label10);
             tabCriarConta.Controls.Add(label7);
             tabCriarConta.Controls.Add(textBox2);
             tabCriarConta.Controls.Add(label5);
@@ -174,7 +180,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(28, 214);
+            label7.Location = new Point(28, 196);
             label7.Name = "label7";
             label7.Size = new Size(208, 18);
             label7.TabIndex = 12;
@@ -183,7 +189,7 @@
             // textBox2
             // 
             textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(28, 248);
+            textBox2.Location = new Point(28, 230);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
@@ -195,7 +201,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(28, 37);
+            label5.Location = new Point(28, 35);
             label5.Name = "label5";
             label5.Size = new Size(242, 18);
             label5.TabIndex = 10;
@@ -204,7 +210,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(28, 71);
+            textBox1.Location = new Point(28, 69);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
@@ -214,7 +220,7 @@
             // 
             // btnNovoUtilizador
             // 
-            btnNovoUtilizador.Location = new Point(951, 528);
+            btnNovoUtilizador.Location = new Point(951, 572);
             btnNovoUtilizador.Name = "btnNovoUtilizador";
             btnNovoUtilizador.Size = new Size(75, 32);
             btnNovoUtilizador.TabIndex = 8;
@@ -226,28 +232,28 @@
             // 
             cargos.DropDownStyle = ComboBoxStyle.DropDownList;
             cargos.FormattingEnabled = true;
-            cargos.Location = new Point(201, 493);
+            cargos.Location = new Point(201, 500);
             cargos.Name = "cargos";
             cargos.Size = new Size(825, 23);
             cargos.TabIndex = 7;
             // 
             // txtRepeatPassword
             // 
-            txtRepeatPassword.Location = new Point(201, 460);
+            txtRepeatPassword.Location = new Point(201, 467);
             txtRepeatPassword.Name = "txtRepeatPassword";
             txtRepeatPassword.Size = new Size(825, 23);
             txtRepeatPassword.TabIndex = 6;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(201, 426);
+            txtPassword.Location = new Point(201, 433);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(825, 23);
             txtPassword.TabIndex = 5;
             // 
             // txtUtilizador
             // 
-            txtUtilizador.Location = new Point(201, 391);
+            txtUtilizador.Location = new Point(201, 398);
             txtUtilizador.Name = "txtUtilizador";
             txtUtilizador.Size = new Size(825, 23);
             txtUtilizador.TabIndex = 4;
@@ -255,7 +261,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(74, 496);
+            label4.Location = new Point(74, 503);
             label4.Name = "label4";
             label4.Size = new Size(109, 15);
             label4.TabIndex = 3;
@@ -264,7 +270,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(86, 463);
+            label3.Location = new Point(86, 470);
             label3.Name = "label3";
             label3.Size = new Size(97, 15);
             label3.TabIndex = 2;
@@ -273,7 +279,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(126, 429);
+            label2.Location = new Point(126, 436);
             label2.Name = "label2";
             label2.Size = new Size(57, 15);
             label2.TabIndex = 1;
@@ -282,7 +288,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(74, 394);
+            label1.Location = new Point(74, 401);
             label1.Name = "label1";
             label1.Size = new Size(109, 15);
             label1.TabIndex = 0;
@@ -491,6 +497,37 @@
             label12.TabIndex = 22;
             label12.Text = "Utilizadores";
             // 
+            // checkSim
+            // 
+            checkSim.AutoSize = true;
+            checkSim.Location = new Point(201, 572);
+            checkSim.Name = "checkSim";
+            checkSim.Size = new Size(46, 19);
+            checkSim.TabIndex = 26;
+            checkSim.Text = "Sim";
+            checkSim.UseVisualStyleBackColor = true;
+            checkSim.Visible = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(201, 544);
+            label10.Name = "label10";
+            label10.Size = new Size(342, 15);
+            label10.TabIndex = 25;
+            label10.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
+            label10.Visible = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(28, 351);
+            label11.Name = "label11";
+            label11.Size = new Size(128, 18);
+            label11.TabIndex = 27;
+            label11.Text = "Dados da Conta";
+            // 
             // Backoffice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -558,5 +595,8 @@
         private CheckBox checkYes;
         private Label label12;
         private TextBox txtUserId;
+        private CheckBox checkSim;
+        private Label label10;
+        private Label label11;
     }
 }

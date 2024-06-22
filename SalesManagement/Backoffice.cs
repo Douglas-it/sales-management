@@ -13,92 +13,24 @@ namespace SalesManagement
 {
     public partial class Backoffice : Form
     {
-        // Função que recebe um argumento para esconder todas as tabs ou uma tab especifica
+        /*
+         *  Esconde todas as tabs ou uma tab especifica
+         *  @param TabPage tabPage
+         */
         private void HideTabs(TabPage tabPage = null)
         {
             foreach (TabPage tab in tabControl.TabPages)
                 tabControl.TabPages.Remove(tab);
         }
 
+        /*
+         *  Mostra uma tab especifica
+         *  @param TabPage tabPage
+         */
         private void ShowTab(TabPage tabPage)
         {
             if (!tabControl.TabPages.Contains(tabPage))
                 tabControl.TabPages.Add(tabPage);
-        }
-
-        private void ListarCargos(ComboBox cargos)
-        {
-            try
-            {
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string selectQuery = "SELECT * FROM UtilizadoresCargos";
-
-                // obter o resultado da query
-                DataTable resultado = dbHelper.GetDataTable(selectQuery);
-
-                // Garante que não existe cargos a serem mostrados
-                cargos.Items.Clear();
-
-                // Se o resultado da não for nulo ou igual a zero
-                if (resultado != null || resultado.Rows.Count == 0)
-                    foreach (DataRow row in resultado.Rows)
-                        cargos.Items.Add(row["CargoNome"]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar cargos: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private string ObterCargoId(string nome)
-        {
-            try
-            {
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string selectQuery = "SELECT CargoId FROM UtilizadoresCargos WHERE CargoNome = @nome";
-
-                SqlParameter paramProduto = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
-
-                // obter o resultado da query
-                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramProduto);
-
-                // Se o resultado da não for nulo
-                if (resultado != null)
-                    return resultado.Rows[0]["CargoId"].ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar cargos: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return null;
-        }
-
-        private string ObterCargoNome(string id)
-        {
-            try
-            {
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string selectQuery = "SELECT CargoNome FROM UtilizadoresCargos WHERE CargoId = @id";
-
-                SqlParameter paramProduto = new SqlParameter("@id", SqlDbType.VarChar) { Value = id };
-
-                // obter o resultado da query
-                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramProduto);
-
-                // Se o resultado da não for nulo
-                if (resultado != null)
-                    return resultado.Rows[0]["CargoNome"].ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar cargos: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return null;
         }
 
         public Backoffice()
@@ -107,38 +39,49 @@ namespace SalesManagement
             HideTabs();
         }
 
+        // Botão de sair
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Hide(); // Esconde o form atual
 
+            // Mostra o form inicial
             FormInicial formInicial = new FormInicial();
             formInicial.Show();
         }
 
+        // Botão de Logout
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Globals.admin = false;
+            Globals.admin = false; // Coloca a variável admin como false
 
-            this.Hide();
+            this.Hide(); // Esconde o form atual
 
+            // Mostra o form de login
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
         }
 
+        // Botão de mostrar a tab de criar conta
         private void button1_Click(object sender, EventArgs e)
         {
-            HideTabs();
-            ShowTab(tabCriarConta);
-            ListarCargos(cargos);
+            HideTabs(); // Esconde todas as tabs
+
+            ShowTab(tabCriarConta); // Mostra a tab de criar conta
+
+            Cargos.ListarCargos(cargos); // Lista os cargos
         }
 
+        // Botão de mostrar a tab de alterar conta
         private void btnAlterarConta_Click(object sender, EventArgs e)
         {
-            HideTabs();
-            ShowTab(tabAlterarConta);
+            HideTabs(); // Esconde todas as tabs
+
+            ShowTab(tabAlterarConta); // Mostra a tab de alterar conta
+
             try
             {
-                Users.ObterUtilizadores(selecionarUtilizador);
+                // Lista os utilizadores
+                Utilizadores.ObterUtilizadores(selecionarUtilizador);
             }
             catch (Exception ex)
             {
@@ -146,13 +89,17 @@ namespace SalesManagement
             }
         }
 
+        // Botão de mostrar a tab de eliminar conta
         private void btnEliminarConta_Click(object sender, EventArgs e)
         {
-            HideTabs();
-            ShowTab(tabEliminarConta);
+            HideTabs(); // Esconde todas as tabs
+
+            ShowTab(tabEliminarConta); // Mostra a tab de eliminar conta
+
             try
             {
-                Users.ObterUtilizadores(selectUsername);
+                // Lista os utilizadores
+                Utilizadores.ObterUtilizadores(selectUsername);
             }
             catch (Exception ex)
             {
@@ -161,6 +108,7 @@ namespace SalesManagement
 
         }
 
+        // Botão de criar um novo utilizador
         private void btnNovoUtilizador_Click(object sender, EventArgs e)
         {
             string utilizador = txtUtilizador.Text;
@@ -168,6 +116,7 @@ namespace SalesManagement
             string repeatPassword = txtRepeatPassword.Text;
             string cargo = cargos.Text;
 
+            // Verifica se os campos estão preenchidos corretamente
             if (
                 !OperacoesGerais.LerStringValida(utilizador) ||
                 !OperacoesGerais.LerStringValida(password) ||
@@ -179,6 +128,7 @@ namespace SalesManagement
                 return;
             }
 
+            // Verifica se as palavras-passe coincidem
             if (password != repeatPassword)
             {
                 MessageBox.Show("As palavras-passe não coincidem!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -187,16 +137,24 @@ namespace SalesManagement
 
             try
             {
-                if (Users.VerificarUtilizador(utilizador))
+                // Verifica se o utilizador já existe
+                if (Utilizadores.VerificarUtilizador(utilizador))
                 {
                     MessageBox.Show("O nome de utilizador escolhido já existe!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtUtilizador.Text = "";
                     return;
                 }
 
-                string cargoId = ObterCargoId(cargo);
+                // Obtem o id do cargo através do nome
+                string cargoId = Cargos.ObterCargoId(cargo);
 
-                Users.RegistarUtilizador(utilizador, password, cargoId);
+                // Regista o utilizador
+                Utilizadores.RegistarUtilizador(utilizador, password, cargoId);
+
+                // Marcar a flag para alterar a senha
+                if (checkSim.Checked)
+                    Utilizadores.AdicionarFlagSenha(utilizador);
+
                 MessageBox.Show("Utilizador criado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -205,43 +163,27 @@ namespace SalesManagement
             }
         }
 
-        private void tabAlterarConta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabCriarConta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void selectUsername_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Botão de eliminar um utilizador
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             string utilizador = selectUsername.Text;
 
+            // Verifica se o utilizador é válido
             if (!OperacoesGerais.LerStringValida(utilizador))
             {
                 MessageBox.Show("O utilizador não é válido");
                 return;
             }
-
+            
             try
             {
-                Users.EliminarUtilizador(utilizador);
+                // Elimina o utilizador
+                Utilizadores.EliminarUtilizador(utilizador);
 
                 MessageBox.Show($"O utilizador {utilizador} foi eliminado com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Users.ObterUtilizadores(selectUsername);
+                // Atualiza a lista de utilizadores
+                Utilizadores.ObterUtilizadores(selectUsername);
             }
             catch (Exception ex)
             {
@@ -249,21 +191,19 @@ namespace SalesManagement
             }
         }
 
-        private void tabCriarConta_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
+        // Botão de obter os dados de um utilizador
         private void btnObterDados_Click(object sender, EventArgs e)
         {
             string utilizador = selecionarUtilizador.Text;
 
+            // Verifica se o utilizador é válido
             if (utilizador == null || utilizador.ToString() == "")
             {
                 MessageBox.Show("Selecione um utilizador.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Mostra os campos para alterar os dados
             txtNomeUser.Visible = true;
             labelUser.Visible = true;
             comboCargos.Visible = true;
@@ -275,13 +215,15 @@ namespace SalesManagement
             try
             {
                 // Retorna as informações do utilizador
-                foreach (DataRow row in Users.ObterInformacaoUtilizador(utilizador).Rows)
+                foreach (DataRow row in Utilizadores.ObterInformacaoUtilizador(utilizador).Rows)
                 {
                     txtNomeUser.Text = row["Utilizador"].ToString();
 
-                    ListarCargos(comboCargos);
+                    // Lista os cargos
+                    Cargos.ListarCargos(comboCargos);
 
-                    string cargoNome = ObterCargoNome(row["Cargo"].ToString());
+                    // Obtem o nome do cargo com base no ID
+                    string cargoNome = Cargos.ObterCargoNome(row["Cargo"].ToString());
 
                     comboCargos.Text = cargoNome;
 
@@ -294,12 +236,14 @@ namespace SalesManagement
             }
         }
 
+        // Botão de modificar os dados de um utilizador
         private void btnModificarConta_Click(object sender, EventArgs e)
         {
             string userId = txtUserId.Text;
             string utilizador = txtNomeUser.Text;
-            string cargo = ObterCargoId(comboCargos.Text);
+            string cargo = Cargos.ObterCargoId(comboCargos.Text);
 
+            // Verifica se os campos estão preenchidos corretamente
             if (!OperacoesGerais.LerStringValida(utilizador))
             {
                 MessageBox.Show("Preencha todos os campos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -308,17 +252,41 @@ namespace SalesManagement
 
             try
             {
+                // Verifica se o utilizador deve alterar a senha
                 if (checkYes.Checked)
-                    Users.AlterarSenha(userId);
+                    Utilizadores.AdicionarFlagSenha(userId);
 
-                Users.AlterarUtilizador(userId, utilizador, cargo);
+                // Altera os dados do utilizador
+                Utilizadores.AlterarUtilizador(userId, utilizador, cargo);
+
+                // Esconde os campos para alterar os dados
+                txtNomeUser.Visible = false;  
+                labelUser.Visible = false;
+                comboCargos.Visible = false;
+                labelCargo.Visible = false;
+                labelSenha.Visible = false;
+                checkYes.Visible = false;
+                btnModificarConta.Visible = false;
+
+                // Lista os utilizadores
+                Utilizadores.ObterUtilizadores(selecionarUtilizador);
+
                 MessageBox.Show("Os dados foram atualizados com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao atualizar o utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
+        private void tabAlterarConta_Click(object sender, EventArgs e) { }
+
+        private void label1_Click(object sender, EventArgs e) { }
+
+        private void tabCriarConta_Click(object sender, EventArgs e) { }
+
+        private void selectUsername_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void tabCriarConta_Click_1(object sender, EventArgs e) { }
     }
 }
