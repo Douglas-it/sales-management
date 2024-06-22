@@ -41,7 +41,8 @@ namespace SalesManagement
 
                     if (Convert.ToInt32(result.Rows[0]["flag"]) == 1)
                     {
-                        MessageBox.Show("Mudar a senha!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        FormLoginAlterarSenha FormLoginAlterarSenha = new FormLoginAlterarSenha();
+                        FormLoginAlterarSenha.ShowDialog();
                     }
 
                     FormInicial FormInicial = new FormInicial(); // Inicializar novo form
