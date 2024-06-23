@@ -223,6 +223,13 @@ namespace SalesManagement
             
             try
             {
+                // Verifica se o utilizador a eliminar é o mesmo que esta com a sessão iniciada.
+                if (utilizador == Globals.nomeUtilizador)
+                {
+                    MessageBox.Show("Não é possível eliminar o utilizador que esta a utilizar.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Elimina o utilizador
                 Utilizadores.EliminarUtilizador(utilizador);
 
