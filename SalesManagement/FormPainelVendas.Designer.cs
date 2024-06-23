@@ -30,6 +30,12 @@
         {
             btnVoltar = new Button();
             btnSair = new Button();
+            btnLimpar = new Button();
+            inputPesquisa = new TextBox();
+            btnPesquisar = new Button();
+            ListaVendas = new DataGridView();
+            btnVenda = new Button();
+            ((System.ComponentModel.ISupportInitialize)ListaVendas).BeginInit();
             SuspendLayout();
             // 
             // btnVoltar
@@ -52,23 +58,79 @@
             btnSair.UseVisualStyleBackColor = true;
             btnSair.Click += btnSair_Click;
             // 
+            // btnLimpar
+            // 
+            btnLimpar.Location = new Point(732, 43);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(56, 26);
+            btnLimpar.TabIndex = 20;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.UseVisualStyleBackColor = true;
+            // 
+            // inputPesquisa
+            // 
+            inputPesquisa.Location = new Point(388, 44);
+            inputPesquisa.Name = "inputPesquisa";
+            inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
+            inputPesquisa.Size = new Size(257, 23);
+            inputPesquisa.TabIndex = 16;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.Location = new Point(651, 43);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(75, 26);
+            btnPesquisar.TabIndex = 19;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = true;
+            // 
+            // ListaVendas
+            // 
+            ListaVendas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ListaVendas.Location = new Point(12, 75);
+            ListaVendas.Name = "ListaVendas";
+            ListaVendas.Size = new Size(776, 332);
+            ListaVendas.TabIndex = 18;
+            // 
+            // btnVenda
+            // 
+            btnVenda.Location = new Point(12, 43);
+            btnVenda.Name = "btnVenda";
+            btnVenda.Size = new Size(136, 23);
+            btnVenda.TabIndex = 17;
+            btnVenda.Text = "Venda";
+            btnVenda.UseVisualStyleBackColor = true;
+            btnVenda.Click += btnVenda_Click;
+            // 
             // FormVendas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLimpar);
+            Controls.Add(inputPesquisa);
+            Controls.Add(btnPesquisar);
+            Controls.Add(ListaVendas);
+            Controls.Add(btnVenda);
             Controls.Add(btnSair);
             Controls.Add(btnVoltar);
             Name = "FormVendas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Vendas";
             Load += FormVendas_Load;
+            ((System.ComponentModel.ISupportInitialize)ListaVendas).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button btnVoltar;
         private Button btnSair;
+        private Button btnLimpar;
+        private TextBox inputPesquisa;
+        private Button btnPesquisar;
+        private DataGridView ListaVendas;
+        private Button btnVenda;
     }
 }
