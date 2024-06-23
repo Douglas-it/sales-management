@@ -62,7 +62,7 @@ namespace SalesManagement
 
         private void btnUtilizadores_Click(object sender, EventArgs e)
         {
-            Backoffice backoffice = new Backoffice();
+            FormBackoffice backoffice = new FormBackoffice();
             backoffice.Show();
 
             this.Hide();

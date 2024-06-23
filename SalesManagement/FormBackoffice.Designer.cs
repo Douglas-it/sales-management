@@ -1,6 +1,6 @@
 ﻿namespace SalesManagement
 {
-    partial class Backoffice
+    partial class FormBackoffice
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Backoffice));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBackoffice));
             btnLogout = new Button();
             btnSair = new Button();
             btnCriarConta = new Button();
@@ -37,6 +37,9 @@
             btnEliminarConta = new Button();
             tabControl = new TabControl();
             tabCriarConta = new TabPage();
+            label11 = new Label();
+            checkSim = new CheckBox();
+            label10 = new Label();
             label7 = new Label();
             textBox2 = new TextBox();
             label5 = new Label();
@@ -69,9 +72,8 @@
             label6 = new Label();
             btnEliminar = new Button();
             label12 = new Label();
-            checkSim = new CheckBox();
-            label10 = new Label();
-            label11 = new Label();
+            label13 = new Label();
+            textBox4 = new TextBox();
             tabControl.SuspendLayout();
             tabCriarConta.SuspendLayout();
             tabAlterarConta.SuspendLayout();
@@ -175,6 +177,37 @@
             tabCriarConta.Text = "Criar Conta";
             tabCriarConta.UseVisualStyleBackColor = true;
             tabCriarConta.Click += tabCriarConta_Click_1;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(28, 351);
+            label11.Name = "label11";
+            label11.Size = new Size(128, 18);
+            label11.TabIndex = 27;
+            label11.Text = "Dados da Conta";
+            // 
+            // checkSim
+            // 
+            checkSim.AutoSize = true;
+            checkSim.Location = new Point(201, 572);
+            checkSim.Name = "checkSim";
+            checkSim.Size = new Size(46, 19);
+            checkSim.TabIndex = 26;
+            checkSim.Text = "Sim";
+            checkSim.UseVisualStyleBackColor = true;
+            checkSim.Visible = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(201, 544);
+            label10.Name = "label10";
+            label10.Size = new Size(342, 15);
+            label10.TabIndex = 25;
+            label10.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
+            label10.Visible = false;
             // 
             // label7
             // 
@@ -296,6 +329,8 @@
             // 
             // tabAlterarConta
             // 
+            tabAlterarConta.Controls.Add(label13);
+            tabAlterarConta.Controls.Add(textBox4);
             tabAlterarConta.Controls.Add(txtUserId);
             tabAlterarConta.Controls.Add(checkYes);
             tabAlterarConta.Controls.Add(labelSenha);
@@ -318,7 +353,7 @@
             // 
             // txtUserId
             // 
-            txtUserId.Location = new Point(1000, 250);
+            txtUserId.Location = new Point(999, 286);
             txtUserId.Name = "txtUserId";
             txtUserId.Size = new Size(26, 23);
             txtUserId.TabIndex = 25;
@@ -327,7 +362,7 @@
             // checkYes
             // 
             checkYes.AutoSize = true;
-            checkYes.Location = new Point(202, 392);
+            checkYes.Location = new Point(232, 428);
             checkYes.Name = "checkYes";
             checkYes.Size = new Size(46, 19);
             checkYes.TabIndex = 24;
@@ -338,7 +373,7 @@
             // labelSenha
             // 
             labelSenha.AutoSize = true;
-            labelSenha.Location = new Point(202, 364);
+            labelSenha.Location = new Point(232, 400);
             labelSenha.Name = "labelSenha";
             labelSenha.Size = new Size(342, 15);
             labelSenha.TabIndex = 22;
@@ -347,7 +382,7 @@
             // 
             // btnModificarConta
             // 
-            btnModificarConta.Location = new Point(934, 379);
+            btnModificarConta.Location = new Point(933, 415);
             btnModificarConta.Name = "btnModificarConta";
             btnModificarConta.Size = new Size(92, 32);
             btnModificarConta.TabIndex = 21;
@@ -360,24 +395,24 @@
             // 
             comboCargos.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCargos.FormattingEnabled = true;
-            comboCargos.Location = new Point(202, 318);
+            comboCargos.Location = new Point(232, 354);
             comboCargos.Name = "comboCargos";
-            comboCargos.Size = new Size(825, 23);
+            comboCargos.Size = new Size(794, 23);
             comboCargos.TabIndex = 20;
             comboCargos.Visible = false;
             // 
             // txtNomeUser
             // 
-            txtNomeUser.Location = new Point(202, 279);
+            txtNomeUser.Location = new Point(232, 315);
             txtNomeUser.Name = "txtNomeUser";
-            txtNomeUser.Size = new Size(825, 23);
+            txtNomeUser.Size = new Size(794, 23);
             txtNomeUser.TabIndex = 17;
             txtNomeUser.Visible = false;
             // 
             // labelCargo
             // 
             labelCargo.AutoSize = true;
-            labelCargo.Location = new Point(75, 321);
+            labelCargo.Location = new Point(104, 357);
             labelCargo.Name = "labelCargo";
             labelCargo.Size = new Size(109, 15);
             labelCargo.TabIndex = 16;
@@ -387,7 +422,7 @@
             // labelUser
             // 
             labelUser.AutoSize = true;
-            labelUser.Location = new Point(75, 282);
+            labelUser.Location = new Point(104, 318);
             labelUser.Name = "labelUser";
             labelUser.Size = new Size(109, 15);
             labelUser.TabIndex = 13;
@@ -398,7 +433,7 @@
             // 
             selecionarUtilizador.DropDownStyle = ComboBoxStyle.DropDownList;
             selecionarUtilizador.FormattingEnabled = true;
-            selecionarUtilizador.Location = new Point(233, 109);
+            selecionarUtilizador.Location = new Point(232, 177);
             selecionarUtilizador.Name = "selecionarUtilizador";
             selecionarUtilizador.Size = new Size(793, 23);
             selecionarUtilizador.TabIndex = 12;
@@ -406,7 +441,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(83, 112);
+            label9.Location = new Point(82, 180);
             label9.Name = "label9";
             label9.Size = new Size(131, 15);
             label9.TabIndex = 11;
@@ -414,7 +449,7 @@
             // 
             // btnObterDados
             // 
-            btnObterDados.Location = new Point(917, 148);
+            btnObterDados.Location = new Point(916, 216);
             btnObterDados.Name = "btnObterDados";
             btnObterDados.Size = new Size(109, 32);
             btnObterDados.TabIndex = 10;
@@ -497,36 +532,26 @@
             label12.TabIndex = 22;
             label12.Text = "Utilizadores";
             // 
-            // checkSim
+            // label13
             // 
-            checkSim.AutoSize = true;
-            checkSim.Location = new Point(201, 572);
-            checkSim.Name = "checkSim";
-            checkSim.Size = new Size(46, 19);
-            checkSim.TabIndex = 26;
-            checkSim.Text = "Sim";
-            checkSim.UseVisualStyleBackColor = true;
-            checkSim.Visible = false;
+            label13.AutoSize = true;
+            label13.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(29, 26);
+            label13.Name = "label13";
+            label13.Size = new Size(265, 18);
+            label13.TabIndex = 27;
+            label13.Text = "Instruções para editar um utilizador";
             // 
-            // label10
+            // textBox4
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(201, 544);
-            label10.Name = "label10";
-            label10.Size = new Size(342, 15);
-            label10.TabIndex = 25;
-            label10.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
-            label10.Visible = false;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(28, 351);
-            label11.Name = "label11";
-            label11.Size = new Size(128, 18);
-            label11.TabIndex = 27;
-            label11.Text = "Dados da Conta";
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Location = new Point(29, 60);
+            textBox4.Multiline = true;
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(1046, 77);
+            textBox4.TabIndex = 26;
+            textBox4.Text = resources.GetString("textBox4.Text");
             // 
             // Backoffice
             // 
@@ -598,5 +623,7 @@
         private CheckBox checkSim;
         private Label label10;
         private Label label11;
+        private Label label13;
+        private TextBox textBox4;
     }
 }

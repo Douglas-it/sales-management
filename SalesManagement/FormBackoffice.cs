@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SalesManagement
 {
-    public partial class Backoffice : Form
+    public partial class FormBackoffice : Form
     {
         /*
          *  Esconde todas as tabs ou uma tab especifica
@@ -33,7 +33,7 @@ namespace SalesManagement
                 tabControl.TabPages.Add(tabPage);
         }
 
-        public Backoffice()
+        public FormBackoffice()
         {
             InitializeComponent();
             HideTabs();
