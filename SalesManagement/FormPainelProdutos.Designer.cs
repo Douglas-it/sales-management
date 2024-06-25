@@ -56,7 +56,7 @@
             inputPesquisa.Margin = new Padding(3, 4, 3, 4);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome ou código ou categoria";
-            inputPesquisa.Size = new Size(293, 27);
+            inputPesquisa.Size = new Size(333, 27);
             inputPesquisa.TabIndex = 16;
             inputPesquisa.TextChanged += inputPesquisa_TextChanged;
             // 

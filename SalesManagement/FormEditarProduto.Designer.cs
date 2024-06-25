@@ -68,6 +68,7 @@
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click_1;
             // 
             // txtNome
             // 
@@ -88,6 +89,7 @@
             // 
             txtCodigo.Location = new Point(146, 126);
             txtCodigo.Name = "txtCodigo";
+            txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(610, 27);
             txtCodigo.TabIndex = 5;
             // 
@@ -129,6 +131,7 @@
             // 
             // comboCategoria
             // 
+            comboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCategoria.FormattingEnabled = true;
             comboCategoria.Location = new Point(146, 239);
             comboCategoria.Name = "comboCategoria";
@@ -153,6 +156,7 @@
             Controls.Add(label1);
             Name = "FormEditarProduto";
             Text = "FormEditarProduto";
+            FormClosed += FormEditarProduto_FormClosed;
             Load += FormEditarProduto_Load;
             ResumeLayout(false);
             PerformLayout();
