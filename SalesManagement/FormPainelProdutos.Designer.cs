@@ -70,6 +70,7 @@
             btnPesquisar.TabIndex = 21;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // btnSair
             // 
@@ -81,7 +82,7 @@
             btnSair.TabIndex = 20;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
-            btnSair.Click += btnSair_Click_1;
+            btnSair.Click += btnSair_Click;
             // 
             // ListaProdutos
             // 
@@ -92,6 +93,7 @@
             ListaProdutos.RowHeadersWidth = 51;
             ListaProdutos.Size = new Size(887, 443);
             ListaProdutos.TabIndex = 19;
+            ListaProdutos.CellContentClick += ListaProdutos_CellContentClick;
             // 
             // btnNovoProduto
             // 
@@ -114,7 +116,7 @@
             btnVoltar.TabIndex = 17;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = true;
-            btnVoltar.Click += btnVoltar_Click_1;
+            btnVoltar.Click += btnVoltar_Click;
             // 
             // FormProdutos
             // 
