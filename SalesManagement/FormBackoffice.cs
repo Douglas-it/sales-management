@@ -265,6 +265,7 @@ namespace SalesManagement
             checkYes.Visible = true;
             btnModificarConta.Visible = true;
 
+
             try
             {
                 // Retorna as informações do utilizador

@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox4.Text" xml:space="preserve">
-    <value>    
-     1. Escolha um utilizador da lista e clique em "Obter Dados".
-     2. Após clicar em obter dados, irão aparecer as informações do utilizador para poder editar.
-     3. Edite todas as informações necessárias e depois clique em "Alterar Conta".</value>
-  </data>
   <data name="textBox2.Text" xml:space="preserve">
     <value>    
      1. Administrador: Controlo total sobre o sistema. Permite fazer alterações nas vendas, comerciais, produtos e tem acesso completo ao backoffice.
@@ -134,5 +128,11 @@
      2. Palavra-Passe: Escolha uma palavra-passe segura. Recomendamos que inclua letras maiúsculas, minúsculas, números e caracteres especiais.
      3. Repetir Palavra-Passe: Digite novamente a palavra-passe para confirmação.
      4. Cargo: Selecione o seu cargo na empresa a partir da lista fornecida.</value>
+  </data>
+  <data name="textBox4.Text" xml:space="preserve">
+    <value>    
+     1. Escolha um utilizador da lista e clique em "Obter Dados".
+     2. Após clicar em obter dados, irão aparecer as informações do utilizador para poder editar.
+     3. Edite todas as informações necessárias e depois clique em "Alterar Conta".</value>
   </data>
 </root>

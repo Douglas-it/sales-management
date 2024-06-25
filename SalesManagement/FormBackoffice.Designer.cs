@@ -39,7 +39,7 @@
             tabCriarConta = new TabPage();
             label11 = new Label();
             checkSim = new CheckBox();
-            label10 = new Label();
+            labelPergunta = new Label();
             label7 = new Label();
             textBox2 = new TextBox();
             label5 = new Label();
@@ -54,6 +54,8 @@
             label2 = new Label();
             label1 = new Label();
             tabAlterarConta = new TabPage();
+            label13 = new Label();
+            textBox4 = new TextBox();
             txtUserId = new TextBox();
             checkYes = new CheckBox();
             labelSenha = new Label();
@@ -72,8 +74,6 @@
             label6 = new Label();
             btnEliminar = new Button();
             label12 = new Label();
-            label13 = new Label();
-            textBox4 = new TextBox();
             tabControl.SuspendLayout();
             tabCriarConta.SuspendLayout();
             tabAlterarConta.SuspendLayout();
@@ -155,7 +155,7 @@
             // 
             tabCriarConta.Controls.Add(label11);
             tabCriarConta.Controls.Add(checkSim);
-            tabCriarConta.Controls.Add(label10);
+            tabCriarConta.Controls.Add(labelPergunta);
             tabCriarConta.Controls.Add(label7);
             tabCriarConta.Controls.Add(textBox2);
             tabCriarConta.Controls.Add(label5);
@@ -197,17 +197,15 @@
             checkSim.TabIndex = 26;
             checkSim.Text = "Sim";
             checkSim.UseVisualStyleBackColor = true;
-            checkSim.Visible = false;
             // 
-            // label10
+            // labelPergunta
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(201, 544);
-            label10.Name = "label10";
-            label10.Size = new Size(342, 15);
-            label10.TabIndex = 25;
-            label10.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
-            label10.Visible = false;
+            labelPergunta.AutoSize = true;
+            labelPergunta.Location = new Point(201, 544);
+            labelPergunta.Name = "labelPergunta";
+            labelPergunta.Size = new Size(342, 15);
+            labelPergunta.TabIndex = 25;
+            labelPergunta.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
             // 
             // label7
             // 
@@ -274,6 +272,7 @@
             // 
             txtRepeatPassword.Location = new Point(201, 467);
             txtRepeatPassword.Name = "txtRepeatPassword";
+            txtRepeatPassword.PasswordChar = '*';
             txtRepeatPassword.Size = new Size(825, 23);
             txtRepeatPassword.TabIndex = 6;
             // 
@@ -281,6 +280,7 @@
             // 
             txtPassword.Location = new Point(201, 433);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(825, 23);
             txtPassword.TabIndex = 5;
             // 
@@ -350,6 +350,27 @@
             tabAlterarConta.Text = "Alterar Conta";
             tabAlterarConta.UseVisualStyleBackColor = true;
             tabAlterarConta.Click += tabAlterarConta_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label13.Location = new Point(29, 26);
+            label13.Name = "label13";
+            label13.Size = new Size(265, 18);
+            label13.TabIndex = 27;
+            label13.Text = "Instruções para editar um utilizador";
+            // 
+            // textBox4
+            // 
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Location = new Point(29, 60);
+            textBox4.Multiline = true;
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(1046, 77);
+            textBox4.TabIndex = 26;
+            textBox4.Text = resources.GetString("textBox4.Text");
             // 
             // txtUserId
             // 
@@ -532,28 +553,7 @@
             label12.TabIndex = 22;
             label12.Text = "Utilizadores";
             // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(29, 26);
-            label13.Name = "label13";
-            label13.Size = new Size(265, 18);
-            label13.TabIndex = 27;
-            label13.Text = "Instruções para editar um utilizador";
-            // 
-            // textBox4
-            // 
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(29, 60);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.ReadOnly = true;
-            textBox4.Size = new Size(1046, 77);
-            textBox4.TabIndex = 26;
-            textBox4.Text = resources.GetString("textBox4.Text");
-            // 
-            // Backoffice
+            // FormBackoffice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -566,7 +566,7 @@
             Controls.Add(btnCriarConta);
             Controls.Add(btnLogout);
             Controls.Add(btnSair);
-            Name = "Backoffice";
+            Name = "FormBackoffice";
             Text = "Backoffice";
             tabControl.ResumeLayout(false);
             tabCriarConta.ResumeLayout(false);
@@ -621,7 +621,7 @@
         private Label label12;
         private TextBox txtUserId;
         private CheckBox checkSim;
-        private Label label10;
+        private Label labelPergunta;
         private Label label11;
         private Label label13;
         private TextBox textBox4;
