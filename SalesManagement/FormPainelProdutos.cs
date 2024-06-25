@@ -45,11 +45,12 @@ namespace SalesManagement
 
             // Desativar a edição do codigo do produto
             ListaProdutos.Columns["Codigo"].ReadOnly = true;
-
+            ListaProdutos.Columns["Nome"].ReadOnly = true;
+            ListaProdutos.Columns["Preco"].ReadOnly = true;
+            ListaProdutos.Columns["codigocategoria"].ReadOnly = true;
 
             // Carregar Dados da base de dados
             LoadData();
-
         }
 
         // Função que carrega os dados da base de dados 
@@ -95,6 +96,106 @@ namespace SalesManagement
             }
         }
 
+        private void ListaProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica se a célula clicada é um botão ou não
+            if (e.RowIndex >= 0)
+            {
+                string opcao = ListaProdutos.Columns[e.ColumnIndex].Name;
+
+                if (opcao == "Editar")
+                    BotaoEditarProduto(e.RowIndex); // Controla o botão de Editar
+                else if (opcao == "Eliminar")
+                    BotaoApagarProduto(e.RowIndex); // Controla o botão de Eliminar
+            }
+        }
+
+        private void BotaoApagarProduto(int rowIndex)
+        {
+            string codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
+            DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (DialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    DatabaseHelper dbHelper = new DatabaseHelper(); // inicializar a classe DatabaseHelper
+
+                    string DeleteQuery = "DELETE FROM Produtos WHERE Codigo = @codigoProduto"; // Query para eliminar o Produto
+
+                    SqlParameter paramProduto = new SqlParameter("@codigoProduto", SqlDbType.VarChar) { Value = codigo }; // Paramêtros para a query
+
+                    dbHelper.ExecuteQuery(DeleteQuery, paramProduto); // Executa a query
+
+                    MessageBox.Show("O Produto foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);  
+                    
+                    //Carrega os dados novamente para atualizar a lista
+                    LoadData();
+                } 
+                catch (Exception ex)
+                {                     
+                    MessageBox.Show("Erro ao tentar apagar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void BotaoEditarProduto(int rowIndex)
+        {
+            string codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
+            string nome = ListaProdutos.Rows[rowIndex].Cells["Nome"].Value.ToString();
+            string preco = ListaProdutos.Rows[rowIndex].Cells["Preco"].Value.ToString().Replace("€", "");
+            string categoria = ListaProdutos.Rows[rowIndex].Cells["codigocategoria"].Value.ToString();
+
+            FormEditarProduto FormEditarProduto = new FormEditarProduto(codigo, nome, preco, categoria);
+            FormEditarProduto.Show();
+        }
+
+            /*
+            DialogResult = MessageBox.Show("Tem a certeza que deseja editar?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (DialogResult == DialogResult.Yes)
+            {
+                string Codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
+                string Nome = ListaProdutos.Rows[rowIndex].Cells["Nome"].Value.ToString();
+                decimal Preco = Convert.ToDecimal(ListaProdutos.Rows[rowIndex].Cells["Preco"].Value.ToString().Replace("€", ""));
+                string Categoria = ListaProdutos.Rows[rowIndex].Cells["codigocategoria"].Value.ToString();
+                // inicializar a classe DatabaseHelper 
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                if (OperacoesGerais.LerStringValida(Nome) && OperacoesGerais.LerStringValida(Categoria))
+                {
+                    // Query para selecionar a Categoria
+                    string selectQuery = "SELECT Codigo FROM Categorias WHERE Nome = @nomeCategoria";
+
+                    // Parâmetros para a query
+                    SqlParameter paramCategoria = new SqlParameter("@nomeCategoria", SqlDbType.VarChar) { Value = Categoria };
+
+                    // Obter o resultado da query
+                    DataTable resultado = dbHelper.GetDataTable(selectQuery, paramCategoria);
+
+                    // Se o resultado da não for nulo
+                    if (resultado != null)
+                    {
+                        int codigocategoria = Convert.ToInt32(resultado.Rows[0]["Codigo"]);
+
+                        EditarProduto(Codigo, Nome, Preco, codigocategoria);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Categoria inválida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor insira valores válidos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+                this.Hide();
+            }
+        }*/
+
+        /*
         private void ApagarProduto(string Codigo)
         {
             try
@@ -121,9 +222,11 @@ namespace SalesManagement
                 MessageBox.Show("Erro ao tentar apagar o produto: " + ex.Message);
             }
         }
-
+        /*
         private void EditarProduto(string Codigo, string Nome, decimal Preco, int codigocategoria)
         {
+            FormEditarProduto FormEditarProduto = new FormEditarProduto();
+            FormEditarProduto.Show();
             try
             {
                 // inicializar a classe DatabaseHelper
@@ -165,10 +268,10 @@ namespace SalesManagement
             {
                 MessageBox.Show("Erro ao tentar atualizar o produto:" + ex.Message);
             }
+       
 
         }
-
-        private void DeleteItem(int rowIndex)
+          private void DeleteItem(int rowIndex)
         {
             string Codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
             DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -179,6 +282,51 @@ namespace SalesManagement
             }
         }
 
+        private void EditarProdutos(int rowIndex)
+        {
+            DialogResult = MessageBox.Show("Tem a certeza que deseja editar?", "Editar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (DialogResult == DialogResult.Yes)
+            {
+                string Codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
+                string Nome = ListaProdutos.Rows[rowIndex].Cells["Nome"].Value.ToString();
+                decimal Preco = Convert.ToDecimal(ListaProdutos.Rows[rowIndex].Cells["Preco"].Value.ToString().Replace("€", ""));
+                string Categoria = ListaProdutos.Rows[rowIndex].Cells["codigocategoria"].Value.ToString();
+                // inicializar a classe DatabaseHelper 
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                if (OperacoesGerais.LerStringValida(Nome) && OperacoesGerais.LerStringValida(Categoria))
+                {
+                    // Query para selecionar a Categoria
+                    string selectQuery = "SELECT Codigo FROM Categorias WHERE Nome = @nomeCategoria";
+
+                    // Parâmetros para a query
+                    SqlParameter paramCategoria = new SqlParameter("@nomeCategoria", SqlDbType.VarChar) { Value = Categoria };
+
+                    // Obter o resultado da query
+                    DataTable resultado = dbHelper.GetDataTable(selectQuery, paramCategoria);
+
+                    // Se o resultado da não for nulo
+                    if (resultado != null)
+                    {
+                        int codigocategoria = Convert.ToInt32(resultado.Rows[0]["Codigo"]);
+
+                        EditarProduto(Codigo, Nome, Preco, codigocategoria);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Categoria inválida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor insira valores válidos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+
+                this.Hide();
+            }
+        }*/
         private void FormProdutos_Load(object sender, EventArgs e)
         {
 
@@ -186,10 +334,11 @@ namespace SalesManagement
 
         private void inputPesquisa_TextChanged(object sender, EventArgs e)
         {
+           
 
         }
 
-        private void btnVoltar_Click_1(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
             FormInicial FormInicial = new FormInicial();
             FormInicial.Show();
@@ -197,7 +346,7 @@ namespace SalesManagement
             this.Hide();
         }
 
-        private void btnSair_Click_1(object sender, EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
             DialogResult = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -215,7 +364,37 @@ namespace SalesManagement
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            // Inserir Lógica de Pesquisar Produtos @Douglas
+            string pesquisa = inputPesquisa.Text;
+            if (OperacoesGerais.LerStringValida(pesquisa))
+            {
+                try
+                {
+                    // inicializar a classe DatabaseHelper
+                    DatabaseHelper dbHelper = new DatabaseHelper();
+
+                    // Query para selecionar o Produto
+                    string selectQuery = "SELECT Produtos.Codigo, Produtos.Nome, Produtos.Preco, Categorias.Nome AS NomeCategoria FROM Produtos INNER JOIN Categorias ON Produtos.CodigoCategoria = Categorias.Codigo WHERE Produtos.Nome LIKE @pesquisa OR Categorias.Nome LIKE @pesquisa";
+
+                    // Parâmetros para a query
+                    SqlParameter paramPesquisa = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
+
+                    // Obter o resultado da query
+                    DataTable resultado = dbHelper.GetDataTable(selectQuery, paramPesquisa);
+
+                    // Se o resultado da não for nulo
+                    if (resultado != null)
+                        preencherTabela(resultado);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor insira um valor válido para a pesquisa!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
