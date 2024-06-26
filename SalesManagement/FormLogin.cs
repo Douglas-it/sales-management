@@ -24,12 +24,16 @@ namespace SalesManagement
                 MessageBox.Show("O formato das credências esta inválido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            Utilizadores.Login(username, password); // Realiza a autenticação do Utilizador
 
-            // Caso o utilizador não seja autenticado, reseta os campos
-            inputUsername.Text = "";
-            inputPassword.Text = "";
+            // Realiza a autenticação do Utilizador
+            if (!Utilizadores.Login(username, password))
+            {
+                // Caso o utilizador não seja autenticado, reseta os campos
+                inputUsername.Text = "";
+                inputPassword.Text = "";
+            }
+            else
+                this.Hide(); // Se for autenticado, esconde o form de login
         }
 
         // Botão para sair da aplicação

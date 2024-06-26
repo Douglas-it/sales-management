@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             txtNome = new TextBox();
             txtCodigo = new TextBox();
             txtComissao = new TextBox();
@@ -38,28 +37,20 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Editar Vendedor";
             // 
             // txtNome
             // 
             txtNome.Cursor = Cursors.IBeam;
-            txtNome.Location = new Point(318, 162);
+            txtNome.Location = new Point(20, 136);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(235, 23);
+            txtNome.Size = new Size(238, 23);
             txtNome.TabIndex = 1;
             // 
             // txtCodigo
             // 
-            txtCodigo.Location = new Point(318, 117);
+            txtCodigo.Location = new Point(20, 75);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(235, 23);
@@ -68,17 +59,17 @@
             // txtComissao
             // 
             txtComissao.Cursor = Cursors.IBeam;
-            txtComissao.Location = new Point(318, 208);
+            txtComissao.Location = new Point(20, 199);
             txtComissao.Name = "txtComissao";
-            txtComissao.Size = new Size(53, 23);
+            txtComissao.Size = new Size(210, 23);
             txtComissao.TabIndex = 3;
             // 
             // btnCancelar
             // 
             btnCancelar.Cursor = Cursors.Hand;
-            btnCancelar.Location = new Point(588, 403);
+            btnCancelar.Location = new Point(20, 246);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.Size = new Size(75, 33);
             btnCancelar.TabIndex = 4;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -87,55 +78,70 @@
             // btnEditar
             // 
             btnEditar.Cursor = Cursors.Hand;
-            btnEditar.Location = new Point(701, 403);
+            btnEditar.Location = new Point(101, 246);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(75, 23);
+            btnEditar.Size = new Size(157, 33);
             btnEditar.TabIndex = 5;
-            btnEditar.Text = "Editar";
+            btnEditar.Text = "Guardar Alterações";
             btnEditar.UseVisualStyleBackColor = true;
             btnEditar.Click += btnEditar_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(266, 125);
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.Location = new Point(20, 53);
             label2.Name = "label2";
-            label2.Size = new Size(46, 15);
+            label2.Size = new Size(53, 19);
             label2.TabIndex = 6;
             label2.Text = "Código";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(272, 165);
+            label3.Font = new Font("Segoe UI", 10F);
+            label3.Location = new Point(20, 114);
             label3.Name = "label3";
-            label3.Size = new Size(40, 15);
+            label3.Size = new Size(46, 19);
             label3.TabIndex = 7;
             label3.Text = "Nome";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(253, 211);
+            label4.Font = new Font("Segoe UI", 10F);
+            label4.Location = new Point(20, 177);
             label4.Name = "label4";
-            label4.Size = new Size(59, 15);
+            label4.Size = new Size(68, 19);
             label4.TabIndex = 8;
             label4.Text = "Comissão";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(377, 211);
+            label5.Font = new Font("Segoe UI", 10F);
+            label5.Location = new Point(238, 202);
             label5.Name = "label5";
-            label5.Size = new Size(17, 15);
+            label5.Size = new Size(20, 19);
             label5.TabIndex = 9;
             label5.Text = "%";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(74, 14);
+            label6.Name = "label6";
+            label6.Size = new Size(128, 21);
+            label6.TabIndex = 10;
+            label6.Text = "Editar Vendedor";
             // 
             // FormEditarVendedores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(277, 297);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -145,7 +151,6 @@
             Controls.Add(txtComissao);
             Controls.Add(txtCodigo);
             Controls.Add(txtNome);
-            Controls.Add(label1);
             Name = "FormEditarVendedores";
             Text = "Editar Vendedor";
             ResumeLayout(false);
@@ -153,8 +158,6 @@
         }
 
         #endregion
-
-        private Label label1;
         private TextBox txtNome;
         private TextBox txtCodigo;
         private TextBox txtComissao;
@@ -164,5 +167,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label label6;
     }
 }

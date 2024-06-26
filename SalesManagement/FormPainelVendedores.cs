@@ -19,47 +19,40 @@ namespace SalesManagement
         {
             InitializeComponent();
 
-            // Propriedades dataGridView
-            ListaComerciais.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Resize automático das colunas
-            ListaComerciais.AllowUserToAddRows = false; // Não permitir adicionar linhas
+            // Define os nomes internos das colunas
+            string[] nomeColunas = {
+                "ID",
+                "nome",
+                "comissao",
+                "totalVendasAnual",
+                "totalVendasMes",
+                "aReceberMensal",
+                "aReceberAnual"
+            };
 
-            // Adicionar colunas (nomes internos e visíveis)
-            ListaComerciais.Columns.Add("ID", "Código");
-            ListaComerciais.Columns.Add("nome", "Nome");
-            ListaComerciais.Columns.Add("comissao", "Comissão");
-            ListaComerciais.Columns.Add("totalVendasAnual", "Total de Vendas (Anual)");
-            ListaComerciais.Columns.Add("totalVendasMes", "Total de Vendas (Mês Corrente)");
-            ListaComerciais.Columns.Add("aReceberMensal", "A Receber (Mês)");
-            ListaComerciais.Columns.Add("aReceberAnual", "Valor faturado (Anual)");
+            // Define os nomes visiveis das colunas
+            string[] nomeColunasVisivel = {
+                "Código",
+                "Nome",
+                "Comissão",
+                "Total de Vendas (Anual)",
+                "Total de Vendas (Mês Corrente)",
+                "A Receber (Mês)",
+                "Valor faturado (Anual)"
+            };
 
-            // Adição de botão de Editar
-            DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
-            btnEditar.Name = "Editar"; // Nome da coluna
-            btnEditar.HeaderText = "Editar"; // Cabeçalho da coluna
-            btnEditar.Text = "Editar"; // Texto do botão
-            btnEditar.UseColumnTextForButtonValue = true; // Usar o texto da coluna para o botão
-            ListaComerciais.Columns.Add(btnEditar); // Adicionar a coluna à tabela
+            // Define se as colunas são editáveis
+            bool[] colunasReadOnly = { true, true, true, true, true, true, true };
 
-            // Adição de botão de Eliminar
-            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
-            btnEliminar.Name = "Eliminar";
-            btnEliminar.HeaderText = "Eliminar";
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseColumnTextForButtonValue = true;
-            ListaComerciais.Columns.Add(btnEliminar);
+            // Configura se os botões de editar e eliminar estão visíveis
+            bool botaoEditar = true;
+            bool botaoEliminar = true;
 
-            // Desativar a edição das células ID, totalVendas e aReceber
-            foreach (DataGridViewColumn column in ListaComerciais.Columns)
-                column.ReadOnly = true;
+            // Cria a tabela
+            OperacoesGerais.ConfigurarDataGridView(ListaComerciais, nomeColunas, nomeColunasVisivel, colunasReadOnly, botaoEditar, botaoEliminar);
 
             // Carregar Dados da base de dados
             LoadData();
-
-            if (!Globals.admin)
-            {
-                btnEliminar.Visible = false;
-                btnEditar.Visible = false;
-            }
         }
 
         // Função que carrega os dados da base de dados
@@ -123,56 +116,6 @@ namespace SalesManagement
             }
         }
 
-        private void ApagarComercial(string id)
-        {
-            try
-            {
-                // Inicializar a classe DatabaseHelper
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                // Query para selecionar o utilizador
-                string selectQuery = "DELETE FROM Vendedores WHERE codigo = @codigoComercial";
-
-                // Parâmetros para a query
-                SqlParameter param1 = new SqlParameter("@codigoComercial", SqlDbType.VarChar) { Value = id };
-
-                // Obter o resultado da query
-                dbHelper.ExecuteQuery(selectQuery, param1);
-
-                MessageBox.Show("O comercial foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Carrega os dados novamente para atualizar a lista
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao tentar apagar o comercial: " + ex.Message);
-            }
-        }
-
-        private void EditItem(int rowIndex)
-        {
-            string id = ListaComerciais.Rows[rowIndex].Cells["id"].Value.ToString();
-            string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
-            string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
-
-            FormEditarVendedores formEditarVendedores = new FormEditarVendedores(id, nome, comissao);
-            formEditarVendedores.ShowDialog();
-
-            LoadData();
-        }
-
-        private void DeleteItem(int rowIndex)
-        {
-            string id = ListaComerciais.Rows[rowIndex].Cells["ID"].Value.ToString();
-            DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (DialogResult == DialogResult.Yes)
-            {
-                ApagarComercial(id);
-            }
-        }
-
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             FormInicial FormInicial = new FormInicial();
@@ -188,10 +131,27 @@ namespace SalesManagement
             {
                 string opcao = ListaComerciais.Columns[e.ColumnIndex].Name;
 
+                string id = ListaComerciais.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                string nome = ListaComerciais.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                string comissao = ListaComerciais.Rows[e.RowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
+
                 if (opcao == "Editar")
-                    EditItem(e.RowIndex); // Controla o botão de Editar
+                {
+                    FormEditarVendedores formEditarVendedores = new FormEditarVendedores(id, nome, comissao);
+                    formEditarVendedores.ShowDialog();
+                }
                 else if (opcao == "Eliminar")
-                    DeleteItem(e.RowIndex); // Controla o botão de Eliminar
+                {
+                    DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (DialogResult == DialogResult.Yes)
+                    {
+                        Vendedores.ApagarComercial(id);
+
+                        // Carrega os dados novamente para atualizar a lista
+                        LoadData();
+                    }
+                }
             }
         }
 
@@ -244,9 +204,6 @@ namespace SalesManagement
             LoadData();
         }
 
-        private void FormVendedores_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void FormVendedores_Load(object sender, EventArgs e) { }
     }
 }

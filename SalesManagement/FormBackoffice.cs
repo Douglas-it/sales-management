@@ -255,29 +255,21 @@ namespace SalesManagement
             labelSenha.Visible = true;
             checkYes.Visible = true;
             btnModificarConta.Visible = true;
-
-
-            try
+            
+            // Retorna as informações do utilizador
+            foreach (DataRow row in Utilizadores.ObterInformacaoUtilizador(utilizador).Rows)
             {
-                // Retorna as informações do utilizador
-                foreach (DataRow row in Utilizadores.ObterInformacaoUtilizador(utilizador).Rows)
-                {
-                    txtNomeUser.Text = row["Utilizador"].ToString();
+                txtNomeUser.Text = row["Utilizador"].ToString();
 
-                    // Lista os cargos
-                    Cargos.ListarCargos(comboCargos);
+                // Lista os cargos
+                Cargos.ListarCargos(comboCargos);
 
-                    // Obtem o nome do cargo com base no ID
-                    string cargoNome = Cargos.ObterCargoNome(row["Cargo"].ToString());
+                // Obtem o nome do cargo com base no ID
+                string cargoNome = Cargos.ObterCargoNome(row["Cargo"].ToString());
 
-                    comboCargos.Text = cargoNome;
+                comboCargos.Text = cargoNome;
 
-                    txtUserId.Text = row["id"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar a informação: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtUserId.Text = row["id"].ToString();
             }
         }
 

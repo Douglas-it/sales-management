@@ -35,8 +35,6 @@
             btnPesquisar = new Button();
             ListaVendas = new DataGridView();
             btnVenda = new Button();
-            btnListar = new Button();
-            btnConsulta = new Button();
             ((System.ComponentModel.ISupportInitialize)ListaVendas).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +52,7 @@
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(713, 12);
+            btnSair.Location = new Point(919, 12);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(75, 23);
             btnSair.TabIndex = 13;
@@ -65,7 +63,7 @@
             // btnLimpar
             // 
             btnLimpar.Cursor = Cursors.Hand;
-            btnLimpar.Location = new Point(732, 43);
+            btnLimpar.Location = new Point(940, 74);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(56, 26);
             btnLimpar.TabIndex = 20;
@@ -75,7 +73,7 @@
             // inputPesquisa
             // 
             inputPesquisa.Cursor = Cursors.IBeam;
-            inputPesquisa.Location = new Point(388, 44);
+            inputPesquisa.Location = new Point(596, 75);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
             inputPesquisa.Size = new Size(257, 23);
@@ -84,7 +82,7 @@
             // btnPesquisar
             // 
             btnPesquisar.Cursor = Cursors.Hand;
-            btnPesquisar.Location = new Point(651, 43);
+            btnPesquisar.Location = new Point(859, 74);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(75, 26);
             btnPesquisar.TabIndex = 19;
@@ -94,15 +92,16 @@
             // ListaVendas
             // 
             ListaVendas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ListaVendas.Location = new Point(12, 75);
+            ListaVendas.Location = new Point(12, 106);
             ListaVendas.Name = "ListaVendas";
-            ListaVendas.Size = new Size(776, 332);
+            ListaVendas.Size = new Size(984, 444);
             ListaVendas.TabIndex = 18;
+            ListaVendas.CellContentClick += ListaVendas_CellContentClick;
             // 
             // btnVenda
             // 
             btnVenda.Cursor = Cursors.Hand;
-            btnVenda.Location = new Point(12, 43);
+            btnVenda.Location = new Point(12, 74);
             btnVenda.Name = "btnVenda";
             btnVenda.Size = new Size(91, 23);
             btnVenda.TabIndex = 17;
@@ -110,31 +109,11 @@
             btnVenda.UseVisualStyleBackColor = true;
             btnVenda.Click += btnVenda_Click;
             // 
-            // btnListar
-            // 
-            btnListar.Location = new Point(109, 43);
-            btnListar.Name = "btnListar";
-            btnListar.Size = new Size(91, 23);
-            btnListar.TabIndex = 21;
-            btnListar.Text = "Listar";
-            btnListar.UseVisualStyleBackColor = true;
-            // 
-            // btnConsulta
-            // 
-            btnConsulta.Location = new Point(217, 43);
-            btnConsulta.Name = "btnConsulta";
-            btnConsulta.Size = new Size(91, 23);
-            btnConsulta.TabIndex = 22;
-            btnConsulta.Text = "Consultar";
-            btnConsulta.UseVisualStyleBackColor = true;
-            // 
             // FormVendas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnConsulta);
-            Controls.Add(btnListar);
+            ClientSize = new Size(1008, 562);
             Controls.Add(btnLimpar);
             Controls.Add(inputPesquisa);
             Controls.Add(btnPesquisar);
@@ -160,7 +139,5 @@
         private Button btnPesquisar;
         private DataGridView ListaVendas;
         private Button btnVenda;
-        private Button btnListar;
-        private Button btnConsulta;
     }
 }

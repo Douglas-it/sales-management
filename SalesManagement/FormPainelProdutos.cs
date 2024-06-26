@@ -16,38 +16,33 @@ namespace SalesManagement
         public FormProdutos()
         {
             InitializeComponent();
-            // Propriedades Dara GridView
-            ListaProdutos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Resize Autómatico das colunas
-            ListaProdutos.AllowUserToAddRows = false; // Não Permitir add Linhas
 
-            // Adicionar colunas (nomes internos visiveis)
-            ListaProdutos.Columns.Add("Codigo", "Código");
-            ListaProdutos.Columns.Add("Nome", "Nome");
-            ListaProdutos.Columns.Add("Preco", "Preço");
-            ListaProdutos.Columns.Add("codigocategoria", "Categoria");
+            // Define os nomes internos das colunas
+            string[] nomeColunas = { 
+                "Codigo",
+                "Nome",
+                "Preco",
+                "codigocategoria"
+            };
 
+            // Define os nomes visiveis das colunas
+            string[] nomeColunasVisivel =
+            {
+                "Código",
+                "Nome",
+                "Preço",
+                "Categoria"
+            };
 
-            // Adição de botão de Editar
-            DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
-            btnEditar.Name = "Editar"; // Nome da coluna
-            btnEditar.HeaderText = "Editar"; // Cabeçalho da coluna
-            btnEditar.Text = "Editar"; // Texto do botão
-            btnEditar.UseColumnTextForButtonValue = true; // Usar o texto da coluna para o botão
-            ListaProdutos.Columns.Add(btnEditar); // Adicionar a coluna à tabela
+            // Define se as colunas são editáveis
+            bool[] colunasReadOnly = { true, true, true, true };
 
-            // Adição de botão de Eliminar
-            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
-            btnEliminar.Name = "Eliminar";
-            btnEliminar.HeaderText = "Eliminar";
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseColumnTextForButtonValue = true;
-            ListaProdutos.Columns.Add(btnEliminar);
+            // Configura se os botões de editar e eliminar estão visíveis
+            bool btnEditar = true;
+            bool btnEliminar = true;
 
-            // Desativar a edição do codigo do produto
-            ListaProdutos.Columns["Codigo"].ReadOnly = true;
-            ListaProdutos.Columns["Nome"].ReadOnly = true;
-            ListaProdutos.Columns["Preco"].ReadOnly = true;
-            ListaProdutos.Columns["codigocategoria"].ReadOnly = true;
+            // Cria a tabela
+            OperacoesGerais.ConfigurarDataGridView(ListaProdutos, nomeColunas, nomeColunasVisivel, colunasReadOnly, btnEditar, btnEliminar);
 
             // Carregar Dados da base de dados
             LoadData();

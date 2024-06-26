@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Runtime.CompilerServices;
 
 namespace SalesManagement
 {
@@ -113,16 +114,25 @@ namespace SalesManagement
          */
         public static DataTable ObterInformacaoUtilizador(string utilizador)
         {
-            DatabaseHelper dbHelper = new DatabaseHelper();
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
 
-            string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @utilizador";
+                string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @utilizador";
 
-            SqlParameter paramUtilizador = new SqlParameter("@utilizador", SqlDbType.VarChar) { Value = utilizador };
+                SqlParameter paramUtilizador = new SqlParameter("@utilizador", SqlDbType.VarChar) { Value = utilizador };
 
-            DataTable resultado = dbHelper.GetDataTable(selectQuery, paramUtilizador);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramUtilizador);
 
-            // Retorna as informações do utilizador
-            return resultado;
+                // Retorna as informações do utilizador
+                return resultado;
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return null;
         }
 
         /*
@@ -193,22 +203,19 @@ namespace SalesManagement
          * @param username - Nome do utilizador
          * @param password - Password do utilizador
          */
-        public static void Login(string username, string password)
+        public static bool Login(string username, string password)
         {
             try
             {
-                // Inicializar a classe DatabaseHelper
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializar a classe DatabaseHelper
 
-                // Query para selecionar o utilizador
-                string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @Username AND Senha= @Password";
+                string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @Username AND Senha= @Password"; // Query para selecionar o utilizador
 
                 // Parâmetros para a query
                 SqlParameter param1 = new SqlParameter("@Username", SqlDbType.VarChar) { Value = username };
                 SqlParameter param2 = new SqlParameter("@Password", SqlDbType.VarChar) { Value = password };
 
-                // Obter o resultado da query
-                DataTable result = dbHelper.GetDataTable(selectQuery, param1, param2);
+                DataTable result = dbHelper.GetDataTable(selectQuery, param1, param2); // Obter o resultado da query
 
                 // Se o resultado tiver 1 linha, então o utilizador existe
                 if (result.Rows.Count == 1)
@@ -217,26 +224,39 @@ namespace SalesManagement
                     Globals.idUtilizador = result.Rows[0]["Id"].ToString();
                     Globals.nomeUtilizador = result.Rows[0]["Utilizador"].ToString();
 
+                    int cargo = Convert.ToInt32(result.Rows[0]["Cargo"]);// Obtém o Cargo do Utilizador
+
+                    int flag = Convert.ToInt32(result.Rows[0]["flag"]);// Obtém a flag do utilizador
+
                     // Verifica se o utilizador é Admin ou não
-                    if (Convert.ToInt32(result.Rows[0]["Cargo"]) == 1)
+                    if (cargo == 1)
                         Globals.admin = true;
 
-                    if (Convert.ToInt32(result.Rows[0]["flag"]) == 1)
+                    if (flag == 1)
                     {
                         FormLoginAlterarSenha FormLoginAlterarSenha = new FormLoginAlterarSenha();
                         FormLoginAlterarSenha.ShowDialog();
+                        return true;
                     }
-
-                    FormInicial FormInicial = new FormInicial(); // Inicializar novo form
-                    FormInicial.Show(); // Mostra Novo Form
+                    else
+                    {
+                        FormInicial FormInicial = new FormInicial(); // Inicializar novo form
+                        FormInicial.Show(); // Mostra Novo Form
+                        return true;
+                    }
                 }
                 else
+                {
                     MessageBox.Show("Credenciais inválidas!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             catch (Exception ex) // Apanhar exceções
             {
                 MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
+
+            return false;
         }
     }
 }

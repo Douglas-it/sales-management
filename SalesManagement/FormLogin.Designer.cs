@@ -40,45 +40,47 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(29, 68);
+            label1.Font = new Font("Segoe UI", 10F);
+            label1.Location = new Point(21, 59);
             label1.Name = "label1";
-            label1.Size = new Size(57, 15);
+            label1.Size = new Size(67, 19);
             label1.TabIndex = 2;
             label1.Text = "Utilizador";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 129);
+            label3.Font = new Font("Segoe UI", 10F);
+            label3.Location = new Point(21, 120);
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
+            label3.Size = new Size(67, 19);
             label3.TabIndex = 3;
             label3.Text = "Password";
             // 
             // inputUsername
             // 
             inputUsername.Cursor = Cursors.IBeam;
-            inputUsername.Location = new Point(29, 86);
+            inputUsername.Location = new Point(21, 81);
             inputUsername.Name = "inputUsername";
-            inputUsername.Size = new Size(185, 23);
+            inputUsername.Size = new Size(202, 23);
             inputUsername.TabIndex = 4;
             // 
             // inputPassword
             // 
             inputPassword.Cursor = Cursors.IBeam;
-            inputPassword.Location = new Point(29, 147);
+            inputPassword.Location = new Point(21, 142);
             inputPassword.Name = "inputPassword";
             inputPassword.PasswordChar = '*';
-            inputPassword.Size = new Size(185, 23);
+            inputPassword.Size = new Size(202, 23);
             inputPassword.TabIndex = 5;
             inputPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
             btnLogin.Cursor = Cursors.Hand;
-            btnLogin.Location = new Point(29, 192);
+            btnLogin.Location = new Point(21, 187);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(96, 29);
+            btnLogin.Size = new Size(96, 33);
             btnLogin.TabIndex = 6;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -88,7 +90,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(29, 27);
+            label2.Location = new Point(21, 22);
             label2.Name = "label2";
             label2.Size = new Size(51, 21);
             label2.TabIndex = 7;
@@ -97,9 +99,9 @@
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(144, 192);
+            btnSair.Location = new Point(153, 187);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(70, 29);
+            btnSair.Size = new Size(70, 33);
             btnSair.TabIndex = 8;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;

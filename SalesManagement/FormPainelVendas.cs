@@ -16,34 +16,43 @@ namespace SalesManagement
         {
             InitializeComponent();
 
-            // Propriedades dataGridView
-            ListaVendas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Resize automático das colunas
-            ListaVendas.AllowUserToAddRows = false; // Não permitir adicionar linhas
+            // Define os nomes internos das colunas
+            string[] nomeColunas = { 
+                "idProduto",
+                "nomeProduto",
+                "quantidade",
+                "precoUnitarioProduto",
+                "valorVenda",
+                "dataVenda",
+                "codigoVendedor",
+                "nomeVendedor",
+                "zona"
+            };
 
-            // Adicionar colunas (nomes internos e visíveis)
-            ListaVendas.Columns.Add("ID", "Código");
-            ListaVendas.Columns.Add("Produto", "Código Vendedor");
-            ListaVendas.Columns.Add("Categoria", "Zona");
-            ListaVendas.Columns.Add("Preço", "Data Venda");
-            ListaVendas.Columns.Add("Quantidade", "Quantidade");
-            ListaVendas.Columns.Add("Preço", "Preço");
-            ListaVendas.Columns.Add("Quantidade", "Valor Venda");
+            // Define os nomes visiveis das colunas
+            string[] nomeColunasVisivel = {
+                "Código Produto",
+                "Nome Produto",
+                "Quantidade",
+                "Preço Unitário Produto",
+                "Valor Venda",
+                "Data Venda",
+                "Código Vendedor",
+                "Nome Vendedor",
+                "Zona"
+            };
 
-            // Adição de botão de Editar
-            DataGridViewButtonColumn btnEditar = new DataGridViewButtonColumn(); // Criação de uma nova coluna de botão
-            btnEditar.Name = "Editar"; // Nome da coluna
-            btnEditar.HeaderText = "Editar"; // Cabeçalho da coluna
-            btnEditar.Text = "Editar"; // Texto do botão
-            btnEditar.UseColumnTextForButtonValue = true; // Usar o texto da coluna para o botão
-            ListaVendas.Columns.Add(btnEditar); // Adicionar a coluna à tabela
+                
 
-            // Adição de botão de Eliminar
-            DataGridViewButtonColumn btnEliminar = new DataGridViewButtonColumn();
-            btnEliminar.Name = "Eliminar";
-            btnEliminar.HeaderText = "Eliminar";
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseColumnTextForButtonValue = true;
-            ListaVendas.Columns.Add(btnEliminar);
+            // Define se as colunas são editáveis
+            bool[] colunasReadOnly = { true, true, true, true, true, true, true };
+
+            // Configura se os botões de editar e eliminar estão visíveis
+            bool btnEditar = true;
+            bool btnEliminar = true;
+
+            // Cria a tabela
+            OperacoesGerais.ConfigurarDataGridView(ListaVendas, nomeColunas, nomeColunasVisivel, colunasReadOnly, btnEditar, btnEliminar);
 
             // Carregar Dados da base de dados
             LoadData();
@@ -78,7 +87,7 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Query para selecionar o utilizador
-                string selectQuery = "SELECT * FROM vendas";
+                string selectQuery = "SELECT p.Codigo AS CodigoProduto, v.CodigoVendedor AS CodigoVendedor, v.Zona AS Zona, v.DataVenda AS DataVenda, v.Quantidade AS Quantidade, p.Nome AS NomeProduto, v.ValorVenda AS ValorVenda, p.Preco AS PrecoUnitarioProduto, vend.Nome AS NomeVendedor FROM Vendas v INNER JOIN Produtos p ON v.CodigoProduto = p.Codigo INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo;";
 
                 // Obter o resultado da query
                 DataTable resultado = dbHelper.GetDataTable(selectQuery);
@@ -103,14 +112,34 @@ namespace SalesManagement
             {
                 // Adiciona os dados na lista
                 ListaVendas.Rows.Add(
-                    row["Id"].ToString(),
-                    row["CodigoVendedor"].ToString(),
-                    row["Zona"].ToString(),
-                    row["DataVenda"].ToString(),
-                    row["Quantidade"].ToString(),
                     row["CodigoProduto"].ToString(),
-                    row["ValorVenda"].ToString()
-                                                       );
+                    row["NomeProduto"].ToString(),
+                    row["Quantidade"].ToString(),
+                    row["PrecoUnitarioProduto"].ToString() + "€",
+                    row["ValorVenda"].ToString() + "€",
+                    row["DataVenda"].ToString(),
+                    row["CodigoVendedor"].ToString(),
+                    row["NomeVendedor"].ToString(),
+                    row["Zona"].ToString()
+                );
+            }
+        }
+
+        private void ListaVendas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica se a célula clicada é um botão ou não
+            if (e.RowIndex >= 0)
+            {
+                string opcao = ListaVendas.Columns[e.ColumnIndex].Name;
+
+                if (opcao == "Editar")
+                {
+                    MessageBox.Show("Editar");
+                }
+                else if (opcao == "Eliminar")
+                {
+                    MessageBox.Show("Eliminar");
+                }
             }
         }
 
