@@ -116,7 +116,8 @@ namespace SalesManagement
 
         private void btnVenda_Click(object sender, EventArgs e)
         {
-
+            FormVenda frm = new FormVenda();
+            frm.Show();
         }
     }
 }

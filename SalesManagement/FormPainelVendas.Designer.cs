@@ -35,6 +35,8 @@
             btnPesquisar = new Button();
             ListaVendas = new DataGridView();
             btnVenda = new Button();
+            btnListar = new Button();
+            btnConsulta = new Button();
             ((System.ComponentModel.ISupportInitialize)ListaVendas).BeginInit();
             SuspendLayout();
             // 
@@ -96,17 +98,37 @@
             // 
             btnVenda.Location = new Point(12, 43);
             btnVenda.Name = "btnVenda";
-            btnVenda.Size = new Size(136, 23);
+            btnVenda.Size = new Size(91, 23);
             btnVenda.TabIndex = 17;
             btnVenda.Text = "Venda";
             btnVenda.UseVisualStyleBackColor = true;
             btnVenda.Click += btnVenda_Click;
+            // 
+            // btnListar
+            // 
+            btnListar.Location = new Point(109, 43);
+            btnListar.Name = "btnListar";
+            btnListar.Size = new Size(91, 23);
+            btnListar.TabIndex = 21;
+            btnListar.Text = "Listar";
+            btnListar.UseVisualStyleBackColor = true;
+            // 
+            // btnConsulta
+            // 
+            btnConsulta.Location = new Point(217, 43);
+            btnConsulta.Name = "btnConsulta";
+            btnConsulta.Size = new Size(91, 23);
+            btnConsulta.TabIndex = 22;
+            btnConsulta.Text = "Consultar";
+            btnConsulta.UseVisualStyleBackColor = true;
             // 
             // FormVendas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnConsulta);
+            Controls.Add(btnListar);
             Controls.Add(btnLimpar);
             Controls.Add(inputPesquisa);
             Controls.Add(btnPesquisar);
@@ -132,5 +154,7 @@
         private Button btnPesquisar;
         private DataGridView ListaVendas;
         private Button btnVenda;
+        private Button btnListar;
+        private Button btnConsulta;
     }
 }
