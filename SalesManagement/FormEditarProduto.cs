@@ -13,91 +13,62 @@ namespace SalesManagement
 {
     public partial class FormEditarProduto : Form
     {
+        // Inicializa o FormEditarProduto
+        // Recebe dados do produto a ser editado
         public FormEditarProduto(string codigo, string nome, string preco, string nomeCategoria)
         {
             InitializeComponent();
 
-            this.txtCodigo.Text = codigo;
-            this.txtNome.Text = nome;
-            this.txtPreco.Text = preco;
+            this.txtCodigo.Text = codigo; // Preenche o campo de código do Produto
+            this.txtNome.Text = nome; // Preenche o campo de nome do Produto
+            this.txtPreco.Text = preco; // Preenche o campo de preço do Produto
 
-            Produtos.ObterCategorias(comboCategoria);
+            Produtos.ObterCategorias(comboCategoria); // Preenche o combobox de categorias
 
-            this.comboCategoria.Text = nomeCategoria;
+            this.comboCategoria.Text = nomeCategoria; // Atribui a categoria do produto ao combobox
         }
 
-        private void FormEditarProduto_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Botão para guardar as alterações
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Obtém os valores dos campos
             string codigo = txtCodigo.Text;
             string nome = txtNome.Text;
             string preco = txtPreco.Text;
             decimal precoDecimal = Convert.ToDecimal(preco);
             string categoria = comboCategoria.Text;
 
+            // Verifica se o produto já foi vendido
             if (!Produtos.VerificarProduto(codigo))
             {
                 MessageBox.Show("Não é possível editar o produto, pois o mesmo já foi vendido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Verifica se os campos estão preenchidos de forma correta
             if (
-                    !OperacoesGerais.LerStringValida(codigo) ||
-                    !OperacoesGerais.LerStringValida(nome) ||
-                    !OperacoesGerais.LerStringValida(preco)
-                    )
+                !OperacoesGerais.LerStringValida(codigo) ||
+                !OperacoesGerais.LerStringValida(nome) ||
+                !OperacoesGerais.LerStringValida(preco)
+                )
             {
                 MessageBox.Show("Por favor, preencha todos os campos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Lógica para Alterar o Produto
-            try
-            {
+            Produtos.AdicionarProduto(codigo, nome, precoDecimal, categoria);
 
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string updateQuery = "UPDATE produtos SET Nome = @nome, Preco = @preco, CodigoCategoria = @categoria WHERE Codigo = @codigo";
-
-                MessageBox.Show($"{Produtos.ObterIdCategoria(categoria)}");
-
-                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
-                SqlParameter paramPreco = new SqlParameter("@preco", SqlDbType.Decimal) { Value = precoDecimal };
-                SqlParameter paramCategoria = new SqlParameter("@categoria", SqlDbType.VarChar) { Value = Produtos.ObterIdCategoria(categoria) };
-                SqlParameter paramCodigo = new SqlParameter("@codigo", SqlDbType.VarChar) { Value = codigo };
-
-                dbHelper.ExecuteQuery(updateQuery, paramNome, paramPreco, paramCategoria, paramCodigo);
-
-                MessageBox.Show("Produto alterado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao alterar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-
-        }
-
-        private void FormEditarProduto_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
+            this.Close();
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void FormEditarProduto_FormClosed(object sender, FormClosedEventArgs e) { }
+        private void FormEditarProduto_Load(object sender, EventArgs e) { }
+        private void textBox2_TextChanged(object sender, EventArgs e) { }
     }
 }

@@ -221,27 +221,18 @@ namespace SalesManagement
                 return;
             }
 
-            try
+            // Verifica se o utilizador a eliminar é o mesmo que esta com a sessão iniciada.
+            if (utilizador == Globals.nomeUtilizador)
             {
-                // Verifica se o utilizador a eliminar é o mesmo que esta com a sessão iniciada.
-                if (utilizador == Globals.nomeUtilizador)
-                {
-                    MessageBox.Show("Não é possível eliminar o utilizador que esta a utilizar.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Elimina o utilizador
-                Utilizadores.EliminarUtilizador(utilizador);
-
-                MessageBox.Show($"O utilizador {utilizador} foi eliminado com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Atualiza a lista de utilizadores
-                Utilizadores.ObterUtilizadores(selectUsername);
+                MessageBox.Show("Não é possível eliminar o utilizador que esta a utilizar.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao listar utilizadores: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            // Elimina o utilizador
+            Utilizadores.EliminarUtilizador(utilizador);
+
+            // Atualiza a lista de utilizadores
+            Utilizadores.ObterUtilizadores(selectUsername);
         }
 
         // Botão de obter os dados de um utilizador
