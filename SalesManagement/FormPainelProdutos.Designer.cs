@@ -33,7 +33,6 @@
             btnPesquisar = new Button();
             btnSair = new Button();
             ListaProdutos = new DataGridView();
-            btnNovoProduto = new Button();
             btnVoltar = new Button();
             ((System.ComponentModel.ISupportInitialize)ListaProdutos).BeginInit();
             SuspendLayout();
@@ -41,10 +40,9 @@
             // btnLimpar
             // 
             btnLimpar.Cursor = Cursors.Hand;
-            btnLimpar.Location = new Point(837, 101);
-            btnLimpar.Margin = new Padding(3, 4, 3, 4);
+            btnLimpar.Location = new Point(732, 76);
             btnLimpar.Name = "btnLimpar";
-            btnLimpar.Size = new Size(64, 35);
+            btnLimpar.Size = new Size(56, 26);
             btnLimpar.TabIndex = 22;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = true;
@@ -52,21 +50,19 @@
             // inputPesquisa
             // 
             inputPesquisa.Cursor = Cursors.IBeam;
-            inputPesquisa.Location = new Point(405, 105);
-            inputPesquisa.Margin = new Padding(3, 4, 3, 4);
+            inputPesquisa.Location = new Point(354, 79);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome ou código ou categoria";
-            inputPesquisa.Size = new Size(333, 27);
+            inputPesquisa.Size = new Size(292, 23);
             inputPesquisa.TabIndex = 16;
             inputPesquisa.TextChanged += inputPesquisa_TextChanged;
             // 
             // btnPesquisar
             // 
             btnPesquisar.Cursor = Cursors.Hand;
-            btnPesquisar.Location = new Point(744, 101);
-            btnPesquisar.Margin = new Padding(3, 4, 3, 4);
+            btnPesquisar.Location = new Point(651, 76);
             btnPesquisar.Name = "btnPesquisar";
-            btnPesquisar.Size = new Size(86, 35);
+            btnPesquisar.Size = new Size(75, 26);
             btnPesquisar.TabIndex = 21;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
@@ -75,10 +71,9 @@
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(815, 13);
-            btnSair.Margin = new Padding(3, 4, 3, 4);
+            btnSair.Location = new Point(713, 10);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(86, 31);
+            btnSair.Size = new Size(75, 23);
             btnSair.TabIndex = 20;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -87,32 +82,19 @@
             // ListaProdutos
             // 
             ListaProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ListaProdutos.Location = new Point(14, 143);
-            ListaProdutos.Margin = new Padding(3, 4, 3, 4);
+            ListaProdutos.Location = new Point(12, 107);
             ListaProdutos.Name = "ListaProdutos";
             ListaProdutos.RowHeadersWidth = 51;
-            ListaProdutos.Size = new Size(887, 443);
+            ListaProdutos.Size = new Size(776, 332);
             ListaProdutos.TabIndex = 19;
             ListaProdutos.CellContentClick += ListaProdutos_CellContentClick;
-            // 
-            // btnNovoProduto
-            // 
-            btnNovoProduto.Cursor = Cursors.Hand;
-            btnNovoProduto.Location = new Point(14, 101);
-            btnNovoProduto.Margin = new Padding(3, 4, 3, 4);
-            btnNovoProduto.Name = "btnNovoProduto";
-            btnNovoProduto.Size = new Size(155, 31);
-            btnNovoProduto.TabIndex = 18;
-            btnNovoProduto.Text = "Novo Produto";
-            btnNovoProduto.UseVisualStyleBackColor = true;
             // 
             // btnVoltar
             // 
             btnVoltar.Cursor = Cursors.Hand;
-            btnVoltar.Location = new Point(14, 13);
-            btnVoltar.Margin = new Padding(3, 4, 3, 4);
+            btnVoltar.Location = new Point(12, 10);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(86, 31);
+            btnVoltar.Size = new Size(75, 23);
             btnVoltar.TabIndex = 17;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = true;
@@ -120,17 +102,15 @@
             // 
             // FormProdutos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(btnLimpar);
             Controls.Add(inputPesquisa);
             Controls.Add(btnPesquisar);
             Controls.Add(btnSair);
             Controls.Add(ListaProdutos);
-            Controls.Add(btnNovoProduto);
             Controls.Add(btnVoltar);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormProdutos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Produtos";
@@ -147,7 +127,6 @@
         private Button btnPesquisar;
         private Button btnSair;
         private DataGridView ListaProdutos;
-        private Button btnNovoProduto;
         private Button btnVoltar;
     }
 }

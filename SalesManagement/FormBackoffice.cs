@@ -220,7 +220,7 @@ namespace SalesManagement
                 MessageBox.Show("O utilizador não é válido");
                 return;
             }
-            
+
             try
             {
                 // Verifica se o utilizador a eliminar é o mesmo que esta com a sessão iniciada.
@@ -289,6 +289,132 @@ namespace SalesManagement
                 MessageBox.Show("Erro ao listar a informação: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnAdicionarVendedor_Click(object sender, EventArgs e)
+        {
+            HideTabs(); // Esconde todas as tabs
+            ShowTab(tabAdicionarVendedor); // Mostra a tab de adicionar vendedor
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            // Definição de Variáveis
+            string codigo = inputCodigo.Text;
+            string nome = inputNome.Text;
+            string comissao = inputComissao.Text;
+
+            if (
+                !OperacoesGerais.LerStringValida(codigo) ||
+                !OperacoesGerais.LerStringValida(nome) || !OperacoesGerais.LerDecimalValido(comissao, 0, 100)
+                )
+            {
+                MessageBox.Show("Por favor, preencha todos os campos corretamente!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                inputCodigo.Text = "";
+                inputNome.Text = "";
+                inputComissao.Text = "";
+
+                return;
+            }
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para verificar se o vendedor existe com base no código inserido pelo utilizador
+                string selectQuery = "SELECT * FROM Vendedores WHERE Codigo = @Codigo";
+
+                // Parâmetros para a Query
+                SqlParameter selectParam = new SqlParameter("@Codigo", SqlDbType.VarChar) { Value = codigo };
+
+                // Executa a query e retorna o resultado
+                DataTable result = dbHelper.GetDataTable(selectQuery, selectParam);
+
+                // Se não existerem rows ==> Adiciona o novo Comercial
+                if (result.Rows.Count == 0)
+                {
+                    string insertQuery = "INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES (@Codigo, @Nome, @Comissao)";
+
+                    SqlParameter insertParam1 = new SqlParameter("@Codigo", SqlDbType.VarChar) { Value = codigo };
+                    SqlParameter insertParam2 = new SqlParameter("@Nome", SqlDbType.VarChar) { Value = nome };
+                    SqlParameter insertParam3 = new SqlParameter("@Comissao", SqlDbType.Float) { Value = comissao };
+
+                    dbHelper.ExecuteQuery(insertQuery, insertParam1, insertParam2, insertParam3);
+
+                    MessageBox.Show("Comercial adicionado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Já existe um comercial com esse código!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+            }
+
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnAdicionarProduto_Click(object sender, EventArgs e)
+        {
+            HideTabs();
+            ShowTab(tabAdicionarProduto);
+
+            Produtos.ObterCategorias(comboCategoriasProduto);
+        }
+
+        private void btnAdicionarArtigo_Click(object sender, EventArgs e)
+        {
+            string nome = txtNomeProduto.Text;
+            string codigo = txtCodigoProduto.Text;
+            string preco = txtPrecoProduto.Text;
+            string categoria = comboCategoriasProduto.Text;
+
+            if (
+                !OperacoesGerais.LerStringValida(nome) ||
+                !OperacoesGerais.LerStringValida(codigo) ||
+                !OperacoesGerais.LerDecimalValido(preco, 0, 1000)
+                )
+            {
+                MessageBox.Show("Por favor, preencha todos os campos corretamente!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Produtos.VerificarIdProduto(codigo))
+            {
+                MessageBox.Show("Já existe um produto com esse código!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string insertQuery = "INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES (@codigo, @nome, @CodigoCategoria, @preco)";
+
+                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
+                SqlParameter paramCodigo = new SqlParameter("@codigo", SqlDbType.VarChar) { Value = codigo };
+                SqlParameter paramPreco = new SqlParameter("@preco", SqlDbType.Float) { Value = preco };
+                SqlParameter paramCategoria = new SqlParameter("@CodigoCategoria", SqlDbType.VarChar) { Value = Produtos.ObterIdCategoria(categoria) };
+
+                dbHelper.ExecuteQuery(insertQuery, paramNome, paramCodigo, paramPreco, paramCategoria);
+
+                MessageBox.Show("Produto adicionado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtNomeProduto.Text = "";
+                txtCodigoProduto.Text = "";
+                txtPrecoProduto.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar adicionar o produto: " + ex.Message);
+            }
+        }
+
 
         private void tabAlterarConta_Click(object sender, EventArgs e) { }
 

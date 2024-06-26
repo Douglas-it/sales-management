@@ -49,21 +49,14 @@ namespace SalesManagement
             ListaComerciais.Columns.Add(btnEliminar);
 
             // Desativar a edição das células ID, totalVendas e aReceber
-            ListaComerciais.Columns["totalVendasAnual"].ReadOnly = true;
-            ListaComerciais.Columns["totalVendasMes"].ReadOnly = true;
-            ListaComerciais.Columns["aReceberMensal"].ReadOnly = true;
-            ListaComerciais.Columns["aReceberAnual"].ReadOnly = true;
-            ListaComerciais.Columns["ID"].ReadOnly = true;
+            foreach (DataGridViewColumn column in ListaComerciais.Columns)
+                column.ReadOnly = true;
 
             // Carregar Dados da base de dados
             LoadData();
 
             if (!Globals.admin)
             {
-                foreach (DataGridViewColumn column in ListaComerciais.Columns)
-                    column.ReadOnly = true;
-
-                btnNovoComercial.Enabled = false;
                 btnEliminar.Visible = false;
                 btnEditar.Visible = false;
             }
@@ -157,57 +150,16 @@ namespace SalesManagement
             }
         }
 
-        private void EditarComercial(string id, string nome, decimal comissao)
-        {
-            try
-            {
-                // Inicializar a classe DatabaseHelper
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                // Query para selecionar o utilizador
-                string selectQuery = "UPDATE Vendedores SET nome = @nomeComercial, comissao = @comissaoComercial WHERE codigo = @codigoComercial";
-
-                // Parâmetros para a query
-                SqlParameter param1 = new SqlParameter("@nomeComercial", SqlDbType.VarChar) { Value = nome };
-                SqlParameter param2 = new SqlParameter("@comissaoComercial", SqlDbType.Decimal) { Value = comissao };
-                SqlParameter param3 = new SqlParameter("@codigoComercial", SqlDbType.VarChar) { Value = id };
-
-                // Obter o resultado da query
-                dbHelper.ExecuteQuery(selectQuery, param1, param2, param3);
-
-                MessageBox.Show("O comercial foi atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Carrega os dados novamente para atualizar a lista
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao tentar atualizar o comercial: " + ex.Message);
-            }
-        }
-
         private void EditItem(int rowIndex)
         {
-            DialogResult = MessageBox.Show($"Tem a certeza que deseja alterar?", "Alterar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            string id = ListaComerciais.Rows[rowIndex].Cells["id"].Value.ToString();
+            string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
+            string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
 
-            if (DialogResult == DialogResult.Yes)
-            {
-                string id = ListaComerciais.Rows[rowIndex].Cells["id"].Value.ToString();
-                string nome = ListaComerciais.Rows[rowIndex].Cells["nome"].Value.ToString();
-                string comissao = ListaComerciais.Rows[rowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
+            FormEditarVendedores formEditarVendedores = new FormEditarVendedores(id, nome, comissao);
+            formEditarVendedores.ShowDialog();
 
-                // Inicializa a classe DatabaseHelper
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-
-                if (OperacoesGerais.LerDecimalValido(comissao, 0, 100))
-                {
-                    decimal comissaoSemSimbolo = Convert.ToDecimal(comissao);
-                    EditarComercial(id, nome, comissaoSemSimbolo);
-                }
-                else
-                    MessageBox.Show("Por favor insira uma comissão válida!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadData();
         }
 
         private void DeleteItem(int rowIndex)
@@ -249,15 +201,6 @@ namespace SalesManagement
 
             if (DialogResult == DialogResult.Yes)
                 Application.Exit();
-        }
-
-        private void btnNovoComercial_Click(object sender, EventArgs e)
-        {
-            FormNovoComercial novoComercial = new FormNovoComercial();
-            DialogResult = novoComercial.ShowDialog();
-
-            if (DialogResult == DialogResult.OK)
-                LoadData();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)

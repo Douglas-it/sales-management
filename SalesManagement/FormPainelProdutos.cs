@@ -113,6 +113,13 @@ namespace SalesManagement
         private void BotaoApagarProduto(int rowIndex)
         {
             string codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
+
+            if (!Produtos.VerificarProduto(codigo))
+            {
+                MessageBox.Show("Não é possível eliminar o produto, pois o mesmo já foi vendido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult = MessageBox.Show($"Tem a certeza que deseja eliminar?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (DialogResult == DialogResult.Yes)

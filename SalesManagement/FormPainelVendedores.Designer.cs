@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             btnVoltar = new Button();
-            btnNovoComercial = new Button();
             ListaComerciais = new DataGridView();
             btnSair = new Button();
             btnPesquisar = new Button();
@@ -48,17 +47,6 @@
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = true;
             btnVoltar.Click += btnVoltar_Click;
-            // 
-            // btnNovoComercial
-            // 
-            btnNovoComercial.Cursor = Cursors.Hand;
-            btnNovoComercial.Location = new Point(12, 74);
-            btnNovoComercial.Name = "btnNovoComercial";
-            btnNovoComercial.Size = new Size(136, 23);
-            btnNovoComercial.TabIndex = 3;
-            btnNovoComercial.Text = "Novo Comercial";
-            btnNovoComercial.UseVisualStyleBackColor = true;
-            btnNovoComercial.Click += btnNovoComercial_Click;
             // 
             // ListaComerciais
             // 
@@ -121,7 +109,6 @@
             Controls.Add(btnPesquisar);
             Controls.Add(btnSair);
             Controls.Add(ListaComerciais);
-            Controls.Add(btnNovoComercial);
             Controls.Add(btnVoltar);
             Name = "FormVendedores";
             StartPosition = FormStartPosition.CenterScreen;
@@ -135,7 +122,6 @@
         #endregion
 
         private Button btnVoltar;
-        private Button btnNovoComercial;
         private DataGridView ListaComerciais;
         private Button btnSair;
         private Button btnPesquisar;

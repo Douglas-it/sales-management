@@ -73,11 +73,37 @@
             selectUsername = new ComboBox();
             label6 = new Label();
             btnEliminar = new Button();
+            tabAdicionarVendedor = new TabPage();
+            label10 = new Label();
+            btnAdicionar = new Button();
+            inputComissao = new TextBox();
+            inputNome = new TextBox();
+            inputCodigo = new TextBox();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            btnVoltar = new Button();
+            tabAdicionarProduto = new TabPage();
+            label21 = new Label();
+            label20 = new Label();
+            label19 = new Label();
+            label18 = new Label();
+            comboCategoriasProduto = new ComboBox();
+            txtPrecoProduto = new TextBox();
+            txtNomeProduto = new TextBox();
+            txtCodigoProduto = new TextBox();
+            label17 = new Label();
+            btnCancelar = new Button();
+            btnAdicionarArtigo = new Button();
             label12 = new Label();
+            btnAdicionarVendedor = new Button();
+            btnAdicionarProduto = new Button();
             tabControl.SuspendLayout();
             tabCriarConta.SuspendLayout();
             tabAlterarConta.SuspendLayout();
             tabEliminarConta.SuspendLayout();
+            tabAdicionarVendedor.SuspendLayout();
+            tabAdicionarProduto.SuspendLayout();
             SuspendLayout();
             // 
             // btnLogout
@@ -112,7 +138,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(12, 306);
+            button2.Location = new Point(12, 756);
             button2.Name = "button2";
             button2.Size = new Size(136, 42);
             button2.TabIndex = 18;
@@ -144,6 +170,8 @@
             tabControl.Controls.Add(tabCriarConta);
             tabControl.Controls.Add(tabAlterarConta);
             tabControl.Controls.Add(tabEliminarConta);
+            tabControl.Controls.Add(tabAdicionarVendedor);
+            tabControl.Controls.Add(tabAdicionarProduto);
             tabControl.Location = new Point(154, 48);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
@@ -543,6 +571,218 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
+            // tabAdicionarVendedor
+            // 
+            tabAdicionarVendedor.Controls.Add(label10);
+            tabAdicionarVendedor.Controls.Add(btnAdicionar);
+            tabAdicionarVendedor.Controls.Add(inputComissao);
+            tabAdicionarVendedor.Controls.Add(inputNome);
+            tabAdicionarVendedor.Controls.Add(inputCodigo);
+            tabAdicionarVendedor.Controls.Add(label14);
+            tabAdicionarVendedor.Controls.Add(label15);
+            tabAdicionarVendedor.Controls.Add(label16);
+            tabAdicionarVendedor.Controls.Add(btnVoltar);
+            tabAdicionarVendedor.Location = new Point(4, 24);
+            tabAdicionarVendedor.Name = "tabAdicionarVendedor";
+            tabAdicionarVendedor.Padding = new Padding(3);
+            tabAdicionarVendedor.Size = new Size(1103, 726);
+            tabAdicionarVendedor.TabIndex = 3;
+            tabAdicionarVendedor.Text = "Adicionar Vendedor";
+            tabAdicionarVendedor.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(19, 23);
+            label10.Name = "label10";
+            label10.Size = new Size(126, 21);
+            label10.TabIndex = 35;
+            label10.Text = "Novo Vendedor";
+            // 
+            // btnAdicionar
+            // 
+            btnAdicionar.Location = new Point(204, 221);
+            btnAdicionar.Name = "btnAdicionar";
+            btnAdicionar.Size = new Size(75, 23);
+            btnAdicionar.TabIndex = 34;
+            btnAdicionar.Text = "Adicionar";
+            btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
+            // 
+            // inputComissao
+            // 
+            inputComissao.Location = new Point(40, 184);
+            inputComissao.Name = "inputComissao";
+            inputComissao.Size = new Size(239, 23);
+            inputComissao.TabIndex = 33;
+            // 
+            // inputNome
+            // 
+            inputNome.Location = new Point(40, 131);
+            inputNome.Name = "inputNome";
+            inputNome.Size = new Size(239, 23);
+            inputNome.TabIndex = 32;
+            // 
+            // inputCodigo
+            // 
+            inputCodigo.Location = new Point(40, 79);
+            inputCodigo.Name = "inputCodigo";
+            inputCodigo.Size = new Size(239, 23);
+            inputCodigo.TabIndex = 31;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(40, 166);
+            label14.Name = "label14";
+            label14.Size = new Size(59, 15);
+            label14.TabIndex = 30;
+            label14.Text = "Comissão";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(40, 113);
+            label15.Name = "label15";
+            label15.Size = new Size(40, 15);
+            label15.TabIndex = 29;
+            label15.Text = "Nome";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(40, 61);
+            label16.Name = "label16";
+            label16.Size = new Size(46, 15);
+            label16.TabIndex = 28;
+            label16.Text = "Código";
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.Location = new Point(40, 221);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(75, 23);
+            btnVoltar.TabIndex = 27;
+            btnVoltar.Text = "Cancelar";
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
+            // 
+            // tabAdicionarProduto
+            // 
+            tabAdicionarProduto.Controls.Add(label21);
+            tabAdicionarProduto.Controls.Add(label20);
+            tabAdicionarProduto.Controls.Add(label19);
+            tabAdicionarProduto.Controls.Add(label18);
+            tabAdicionarProduto.Controls.Add(comboCategoriasProduto);
+            tabAdicionarProduto.Controls.Add(txtPrecoProduto);
+            tabAdicionarProduto.Controls.Add(txtNomeProduto);
+            tabAdicionarProduto.Controls.Add(txtCodigoProduto);
+            tabAdicionarProduto.Controls.Add(label17);
+            tabAdicionarProduto.Controls.Add(btnCancelar);
+            tabAdicionarProduto.Controls.Add(btnAdicionarArtigo);
+            tabAdicionarProduto.Location = new Point(4, 24);
+            tabAdicionarProduto.Name = "tabAdicionarProduto";
+            tabAdicionarProduto.Padding = new Padding(3);
+            tabAdicionarProduto.Size = new Size(1103, 726);
+            tabAdicionarProduto.TabIndex = 4;
+            tabAdicionarProduto.Text = "Adicionar Produto";
+            tabAdicionarProduto.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(78, 218);
+            label21.Name = "label21";
+            label21.Size = new Size(58, 15);
+            label21.TabIndex = 10;
+            label21.Text = "Categoria";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(82, 182);
+            label20.Name = "label20";
+            label20.Size = new Size(37, 15);
+            label20.TabIndex = 9;
+            label20.Text = "Preço";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(78, 146);
+            label19.Name = "label19";
+            label19.Size = new Size(40, 15);
+            label19.TabIndex = 8;
+            label19.Text = "Nome";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(78, 102);
+            label18.Name = "label18";
+            label18.Size = new Size(46, 15);
+            label18.TabIndex = 7;
+            label18.Text = "Código";
+            // 
+            // comboCategoriasProduto
+            // 
+            comboCategoriasProduto.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboCategoriasProduto.FormattingEnabled = true;
+            comboCategoriasProduto.Location = new Point(143, 218);
+            comboCategoriasProduto.Name = "comboCategoriasProduto";
+            comboCategoriasProduto.Size = new Size(432, 23);
+            comboCategoriasProduto.TabIndex = 6;
+            // 
+            // txtPrecoProduto
+            // 
+            txtPrecoProduto.Location = new Point(143, 179);
+            txtPrecoProduto.Name = "txtPrecoProduto";
+            txtPrecoProduto.Size = new Size(432, 23);
+            txtPrecoProduto.TabIndex = 5;
+            // 
+            // txtNomeProduto
+            // 
+            txtNomeProduto.Location = new Point(143, 138);
+            txtNomeProduto.Name = "txtNomeProduto";
+            txtNomeProduto.Size = new Size(432, 23);
+            txtNomeProduto.TabIndex = 4;
+            // 
+            // txtCodigoProduto
+            // 
+            txtCodigoProduto.Location = new Point(143, 99);
+            txtCodigoProduto.Name = "txtCodigoProduto";
+            txtCodigoProduto.Size = new Size(432, 23);
+            txtCodigoProduto.TabIndex = 3;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(18, 12);
+            label17.Name = "label17";
+            label17.Size = new Size(104, 15);
+            label17.TabIndex = 2;
+            label17.Text = "Adicionar Produto";
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(835, 522);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(87, 33);
+            btnCancelar.TabIndex = 1;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnAdicionarArtigo
+            // 
+            btnAdicionarArtigo.Location = new Point(942, 522);
+            btnAdicionarArtigo.Name = "btnAdicionarArtigo";
+            btnAdicionarArtigo.Size = new Size(136, 33);
+            btnAdicionarArtigo.TabIndex = 0;
+            btnAdicionarArtigo.Text = "Adicionar Produto";
+            btnAdicionarArtigo.UseVisualStyleBackColor = true;
+            btnAdicionarArtigo.Click += btnAdicionarArtigo_Click;
+            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -553,11 +793,33 @@
             label12.TabIndex = 22;
             label12.Text = "Utilizadores";
             // 
+            // btnAdicionarVendedor
+            // 
+            btnAdicionarVendedor.Location = new Point(12, 302);
+            btnAdicionarVendedor.Name = "btnAdicionarVendedor";
+            btnAdicionarVendedor.Size = new Size(136, 42);
+            btnAdicionarVendedor.TabIndex = 23;
+            btnAdicionarVendedor.Text = "Adicionar Vendedor";
+            btnAdicionarVendedor.UseVisualStyleBackColor = true;
+            btnAdicionarVendedor.Click += btnAdicionarVendedor_Click;
+            // 
+            // btnAdicionarProduto
+            // 
+            btnAdicionarProduto.Location = new Point(12, 359);
+            btnAdicionarProduto.Name = "btnAdicionarProduto";
+            btnAdicionarProduto.Size = new Size(136, 42);
+            btnAdicionarProduto.TabIndex = 24;
+            btnAdicionarProduto.Text = "Adicionar Produto";
+            btnAdicionarProduto.UseVisualStyleBackColor = true;
+            btnAdicionarProduto.Click += btnAdicionarProduto_Click;
+            // 
             // FormBackoffice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1277, 814);
+            Controls.Add(btnAdicionarProduto);
+            Controls.Add(btnAdicionarVendedor);
             Controls.Add(label12);
             Controls.Add(tabControl);
             Controls.Add(btnEliminarConta);
@@ -575,6 +837,10 @@
             tabAlterarConta.PerformLayout();
             tabEliminarConta.ResumeLayout(false);
             tabEliminarConta.PerformLayout();
+            tabAdicionarVendedor.ResumeLayout(false);
+            tabAdicionarVendedor.PerformLayout();
+            tabAdicionarProduto.ResumeLayout(false);
+            tabAdicionarProduto.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -625,5 +891,29 @@
         private Label label11;
         private Label label13;
         private TextBox textBox4;
+        private Button btnAdicionarVendedor;
+        private TabPage tabAdicionarVendedor;
+        private Label label10;
+        private Button btnAdicionar;
+        private TextBox inputComissao;
+        private TextBox inputNome;
+        private TextBox inputCodigo;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Button btnVoltar;
+        private TabPage tabAdicionarProduto;
+        private Button btnAdicionarProduto;
+        private Button btnAdicionarArtigo;
+        private Label label21;
+        private Label label20;
+        private Label label19;
+        private Label label18;
+        private ComboBox comboCategoriasProduto;
+        private TextBox txtPrecoProduto;
+        private TextBox txtNomeProduto;
+        private TextBox txtCodigoProduto;
+        private Label label17;
+        private Button btnCancelar;
     }
 }
