@@ -108,6 +108,7 @@
             // 
             // btnLogout
             // 
+            btnLogout.Cursor = Cursors.Hand;
             btnLogout.Location = new Point(1109, 12);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(75, 23);
@@ -118,6 +119,7 @@
             // 
             // btnSair
             // 
+            btnSair.Cursor = Cursors.Hand;
             btnSair.Location = new Point(1190, 12);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(75, 23);
@@ -128,6 +130,7 @@
             // 
             // btnCriarConta
             // 
+            btnCriarConta.Cursor = Cursors.Hand;
             btnCriarConta.Location = new Point(12, 95);
             btnCriarConta.Name = "btnCriarConta";
             btnCriarConta.Size = new Size(136, 42);
@@ -138,6 +141,7 @@
             // 
             // button2
             // 
+            button2.Cursor = Cursors.Hand;
             button2.Location = new Point(12, 756);
             button2.Name = "button2";
             button2.Size = new Size(136, 42);
@@ -147,6 +151,7 @@
             // 
             // btnAlterarConta
             // 
+            btnAlterarConta.Cursor = Cursors.Hand;
             btnAlterarConta.Location = new Point(12, 143);
             btnAlterarConta.Name = "btnAlterarConta";
             btnAlterarConta.Size = new Size(136, 42);
@@ -157,6 +162,7 @@
             // 
             // btnEliminarConta
             // 
+            btnEliminarConta.Cursor = Cursors.Hand;
             btnEliminarConta.Location = new Point(12, 191);
             btnEliminarConta.Name = "btnEliminarConta";
             btnEliminarConta.Size = new Size(136, 42);
@@ -219,6 +225,7 @@
             // checkSim
             // 
             checkSim.AutoSize = true;
+            checkSim.Cursor = Cursors.Hand;
             checkSim.Location = new Point(201, 572);
             checkSim.Name = "checkSim";
             checkSim.Size = new Size(46, 19);
@@ -279,6 +286,7 @@
             // 
             // btnNovoUtilizador
             // 
+            btnNovoUtilizador.Cursor = Cursors.Hand;
             btnNovoUtilizador.Location = new Point(951, 572);
             btnNovoUtilizador.Name = "btnNovoUtilizador";
             btnNovoUtilizador.Size = new Size(75, 32);
@@ -289,6 +297,7 @@
             // 
             // cargos
             // 
+            cargos.Cursor = Cursors.IBeam;
             cargos.DropDownStyle = ComboBoxStyle.DropDownList;
             cargos.FormattingEnabled = true;
             cargos.Location = new Point(201, 500);
@@ -298,6 +307,7 @@
             // 
             // txtRepeatPassword
             // 
+            txtRepeatPassword.Cursor = Cursors.IBeam;
             txtRepeatPassword.Location = new Point(201, 467);
             txtRepeatPassword.Name = "txtRepeatPassword";
             txtRepeatPassword.PasswordChar = '*';
@@ -306,6 +316,7 @@
             // 
             // txtPassword
             // 
+            txtPassword.Cursor = Cursors.IBeam;
             txtPassword.Location = new Point(201, 433);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
@@ -314,6 +325,7 @@
             // 
             // txtUtilizador
             // 
+            txtUtilizador.Cursor = Cursors.IBeam;
             txtUtilizador.Location = new Point(201, 398);
             txtUtilizador.Name = "txtUtilizador";
             txtUtilizador.Size = new Size(825, 23);
@@ -411,6 +423,7 @@
             // checkYes
             // 
             checkYes.AutoSize = true;
+            checkYes.Cursor = Cursors.Hand;
             checkYes.Location = new Point(232, 428);
             checkYes.Name = "checkYes";
             checkYes.Size = new Size(46, 19);
@@ -431,6 +444,7 @@
             // 
             // btnModificarConta
             // 
+            btnModificarConta.Cursor = Cursors.Hand;
             btnModificarConta.Location = new Point(933, 415);
             btnModificarConta.Name = "btnModificarConta";
             btnModificarConta.Size = new Size(92, 32);
@@ -442,6 +456,7 @@
             // 
             // comboCargos
             // 
+            comboCargos.Cursor = Cursors.Hand;
             comboCargos.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCargos.FormattingEnabled = true;
             comboCargos.Location = new Point(232, 354);
@@ -452,6 +467,7 @@
             // 
             // txtNomeUser
             // 
+            txtNomeUser.Cursor = Cursors.IBeam;
             txtNomeUser.Location = new Point(232, 315);
             txtNomeUser.Name = "txtNomeUser";
             txtNomeUser.Size = new Size(794, 23);
@@ -480,6 +496,7 @@
             // 
             // selecionarUtilizador
             // 
+            selecionarUtilizador.Cursor = Cursors.Hand;
             selecionarUtilizador.DropDownStyle = ComboBoxStyle.DropDownList;
             selecionarUtilizador.FormattingEnabled = true;
             selecionarUtilizador.Location = new Point(232, 177);
@@ -498,6 +515,7 @@
             // 
             // btnObterDados
             // 
+            btnObterDados.Cursor = Cursors.Hand;
             btnObterDados.Location = new Point(916, 216);
             btnObterDados.Name = "btnObterDados";
             btnObterDados.Size = new Size(109, 32);
@@ -545,6 +563,7 @@
             // 
             // selectUsername
             // 
+            selectUsername.Cursor = Cursors.Hand;
             selectUsername.DropDownStyle = ComboBoxStyle.DropDownList;
             selectUsername.FormattingEnabled = true;
             selectUsername.Location = new Point(208, 177);
@@ -563,6 +582,7 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.Location = new Point(917, 216);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(109, 32);
@@ -602,6 +622,7 @@
             // 
             // btnAdicionar
             // 
+            btnAdicionar.Cursor = Cursors.Hand;
             btnAdicionar.Location = new Point(204, 221);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(75, 23);
@@ -612,6 +633,7 @@
             // 
             // inputComissao
             // 
+            inputComissao.Cursor = Cursors.IBeam;
             inputComissao.Location = new Point(40, 184);
             inputComissao.Name = "inputComissao";
             inputComissao.Size = new Size(239, 23);
@@ -619,6 +641,7 @@
             // 
             // inputNome
             // 
+            inputNome.Cursor = Cursors.IBeam;
             inputNome.Location = new Point(40, 131);
             inputNome.Name = "inputNome";
             inputNome.Size = new Size(239, 23);
@@ -626,6 +649,7 @@
             // 
             // inputCodigo
             // 
+            inputCodigo.Cursor = Cursors.IBeam;
             inputCodigo.Location = new Point(40, 79);
             inputCodigo.Name = "inputCodigo";
             inputCodigo.Size = new Size(239, 23);
@@ -660,6 +684,7 @@
             // 
             // btnVoltar
             // 
+            btnVoltar.Cursor = Cursors.Hand;
             btnVoltar.Location = new Point(40, 221);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.Size = new Size(75, 23);
@@ -727,6 +752,7 @@
             // 
             // comboCategoriasProduto
             // 
+            comboCategoriasProduto.Cursor = Cursors.Hand;
             comboCategoriasProduto.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCategoriasProduto.FormattingEnabled = true;
             comboCategoriasProduto.Location = new Point(143, 218);
@@ -736,6 +762,7 @@
             // 
             // txtPrecoProduto
             // 
+            txtPrecoProduto.Cursor = Cursors.IBeam;
             txtPrecoProduto.Location = new Point(143, 179);
             txtPrecoProduto.Name = "txtPrecoProduto";
             txtPrecoProduto.Size = new Size(432, 23);
@@ -743,6 +770,7 @@
             // 
             // txtNomeProduto
             // 
+            txtNomeProduto.Cursor = Cursors.IBeam;
             txtNomeProduto.Location = new Point(143, 138);
             txtNomeProduto.Name = "txtNomeProduto";
             txtNomeProduto.Size = new Size(432, 23);
@@ -750,6 +778,7 @@
             // 
             // txtCodigoProduto
             // 
+            txtCodigoProduto.Cursor = Cursors.IBeam;
             txtCodigoProduto.Location = new Point(143, 99);
             txtCodigoProduto.Name = "txtCodigoProduto";
             txtCodigoProduto.Size = new Size(432, 23);
@@ -766,6 +795,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.Cursor = Cursors.Hand;
             btnCancelar.Location = new Point(835, 522);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(87, 33);
@@ -775,6 +805,7 @@
             // 
             // btnAdicionarArtigo
             // 
+            btnAdicionarArtigo.Cursor = Cursors.Hand;
             btnAdicionarArtigo.Location = new Point(942, 522);
             btnAdicionarArtigo.Name = "btnAdicionarArtigo";
             btnAdicionarArtigo.Size = new Size(136, 33);
@@ -795,6 +826,7 @@
             // 
             // btnAdicionarVendedor
             // 
+            btnAdicionarVendedor.Cursor = Cursors.Hand;
             btnAdicionarVendedor.Location = new Point(12, 302);
             btnAdicionarVendedor.Name = "btnAdicionarVendedor";
             btnAdicionarVendedor.Size = new Size(136, 42);
@@ -805,6 +837,7 @@
             // 
             // btnAdicionarProduto
             // 
+            btnAdicionarProduto.Cursor = Cursors.Hand;
             btnAdicionarProduto.Location = new Point(12, 359);
             btnAdicionarProduto.Name = "btnAdicionarProduto";
             btnAdicionarProduto.Size = new Size(136, 42);

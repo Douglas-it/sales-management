@@ -57,6 +57,7 @@
             // 
             // inputUsername
             // 
+            inputUsername.Cursor = Cursors.IBeam;
             inputUsername.Location = new Point(29, 86);
             inputUsername.Name = "inputUsername";
             inputUsername.Size = new Size(185, 23);
@@ -64,6 +65,7 @@
             // 
             // inputPassword
             // 
+            inputPassword.Cursor = Cursors.IBeam;
             inputPassword.Location = new Point(29, 147);
             inputPassword.Name = "inputPassword";
             inputPassword.PasswordChar = '*';

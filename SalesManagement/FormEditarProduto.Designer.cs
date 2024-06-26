@@ -44,17 +44,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(10, 7);
             label1.Name = "label1";
-            label1.Size = new Size(105, 20);
+            label1.Size = new Size(83, 15);
             label1.TabIndex = 0;
             label1.Text = "Editar Produto";
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(633, 397);
+            btnGuardar.Cursor = Cursors.Hand;
+            btnGuardar.Location = new Point(554, 298);
+            btnGuardar.Margin = new Padding(3, 2, 3, 2);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(155, 29);
+            btnGuardar.Size = new Size(136, 22);
             btnGuardar.TabIndex = 1;
             btnGuardar.Text = "Guardar Alterações";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -62,9 +64,11 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(542, 397);
+            btnCancelar.Cursor = Cursors.Hand;
+            btnCancelar.Location = new Point(474, 298);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(85, 29);
+            btnCancelar.Size = new Size(74, 22);
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -72,77 +76,84 @@
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(146, 166);
+            txtNome.Cursor = Cursors.IBeam;
+            txtNome.Location = new Point(128, 124);
+            txtNome.Margin = new Padding(3, 2, 3, 2);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(610, 27);
+            txtNome.Size = new Size(534, 23);
             txtNome.TabIndex = 3;
             // 
             // txtPreco
             // 
-            txtPreco.Location = new Point(146, 202);
+            txtPreco.Cursor = Cursors.IBeam;
+            txtPreco.Location = new Point(128, 152);
+            txtPreco.Margin = new Padding(3, 2, 3, 2);
             txtPreco.Name = "txtPreco";
-            txtPreco.Size = new Size(610, 27);
+            txtPreco.Size = new Size(534, 23);
             txtPreco.TabIndex = 4;
             txtPreco.TextChanged += textBox2_TextChanged;
             // 
             // txtCodigo
             // 
-            txtCodigo.Location = new Point(146, 126);
+            txtCodigo.Location = new Point(128, 94);
+            txtCodigo.Margin = new Padding(3, 2, 3, 2);
             txtCodigo.Name = "txtCodigo";
             txtCodigo.ReadOnly = true;
-            txtCodigo.Size = new Size(610, 27);
+            txtCodigo.Size = new Size(534, 23);
             txtCodigo.TabIndex = 5;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(55, 126);
+            label2.Location = new Point(48, 94);
             label2.Name = "label2";
-            label2.Size = new Size(58, 20);
+            label2.Size = new Size(46, 15);
             label2.TabIndex = 6;
             label2.Text = "Código";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(63, 166);
+            label3.Location = new Point(55, 124);
             label3.Name = "label3";
-            label3.Size = new Size(50, 20);
+            label3.Size = new Size(40, 15);
             label3.TabIndex = 8;
             label3.Text = "Nome";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(67, 202);
+            label4.Location = new Point(59, 152);
             label4.Name = "label4";
-            label4.Size = new Size(46, 20);
+            label4.Size = new Size(37, 15);
             label4.TabIndex = 9;
             label4.Text = "Preço";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(39, 239);
+            label5.Location = new Point(34, 179);
             label5.Name = "label5";
-            label5.Size = new Size(74, 20);
+            label5.Size = new Size(58, 15);
             label5.TabIndex = 10;
             label5.Text = "Categoria";
             // 
             // comboCategoria
             // 
+            comboCategoria.Cursor = Cursors.Hand;
             comboCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCategoria.FormattingEnabled = true;
-            comboCategoria.Location = new Point(146, 239);
+            comboCategoria.Location = new Point(128, 179);
+            comboCategoria.Margin = new Padding(3, 2, 3, 2);
             comboCategoria.Name = "comboCategoria";
-            comboCategoria.Size = new Size(610, 28);
+            comboCategoria.Size = new Size(534, 23);
             comboCategoria.TabIndex = 11;
             // 
             // FormEditarProduto
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(700, 338);
             Controls.Add(comboCategoria);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -154,6 +165,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormEditarProduto";
             Text = "FormEditarProduto";
             FormClosed += FormEditarProduto_FormClosed;

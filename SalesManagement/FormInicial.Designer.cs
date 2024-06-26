@@ -41,6 +41,7 @@
             // 
             // button1
             // 
+            button1.Cursor = Cursors.Hand;
             button1.Location = new Point(328, 170);
             button1.Name = "button1";
             button1.Size = new Size(156, 36);
@@ -51,6 +52,7 @@
             // 
             // btnProdutos
             // 
+            btnProdutos.Cursor = Cursors.Hand;
             btnProdutos.Location = new Point(328, 212);
             btnProdutos.Name = "btnProdutos";
             btnProdutos.Size = new Size(156, 33);
@@ -61,6 +63,7 @@
             // 
             // btnVendas
             // 
+            btnVendas.Cursor = Cursors.Hand;
             btnVendas.Location = new Point(328, 251);
             btnVendas.Name = "btnVendas";
             btnVendas.Size = new Size(156, 35);
@@ -82,6 +85,7 @@
             // 
             // btnUtilizadores
             // 
+            btnUtilizadores.Cursor = Cursors.Hand;
             btnUtilizadores.Location = new Point(328, 292);
             btnUtilizadores.Name = "btnUtilizadores";
             btnUtilizadores.Size = new Size(156, 35);
@@ -112,6 +116,7 @@
             // 
             // btnSair
             // 
+            btnSair.Cursor = Cursors.Hand;
             btnSair.Location = new Point(713, 61);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(75, 23);
@@ -122,6 +127,7 @@
             // 
             // btnLogout
             // 
+            btnLogout.Cursor = Cursors.Hand;
             btnLogout.Location = new Point(632, 61);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(75, 23);

@@ -51,6 +51,7 @@
             // 
             // txtNome
             // 
+            txtNome.Cursor = Cursors.IBeam;
             txtNome.Location = new Point(318, 162);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(235, 23);
@@ -66,6 +67,7 @@
             // 
             // txtComissao
             // 
+            txtComissao.Cursor = Cursors.IBeam;
             txtComissao.Location = new Point(318, 208);
             txtComissao.Name = "txtComissao";
             txtComissao.Size = new Size(53, 23);
@@ -73,6 +75,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.Cursor = Cursors.Hand;
             btnCancelar.Location = new Point(588, 403);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
@@ -83,6 +86,7 @@
             // 
             // btnEditar
             // 
+            btnEditar.Cursor = Cursors.Hand;
             btnEditar.Location = new Point(701, 403);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
