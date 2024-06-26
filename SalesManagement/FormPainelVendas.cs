@@ -132,13 +132,15 @@ namespace SalesManagement
             {
                 string opcao = ListaVendas.Columns[e.ColumnIndex].Name;
 
+                string codigoProduto = ListaVendas.Rows[e.RowIndex].Cells["idProduto"].Value.ToString();
+
                 if (opcao == "Editar")
                 {
                     MessageBox.Show("Editar");
                 }
                 else if (opcao == "Eliminar")
                 {
-                    MessageBox.Show("Eliminar");
+                    Vendas.EliminarVenda(codigoProduto);
                 }
             }
         }
