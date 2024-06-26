@@ -153,18 +153,74 @@ namespace SalesManagement
         {
             try
             {
+                // Inicializar a classe DatabaseHelper
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
+                // Query para atualizar a senha do utilizador
                 string updateQuery = "UPDATE Utilizadores SET Senha=@password, flag=0 WHERE ID=@id";
 
+                // Parâmetros para a query
                 SqlParameter paramPassword = new SqlParameter("@password", SqlDbType.VarChar) { Value = senha };
                 SqlParameter paramId = new SqlParameter("@id", SqlDbType.Int) { Value = Convert.ToInt32(id) };
 
+                // Executa a query
                 dbHelper.ExecuteQuery(updateQuery, paramPassword, paramId);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao alterar a senha - {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*
+         * Função para realizar o login
+         * 
+         * @param username - Nome do utilizador
+         * @param password - Password do utilizador
+         */
+        public static void Login(string username, string password)
+        {
+            try
+            {
+                // Inicializar a classe DatabaseHelper
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                // Query para selecionar o utilizador
+                string selectQuery = "SELECT * FROM Utilizadores WHERE Utilizador = @Username AND Senha= @Password";
+
+                // Parâmetros para a query
+                SqlParameter param1 = new SqlParameter("@Username", SqlDbType.VarChar) { Value = username };
+                SqlParameter param2 = new SqlParameter("@Password", SqlDbType.VarChar) { Value = password };
+
+                // Obter o resultado da query
+                DataTable result = dbHelper.GetDataTable(selectQuery, param1, param2);
+
+                // Se o resultado tiver 1 linha, então o utilizador existe
+                if (result.Rows.Count == 1)
+                {
+                    // Guardar o ID e o Nome do Utilizador
+                    Globals.idUtilizador = result.Rows[0]["Id"].ToString();
+                    Globals.nomeUtilizador = result.Rows[0]["Utilizador"].ToString();
+
+                    // Verifica se o utilizador é Admin ou não
+                    if (Convert.ToInt32(result.Rows[0]["Cargo"]) == 1)
+                        Globals.admin = true;
+
+                    if (Convert.ToInt32(result.Rows[0]["flag"]) == 1)
+                    {
+                        FormLoginAlterarSenha FormLoginAlterarSenha = new FormLoginAlterarSenha();
+                        FormLoginAlterarSenha.ShowDialog();
+                    }
+
+                    FormInicial FormInicial = new FormInicial(); // Inicializar novo form
+                    FormInicial.Show(); // Mostra Novo Form
+                }
+                else
+                    MessageBox.Show("Credenciais inválidas!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex) // Apanhar exceções
+            {
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }
