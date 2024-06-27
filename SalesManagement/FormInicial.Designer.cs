@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicial));
             button1 = new Button();
             btnProdutos = new Button();
             btnVendas = new Button();
@@ -150,6 +151,7 @@
             Controls.Add(btnVendas);
             Controls.Add(btnProdutos);
             Controls.Add(button1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormInicial";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestão de Vendas";

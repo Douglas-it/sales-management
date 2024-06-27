@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLoginAlterarSenha));
             label4 = new Label();
             btnMudarSenha = new Button();
             inputRepetirSenha = new TextBox();
@@ -117,6 +118,7 @@
             Controls.Add(inputSenha);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FormLoginAlterarSenha";
             StartPosition = FormStartPosition.CenterScreen;

@@ -1145,6 +1145,7 @@
             Controls.Add(btnCriarConta);
             Controls.Add(btnLogout);
             Controls.Add(btnSair);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormBackoffice";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Backoffice";

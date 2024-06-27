@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVendedores));
             btnVoltar = new Button();
             ListaComerciais = new DataGridView();
             btnSair = new Button();
@@ -110,6 +111,7 @@
             Controls.Add(btnSair);
             Controls.Add(ListaComerciais);
             Controls.Add(btnVoltar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormVendedores";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Vendedores";

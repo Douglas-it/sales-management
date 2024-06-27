@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProdutos));
             btnLimpar = new Button();
             inputPesquisa = new TextBox();
             btnPesquisar = new Button();
@@ -111,6 +112,7 @@
             Controls.Add(btnSair);
             Controls.Add(ListaProdutos);
             Controls.Add(btnVoltar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormProdutos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Produtos";

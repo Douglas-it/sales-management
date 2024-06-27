@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditarVendedores));
             txtNome = new TextBox();
             txtCodigo = new TextBox();
             txtComissao = new TextBox();
@@ -151,6 +152,7 @@
             Controls.Add(txtComissao);
             Controls.Add(txtCodigo);
             Controls.Add(txtNome);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEditarVendedores";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Editar Vendedor";

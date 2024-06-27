@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditarProduto));
             label1 = new Label();
             btnGuardar = new Button();
             btnCancelar = new Button();
@@ -172,6 +173,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormEditarProduto";
             StartPosition = FormStartPosition.CenterScreen;
