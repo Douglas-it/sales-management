@@ -117,22 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox5.Text" xml:space="preserve">
-    <value>
-      Para adicionar um novo vendedor ao sistema, é necessário fornecer as seguintes informações:
-      Código do Vendedor - Identificador único para cada vendedor
-      Nome do Vendedor - Ajuda na identificação do vendedor
-      Comissão - Especifique a percentagem de comissão que o vendedor irá receber pelas vendas efetuadas. Este valor deve ser um número que represente a 
-      percentagem (por exemplo, 10 para 10%).</value>
-  </data>
-  <data name="textBox6.Text" xml:space="preserve">
-    <value>
-       Para adicionar um novo produto ao sistema, é necessário fornecer as seguintes informações:
-       Código do Produto - Este é um identificador único para cada produto. Certifique-se de que o código não está em uso por outro produto no sistema.
-       Nome do Produto - Insira o nome completo do produto. Este campo é obrigatório e ajuda a identificar o produto nas diversas operações do sistema.
-       Preço - Especifique o preço unitário do produto. Este valor deve ser um número que represente o custo do produto (por exemplo, 20.50 para vinte euros e 
-       cinquenta cêntimos).</value>
-  </data>
   <data name="textBox2.Text" xml:space="preserve">
     <value>    
      1. Administrador: Controlo total sobre o sistema. Permite fazer alterações nas vendas, comerciais, produtos e tem acesso completo ao backoffice.
@@ -150,5 +134,21 @@
      1. Escolha um utilizador da lista e clique em "Obter Dados".
      2. Após clicar em obter dados, irão aparecer as informações do utilizador para poder editar.
      3. Edite todas as informações necessárias e depois clique em "Alterar Conta".</value>
+  </data>
+  <data name="textBox5.Text" xml:space="preserve">
+    <value>
+      Para adicionar um novo vendedor ao sistema, é necessário fornecer as seguintes informações:
+      Código do Vendedor - Identificador único para cada vendedor
+      Nome do Vendedor - Ajuda na identificação do vendedor
+      Comissão - Especifique a percentagem de comissão que o vendedor irá receber pelas vendas efetuadas. Este valor deve ser um número que represente a 
+      percentagem (por exemplo, 10 para 10%).</value>
+  </data>
+  <data name="textBox6.Text" xml:space="preserve">
+    <value>
+       Para adicionar um novo produto ao sistema, é necessário fornecer as seguintes informações:
+       Código do Produto - Este é um identificador único para cada produto. Certifique-se de que o código não está em uso por outro produto no sistema.
+       Nome do Produto - Insira o nome completo do produto. Este campo é obrigatório e ajuda a identificar o produto nas diversas operações do sistema.
+       Preço - Especifique o preço unitário do produto. Este valor deve ser um número que represente o custo do produto (por exemplo, 20.50 para vinte euros e 
+       cinquenta cêntimos).</value>
   </data>
 </root>

@@ -152,6 +152,7 @@
             Controls.Add(txtCodigo);
             Controls.Add(txtNome);
             Name = "FormEditarVendedores";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Editar Vendedor";
             ResumeLayout(false);
             PerformLayout();

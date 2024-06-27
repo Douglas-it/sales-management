@@ -90,7 +90,7 @@
             btnUtilizadores.Name = "btnUtilizadores";
             btnUtilizadores.Size = new Size(156, 35);
             btnUtilizadores.TabIndex = 4;
-            btnUtilizadores.Text = "Gestão de Utilizadores";
+            btnUtilizadores.Text = "Painel de Administração";
             btnUtilizadores.UseVisualStyleBackColor = true;
             btnUtilizadores.Click += btnUtilizadores_Click;
             // 
@@ -98,7 +98,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(9, 33);
+            label5.Location = new Point(9, 46);
             label5.Name = "label5";
             label5.Size = new Size(782, 25);
             label5.TabIndex = 10;
@@ -108,7 +108,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(9, 10);
+            label4.Location = new Point(9, 23);
             label4.Name = "label4";
             label4.Size = new Size(202, 25);
             label4.TabIndex = 11;
@@ -117,7 +117,7 @@
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(713, 61);
+            btnSair.Location = new Point(713, 74);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(75, 23);
             btnSair.TabIndex = 12;
@@ -128,7 +128,7 @@
             // btnLogout
             // 
             btnLogout.Cursor = Cursors.Hand;
-            btnLogout.Location = new Point(632, 61);
+            btnLogout.Location = new Point(632, 74);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(75, 23);
             btnLogout.TabIndex = 13;

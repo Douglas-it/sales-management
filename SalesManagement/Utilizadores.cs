@@ -178,7 +178,7 @@ namespace SalesManagement
         {
             try
             {
-                // Inicializar a classe DatabaseHelper
+                // Inicializa a classe DatabaseHelper
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Query para atualizar a senha do utilizador

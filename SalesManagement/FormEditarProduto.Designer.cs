@@ -174,6 +174,7 @@
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormEditarProduto";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormEditarProduto";
             FormClosed += FormEditarProduto_FormClosed;
             Load += FormEditarProduto_Load;

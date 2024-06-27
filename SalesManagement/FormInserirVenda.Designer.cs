@@ -180,6 +180,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormVenda";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Vendas";
             ResumeLayout(false);
             PerformLayout();

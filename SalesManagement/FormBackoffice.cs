@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SalesManagement
 {
@@ -255,7 +256,7 @@ namespace SalesManagement
             labelSenha.Visible = true;
             checkYes.Visible = true;
             btnModificarConta.Visible = true;
-            
+
             // Retorna as informações do utilizador
             foreach (DataRow row in Utilizadores.ObterInformacaoUtilizador(utilizador).Rows)
             {
@@ -288,7 +289,8 @@ namespace SalesManagement
 
             if (
                 !OperacoesGerais.LerStringValida(codigo) ||
-                !OperacoesGerais.LerStringValida(nome) || !OperacoesGerais.LerDecimalValido(comissao, 0, 100)
+                !OperacoesGerais.LerStringValida(nome) ||
+                !OperacoesGerais.LerDecimalValido(comissao, 0, 100)
                 )
             {
                 MessageBox.Show("Por favor, preencha todos os campos corretamente!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -399,14 +401,19 @@ namespace SalesManagement
         }
 
 
-        private void tabAlterarConta_Click(object sender, EventArgs e) { }
 
-        private void label1_Click(object sender, EventArgs e) { }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            HideTabs();
+            ShowTab(tabEstatisticas);
 
-        private void tabCriarConta_Click(object sender, EventArgs e) { }
-
-        private void selectUsername_SelectedIndexChanged(object sender, EventArgs e) { }
-
-        private void tabCriarConta_Click_1(object sender, EventArgs e) { }
+            // Preenche os gráficos com informação
+            BackOffice.PreencherGrafico(VendasPorVendedor, BackOffice.VendasPorVendedor(), "Vendedor", "TotalVendas");
+            BackOffice.PreencherGrafico(VendasPorProduto, BackOffice.VendasPorProduto(), "Produto", "TotalVendas");
+            BackOffice.PreencherGrafico(VendasPorZona, BackOffice.VendasPorZona(), "Zona", "TotalVendas");
+            BackOffice.PreencherGrafico(VendasPorMes, BackOffice.VendasPorMes(), "Mes", "TotalVendas");
+            BackOffice.PreencherGrafico(VendasPorMesVendedor, BackOffice.VendasPorMesVendedor(), "Vendedor", "TotalVendas");
+            BackOffice.PreencherGrafico(vendasPorMesProduto, BackOffice.VendasPorMesProduto(), "Produto", "TotalVendas");
+        }
     }
 }
