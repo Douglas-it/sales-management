@@ -64,7 +64,12 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Query para selecionar o utilizador
-                string selectQuery = "SELECT V.Codigo,V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendasAnual, COALESCE(SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END), 0) as totalVendasMes FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor GROUP BY V.Codigo, V.Nome, V.Comissao";
+                string selectQuery = @"
+                    SELECT V.Codigo,V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendasAnual, 
+                    COALESCE(SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END), 0) as totalVendasMes 
+                    FROM Vendedores V 
+                    LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor 
+                    GROUP BY V.Codigo, V.Nome, V.Comissao";
 
                 // Obter o resultado da query
                 DataTable resultado = dbHelper.GetDataTable(selectQuery);

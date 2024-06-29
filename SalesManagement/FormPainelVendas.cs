@@ -87,7 +87,13 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
                 // Query para selecionar o utilizador
-                string selectQuery = "SELECT p.Codigo AS CodigoProduto, v.CodigoVendedor AS CodigoVendedor, v.Zona AS Zona, v.DataVenda AS DataVenda, v.Quantidade AS Quantidade, p.Nome AS NomeProduto, v.ValorVenda AS ValorVenda, p.Preco AS PrecoUnitarioProduto, vend.Nome AS NomeVendedor FROM Vendas v INNER JOIN Produtos p ON v.CodigoProduto = p.Codigo INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo;";
+                string selectQuery = @"
+                    SELECT p.Codigo AS CodigoProduto, v.CodigoVendedor AS CodigoVendedor, v.Zona AS Zona, 
+                    v.DataVenda AS DataVenda, v.Quantidade AS Quantidade, p.Nome AS NomeProduto, v.ValorVenda AS ValorVenda, 
+                    p.Preco AS PrecoUnitarioProduto, vend.Nome AS NomeVendedor 
+                    FROM Vendas v 
+                    INNER JOIN Produtos p ON v.CodigoProduto = p.Codigo 
+                    INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo;";
 
                 // Obter o resultado da query
                 DataTable resultado = dbHelper.GetDataTable(selectQuery);
