@@ -408,12 +408,12 @@ namespace SalesManagement
             ShowTab(tabEstatisticas);
 
             // Preenche os gráficos com informação
-            BackOffice.PreencherGrafico(VendasPorVendedor, BackOffice.VendasPorVendedor(), "Vendedor", "TotalVendas");
-            BackOffice.PreencherGrafico(VendasPorProduto, BackOffice.VendasPorProduto(), "Produto", "TotalVendas");
-            BackOffice.PreencherGrafico(VendasPorZona, BackOffice.VendasPorZona(), "Zona", "TotalVendas");
-            BackOffice.PreencherGrafico(VendasPorMes, BackOffice.VendasPorMes(), "Mes", "TotalVendas");
-            BackOffice.PreencherGrafico(VendasPorMesVendedor, BackOffice.VendasPorMesVendedor(), "Vendedor", "TotalVendas");
-            BackOffice.PreencherGrafico(vendasPorMesProduto, BackOffice.VendasPorMesProduto(), "Produto", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorVendedor, Estatisticas.VendasPorVendedor(), "Vendedor", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorProduto, Estatisticas.VendasPorProduto(), "Produto", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorZona, Estatisticas.VendasPorZona(), "Zona", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorMes, Estatisticas.VendasPorMes(), "Mes", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorMesVendedor, Estatisticas.VendasPorMesVendedor(), "Vendedor", "TotalVendas");
+            Estatisticas.PreencherGrafico(vendasPorMesProduto, Estatisticas.VendasPorMesProduto(), "Produto", "TotalVendas");
         }
     }
 }
