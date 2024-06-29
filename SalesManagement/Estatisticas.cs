@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SalesManagement
 {
-    internal class Estatisticas
+    public class Estatisticas
     {
         /*
          * Função para obter Vendas por Vendedor

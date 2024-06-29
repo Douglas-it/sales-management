@@ -362,7 +362,7 @@ namespace SalesManagement
             if (
                 !OperacoesGerais.LerStringValida(nome) ||
                 !OperacoesGerais.LerStringValida(codigo) ||
-                !OperacoesGerais.LerDecimalValido(preco, 0, 1000)
+                !OperacoesGerais.LerDecimalValido(preco, 0)
                 )
             {
                 MessageBox.Show("Por favor, preencha todos os campos corretamente!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -375,29 +375,7 @@ namespace SalesManagement
                 return;
             }
 
-            try
-            {
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string insertQuery = "INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES (@codigo, @nome, @CodigoCategoria, @preco)";
-
-                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
-                SqlParameter paramCodigo = new SqlParameter("@codigo", SqlDbType.VarChar) { Value = codigo };
-                SqlParameter paramPreco = new SqlParameter("@preco", SqlDbType.Float) { Value = preco };
-                SqlParameter paramCategoria = new SqlParameter("@CodigoCategoria", SqlDbType.VarChar) { Value = Produtos.ObterIdCategoria(categoria) };
-
-                dbHelper.ExecuteQuery(insertQuery, paramNome, paramCodigo, paramPreco, paramCategoria);
-
-                MessageBox.Show("Produto adicionado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                txtNomeProduto.Text = "";
-                txtCodigoProduto.Text = "";
-                txtPrecoProduto.Text = "";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao tentar adicionar o produto: " + ex.Message);
-            }
+            BackOffice.InserirProduto(nome, codigo, preco, categoria);
         }
 
 
