@@ -19,15 +19,24 @@ namespace SalesManagement
          */
         public static bool VerificarUtilizador(string utilizador)
         {
-            DatabaseHelper dbHelper = new DatabaseHelper();
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
 
-            string insertQuery = "SELECT Utilizador FROM Utilizadores WHERE Utilizador=@nome";
+                string insertQuery = "SELECT Utilizador FROM Utilizadores WHERE Utilizador=@nome";
 
-            SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = utilizador };
+                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = utilizador };
 
-            DataTable resultado = dbHelper.GetDataTable(insertQuery, paramNome);
+                DataTable resultado = dbHelper.GetDataTable(insertQuery, paramNome);
 
-            return resultado != null && resultado.Rows.Count > 0; // Garante que não existem rows na base de dados
+                return resultado != null && resultado.Rows.Count > 0; // Garante que não existem rows na base de dados
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao verificar utilizador: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
         }
 
         /*
