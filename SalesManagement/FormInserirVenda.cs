@@ -14,12 +14,10 @@ namespace SalesManagement
     {
         public FormVenda()
         {
+            
             InitializeComponent();
         }
 
-        private void FormVenda_Load_1(object sender, EventArgs e)
-        {
-
-        }
+        private void FormVenda_Load_1(object sender, EventArgs e) { }
     }
 }

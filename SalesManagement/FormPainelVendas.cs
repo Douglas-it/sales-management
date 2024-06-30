@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace SalesManagement
             InitializeComponent();
 
             // Define os nomes internos das colunas
-            string[] nomeColunas = { 
+            string[] nomeColunas = {
+                "idVenda",
                 "idProduto",
                 "nomeProduto",
                 "quantidade",
@@ -31,6 +33,7 @@ namespace SalesManagement
 
             // Define os nomes visiveis das colunas
             string[] nomeColunasVisivel = {
+                "Id da Venda",
                 "Código Produto",
                 "Nome Produto",
                 "Quantidade",
@@ -42,10 +45,8 @@ namespace SalesManagement
                 "Zona"
             };
 
-                
-
             // Define se as colunas são editáveis
-            bool[] colunasReadOnly = { true, true, true, true, true, true, true };
+            bool[] colunasReadOnly = { true, true, true, true, true, true, true, true };
 
             // Configura se os botões de editar e eliminar estão visíveis
             bool btnEditar = true;
@@ -56,7 +57,6 @@ namespace SalesManagement
 
             // Carregar Dados da base de dados
             LoadData();
-
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -88,12 +88,21 @@ namespace SalesManagement
 
                 // Query para selecionar o utilizador
                 string selectQuery = @"
-                    SELECT p.Codigo AS CodigoProduto, v.CodigoVendedor AS CodigoVendedor, v.Zona AS Zona, 
-                    v.DataVenda AS DataVenda, v.Quantidade AS Quantidade, p.Nome AS NomeProduto, v.ValorVenda AS ValorVenda, 
-                    p.Preco AS PrecoUnitarioProduto, vend.Nome AS NomeVendedor 
+                    SELECT 
+                        v.Id AS IdVenda,
+                        p.Codigo AS CodigoProduto, 
+                        v.CodigoVendedor AS CodigoVendedor, 
+                        z.Abreviatura AS Zona,
+                        v.DataVenda AS DataVenda, 
+                        v.Quantidade AS Quantidade, 
+                        p.Nome AS NomeProduto, 
+                        v.ValorVenda AS ValorVenda, 
+                        p.Preco AS PrecoUnitarioProduto, 
+                        vend.Nome AS NomeVendedor 
                     FROM Vendas v 
                     INNER JOIN Produtos p ON v.CodigoProduto = p.Codigo 
-                    INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo;";
+                    INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo
+                    INNER JOIN Zonas z ON v.Zona = z.Id";
 
                 // Obter o resultado da query
                 DataTable resultado = dbHelper.GetDataTable(selectQuery);
@@ -118,6 +127,7 @@ namespace SalesManagement
             {
                 // Adiciona os dados na lista
                 ListaVendas.Rows.Add(
+                    row["IdVenda"].ToString(),
                     row["CodigoProduto"].ToString(),
                     row["NomeProduto"].ToString(),
                     row["Quantidade"].ToString(),
@@ -137,24 +147,98 @@ namespace SalesManagement
             if (e.RowIndex >= 0)
             {
                 string opcao = ListaVendas.Columns[e.ColumnIndex].Name;
-
                 string codigoProduto = ListaVendas.Rows[e.RowIndex].Cells["idProduto"].Value.ToString();
+                string zonaVenda = ListaVendas.Rows[e.RowIndex].Cells["zona"].Value.ToString();
+                string dataVenda = ListaVendas.Rows[e.RowIndex].Cells["dataVenda"].Value.ToString();
+                string quantidadeVenda = ListaVendas.Rows[e.RowIndex].Cells["quantidade"].Value.ToString();
+                string IdVenda = ListaVendas.Rows[e.RowIndex].Cells["IdVenda"].Value.ToString();
+                string codigoVendedor = ListaVendas.Rows[e.RowIndex].Cells["codigoVendedor"].Value.ToString();
+
 
                 if (opcao == "Editar")
                 {
-                    MessageBox.Show("Editar");
+                    FormEditarVenda formEditarVenda = new FormEditarVenda(codigoProduto, zonaVenda, dataVenda, quantidadeVenda, IdVenda, codigoVendedor);
+                    formEditarVenda.ShowDialog();
+                    LoadData();
                 }
                 else if (opcao == "Eliminar")
                 {
-                    Vendas.EliminarVenda(codigoProduto);
+                    DialogResult resultado = MessageBox.Show("Tem a certeza que deseja eliminar a venda?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        Vendas.EliminarVenda(codigoProduto);
+                        LoadData();
+                    }
                 }
             }
         }
 
         private void btnVenda_Click(object sender, EventArgs e)
         {
-            FormVenda frm = new FormVenda();
-            frm.Show();
+            FormVenda formVenda = new FormVenda();
+            formVenda.Show();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            string pesquisa = inputPesquisa.Text;
+
+            if (OperacoesGerais.LerStringValida(pesquisa))
+            {
+                try
+                {
+                    // Inicializar a classe DatabaseHelper
+                    DatabaseHelper dbHelper = new DatabaseHelper();
+
+                    // Query para ~pesquisar a venda
+                    string selectQuery = @"
+                        SELECT 
+                            v.Id AS IdVenda,
+                            p.Codigo AS CodigoProduto, 
+                            v.CodigoVendedor AS CodigoVendedor, 
+                            z.Abreviatura AS Zona,
+                            v.DataVenda AS DataVenda, 
+                            v.Quantidade AS Quantidade, 
+                            p.Nome AS NomeProduto, 
+                            v.ValorVenda AS ValorVenda, 
+                            p.Preco AS PrecoUnitarioProduto, 
+                            vend.Nome AS NomeVendedor 
+                        FROM Vendas v 
+                        INNER JOIN Produtos p ON v.CodigoProduto = p.Codigo 
+                        INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo
+                        INNER JOIN Zonas z ON v.Zona = z.Id
+                        WHERE 
+                            p.Codigo = @pesquisa OR 
+                            v.CodigoVendedor = @pesquisa OR 
+                            z.Abreviatura = @pesquisa OR 
+                            p.Nome = @pesquisa OR
+                            vend.Nome = @pesquisa";
+
+                    // Parâmetros para a query
+                    SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = pesquisa };
+
+                    // Obter o resultado da query
+                    DataTable resultado = dbHelper.GetDataTable(selectQuery, param1);
+
+                    // Se o resultado da tabela não for nulo
+                    if (resultado != null)
+                        preencherTabela(resultado);
+                }
+                catch (Exception ex) // Apanhar exceções
+                {
+                    MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+                }
+            }
+            else
+                MessageBox.Show("Por favor insira um nome para pesquisar!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            inputPesquisa.Text = "";
+
+            LoadData();
         }
     }
 }

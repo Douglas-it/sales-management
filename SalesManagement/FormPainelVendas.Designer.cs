@@ -70,6 +70,7 @@
             btnLimpar.TabIndex = 20;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click;
             // 
             // inputPesquisa
             // 
@@ -89,6 +90,7 @@
             btnPesquisar.TabIndex = 19;
             btnPesquisar.Text = "Pesquisar";
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // ListaVendas
             // 
@@ -106,7 +108,7 @@
             btnVenda.Name = "btnVenda";
             btnVenda.Size = new Size(91, 23);
             btnVenda.TabIndex = 17;
-            btnVenda.Text = "Venda";
+            btnVenda.Text = "Inserir Venda";
             btnVenda.UseVisualStyleBackColor = true;
             btnVenda.Click += btnVenda_Click;
             // 

@@ -38,13 +38,14 @@ CREATE TABLE Produtos (
 CREATE TABLE Vendas (
     Id INT PRIMARY KEY IDENTITY(1,1),
     CodigoVendedor VARCHAR(50) NOT NULL,
-    Zona VARCHAR(255) NOT NULL, --ID
+    Zona INT NOT NULL, --ID
     DataVenda DATE NOT NULL,
     Quantidade INT NOT NULL,
     CodigoProduto VARCHAR(50) NOT NULL,
     ValorVenda DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (CodigoVendedor) REFERENCES Vendedores(Codigo),
-    FOREIGN KEY (CodigoProduto) REFERENCES Produtos(Codigo)
+    FOREIGN KEY (CodigoProduto) REFERENCES Produtos(Codigo),
+	FOREIGN KEY (Zona) REFERENCES Zonas(Id)
 );
 
 -- Inserir dados na tabela Categorias

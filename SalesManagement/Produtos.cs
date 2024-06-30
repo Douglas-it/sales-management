@@ -125,8 +125,6 @@ namespace SalesManagement
 
                 string updateQuery = "UPDATE produtos SET Nome = @nome, Preco = @preco, CodigoCategoria = @categoria WHERE Codigo = @codigo";
 
-                MessageBox.Show($"{Produtos.ObterIdCategoria(categoria)}");
-
                 SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
                 SqlParameter paramPreco = new SqlParameter("@preco", SqlDbType.Decimal) { Value = precoDecimal };
                 SqlParameter paramCategoria = new SqlParameter("@categoria", SqlDbType.VarChar) { Value = Produtos.ObterIdCategoria(categoria) };
@@ -142,5 +140,46 @@ namespace SalesManagement
             }
         }
 
+        public static DataTable ObterProdutos(string filtro = "")
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string updateQuery = "SELECT * FROM Produtos" + filtro;
+
+                DataTable resultado = dbHelper.GetDataTable(updateQuery);
+
+                if (resultado != null && resultado.Rows.Count > 0)
+                    return resultado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao alterar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            return null;
+        }
+
+        public static string ObterIdProduto(string nome)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string updateQuery = "SELECT * FROM Produtos WHERE Nome = @Nome";
+                SqlParameter paramNome = new SqlParameter("@Nome", SqlDbType.VarChar) { Value = nome };
+
+                DataTable resultado = dbHelper.GetDataTable(updateQuery, paramNome);
+
+                return resultado.Rows[0]["Codigo"].ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao Obter o ID do produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return null;
+        }
     }
 }

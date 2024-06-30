@@ -17,3 +17,14 @@ INSERT INTO Utilizadores (Utilizador, Senha, Cargo) VALUES
 
 ALTER TABLE Utilizadores
 ADD flag int; 
+
+CREATE TABLE Zonas(
+Id int Primary key IDENTITY(1,1),
+NomeZona varchar(10),
+Abreviatura varchar(1)
+);
+
+INSERT INTO Zonas VALUES
+('Norte', 'N'),
+('Centro', 'C'),
+('Sul', 'S');

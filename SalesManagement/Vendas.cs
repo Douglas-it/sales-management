@@ -18,11 +18,11 @@ namespace SalesManagement
 
                 string deleteQuery = "DELETE FROM vendas WHERE Id = @idProduto"; // Query para eliminar a venda
 
-                SqlParameter paramIdProduto = new SqlParameter("@idProduto", SqlDbType.Char) { Value = codigo }; // Cria o parametro para o id do produto
+                SqlParameter paramIdProduto = new SqlParameter("@idProduto", SqlDbType.VarChar) { Value = codigo }; // Cria o parâmetro para o id do produto
 
                 dbHelper.ExecuteQuery(deleteQuery, paramIdProduto); // Executa a query
 
-                MessageBox.Show("Produto eliminado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Venda eliminada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

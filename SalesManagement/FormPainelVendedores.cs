@@ -214,7 +214,6 @@ namespace SalesManagement
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             inputPesquisa.Text = "";
-            ListaComerciais.Rows.Clear();
 
             LoadData();
         }

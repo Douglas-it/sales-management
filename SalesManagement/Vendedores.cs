@@ -32,7 +32,7 @@ namespace SalesManagement
                 DataTable result = dbHelper.GetDataTable(selectQuery, selectParam);
 
                 // Se não existerem rows ==> Adiciona o novo Comercial
-                if (result.Rows.Count == 0)
+                if (result != null && result.Rows.Count == 0)
                 {
                     string insertQuery = "INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES (@Codigo, @Nome, @Comissao)";
 
@@ -112,6 +112,48 @@ namespace SalesManagement
                 MessageBox.Show("Erro ao tentar atualizar o comercial: " + ex.Message);
             }
             return false;
+        }
+
+        public static DataTable ObterComerciais(string filtro = "")
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "SELECT * FROM Vendedores" + filtro;
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery);
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+
+            }
+
+            return null;
+        }
+
+        public static int ObterIdComercial(string nome)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "SELECT Codigo FROM Vendedores WHERE Nome = @Nome";
+
+                SqlParameter paramNome = new SqlParameter("@Nome", SqlDbType.VarChar) { Value = nome };
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome);
+
+                return Convert.ToInt32(resultado.Rows[0]["Codigo"]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter o ID do Comercial: " + ex.Message);
+                return -1;
+            }
         }
     }
 }

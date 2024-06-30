@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 namespace SalesManagement
 {
@@ -102,6 +104,49 @@ namespace SalesManagement
             float saida;
             bool valido = float.TryParse(entrada, out saida) && saida >= valorMinimo && saida <= valorMaximo;
             return valido;
+        }
+
+        /*
+         * Função para todas as zonas obter as Zonas
+         * @param filtro: string com o filtro a ser aplicado
+         */
+        public static DataTable ObterZonas(string filtro = "")
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "SELECT * FROM Zonas" + filtro;
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery);
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+                return null;
+            }
+        }
+
+        public static int ObterZonaId (string nomeZona)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "SELECT Id FROM Zonas WHERE Abreviatura = @nomeZona";
+                SqlParameter paramNome = new SqlParameter("@nomeZona", SqlDbType.VarChar) { Value = nomeZona };
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome);
+
+                return Convert.ToInt32(resultado.Rows[0]["Id"]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message);
+                return -1;
+            }
         }
     }
 }
