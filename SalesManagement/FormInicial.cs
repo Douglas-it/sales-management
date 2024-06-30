@@ -15,12 +15,13 @@ namespace SalesManagement
         public FormInicial()
         {
             InitializeComponent();
+            label1.Text = "Bem-vindo, " + Globals.nomeUtilizador;
         }
 
         private void FormInicial_Load(object sender, EventArgs e)
         {
             if (!Globals.admin)
-                btnUtilizadores.Enabled = false;
+                btnUtilizadores.Visible = false;
 
         }
 
@@ -50,6 +51,7 @@ namespace SalesManagement
 
         private void label1_Click(object sender, EventArgs e)
         {
+            
         }
 
         private void btnSair_Click(object sender, EventArgs e)

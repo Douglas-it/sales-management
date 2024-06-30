@@ -34,18 +34,20 @@
             btnVendas = new Button();
             label1 = new Label();
             btnUtilizadores = new Button();
-            label5 = new Label();
             label4 = new Label();
             btnSair = new Button();
             btnLogout = new Button();
+            label5 = new Label();
+            pictureBox2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.Cursor = Cursors.Hand;
-            button1.Location = new Point(328, 170);
+            button1.Location = new Point(356, 198);
             button1.Name = "button1";
-            button1.Size = new Size(156, 36);
+            button1.Size = new Size(396, 33);
             button1.TabIndex = 0;
             button1.Text = "Gestão de Vendedores";
             button1.UseVisualStyleBackColor = true;
@@ -54,9 +56,9 @@
             // btnProdutos
             // 
             btnProdutos.Cursor = Cursors.Hand;
-            btnProdutos.Location = new Point(328, 212);
+            btnProdutos.Location = new Point(356, 237);
             btnProdutos.Name = "btnProdutos";
-            btnProdutos.Size = new Size(156, 33);
+            btnProdutos.Size = new Size(396, 33);
             btnProdutos.TabIndex = 1;
             btnProdutos.Text = "Gestão de Produtos";
             btnProdutos.UseVisualStyleBackColor = true;
@@ -65,9 +67,9 @@
             // btnVendas
             // 
             btnVendas.Cursor = Cursors.Hand;
-            btnVendas.Location = new Point(328, 251);
+            btnVendas.Location = new Point(356, 276);
             btnVendas.Name = "btnVendas";
-            btnVendas.Size = new Size(156, 35);
+            btnVendas.Size = new Size(396, 33);
             btnVendas.TabIndex = 2;
             btnVendas.Text = "Gestão de Vendas";
             btnVendas.UseVisualStyleBackColor = true;
@@ -77,33 +79,22 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label1.Location = new Point(361, 133);
+            label1.Location = new Point(356, 161);
             label1.Name = "label1";
             label1.Size = new Size(88, 21);
             label1.TabIndex = 3;
             label1.Text = "Bem vindo";
-            label1.Click += label1_Click;
             // 
             // btnUtilizadores
             // 
             btnUtilizadores.Cursor = Cursors.Hand;
-            btnUtilizadores.Location = new Point(328, 292);
+            btnUtilizadores.Location = new Point(356, 315);
             btnUtilizadores.Name = "btnUtilizadores";
-            btnUtilizadores.Size = new Size(156, 35);
+            btnUtilizadores.Size = new Size(396, 33);
             btnUtilizadores.TabIndex = 4;
             btnUtilizadores.Text = "Painel de Administração";
             btnUtilizadores.UseVisualStyleBackColor = true;
             btnUtilizadores.Click += btnUtilizadores_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(9, 46);
-            label5.Name = "label5";
-            label5.Size = new Size(782, 25);
-            label5.TabIndex = 10;
-            label5.Text = "______________________________________________________________________";
             // 
             // label4
             // 
@@ -120,7 +111,7 @@
             btnSair.Cursor = Cursors.Hand;
             btnSair.Location = new Point(713, 74);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(75, 23);
+            btnSair.Size = new Size(75, 33);
             btnSair.TabIndex = 12;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -131,17 +122,39 @@
             btnLogout.Cursor = Cursors.Hand;
             btnLogout.Location = new Point(632, 74);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(75, 23);
+            btnLogout.Size = new Size(75, 33);
             btnLogout.TabIndex = 13;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Century Gothic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(9, 46);
+            label5.Name = "label5";
+            label5.Size = new Size(782, 25);
+            label5.TabIndex = 10;
+            label5.Text = "______________________________________________________________________";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources._7298311;
+            pictureBox2.InitialImage = (Image)resources.GetObject("pictureBox2.InitialImage");
+            pictureBox2.Location = new Point(12, 110);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(300, 300);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 16;
+            pictureBox2.TabStop = false;
             // 
             // FormInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox2);
             Controls.Add(btnLogout);
             Controls.Add(btnSair);
             Controls.Add(label5);
@@ -156,6 +169,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestão de Vendas";
             Load += FormInicial_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -167,9 +181,10 @@
         private Button btnVendas;
         private Label label1;
         private Button btnUtilizadores;
-        private Label label5;
         private Label label4;
         private Button btnSair;
         private Button btnLogout;
+        private Label label5;
+        private PictureBox pictureBox2;
     }
 }

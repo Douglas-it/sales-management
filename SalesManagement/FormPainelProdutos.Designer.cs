@@ -41,7 +41,7 @@
             // btnLimpar
             // 
             btnLimpar.Cursor = Cursors.Hand;
-            btnLimpar.Location = new Point(732, 76);
+            btnLimpar.Location = new Point(1069, 75);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(56, 26);
             btnLimpar.TabIndex = 22;
@@ -51,7 +51,7 @@
             // inputPesquisa
             // 
             inputPesquisa.Cursor = Cursors.IBeam;
-            inputPesquisa.Location = new Point(354, 79);
+            inputPesquisa.Location = new Point(691, 78);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome ou código ou categoria";
             inputPesquisa.Size = new Size(292, 23);
@@ -61,7 +61,7 @@
             // btnPesquisar
             // 
             btnPesquisar.Cursor = Cursors.Hand;
-            btnPesquisar.Location = new Point(651, 76);
+            btnPesquisar.Location = new Point(988, 75);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(75, 26);
             btnPesquisar.TabIndex = 21;
@@ -72,9 +72,9 @@
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(713, 10);
+            btnSair.Location = new Point(1050, 10);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(75, 23);
+            btnSair.Size = new Size(75, 33);
             btnSair.TabIndex = 20;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             ListaProdutos.Location = new Point(12, 107);
             ListaProdutos.Name = "ListaProdutos";
             ListaProdutos.RowHeadersWidth = 51;
-            ListaProdutos.Size = new Size(776, 332);
+            ListaProdutos.Size = new Size(1113, 453);
             ListaProdutos.TabIndex = 19;
             ListaProdutos.CellContentClick += ListaProdutos_CellContentClick;
             // 
@@ -95,7 +95,7 @@
             btnVoltar.Cursor = Cursors.Hand;
             btnVoltar.Location = new Point(12, 10);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(75, 23);
+            btnVoltar.Size = new Size(75, 33);
             btnVoltar.TabIndex = 17;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1137, 572);
             Controls.Add(btnLimpar);
             Controls.Add(inputPesquisa);
             Controls.Add(btnPesquisar);

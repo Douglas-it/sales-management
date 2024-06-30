@@ -65,8 +65,10 @@ namespace SalesManagement
 
                 // Query para selecionar o utilizador
                 string selectQuery = @"
-                    SELECT V.Codigo,V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendasAnual, 
-                    COALESCE(SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END), 0) as totalVendasMes 
+                    SELECT 
+                        V.Codigo, V.Nome, V.Comissao, 
+                        COALESCE(SUM(Vendas.ValorVenda), 0) AS totalVendasAnual, 
+                        SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END) AS totalVendasMes 
                     FROM Vendedores V 
                     LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor 
                     GROUP BY V.Codigo, V.Nome, V.Comissao";
@@ -180,8 +182,16 @@ namespace SalesManagement
                     DatabaseHelper dbHelper = new DatabaseHelper();
 
                     // Query para selecionar o utilizador
-                    string selectQuery = "SELECT V.Codigo,V.Nome, V.Comissao, COALESCE(SUM(Vendas.ValorVenda), 0) as totalVendasAnual, COALESCE(SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END), 0) as totalVendasMes FROM Vendedores V LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor WHERE V.Nome LIKE @pesquisa OR V.Codigo LIKE @pesquisa GROUP BY V.Codigo, V.Nome, V.Comissao\r\n";
-
+                    string selectQuery = @"
+                        SELECT 
+                            V.Codigo, V.Nome, V.Comissao, 
+                            COALESCE(SUM(Vendas.ValorVenda), 0) AS totalVendasAnual, 
+                            SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END) AS totalVendasMes 
+                        FROM Vendedores V 
+                        LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor 
+                        WHERE V.Nome LIKE @pesquisa OR V.Codigo LIKE @pesquisa
+                        GROUP BY V.Codigo, V.Nome, V.Comissao";
+                    
                     // Parâmetros para a query
                     SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
 
@@ -210,5 +220,6 @@ namespace SalesManagement
         }
 
         private void FormVendedores_Load(object sender, EventArgs e) { }
+        private void inputPesquisa_TextChanged(object sender, EventArgs e) { }
     }
 }

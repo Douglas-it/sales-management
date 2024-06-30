@@ -44,7 +44,7 @@
             btnVoltar.Cursor = Cursors.Hand;
             btnVoltar.Location = new Point(12, 12);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(75, 23);
+            btnVoltar.Size = new Size(75, 33);
             btnVoltar.TabIndex = 1;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = true;
@@ -53,9 +53,9 @@
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(919, 12);
+            btnSair.Location = new Point(1050, 12);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(75, 23);
+            btnSair.Size = new Size(75, 33);
             btnSair.TabIndex = 13;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -64,7 +64,7 @@
             // btnLimpar
             // 
             btnLimpar.Cursor = Cursors.Hand;
-            btnLimpar.Location = new Point(940, 74);
+            btnLimpar.Location = new Point(1069, 74);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(56, 26);
             btnLimpar.TabIndex = 20;
@@ -74,7 +74,7 @@
             // inputPesquisa
             // 
             inputPesquisa.Cursor = Cursors.IBeam;
-            inputPesquisa.Location = new Point(596, 75);
+            inputPesquisa.Location = new Point(725, 75);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
             inputPesquisa.Size = new Size(257, 23);
@@ -83,7 +83,7 @@
             // btnPesquisar
             // 
             btnPesquisar.Cursor = Cursors.Hand;
-            btnPesquisar.Location = new Point(859, 74);
+            btnPesquisar.Location = new Point(988, 74);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(75, 26);
             btnPesquisar.TabIndex = 19;
@@ -95,7 +95,7 @@
             ListaVendas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ListaVendas.Location = new Point(12, 106);
             ListaVendas.Name = "ListaVendas";
-            ListaVendas.Size = new Size(984, 444);
+            ListaVendas.Size = new Size(1113, 454);
             ListaVendas.TabIndex = 18;
             ListaVendas.CellContentClick += ListaVendas_CellContentClick;
             // 
@@ -114,7 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1008, 562);
+            ClientSize = new Size(1137, 572);
             Controls.Add(btnLimpar);
             Controls.Add(inputPesquisa);
             Controls.Add(btnPesquisar);

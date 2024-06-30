@@ -43,7 +43,7 @@
             btnVoltar.Cursor = Cursors.Hand;
             btnVoltar.Location = new Point(12, 9);
             btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(75, 23);
+            btnVoltar.Size = new Size(75, 33);
             btnVoltar.TabIndex = 0;
             btnVoltar.Text = "Voltar";
             btnVoltar.UseVisualStyleBackColor = true;
@@ -54,16 +54,16 @@
             ListaComerciais.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ListaComerciais.Location = new Point(12, 106);
             ListaComerciais.Name = "ListaComerciais";
-            ListaComerciais.Size = new Size(776, 332);
+            ListaComerciais.Size = new Size(1113, 454);
             ListaComerciais.TabIndex = 4;
             ListaComerciais.CellContentClick += ListaComerciais_CellContentClick;
             // 
             // btnSair
             // 
             btnSair.Cursor = Cursors.Hand;
-            btnSair.Location = new Point(713, 9);
+            btnSair.Location = new Point(1050, 9);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(75, 23);
+            btnSair.Size = new Size(75, 33);
             btnSair.TabIndex = 13;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             // btnPesquisar
             // 
             btnPesquisar.Cursor = Cursors.Hand;
-            btnPesquisar.Location = new Point(651, 74);
+            btnPesquisar.Location = new Point(988, 74);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.Size = new Size(75, 26);
             btnPesquisar.TabIndex = 14;
@@ -83,7 +83,7 @@
             // inputPesquisa
             // 
             inputPesquisa.Cursor = Cursors.IBeam;
-            inputPesquisa.Location = new Point(388, 75);
+            inputPesquisa.Location = new Point(725, 75);
             inputPesquisa.Name = "inputPesquisa";
             inputPesquisa.PlaceholderText = "Pesquise por nome, código ou comissão";
             inputPesquisa.Size = new Size(257, 23);
@@ -92,7 +92,7 @@
             // btnLimpar
             // 
             btnLimpar.Cursor = Cursors.Hand;
-            btnLimpar.Location = new Point(732, 74);
+            btnLimpar.Location = new Point(1069, 74);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(56, 26);
             btnLimpar.TabIndex = 15;
@@ -104,13 +104,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1137, 572);
             Controls.Add(btnLimpar);
             Controls.Add(inputPesquisa);
             Controls.Add(btnPesquisar);
             Controls.Add(btnSair);
             Controls.Add(ListaComerciais);
             Controls.Add(btnVoltar);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormVendedores";
             StartPosition = FormStartPosition.CenterScreen;
