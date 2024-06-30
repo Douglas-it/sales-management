@@ -101,7 +101,6 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
-            btnVoltar = new Button();
             tabAdicionarProduto = new TabPage();
             textBox6 = new TextBox();
             label21 = new Label();
@@ -113,7 +112,6 @@
             txtNomeProduto = new TextBox();
             txtCodigoProduto = new TextBox();
             label17 = new Label();
-            btnCancelar = new Button();
             btnAdicionarArtigo = new Button();
             tabEstatisticas = new TabPage();
             label27 = new Label();
@@ -668,7 +666,6 @@
             tabAdicionarVendedor.Controls.Add(label14);
             tabAdicionarVendedor.Controls.Add(label15);
             tabAdicionarVendedor.Controls.Add(label16);
-            tabAdicionarVendedor.Controls.Add(btnVoltar);
             tabAdicionarVendedor.Location = new Point(4, 24);
             tabAdicionarVendedor.Name = "tabAdicionarVendedor";
             tabAdicionarVendedor.Padding = new Padding(3);
@@ -765,18 +762,6 @@
             label16.TabIndex = 28;
             label16.Text = "Código";
             // 
-            // btnVoltar
-            // 
-            btnVoltar.Cursor = Cursors.Hand;
-            btnVoltar.Font = new Font("Segoe UI", 9.5F);
-            btnVoltar.Location = new Point(810, 386);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(75, 33);
-            btnVoltar.TabIndex = 27;
-            btnVoltar.Text = "Cancelar";
-            btnVoltar.UseVisualStyleBackColor = true;
-            btnVoltar.Click += btnVoltar_Click;
-            // 
             // tabAdicionarProduto
             // 
             tabAdicionarProduto.Controls.Add(textBox6);
@@ -789,7 +774,6 @@
             tabAdicionarProduto.Controls.Add(txtNomeProduto);
             tabAdicionarProduto.Controls.Add(txtCodigoProduto);
             tabAdicionarProduto.Controls.Add(label17);
-            tabAdicionarProduto.Controls.Add(btnCancelar);
             tabAdicionarProduto.Controls.Add(btnAdicionarArtigo);
             tabAdicionarProduto.Location = new Point(4, 24);
             tabAdicionarProduto.Name = "tabAdicionarProduto";
@@ -894,17 +878,6 @@
             label17.Size = new Size(144, 21);
             label17.TabIndex = 2;
             label17.Text = "Adicionar Produto";
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Cursor = Cursors.Hand;
-            btnCancelar.Font = new Font("Segoe UI", 9.5F);
-            btnCancelar.Location = new Point(754, 445);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(87, 33);
-            btnCancelar.TabIndex = 1;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnAdicionarArtigo
             // 
@@ -1228,7 +1201,6 @@
         private Label label14;
         private Label label15;
         private Label label16;
-        private Button btnVoltar;
         private TabPage tabAdicionarProduto;
         private Button btnAdicionarProduto;
         private Button btnAdicionarArtigo;
@@ -1241,7 +1213,6 @@
         private TextBox txtNomeProduto;
         private TextBox txtCodigoProduto;
         private Label label17;
-        private Button btnCancelar;
         private TextBox textBox5;
         private TextBox textBox6;
         private TabPage tabEstatisticas;
