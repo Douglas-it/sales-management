@@ -145,7 +145,9 @@ namespace SalesManagement
                 if (opcao == "Editar")
                 {
                     FormEditarVendedores formEditarVendedores = new FormEditarVendedores(id, nome, comissao);
-                    formEditarVendedores.ShowDialog();
+                    formEditarVendedores.ShowDialog(); // Mostra o form de Editar Vendedores
+
+                    LoadData(); // Carrega os dados novamente para atualizar a lista
                 }
                 else if (opcao == "Eliminar")
                 {
@@ -153,10 +155,8 @@ namespace SalesManagement
 
                     if (DialogResult == DialogResult.Yes)
                     {
-                        Vendedores.ApagarComercial(id);
-
-                        // Carrega os dados novamente para atualizar a lista
-                        LoadData();
+                        Vendedores.ApagarComercial(id); // Apaga o comercial da base de dados
+                        LoadData(); // Carrega os dados novamente para atualizar a lista
                     }
                 }
             }
