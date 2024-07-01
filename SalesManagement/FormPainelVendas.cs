@@ -154,7 +154,6 @@ namespace SalesManagement
                 string IdVenda = ListaVendas.Rows[e.RowIndex].Cells["IdVenda"].Value.ToString();
                 string codigoVendedor = ListaVendas.Rows[e.RowIndex].Cells["codigoVendedor"].Value.ToString();
 
-
                 if (opcao == "Editar")
                 {
                     FormEditarVenda formEditarVenda = new FormEditarVenda(codigoProduto, zonaVenda, dataVenda, quantidadeVenda, IdVenda, codigoVendedor);

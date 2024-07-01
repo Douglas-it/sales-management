@@ -136,7 +136,7 @@ namespace SalesManagement
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao alterar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao adicionar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -146,7 +146,7 @@ namespace SalesManagement
             {
                 DatabaseHelper dbHelper = new DatabaseHelper();
 
-                string updateQuery = "SELECT * FROM Produtos" + filtro;
+                string updateQuery = "SELECT * FROM Produtos " + filtro;
 
                 DataTable resultado = dbHelper.GetDataTable(updateQuery);
 
@@ -155,7 +155,7 @@ namespace SalesManagement
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao alterar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao obter os produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
             return null;

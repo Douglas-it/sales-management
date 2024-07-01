@@ -30,19 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVenda));
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            textVendedor = new TextBox();
-            textZona = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            txtQuantidade = new TextBox();
+            comboVendedor = new ComboBox();
+            comboZona = new ComboBox();
+            comboProduto = new ComboBox();
+            txtPreco = new TextBox();
+            dataVendaCalendario = new MonthCalendar();
+            label2 = new Label();
+            txtTotalVenda = new TextBox();
+            label9 = new Label();
+            btnInserir = new Button();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // label1
@@ -50,26 +54,17 @@
             label1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Symbol", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(292, 20);
+            label1.Location = new Point(21, 20);
             label1.Name = "label1";
             label1.Size = new Size(102, 21);
             label1.TabIndex = 0;
             label1.Text = "Inserir Venda";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(15, 150);
-            label2.Name = "label2";
-            label2.Size = new Size(92, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Código Produto";
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(15, 185);
+            label3.Location = new Point(56, 139);
             label3.Name = "label3";
             label3.Size = new Size(50, 15);
             label3.TabIndex = 2;
@@ -86,7 +81,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(15, 92);
+            label5.Location = new Point(49, 81);
             label5.Name = "label5";
             label5.Size = new Size(57, 15);
             label5.TabIndex = 4;
@@ -95,7 +90,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 219);
+            label6.Location = new Point(37, 168);
             label6.Name = "label6";
             label6.Size = new Size(69, 15);
             label6.TabIndex = 5;
@@ -104,7 +99,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(15, 118);
+            label7.Location = new Point(72, 112);
             label7.Name = "label7";
             label7.Size = new Size(34, 15);
             label7.TabIndex = 6;
@@ -113,77 +108,138 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(15, 251);
+            label8.Location = new Point(69, 197);
             label8.Name = "label8";
             label8.Size = new Size(37, 15);
             label8.TabIndex = 7;
             label8.Text = "Preço";
             // 
-            // textVendedor
+            // txtQuantidade
             // 
-            textVendedor.Location = new Point(124, 89);
-            textVendedor.Name = "textVendedor";
-            textVendedor.Size = new Size(138, 23);
-            textVendedor.TabIndex = 8;
+            txtQuantidade.Location = new Point(112, 165);
+            txtQuantidade.Name = "txtQuantidade";
+            txtQuantidade.Size = new Size(213, 23);
+            txtQuantidade.TabIndex = 12;
+            txtQuantidade.TextChanged += txtQuantidade_TextChanged;
             // 
-            // textZona
+            // comboVendedor
             // 
-            textZona.Location = new Point(124, 118);
-            textZona.Name = "textZona";
-            textZona.Size = new Size(138, 23);
-            textZona.TabIndex = 9;
+            comboVendedor.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboVendedor.FormattingEnabled = true;
+            comboVendedor.Location = new Point(112, 78);
+            comboVendedor.Name = "comboVendedor";
+            comboVendedor.Size = new Size(213, 23);
+            comboVendedor.TabIndex = 13;
             // 
-            // textBox3
+            // comboZona
             // 
-            textBox3.Location = new Point(124, 150);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(138, 23);
-            textBox3.TabIndex = 10;
+            comboZona.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboZona.FormattingEnabled = true;
+            comboZona.Location = new Point(112, 107);
+            comboZona.Name = "comboZona";
+            comboZona.Size = new Size(213, 23);
+            comboZona.TabIndex = 14;
             // 
-            // textBox4
+            // comboProduto
             // 
-            textBox4.Location = new Point(124, 179);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(138, 23);
-            textBox4.TabIndex = 11;
+            comboProduto.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboProduto.FormattingEnabled = true;
+            comboProduto.Location = new Point(112, 136);
+            comboProduto.Name = "comboProduto";
+            comboProduto.Size = new Size(213, 23);
+            comboProduto.TabIndex = 16;
+            comboProduto.SelectionChangeCommitted += comboProduto_SelectionChangeCommitted;
             // 
-            // textBox5
+            // txtPreco
             // 
-            textBox5.Location = new Point(124, 216);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(138, 23);
-            textBox5.TabIndex = 12;
+            txtPreco.Enabled = false;
+            txtPreco.Location = new Point(112, 194);
+            txtPreco.Name = "txtPreco";
+            txtPreco.Size = new Size(213, 23);
+            txtPreco.TabIndex = 17;
             // 
-            // textBox6
+            // dataVendaCalendario
             // 
-            textBox6.Location = new Point(124, 245);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(138, 23);
-            textBox6.TabIndex = 13;
+            dataVendaCalendario.Location = new Point(462, 78);
+            dataVendaCalendario.MaxDate = new DateTime(2024, 12, 31, 0, 0, 0, 0);
+            dataVendaCalendario.MinDate = new DateTime(2024, 1, 1, 0, 0, 0, 0);
+            dataVendaCalendario.Name = "dataVendaCalendario";
+            dataVendaCalendario.TabIndex = 18;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(427, 156);
+            label2.Name = "label2";
+            label2.Size = new Size(31, 15);
+            label2.TabIndex = 19;
+            label2.Text = "Data";
+            // 
+            // txtTotalVenda
+            // 
+            txtTotalVenda.Enabled = false;
+            txtTotalVenda.Location = new Point(112, 223);
+            txtTotalVenda.Name = "txtTotalVenda";
+            txtTotalVenda.Size = new Size(213, 23);
+            txtTotalVenda.TabIndex = 21;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(39, 226);
+            label9.Name = "label9";
+            label9.Size = new Size(67, 15);
+            label9.TabIndex = 20;
+            label9.Text = "Total Venda";
+            // 
+            // btnInserir
+            // 
+            btnInserir.Location = new Point(337, 294);
+            btnInserir.Name = "btnInserir";
+            btnInserir.Size = new Size(121, 33);
+            btnInserir.TabIndex = 22;
+            btnInserir.Text = "Inserir Venda";
+            btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(243, 294);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(82, 33);
+            btnCancelar.TabIndex = 23;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // FormVenda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textZona);
-            Controls.Add(textVendedor);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnInserir);
+            Controls.Add(txtTotalVenda);
+            Controls.Add(label9);
+            Controls.Add(label2);
+            Controls.Add(dataVendaCalendario);
+            Controls.Add(txtPreco);
+            Controls.Add(comboProduto);
+            Controls.Add(comboZona);
+            Controls.Add(comboVendedor);
+            Controls.Add(txtQuantidade);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormVenda";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Vendas";
+            FormClosed += FormVenda_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,18 +247,23 @@
         #endregion
 
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label label7;
         private Label label8;
-        private TextBox textVendedor;
-        private TextBox textZona;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private TextBox txtQuantidade;
+        private ComboBox comboVendedor;
+        private ComboBox comboZona;
+        private ComboBox comboProduto;
+        private TextBox txtPreco;
+        private MonthCalendar dataVendaCalendario;
+        private Label label2;
+        private TextBox textBox1;
+        private Label label9;
+        private TextBox txtTotalVenda;
+        private Button btnInserir;
+        private Button btnCancelar;
     }
 }
