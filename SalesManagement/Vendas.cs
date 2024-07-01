@@ -70,6 +70,16 @@ namespace SalesManagement
             }
         }
 
+        /*
+         * Função para Editar uma venda
+         * @param codigoProduto - Código do produto
+         * @param codigoVendedor - Código do vendedor
+         * @param codigoZona - Código da zona
+         * @param dataVenda - Data da venda
+         * @param quantidade - Quantidade
+         * @param valorVenda - Valor total da venda
+         * @param idVenda - Id da venda
+         */
         public static void EditarVenda(string codigoProduto, int codigoVendedor, int codigoZona, string dataVenda, string quantidade, string valorVenda, int idVenda)
         {
 
@@ -98,7 +108,7 @@ namespace SalesManagement
 
                 dbHelper.ExecuteQuery(updateQuery, paramCodigoProduto, paramCodigoVendedor, paramZona, paramDataVenda, paramQuantidade, paramValorVenda, paramIdVenda);
 
-                MessageBox.Show("O produto foi alterado com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("A venda foi alterada com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
