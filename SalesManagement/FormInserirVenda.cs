@@ -17,32 +17,27 @@ namespace SalesManagement
         {
             InitializeComponent();
 
-            // Carregar os produtos
+            // Obtem os Produtos
             DataTable obterProdutos = Produtos.ObterProdutos();
 
+            // Carrega os produtos para o ComboBox
             foreach (DataRow row in obterProdutos.Rows)
-            {
                 comboProduto.Items.Add(row["Nome"].ToString());
-            }
 
-            // Carregar os vendedores
+            // Obtem os Vendedores
             DataTable obterVendedores = Vendedores.ObterComerciais();
 
+            // Carrega os vendedores para o ComboBox
             foreach (DataRow row in obterVendedores.Rows)
-            {
                 comboVendedor.Items.Add(row["Nome"].ToString());
-            }
 
-            // Carregar as zonas
+            // Obtem as Zonas
             DataTable obterZonas = OperacoesGerais.ObterZonas();
 
+            // Carrega as zonas para o ComboBox
             foreach (DataRow row in obterZonas.Rows)
-            {
                 comboZona.Items.Add(row["Abreviatura"].ToString());
-            }
         }
-
-        private void FormVenda_Load_1(object sender, EventArgs e) { }
 
         private void comboProduto_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -85,31 +80,8 @@ namespace SalesManagement
                 return;
             }
 
-            try
-            {
-                DatabaseHelper dbHelper = new DatabaseHelper();
-
-                string insertQuery = @"
-                    INSERT INTO Vendas (CodigoVendedor, Zona, DataVenda, Quantidade, CodigoProduto, ValorVenda) VALUES 
-                    (@codigoVendedor, @codigoZona, @dataVenda, @quantidade, @codigoProduto, @valorTotal)";
-
-                SqlParameter paramCodigoProduto = new SqlParameter("@codigoProduto", SqlDbType.VarChar) { Value = codigoProduto };
-                SqlParameter paramCodigoVendedor = new SqlParameter("@codigoVendedor", SqlDbType.Int) { Value = codigoVendedor };
-                SqlParameter paramCodigoZona = new SqlParameter("@codigoZona", SqlDbType.Int) { Value = codigoZona };
-                SqlParameter paramDataVenda = new SqlParameter("@dataVenda", SqlDbType.Date) { Value = dataVenda };
-                SqlParameter paramQuantidade = new SqlParameter("@quantidade", SqlDbType.Int) { Value = quantidade };
-                SqlParameter paramValorTotal = new SqlParameter("@valorTotal", SqlDbType.Decimal) { Value = valorTotal };
-
-                dbHelper.ExecuteQuery(insertQuery, paramCodigoProduto, paramCodigoVendedor, paramCodigoZona, paramDataVenda, paramQuantidade, paramValorTotal);
-
-                MessageBox.Show("Venda inserida com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao tentar inserir a venda: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Vendas.InserirVenda(codigoProduto, codigoVendedor, codigoZona, dataVenda, quantidade, valorTotal);
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -118,5 +90,6 @@ namespace SalesManagement
         }
 
         private void FormVenda_FormClosed(object sender, FormClosedEventArgs e) { }
+        private void FormVenda_Load_1(object sender, EventArgs e) { }
     }
 }

@@ -173,12 +173,14 @@ namespace SalesManagement
             }
         }
 
+        // Botão de adicionar uma nova venda
         private void btnVenda_Click(object sender, EventArgs e)
         {
             FormVenda formVenda = new FormVenda();
             formVenda.Show();
         }
 
+        // Botão de pesquisar
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             string pesquisa = inputPesquisa.Text;
@@ -233,6 +235,7 @@ namespace SalesManagement
                 MessageBox.Show("Por favor insira um nome para pesquisar!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        // Botão de limpar a pesquisa
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             inputPesquisa.Text = "";
