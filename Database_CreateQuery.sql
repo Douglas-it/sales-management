@@ -48,6 +48,13 @@ CREATE TABLE Vendas (
 	FOREIGN KEY (Zona) REFERENCES Zonas(Id)
 );
 
+-- Criar tabela de Zonas
+CREATE TABLE Zonas(
+Id int Primary key IDENTITY(1,1),
+NomeZona varchar(10),
+Abreviatura varchar(1)
+);
+
 -- Inserir dados na tabela Categorias
 INSERT INTO Categorias (Codigo, Nome) VALUES 
 (1, 'Computadores e Periféricos'),
@@ -60,9 +67,9 @@ INSERT INTO UtilizadoresCargos (CargoId, CargoNome) VALUES
 (2, 'Vendedor');
 
 -- Inserir dados na tabela Utilizadores
-INSERT INTO Utilizadores (Utilizador, Senha, Cargo) VALUES
-('admin', 'admin', 1),
-('vendedor', 'vendedor', 2);
+INSERT INTO Utilizadores (Utilizador, Senha, Cargo, flag) VALUES
+('admin', 'admin', 1, 0),
+('vendedor', 'vendedor', 2, 0);
 
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES 
@@ -74,25 +81,20 @@ INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES
 
 -- Inserir dados na tabela Vendas
 INSERT INTO Vendas (CodigoVendedor, Zona, DataVenda, Quantidade, CodigoProduto, ValorVenda) VALUES 
-(1, 'N', '2024-01-15', 2, 'P001', 2400.00),
-(2, 'S', '2024-02-10', 3, 'P002', 2700.00),
-(3, 'C', '2024-03-05', 1, 'P003', 300.00),
-(1, 'N', '2024-04-20', 5, 'P005', 500.00),
-(2, 'S', '2024-05-25', 1, 'P004', 1500.00);
+(1, 1, '2024-01-15', 2, 'P001', 2400.00),
+(2, 3, '2024-02-10', 3, 'P002', 2700.00),
+(3, 2, '2024-03-05', 1, 'P003', 300.00),
+(1, 1, '2024-04-20', 5, 'P005', 500.00),
+(2, 3, '2024-05-25', 1, 'P004', 1500.00);
 
 -- Inserir dados na tabela Vendedores
 INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES 
 (1, 'João Silva', 5.00),
 (2, 'Maria Oliveira', 7.50),
-(3, 'Carlos Souza', 6.00),
-(4, 'Dummy', '5.00'),
-(5, 'Dummy', '5.00'),
-(6, 'Dummy', '5.00'),
-(7, 'Dummy', '5.00'),
-(8, 'Dummy', '5.00'),
-(9, 'Dummy', '5.00'),
-(10, 'Dummy', '5.00'),
-(11, 'Dummy', '5.00'),
-(12, 'Dummy', '5.00'),
-(13, 'Dummy', '5.00'),
-(14, 'Dummy', '5.00');
+(3, 'Carlos Souza', 6.00);
+
+-- Inserir dados na tabela Zonas
+INSERT INTO Zonas VALUES
+('Norte', 'N'),
+('Centro', 'C'),
+('Sul', 'S');

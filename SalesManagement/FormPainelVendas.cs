@@ -59,6 +59,7 @@ namespace SalesManagement
             LoadData();
         }
 
+        // Botão para Voltar ao Form Inicial
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             FormInicial FormInicial = new FormInicial();
@@ -71,6 +72,7 @@ namespace SalesManagement
         {
         }
 
+        // Botão de sair da aplicação
         private void btnSair_Click(object sender, EventArgs e)
         {
             DialogResult = MessageBox.Show("Tem a certeza que deseja sair?", "Sair", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

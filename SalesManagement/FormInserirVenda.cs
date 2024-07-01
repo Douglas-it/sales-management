@@ -39,6 +39,7 @@ namespace SalesManagement
                 comboZona.Items.Add(row["Abreviatura"].ToString());
         }
 
+        // Atualizar o preço e o total da venda, com base no produto escolhido
         private void comboProduto_SelectionChangeCommitted(object sender, EventArgs e)
         {
             string filtro = @"WHERE Nome = '" + comboProduto.Text + "'";
@@ -50,6 +51,7 @@ namespace SalesManagement
             txtQuantidade.Text = "1";
         }
 
+        // Atualizar o total da venda, com base na quantidade
         private void txtQuantidade_TextChanged(object sender, EventArgs e)
         {
             if (OperacoesGerais.LerInteiroValido(txtQuantidade.Text, 1))
@@ -61,6 +63,7 @@ namespace SalesManagement
                 txtTotalVenda.Text = "0";
         }
 
+        // Inserir a venda
         private void btnInserir_Click(object sender, EventArgs e)
         {
             string produto = comboProduto.Text;
@@ -70,9 +73,9 @@ namespace SalesManagement
             string quantidade = txtQuantidade.Text;
             string valorTotal = txtTotalVenda.Text;
 
-            string codigoProduto = Produtos.ObterIdProduto(comboProduto.Text);
-            int codigoVendedor = Vendedores.ObterIdComercial(vendedor);
-            int codigoZona = OperacoesGerais.ObterZonaId(comboZona.Text);
+            string codigoProduto = Produtos.ObterIdProduto(comboProduto.Text); // Obtem o codigo do produto
+            int codigoVendedor = Vendedores.ObterIdComercial(vendedor); // Obtem o codigo do vendedor
+            int codigoZona = OperacoesGerais.ObterZonaId(comboZona.Text); // Obtem o ID da zona
 
             if (!OperacoesGerais.LerInteiroValido(quantidade, 1))
             {
@@ -80,10 +83,13 @@ namespace SalesManagement
                 return;
             }
 
+            // Insere a venda na base de dados
             Vendas.InserirVenda(codigoProduto, codigoVendedor, codigoZona, dataVenda, quantidade, valorTotal);
+
             this.Close();
         }
 
+        // Cancelar a inserção da venda
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

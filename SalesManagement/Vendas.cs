@@ -69,5 +69,41 @@ namespace SalesManagement
                 MessageBox.Show("Erro ao tentar inserir a venda: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void EditarVenda(string codigoProduto, int codigoVendedor, int codigoZona, string dataVenda, string quantidade, string valorVenda, int idVenda)
+        {
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string updateQuery = @"
+                    UPDATE Vendas 
+                    SET 
+                        CodigoProduto = @CodigoProduto, 
+                        CodigoVendedor = @CodigoVendedor, 
+                        Zona = @Zona, 
+                        DataVenda = @DataVenda, 
+                        Quantidade = @Quantidade, 
+                        ValorVenda = @ValorVenda 
+                    WHERE Id = @IdVenda";
+
+                SqlParameter paramCodigoProduto = new SqlParameter("@CodigoProduto", SqlDbType.VarChar) { Value = codigoProduto };
+                SqlParameter paramCodigoVendedor = new SqlParameter("@CodigoVendedor", SqlDbType.VarChar) { Value = codigoVendedor };
+                SqlParameter paramZona = new SqlParameter("@Zona", SqlDbType.VarChar) { Value = codigoZona };
+                SqlParameter paramDataVenda = new SqlParameter("@DataVenda", SqlDbType.Date) { Value = dataVenda };
+                SqlParameter paramQuantidade = new SqlParameter("@Quantidade", SqlDbType.Int) { Value = quantidade };
+                SqlParameter paramValorVenda = new SqlParameter("@ValorVenda", SqlDbType.Decimal) { Value = valorVenda };
+                SqlParameter paramIdVenda = new SqlParameter("@IdVenda", SqlDbType.Int) { Value = idVenda };
+
+                dbHelper.ExecuteQuery(updateQuery, paramCodigoProduto, paramCodigoVendedor, paramZona, paramDataVenda, paramQuantidade, paramValorVenda, paramIdVenda);
+
+                MessageBox.Show("O produto foi alterado com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar alterar a venda: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
     }
 }

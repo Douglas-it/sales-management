@@ -194,7 +194,7 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(337, 294);
+            btnInserir.Location = new Point(368, 294);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(121, 33);
             btnInserir.TabIndex = 22;
@@ -204,7 +204,7 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(243, 294);
+            btnCancelar.Location = new Point(274, 294);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 33);
             btnCancelar.TabIndex = 23;
