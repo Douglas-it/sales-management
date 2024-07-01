@@ -155,6 +155,12 @@ namespace SalesManagement
 
                     if (DialogResult == DialogResult.Yes)
                     {
+                        if (Vendedores.VerificarVendas(id))
+                        {
+                            MessageBox.Show("Não é possível eliminar o comercial, pois existem vendas associadas ao mesmo!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         Vendedores.ApagarComercial(id); // Apaga o comercial da base de dados
                         LoadData(); // Carrega os dados novamente para atualizar a lista
                     }

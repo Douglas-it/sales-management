@@ -18,22 +18,18 @@ namespace SalesManagement
          */
         public static void InserirComercial(string codigo, string nome, string comissao)
         {
+            string filtro = " WHERE Codigo = '" + codigo + "'"; // Filtro para verificar se o comercial já existe
+
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DataTable resultado = ObterComerciais(filtro); // Obter os comerciais (com o filtro)
 
-                // Query para verificar se o vendedor existe com base no código inserido pelo utilizador
-                string selectQuery = "SELECT * FROM Vendedores WHERE Codigo = @Codigo";
-
-                // Parâmetros para a Query
-                SqlParameter selectParam = new SqlParameter("@Codigo", SqlDbType.VarChar) { Value = codigo };
-
-                // Executa a query e retorna o resultado
-                DataTable result = dbHelper.GetDataTable(selectQuery, selectParam);
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializar a classe DatabaseHelper
 
                 // Se não existerem rows ==> Adiciona o novo Comercial
-                if (result != null && result.Rows.Count == 0)
+                if (resultado != null && resultado.Rows.Count == 0)
                 {
+                    // Query para inserir o novo Comercial
                     string insertQuery = "INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES (@Codigo, @Nome, @Comissao)";
 
                     SqlParameter insertParam1 = new SqlParameter("@Codigo", SqlDbType.VarChar) { Value = codigo };
@@ -114,17 +110,21 @@ namespace SalesManagement
             return false;
         }
 
+        /* 
+         * Função para obter os comerciais
+         * @param string filtro
+         */
         public static DataTable ObterComerciais(string filtro = "")
         {
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializar a classe DatabaseHelper
 
-                string selectQuery = "SELECT * FROM Vendedores" + filtro;
+                string selectQuery = "SELECT * FROM Vendedores" + filtro; // Query para selecionar todos os comerciais
 
-                DataTable resultado = dbHelper.GetDataTable(selectQuery);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery); // Obter o resultado da query
 
-                return resultado;
+                return resultado; // Retornar o resultado
             }
             catch (Exception ex)
             {
@@ -135,25 +135,56 @@ namespace SalesManagement
             return null;
         }
 
+        /* 
+         * Função para obter o ID do comercial
+         * @param string nome
+         */
         public static int ObterIdComercial(string nome)
         {
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializar a classe DatabaseHelper
 
-                string selectQuery = "SELECT Codigo FROM Vendedores WHERE Nome = @Nome";
+                string selectQuery = "SELECT Codigo FROM Vendedores WHERE Nome = @Nome"; // Query para selecionar o ID do vendedor
 
-                SqlParameter paramNome = new SqlParameter("@Nome", SqlDbType.VarChar) { Value = nome };
+                SqlParameter paramNome = new SqlParameter("@Nome", SqlDbType.VarChar) { Value = nome }; // Parâmetros para a query
 
-                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome); // Obter o resultado da query
 
-                return Convert.ToInt32(resultado.Rows[0]["Codigo"]);
+                return Convert.ToInt32(resultado.Rows[0]["Codigo"]); // Retornar o ID do vendedor
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao obter o ID do Comercial: " + ex.Message);
+                MessageBox.Show("Erro ao obter o ID do vendedor: " + ex.Message);
                 return -1;
             }
+        }
+
+        /* 
+         * Função para verificar se o comercial tem vendas
+         * @param string id
+         */
+        public static bool VerificarVendas (string id)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializar a classe DatabaseHelper
+
+                string selectQuery = "SELECT * FROM Vendas WHERE CodigoVendedor = @id"; // Query para verificar se o vendedor tem vendas
+
+                SqlParameter paramId = new SqlParameter("@id", SqlDbType.VarChar) { Value = id }; // Parâmetros para a query
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramId); // Obter o resultado da query
+
+                if (resultado.Rows.Count > 0) // Se o resultado da query for maior que 0
+                    return true; // Retorna verdadeiro
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao verificar se o vendedor tinha vendas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false; // Retorna falso
         }
     }
 }
