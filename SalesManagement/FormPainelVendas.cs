@@ -179,7 +179,9 @@ namespace SalesManagement
         private void btnVenda_Click(object sender, EventArgs e)
         {
             FormVenda formVenda = new FormVenda();
-            formVenda.Show();
+            formVenda.ShowDialog();
+
+            LoadData();
         }
 
         // Botão de pesquisar
