@@ -306,6 +306,10 @@ namespace SalesManagement
             }
 
             BackOffice.InserirProduto(nome, codigo, preco, categoria);
+
+            txtCodigoProduto.Text = "";
+            txtNomeProduto.Text = "";
+            txtPrecoProduto.Text = "";
         }
 
 
