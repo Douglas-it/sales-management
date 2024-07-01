@@ -168,7 +168,7 @@ namespace SalesManagement
 
                     if (resultado == DialogResult.Yes)
                     {
-                        Vendas.EliminarVenda(codigoProduto);
+                        Vendas.EliminarVenda(IdVenda);
                         LoadData();
                     }
                 }
