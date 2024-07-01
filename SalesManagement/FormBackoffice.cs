@@ -324,8 +324,28 @@ namespace SalesManagement
             Estatisticas.PreencherGrafico(VendasPorProduto, Estatisticas.VendasPorProduto(), "Produto", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorZona, Estatisticas.VendasPorZona(), "Zona", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorMes, Estatisticas.VendasPorMes(), "Mes", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorCategoria, Estatisticas.VendasPorCategoriaProduto(), "Categoria", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPorDia, Estatisticas.VendasPorDia(), "DataVenda", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorMesVendedor, Estatisticas.VendasPorMesVendedor(), "Vendedor", "TotalVendas");
             Estatisticas.PreencherGrafico(vendasPorMesProduto, Estatisticas.VendasPorMesProduto(), "Produto", "TotalVendas");
+
+        }
+
+        private void btnEstatisticas2_Click(object sender, EventArgs e)
+        {
+            HideTabs();
+            ShowTab(tabEstatisticas2);
+        }
+
+        private void btnEstatisticas1_Click(object sender, EventArgs e)
+        {
+            HideTabs();
+            ShowTab(tabEstatisticas);
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -87,7 +87,7 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
                 // Query para consulta
-                string selectQuery = "SELECT vd.Zona, SUM(vd.ValorVenda) AS TotalVendas FROM Vendas vd GROUP BY vd.Zona ORDER BY TotalVendas DESC";
+                string selectQuery = "SELECT z.Abreviatura AS Zona, SUM(vd.ValorVenda) AS TotalVendas FROM Vendas vd JOIN Zonas z ON z.Id = vd.Zona GROUP BY z.Abreviatura ORDER BY TotalVendas DESC";
 
                 // Obtem os resultados
                 resultado = dbHelper.GetDataTable(selectQuery);
@@ -114,11 +114,25 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
                 // Query para consulta
-                string selectQuery = @"
-                    SELECT DATENAME(MONTH, vd.DataVenda) AS Mes, SUM(vd.ValorVenda) AS TotalVendas 
-                    FROM Vendas vd 
-                    GROUP BY DATENAME(MONTH, vd.DataVenda), MONTH(vd.DataVenda) 
-                    ORDER BY MONTH(vd.DataVenda)";
+                string selectQuery = @"SELECT 
+                    CASE MONTH(vd.DataVenda)
+                        WHEN 1 THEN 'Janeiro'
+                        WHEN 2 THEN 'Fevereiro'
+                        WHEN 3 THEN 'Março'
+                        WHEN 4 THEN 'Abril'
+                        WHEN 5 THEN 'Maio'
+                        WHEN 6 THEN 'Junho'
+                        WHEN 7 THEN 'Julho'
+                        WHEN 8 THEN 'Agosto'
+                        WHEN 9 THEN 'Setembro'
+                        WHEN 10 THEN 'Outubro'
+                        WHEN 11 THEN 'Novembro'
+                        WHEN 12 THEN 'Dezembro'
+                    END AS Mes, 
+                    SUM(vd.ValorVenda) AS TotalVendas
+                FROM Vendas vd
+                GROUP BY MONTH(vd.DataVenda)
+                ORDER BY MONTH(vd.DataVenda)";
 
                 // Obtem os resultados
                 resultado = dbHelper.GetDataTable(selectQuery);
@@ -194,6 +208,72 @@ namespace SalesManagement
             // Retorna os resultados
             return resultado;
         }
+
+        /*
+         * Função para obter Vendas por Categoria
+         * @return DataTable
+         */
+        public static DataTable VendasPorCategoriaProduto()
+        {
+            DataTable resultado = new DataTable(); // Inicia um novo DataTable
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
+
+                // Query para consulta
+                string selectQuery = @"
+                    SELECT c.Nome AS Categoria, SUM(ValorVenda) AS TotalVendas
+                    FROM Produtos p
+                    JOIN Vendas v ON p.Codigo = v.CodigoProduto
+                    JOIN Categorias c ON p.CodigoCategoria = c.Codigo
+                    GROUP BY c.Nome";
+
+                // Obtem os resultados
+                resultado = dbHelper.GetDataTable(selectQuery);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar vendas: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Retorna os resultados
+            return resultado;
+        }
+
+        /*
+         * Função para obter Vendas por Dia
+         * @return DataTable
+         */
+        public static DataTable VendasPorDia()
+        {
+            DataTable resultado = new DataTable(); // Inicia um novo DataTable
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
+
+                // Query para consulta
+                string selectQuery = @"
+                    SELECT DataVenda, SUM(ValorVenda) AS TotalVendas
+                    FROM Vendas
+                    WHERE DataVenda >= DATEADD(DAY, -7, GETDATE())
+                    GROUP BY DataVenda
+                    ORDER BY DataVenda";
+
+                // Obtem os resultados
+                resultado = dbHelper.GetDataTable(selectQuery);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar vendas: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Retorna os resultados
+            return resultado;
+        }
+
+
 
         /* Função para preencher um gráfico
          * @param Chart
