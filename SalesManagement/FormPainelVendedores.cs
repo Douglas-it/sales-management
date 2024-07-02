@@ -38,7 +38,7 @@ namespace SalesManagement
                 "Total de Vendas (Anual)",
                 "Total de Vendas (Mês Corrente)",
                 "A Receber (Mês)",
-                "Valor faturado (Anual)"
+                "Valor comissão (Anual)"
             };
 
             // Define se as colunas são editáveis
