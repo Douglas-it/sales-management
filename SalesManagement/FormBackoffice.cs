@@ -274,8 +274,10 @@ namespace SalesManagement
             this.Close();
         }
 
+        // Tab de Adicionar Produtos
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
+            // Mostra a tab de adicionar produtos
             HideTabs();
             ShowTab(tabAdicionarProduto);
 
@@ -289,6 +291,7 @@ namespace SalesManagement
             }
         }
 
+        // Adicionar Produto na Base de Dados
         private void btnAdicionarArtigo_Click(object sender, EventArgs e)
         {
             string nome = txtNomeProduto.Text;
@@ -296,6 +299,7 @@ namespace SalesManagement
             string preco = txtPrecoProduto.Text;
             string categoria = comboCategoriasProduto.Text;
 
+            // Verifica se os campos são válidos
             if (
                 !OperacoesGerais.LerStringValida(nome) ||
                 !OperacoesGerais.LerStringValida(codigo) ||
@@ -306,14 +310,17 @@ namespace SalesManagement
                 return;
             }
 
+            // Verifica se o produto já existe
             if (!Produtos.VerificarIdProduto(codigo))
             {
                 MessageBox.Show("Já existe um produto com esse código!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Adiciona o produto
             BackOffice.InserirProduto(nome, codigo, preco, categoria);
 
+            // Limpa os campos
             txtCodigoProduto.Text = "";
             txtNomeProduto.Text = "";
             txtPrecoProduto.Text = "";
@@ -365,11 +372,13 @@ namespace SalesManagement
             DataTable resultado2 = Estatisticas.VendasPorMesProduto();
             preencherTabelaMesProduto(resultado2);
 
+            // Preenche os gráficos com informação
             Estatisticas.PreencherGrafico(VendasPorDia, Estatisticas.VendasPorDia(), "DataVenda", "TotalVendas");
             Estatisticas.PreencherGrafico(ComissaoTotalVendedor, Estatisticas.ComissaoPorVendedor(), "NomeVendedor", "ComissaoTotal");
             Estatisticas.PreencherGrafico(Top5MaisVendidosEmValor, Estatisticas.Top5ProdutosMaisVendidos(), "NomeProduto", "TotalVendas");
         }
 
+        // Preenche a tabela de Vendas por Mês e Vendedor
         private void preencherTabelaMesVendedor(DataTable resultado)
         {
             // Loop pelo resultado da e agrupa em linhas para a tabela
@@ -384,6 +393,7 @@ namespace SalesManagement
             }
         }
 
+        // Preenche a tabela de Vendas por Mês e Produto
         private void preencherTabelaMesProduto(DataTable resultado)
         {
             // Loop pelo resultado da e agrupa em linhas para a tabela
@@ -398,18 +408,21 @@ namespace SalesManagement
             }
         }
 
+        // Tab estatisticas 2
         private void btnEstatisticas2_Click(object sender, EventArgs e)
         {
             HideTabs();
             ShowTab(tabEstatisticas2);
         }
 
+        // Tab estatisticas 1
         private void btnEstatisticas1_Click(object sender, EventArgs e)
         {
             HideTabs();
             ShowTab(tabEstatisticas);
         }
 
+        // Tab de Adicionar Categorias
         private void button1_Click_1(object sender, EventArgs e)
         {
             HideTabs();
@@ -421,16 +434,6 @@ namespace SalesManagement
             // Adiciona as categorias existentes no combobox
             foreach (DataRow row in Produtos.ObterCategorias().Rows)
                 cmbCategorias.Items.Add(row["nome"].ToString());
-        }
-
-        private void label32_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSalvarCategoria_Click(object sender, EventArgs e)
@@ -480,15 +483,12 @@ namespace SalesManagement
 
         }
 
-        private void txtNomeCategoria_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // Excluir a categoria
         private void btnExcluirCategoria_Click(object sender, EventArgs e)
         {
             string nomeCategoria = cmbCategorias.Text;
 
+            // Verifica se o nome da categoria é válido
             if (!OperacoesGerais.LerStringValida(nomeCategoria))
             {
                 MessageBox.Show("Por favor, selecione uma categoria.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -497,6 +497,7 @@ namespace SalesManagement
 
             try
             {
+                // Elimina a categoria
                 Produtos.EliminarCategoria(nomeCategoria);
 
                 // Limpa as categorias existentes no Combobox
@@ -532,8 +533,9 @@ namespace SalesManagement
         private void btnGuardarAltCat_Click(object sender, EventArgs e)
         {
             string novoNomeCategoria = txtEditarCategoria.Text;
-            int idCategoria = Convert.ToInt32(Produtos.ObterIdCategoria(cmbCategorias.Text));
+            int idCategoria = Convert.ToInt32(Produtos.ObterCategoriaId(cmbCategorias.Text));
 
+            // Verifica se o nome da categoria é válido
             if (!OperacoesGerais.LerStringValida(novoNomeCategoria))
             {
                 MessageBox.Show("Por favor, preencha o nome da categoria.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -542,6 +544,7 @@ namespace SalesManagement
 
             try
             {
+                // Edita a categoria
                 Produtos.EditarCategoria(novoNomeCategoria, idCategoria);
 
                 // Limpa as categorias existentes no Combobox
@@ -566,6 +569,21 @@ namespace SalesManagement
         }
 
         private void label29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNomeCategoria_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
