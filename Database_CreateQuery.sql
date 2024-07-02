@@ -57,11 +57,15 @@ CREATE TABLE Vendas (
     FOREIGN KEY (Zona) REFERENCES Zonas(Id)
 );
 
+
 -- Inserir dados na tabela Categorias
 INSERT INTO Categorias (Nome) VALUES 
 ('Computadores e Periféricos'),
 ('Smartphones e Acessórios'),
-('Componentes de Hardware');
+('Componentes de Hardware'),
+('Impressoras e Scanners'),
+('Acessórios de Computador'),
+('Armazenamento Externo');
 
 -- Inserir dados na tabela UtilizadoresCargos
 INSERT INTO UtilizadoresCargos (CargoId, CargoNome) VALUES
@@ -79,13 +83,21 @@ INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES
 ('P002', 'Smartphone Samsung Galaxy S21', 2, 900.00),
 ('P003', 'Monitor Dell 24"', 1, 300.00),
 ('P004', 'Placa Gráfica NVIDIA RTX 3080', 3, 1500.00),
-('P005', 'Teclado Mecânico Logitech', 1, 100.00);
+('P005', 'Teclado Mecânico Logitech', 1, 100.00),
+('P006', 'Impressora HP LaserJet', 4, 400.00),
+('P007', 'Teclado sem Fio Microsoft', 5, 50.00),
+('P008', 'HD Externo Seagate 1TB', 6, 80.00),
+('P009', 'Mouse Gamer Razer', 5, 70.00),
+('P010', 'SSD Kingston 500GB', 6, 120.00);
 
 -- Inserir dados na tabela Vendedores
 INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES 
 ('1', 'João Silva', 5.00),
 ('2', 'Maria Oliveira', 7.50),
-('3', 'Carlos Souza', 6.00);
+('3', 'Carlos Souza', 6.00),
+('4', 'Ana Costa', 6.50),
+('5', 'Pedro Santos', 5.75),
+('6', 'Marta Fernandes', 7.00);
 
 -- Inserir dados na tabela Zonas
 INSERT INTO Zonas (NomeZona, Abreviatura) VALUES
@@ -96,7 +108,12 @@ INSERT INTO Zonas (NomeZona, Abreviatura) VALUES
 -- Inserir dados na tabela Vendas
 INSERT INTO Vendas (CodigoVendedor, Zona, DataVenda, Quantidade, CodigoProduto, ValorVenda) VALUES 
 ('1', 1, '2024-01-15', 2, 'P001', 2400.00),
-('2', 3, '2024-02-10', 3, 'P002', 2700.00),
+('2', 1, '2024-02-10', 3, 'P002', 2700.00),
 ('3', 2, '2024-03-05', 1, 'P003', 300.00),
-('1', 1, '2024-04-20', 5, 'P005', 500.00),
-('2', 3, '2024-05-25', 1, 'P004', 1500.00);
+('1', 3, '2024-04-20', 5, 'P005', 500.00),
+('2', 1, '2024-05-25', 1, 'P004', 1500.00),
+('4', 2, GETDATE(), 2, 'P006', 800.00),
+('5', 3, GETDATE(), 4, 'P007', 200.00),
+('6', 2, GETDATE(), 1, 'P008', 80.00),
+('4', 1, GETDATE(), 3, 'P009', 210.00),
+('5', 2, GETDATE(), 2, 'P010', 240.00);

@@ -523,8 +523,8 @@ namespace SalesManagement
             }
 
             labelEscolhaCategoria.Visible = true;
-            labelAtencao.Visible = true;
-            txtMessage.Visible = true;
+            labelEditar.Visible = true;
+            txtTextoEditar.Visible = true;
             btnGuardarAltCat.Visible = true;
             txtEditarCategoria.Visible = true;
         }
@@ -556,13 +556,18 @@ namespace SalesManagement
                 txtEditarCategoria.Visible = false;
                 btnGuardarAltCat.Visible = false;
                 labelEscolhaCategoria.Visible = false;
-                labelAtencao.Visible = false;
-                txtMessage.Visible = false;
+                labelEditar.Visible = false;
+                txtTextoEditar.Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao editar a categoria: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

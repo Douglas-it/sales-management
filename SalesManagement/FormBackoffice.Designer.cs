@@ -151,10 +151,9 @@
             btnEstatisticas1 = new Button();
             btnEstatisticas3 = new Button();
             tabAdicionarCategorias = new TabPage();
-<<<<<<< Updated upstream
             label36 = new Label();
-            label31 = new Label();
-            textBox7 = new TextBox();
+            labelEditar = new Label();
+            txtTextoEditar = new TextBox();
             labelEscolhaCategoria = new Label();
             label35 = new Label();
             labelAtencao = new Label();
@@ -168,8 +167,6 @@
             cmbCategorias = new ComboBox();
             btnSalvarCategoria = new Button();
             txtNomeCategoria = new TextBox();
-=======
->>>>>>> Stashed changes
             label12 = new Label();
             btnAdicionarVendedor = new Button();
             btnAdicionarProduto = new Button();
@@ -193,20 +190,16 @@
             ((System.ComponentModel.ISupportInitialize)VendasPorDia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesVendedor).BeginInit();
-<<<<<<< Updated upstream
             tabAdicionarCategorias.SuspendLayout();
-=======
->>>>>>> Stashed changes
             SuspendLayout();
             // 
             // btnLogout
             // 
             btnLogout.Cursor = Cursors.Hand;
             btnLogout.Font = new Font("Segoe UI", 9.5F);
-            btnLogout.Location = new Point(1267, 16);
-            btnLogout.Margin = new Padding(3, 4, 3, 4);
+            btnLogout.Location = new Point(1109, 12);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(86, 44);
+            btnLogout.Size = new Size(75, 33);
             btnLogout.TabIndex = 15;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
@@ -216,10 +209,9 @@
             // 
             btnSair.Cursor = Cursors.Hand;
             btnSair.Font = new Font("Segoe UI", 9.5F);
-            btnSair.Location = new Point(1360, 16);
-            btnSair.Margin = new Padding(3, 4, 3, 4);
+            btnSair.Location = new Point(1190, 12);
             btnSair.Name = "btnSair";
-            btnSair.Size = new Size(86, 44);
+            btnSair.Size = new Size(75, 33);
             btnSair.TabIndex = 14;
             btnSair.Text = "Sair";
             btnSair.UseVisualStyleBackColor = true;
@@ -229,10 +221,9 @@
             // 
             btnCriarConta.Cursor = Cursors.Hand;
             btnCriarConta.Font = new Font("Segoe UI", 9.5F);
-            btnCriarConta.Location = new Point(14, 127);
-            btnCriarConta.Margin = new Padding(3, 4, 3, 4);
+            btnCriarConta.Location = new Point(12, 95);
             btnCriarConta.Name = "btnCriarConta";
-            btnCriarConta.Size = new Size(155, 56);
+            btnCriarConta.Size = new Size(136, 42);
             btnCriarConta.TabIndex = 17;
             btnCriarConta.Text = "Criar Conta";
             btnCriarConta.UseVisualStyleBackColor = true;
@@ -242,10 +233,9 @@
             // 
             btnEstatisticas.Cursor = Cursors.Hand;
             btnEstatisticas.Font = new Font("Segoe UI", 9.5F);
-            btnEstatisticas.Location = new Point(14, 1008);
-            btnEstatisticas.Margin = new Padding(3, 4, 3, 4);
+            btnEstatisticas.Location = new Point(12, 756);
             btnEstatisticas.Name = "btnEstatisticas";
-            btnEstatisticas.Size = new Size(155, 56);
+            btnEstatisticas.Size = new Size(136, 42);
             btnEstatisticas.TabIndex = 18;
             btnEstatisticas.Text = "Estatisticas";
             btnEstatisticas.UseVisualStyleBackColor = true;
@@ -255,10 +245,9 @@
             // 
             btnAlterarConta.Cursor = Cursors.Hand;
             btnAlterarConta.Font = new Font("Segoe UI", 9.5F);
-            btnAlterarConta.Location = new Point(14, 191);
-            btnAlterarConta.Margin = new Padding(3, 4, 3, 4);
+            btnAlterarConta.Location = new Point(12, 143);
             btnAlterarConta.Name = "btnAlterarConta";
-            btnAlterarConta.Size = new Size(155, 56);
+            btnAlterarConta.Size = new Size(136, 42);
             btnAlterarConta.TabIndex = 19;
             btnAlterarConta.Text = "Alterar Conta";
             btnAlterarConta.UseVisualStyleBackColor = true;
@@ -268,10 +257,9 @@
             // 
             btnEliminarConta.Cursor = Cursors.Hand;
             btnEliminarConta.Font = new Font("Segoe UI", 9.5F);
-            btnEliminarConta.Location = new Point(14, 255);
-            btnEliminarConta.Margin = new Padding(3, 4, 3, 4);
+            btnEliminarConta.Location = new Point(12, 191);
             btnEliminarConta.Name = "btnEliminarConta";
-            btnEliminarConta.Size = new Size(155, 56);
+            btnEliminarConta.Size = new Size(136, 42);
             btnEliminarConta.TabIndex = 20;
             btnEliminarConta.Text = "Eliminar Conta";
             btnEliminarConta.UseVisualStyleBackColor = true;
@@ -287,11 +275,10 @@
             tabControl.Controls.Add(tabEstatisticas);
             tabControl.Controls.Add(tabEstatisticas2);
             tabControl.Controls.Add(tabAdicionarCategorias);
-            tabControl.Location = new Point(176, 64);
-            tabControl.Margin = new Padding(3, 4, 3, 4);
+            tabControl.Location = new Point(154, 48);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1270, 1005);
+            tabControl.Size = new Size(1111, 754);
             tabControl.TabIndex = 21;
             tabControl.Tag = "";
             // 
@@ -313,11 +300,10 @@
             tabCriarConta.Controls.Add(label3);
             tabCriarConta.Controls.Add(label2);
             tabCriarConta.Controls.Add(label1);
-            tabCriarConta.Location = new Point(4, 29);
-            tabCriarConta.Margin = new Padding(3, 4, 3, 4);
+            tabCriarConta.Location = new Point(4, 24);
             tabCriarConta.Name = "tabCriarConta";
-            tabCriarConta.Padding = new Padding(3, 4, 3, 4);
-            tabCriarConta.Size = new Size(1262, 972);
+            tabCriarConta.Padding = new Padding(3);
+            tabCriarConta.Size = new Size(1103, 726);
             tabCriarConta.TabIndex = 0;
             tabCriarConta.Text = "Criar Conta";
             tabCriarConta.UseVisualStyleBackColor = true;
@@ -326,9 +312,9 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(32, 468);
+            label11.Location = new Point(28, 351);
             label11.Name = "label11";
-            label11.Size = new Size(162, 23);
+            label11.Size = new Size(128, 18);
             label11.TabIndex = 27;
             label11.Text = "Dados da Conta";
             // 
@@ -337,10 +323,9 @@
             checkSim.AutoSize = true;
             checkSim.Cursor = Cursors.Hand;
             checkSim.Font = new Font("Segoe UI", 10F);
-            checkSim.Location = new Point(117, 801);
-            checkSim.Margin = new Padding(3, 4, 3, 4);
+            checkSim.Location = new Point(102, 601);
             checkSim.Name = "checkSim";
-            checkSim.Size = new Size(60, 27);
+            checkSim.Size = new Size(50, 23);
             checkSim.TabIndex = 26;
             checkSim.Text = "Sim";
             checkSim.UseVisualStyleBackColor = true;
@@ -349,9 +334,9 @@
             // 
             labelPergunta.AutoSize = true;
             labelPergunta.Font = new Font("Segoe UI", 10F);
-            labelPergunta.Location = new Point(117, 764);
+            labelPergunta.Location = new Point(102, 573);
             labelPergunta.Name = "labelPergunta";
-            labelPergunta.Size = new Size(500, 23);
+            labelPergunta.Size = new Size(399, 19);
             labelPergunta.TabIndex = 25;
             labelPergunta.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
             // 
@@ -359,9 +344,9 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(32, 280);
+            label7.Location = new Point(28, 210);
             label7.Name = "label7";
-            label7.Size = new Size(263, 23);
+            label7.Size = new Size(208, 18);
             label7.TabIndex = 12;
             label7.Text = "Tipos de cargos disponíveis";
             // 
@@ -369,12 +354,11 @@
             // 
             textBox2.BorderStyle = BorderStyle.None;
             textBox2.Font = new Font("Segoe UI", 10F);
-            textBox2.Location = new Point(32, 325);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
+            textBox2.Location = new Point(28, 244);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(1195, 89);
+            textBox2.Size = new Size(1046, 67);
             textBox2.TabIndex = 11;
             textBox2.Text = resources.GetString("textBox2.Text");
             // 
@@ -382,9 +366,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(32, 47);
+            label5.Location = new Point(28, 35);
             label5.Name = "label5";
-            label5.Size = new Size(304, 23);
+            label5.Size = new Size(242, 18);
             label5.TabIndex = 10;
             label5.Text = "Instruções para criar uma conta";
             // 
@@ -392,12 +376,11 @@
             // 
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 10F);
-            textBox1.Location = new Point(32, 92);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
+            textBox1.Location = new Point(28, 69);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(1195, 141);
+            textBox1.Size = new Size(1046, 106);
             textBox1.TabIndex = 9;
             textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -405,10 +388,9 @@
             // 
             btnNovoUtilizador.Cursor = Cursors.Hand;
             btnNovoUtilizador.Font = new Font("Segoe UI", 9.5F);
-            btnNovoUtilizador.Location = new Point(1066, 788);
-            btnNovoUtilizador.Margin = new Padding(3, 4, 3, 4);
+            btnNovoUtilizador.Location = new Point(933, 591);
             btnNovoUtilizador.Name = "btnNovoUtilizador";
-            btnNovoUtilizador.Size = new Size(106, 44);
+            btnNovoUtilizador.Size = new Size(93, 33);
             btnNovoUtilizador.TabIndex = 8;
             btnNovoUtilizador.Text = "Criar Conta";
             btnNovoUtilizador.UseVisualStyleBackColor = true;
@@ -419,48 +401,44 @@
             cargos.Cursor = Cursors.IBeam;
             cargos.DropDownStyle = ComboBoxStyle.DropDownList;
             cargos.FormattingEnabled = true;
-            cargos.Location = new Point(115, 716);
-            cargos.Margin = new Padding(3, 4, 3, 4);
+            cargos.Location = new Point(101, 537);
             cargos.Name = "cargos";
-            cargos.Size = new Size(1057, 28);
+            cargos.Size = new Size(925, 23);
             cargos.TabIndex = 7;
             // 
             // txtRepeatPassword
             // 
             txtRepeatPassword.Cursor = Cursors.IBeam;
-            txtRepeatPassword.Location = new Point(648, 636);
-            txtRepeatPassword.Margin = new Padding(3, 4, 3, 4);
+            txtRepeatPassword.Location = new Point(567, 477);
             txtRepeatPassword.Name = "txtRepeatPassword";
             txtRepeatPassword.PasswordChar = '*';
-            txtRepeatPassword.Size = new Size(524, 27);
+            txtRepeatPassword.Size = new Size(459, 23);
             txtRepeatPassword.TabIndex = 6;
             // 
             // txtPassword
             // 
             txtPassword.Cursor = Cursors.IBeam;
-            txtPassword.Location = new Point(117, 636);
-            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Location = new Point(102, 477);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(524, 27);
+            txtPassword.Size = new Size(459, 23);
             txtPassword.TabIndex = 5;
             // 
             // txtUtilizador
             // 
             txtUtilizador.Cursor = Cursors.IBeam;
-            txtUtilizador.Location = new Point(115, 556);
-            txtUtilizador.Margin = new Padding(3, 4, 3, 4);
+            txtUtilizador.Location = new Point(101, 417);
             txtUtilizador.Name = "txtUtilizador";
-            txtUtilizador.Size = new Size(1057, 27);
+            txtUtilizador.Size = new Size(925, 23);
             txtUtilizador.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F);
-            label4.Location = new Point(117, 687);
+            label4.Location = new Point(102, 515);
             label4.Name = "label4";
-            label4.Size = new Size(159, 23);
+            label4.Size = new Size(128, 19);
             label4.TabIndex = 3;
             label4.Text = "Cargo do Utilizador";
             // 
@@ -468,9 +446,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F);
-            label3.Location = new Point(648, 607);
+            label3.Location = new Point(567, 455);
             label3.Name = "label3";
-            label3.Size = new Size(139, 23);
+            label3.Size = new Size(114, 19);
             label3.TabIndex = 2;
             label3.Text = "Repetir Password";
             // 
@@ -478,9 +456,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(115, 607);
+            label2.Location = new Point(101, 455);
             label2.Name = "label2";
-            label2.Size = new Size(80, 23);
+            label2.Size = new Size(67, 19);
             label2.TabIndex = 1;
             label2.Text = "Password";
             // 
@@ -488,9 +466,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F);
-            label1.Location = new Point(115, 527);
+            label1.Location = new Point(101, 395);
             label1.Name = "label1";
-            label1.Size = new Size(159, 23);
+            label1.Size = new Size(127, 19);
             label1.TabIndex = 0;
             label1.Text = "Nome de Utilizador";
             // 
@@ -509,11 +487,10 @@
             tabAlterarConta.Controls.Add(selecionarUtilizador);
             tabAlterarConta.Controls.Add(label9);
             tabAlterarConta.Controls.Add(btnObterDados);
-            tabAlterarConta.Location = new Point(4, 29);
-            tabAlterarConta.Margin = new Padding(3, 4, 3, 4);
+            tabAlterarConta.Location = new Point(4, 24);
             tabAlterarConta.Name = "tabAlterarConta";
-            tabAlterarConta.Padding = new Padding(3, 4, 3, 4);
-            tabAlterarConta.Size = new Size(1262, 972);
+            tabAlterarConta.Padding = new Padding(3);
+            tabAlterarConta.Size = new Size(1103, 726);
             tabAlterarConta.TabIndex = 1;
             tabAlterarConta.Text = "Alterar Conta";
             tabAlterarConta.UseVisualStyleBackColor = true;
@@ -522,9 +499,9 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label13.Location = new Point(33, 35);
+            label13.Location = new Point(29, 26);
             label13.Name = "label13";
-            label13.Size = new Size(335, 23);
+            label13.Size = new Size(265, 18);
             label13.TabIndex = 27;
             label13.Text = "Instruções para editar um utilizador";
             // 
@@ -532,21 +509,19 @@
             // 
             textBox4.BorderStyle = BorderStyle.None;
             textBox4.Font = new Font("Segoe UI", 10F);
-            textBox4.Location = new Point(33, 80);
-            textBox4.Margin = new Padding(3, 4, 3, 4);
+            textBox4.Location = new Point(29, 60);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
             textBox4.ReadOnly = true;
-            textBox4.Size = new Size(1195, 116);
+            textBox4.Size = new Size(1046, 87);
             textBox4.TabIndex = 26;
             textBox4.Text = resources.GetString("textBox4.Text");
             // 
             // txtUserId
             // 
-            txtUserId.Location = new Point(1134, 388);
-            txtUserId.Margin = new Padding(3, 4, 3, 4);
+            txtUserId.Location = new Point(992, 291);
             txtUserId.Name = "txtUserId";
-            txtUserId.Size = new Size(29, 27);
+            txtUserId.Size = new Size(26, 23);
             txtUserId.TabIndex = 25;
             txtUserId.Visible = false;
             // 
@@ -555,10 +530,9 @@
             checkYes.AutoSize = true;
             checkYes.Cursor = Cursors.Hand;
             checkYes.Font = new Font("Segoe UI", 10F);
-            checkYes.Location = new Point(101, 597);
-            checkYes.Margin = new Padding(3, 4, 3, 4);
+            checkYes.Location = new Point(88, 448);
             checkYes.Name = "checkYes";
-            checkYes.Size = new Size(60, 27);
+            checkYes.Size = new Size(50, 23);
             checkYes.TabIndex = 24;
             checkYes.Text = "Sim";
             checkYes.UseVisualStyleBackColor = true;
@@ -568,9 +542,9 @@
             // 
             labelSenha.AutoSize = true;
             labelSenha.Font = new Font("Segoe UI", 10F);
-            labelSenha.Location = new Point(101, 560);
+            labelSenha.Location = new Point(88, 420);
             labelSenha.Name = "labelSenha";
-            labelSenha.Size = new Size(500, 23);
+            labelSenha.Size = new Size(399, 19);
             labelSenha.TabIndex = 22;
             labelSenha.Text = "Deseja que o utilizador altere a palavra-passe no próximo login?\r\n";
             labelSenha.Visible = false;
@@ -579,10 +553,9 @@
             // 
             btnModificarConta.Cursor = Cursors.Hand;
             btnModificarConta.Font = new Font("Segoe UI", 9.5F);
-            btnModificarConta.Location = new Point(1021, 584);
-            btnModificarConta.Margin = new Padding(3, 4, 3, 4);
+            btnModificarConta.Location = new Point(893, 438);
             btnModificarConta.Name = "btnModificarConta";
-            btnModificarConta.Size = new Size(142, 44);
+            btnModificarConta.Size = new Size(124, 33);
             btnModificarConta.TabIndex = 21;
             btnModificarConta.Text = "Alterar Conta";
             btnModificarConta.UseVisualStyleBackColor = true;
@@ -594,20 +567,18 @@
             comboCargos.Cursor = Cursors.Hand;
             comboCargos.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCargos.FormattingEnabled = true;
-            comboCargos.Location = new Point(99, 505);
-            comboCargos.Margin = new Padding(3, 4, 3, 4);
+            comboCargos.Location = new Point(87, 379);
             comboCargos.Name = "comboCargos";
-            comboCargos.Size = new Size(1062, 28);
+            comboCargos.Size = new Size(930, 23);
             comboCargos.TabIndex = 20;
             comboCargos.Visible = false;
             // 
             // txtNomeUser
             // 
             txtNomeUser.Cursor = Cursors.IBeam;
-            txtNomeUser.Location = new Point(99, 427);
-            txtNomeUser.Margin = new Padding(3, 4, 3, 4);
+            txtNomeUser.Location = new Point(87, 320);
             txtNomeUser.Name = "txtNomeUser";
-            txtNomeUser.Size = new Size(1063, 27);
+            txtNomeUser.Size = new Size(931, 23);
             txtNomeUser.TabIndex = 17;
             txtNomeUser.Visible = false;
             // 
@@ -615,9 +586,9 @@
             // 
             labelCargo.AutoSize = true;
             labelCargo.Font = new Font("Segoe UI", 10F);
-            labelCargo.Location = new Point(101, 476);
+            labelCargo.Location = new Point(88, 357);
             labelCargo.Name = "labelCargo";
-            labelCargo.Size = new Size(159, 23);
+            labelCargo.Size = new Size(128, 19);
             labelCargo.TabIndex = 16;
             labelCargo.Text = "Cargo do Utilizador";
             labelCargo.Visible = false;
@@ -626,9 +597,9 @@
             // 
             labelUser.AutoSize = true;
             labelUser.Font = new Font("Segoe UI", 10F);
-            labelUser.Location = new Point(101, 397);
+            labelUser.Location = new Point(88, 298);
             labelUser.Name = "labelUser";
-            labelUser.Size = new Size(159, 23);
+            labelUser.Size = new Size(127, 19);
             labelUser.TabIndex = 13;
             labelUser.Text = "Nome de Utilizador";
             labelUser.Visible = false;
@@ -638,19 +609,18 @@
             selecionarUtilizador.Cursor = Cursors.Hand;
             selecionarUtilizador.DropDownStyle = ComboBoxStyle.DropDownList;
             selecionarUtilizador.FormattingEnabled = true;
-            selecionarUtilizador.Location = new Point(99, 256);
-            selecionarUtilizador.Margin = new Padding(3, 4, 3, 4);
+            selecionarUtilizador.Location = new Point(87, 192);
             selecionarUtilizador.Name = "selecionarUtilizador";
-            selecionarUtilizador.Size = new Size(1062, 28);
+            selecionarUtilizador.Size = new Size(930, 23);
             selecionarUtilizador.TabIndex = 12;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F);
-            label9.Location = new Point(99, 227);
+            label9.Location = new Point(87, 170);
             label9.Name = "label9";
-            label9.Size = new Size(190, 23);
+            label9.Size = new Size(151, 19);
             label9.TabIndex = 11;
             label9.Text = "Selecione um Utilizador";
             // 
@@ -658,10 +628,9 @@
             // 
             btnObterDados.Cursor = Cursors.Hand;
             btnObterDados.Font = new Font("Segoe UI", 9.5F);
-            btnObterDados.Location = new Point(1038, 295);
-            btnObterDados.Margin = new Padding(3, 4, 3, 4);
+            btnObterDados.Location = new Point(908, 221);
             btnObterDados.Name = "btnObterDados";
-            btnObterDados.Size = new Size(125, 44);
+            btnObterDados.Size = new Size(109, 33);
             btnObterDados.TabIndex = 10;
             btnObterDados.Text = "Obter Dados";
             btnObterDados.UseVisualStyleBackColor = true;
@@ -674,11 +643,10 @@
             tabEliminarConta.Controls.Add(selectUsername);
             tabEliminarConta.Controls.Add(label6);
             tabEliminarConta.Controls.Add(btnEliminar);
-            tabEliminarConta.Location = new Point(4, 29);
-            tabEliminarConta.Margin = new Padding(3, 4, 3, 4);
+            tabEliminarConta.Location = new Point(4, 24);
             tabEliminarConta.Name = "tabEliminarConta";
-            tabEliminarConta.Padding = new Padding(3, 4, 3, 4);
-            tabEliminarConta.Size = new Size(1262, 972);
+            tabEliminarConta.Padding = new Padding(3);
+            tabEliminarConta.Size = new Size(1103, 726);
             tabEliminarConta.TabIndex = 2;
             tabEliminarConta.Text = "Eliminar Conta";
             tabEliminarConta.UseVisualStyleBackColor = true;
@@ -688,9 +656,9 @@
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Red;
-            label8.Location = new Point(33, 45);
+            label8.Location = new Point(29, 34);
             label8.Name = "label8";
-            label8.Size = new Size(90, 23);
+            label8.Size = new Size(72, 18);
             label8.TabIndex = 12;
             label8.Text = "Atenção";
             // 
@@ -698,12 +666,11 @@
             // 
             textBox3.BorderStyle = BorderStyle.None;
             textBox3.Font = new Font("Segoe UI", 10F);
-            textBox3.Location = new Point(33, 91);
-            textBox3.Margin = new Padding(3, 4, 3, 4);
+            textBox3.Location = new Point(29, 68);
             textBox3.Multiline = true;
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(1195, 93);
+            textBox3.Size = new Size(1046, 70);
             textBox3.TabIndex = 11;
             textBox3.Text = "    \r\n     Ao eliminar uma conta, a mesma deixa de ter acesso ao sistema. \r\n     Caso pretenda alterar o nível de acesso de utilizador, pode utilizar a seção de \"Alterar Conta\" para o fazer.";
             // 
@@ -712,19 +679,18 @@
             selectUsername.Cursor = Cursors.Hand;
             selectUsername.DropDownStyle = ComboBoxStyle.DropDownList;
             selectUsername.FormattingEnabled = true;
-            selectUsername.Location = new Point(95, 260);
-            selectUsername.Margin = new Padding(3, 4, 3, 4);
+            selectUsername.Location = new Point(83, 195);
             selectUsername.Name = "selectUsername";
-            selectUsername.Size = new Size(1077, 28);
+            selectUsername.Size = new Size(943, 23);
             selectUsername.TabIndex = 9;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F);
-            label6.Location = new Point(95, 231);
+            label6.Location = new Point(83, 173);
             label6.Name = "label6";
-            label6.Size = new Size(159, 23);
+            label6.Size = new Size(127, 19);
             label6.TabIndex = 8;
             label6.Text = "Nome de Utilizador";
             // 
@@ -732,10 +698,9 @@
             // 
             btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.Font = new Font("Segoe UI", 9.5F);
-            btnEliminar.Location = new Point(1048, 303);
-            btnEliminar.Margin = new Padding(3, 4, 3, 4);
+            btnEliminar.Location = new Point(917, 227);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(125, 43);
+            btnEliminar.Size = new Size(109, 32);
             btnEliminar.TabIndex = 1;
             btnEliminar.Text = "Eliminar Conta";
             btnEliminar.UseVisualStyleBackColor = true;
@@ -752,11 +717,10 @@
             tabAdicionarVendedor.Controls.Add(label14);
             tabAdicionarVendedor.Controls.Add(label15);
             tabAdicionarVendedor.Controls.Add(label16);
-            tabAdicionarVendedor.Location = new Point(4, 29);
-            tabAdicionarVendedor.Margin = new Padding(3, 4, 3, 4);
+            tabAdicionarVendedor.Location = new Point(4, 24);
             tabAdicionarVendedor.Name = "tabAdicionarVendedor";
-            tabAdicionarVendedor.Padding = new Padding(3, 4, 3, 4);
-            tabAdicionarVendedor.Size = new Size(1262, 972);
+            tabAdicionarVendedor.Padding = new Padding(3);
+            tabAdicionarVendedor.Size = new Size(1103, 726);
             tabAdicionarVendedor.TabIndex = 3;
             tabAdicionarVendedor.Text = "Adicionar Vendedor";
             tabAdicionarVendedor.UseVisualStyleBackColor = true;
@@ -765,12 +729,11 @@
             // 
             textBox5.BorderStyle = BorderStyle.None;
             textBox5.Font = new Font("Segoe UI", 10F);
-            textBox5.Location = new Point(85, 95);
-            textBox5.Margin = new Padding(3, 4, 3, 4);
+            textBox5.Location = new Point(74, 71);
             textBox5.Multiline = true;
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
-            textBox5.Size = new Size(1095, 163);
+            textBox5.Size = new Size(958, 122);
             textBox5.TabIndex = 36;
             textBox5.Text = resources.GetString("textBox5.Text");
             // 
@@ -778,9 +741,9 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label10.Location = new Point(33, 40);
+            label10.Location = new Point(29, 30);
             label10.Name = "label10";
-            label10.Size = new Size(156, 28);
+            label10.Size = new Size(126, 21);
             label10.TabIndex = 35;
             label10.Text = "Novo Vendedor";
             // 
@@ -788,10 +751,9 @@
             // 
             btnAdicionar.Cursor = Cursors.Hand;
             btnAdicionar.Font = new Font("Segoe UI", 9.5F);
-            btnAdicionar.Location = new Point(1018, 515);
-            btnAdicionar.Margin = new Padding(3, 4, 3, 4);
+            btnAdicionar.Location = new Point(891, 386);
             btnAdicionar.Name = "btnAdicionar";
-            btnAdicionar.Size = new Size(135, 44);
+            btnAdicionar.Size = new Size(118, 33);
             btnAdicionar.TabIndex = 34;
             btnAdicionar.Text = "Criar Vendedor";
             btnAdicionar.UseVisualStyleBackColor = true;
@@ -800,37 +762,34 @@
             // inputComissao
             // 
             inputComissao.Cursor = Cursors.IBeam;
-            inputComissao.Location = new Point(117, 465);
-            inputComissao.Margin = new Padding(3, 4, 3, 4);
+            inputComissao.Location = new Point(102, 349);
             inputComissao.Name = "inputComissao";
-            inputComissao.Size = new Size(1036, 27);
+            inputComissao.Size = new Size(907, 23);
             inputComissao.TabIndex = 33;
             // 
             // inputNome
             // 
             inputNome.Cursor = Cursors.IBeam;
-            inputNome.Location = new Point(117, 395);
-            inputNome.Margin = new Padding(3, 4, 3, 4);
+            inputNome.Location = new Point(102, 296);
             inputNome.Name = "inputNome";
-            inputNome.Size = new Size(1036, 27);
+            inputNome.Size = new Size(907, 23);
             inputNome.TabIndex = 32;
             // 
             // inputCodigo
             // 
             inputCodigo.Cursor = Cursors.IBeam;
-            inputCodigo.Location = new Point(117, 325);
-            inputCodigo.Margin = new Padding(3, 4, 3, 4);
+            inputCodigo.Location = new Point(102, 244);
             inputCodigo.Name = "inputCodigo";
-            inputCodigo.Size = new Size(1036, 27);
+            inputCodigo.Size = new Size(907, 23);
             inputCodigo.TabIndex = 31;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 10F);
-            label14.Location = new Point(117, 436);
+            label14.Location = new Point(102, 327);
             label14.Name = "label14";
-            label14.Size = new Size(83, 23);
+            label14.Size = new Size(68, 19);
             label14.TabIndex = 30;
             label14.Text = "Comissão";
             // 
@@ -838,9 +797,9 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 10F);
-            label15.Location = new Point(117, 365);
+            label15.Location = new Point(102, 274);
             label15.Name = "label15";
-            label15.Size = new Size(57, 23);
+            label15.Size = new Size(46, 19);
             label15.TabIndex = 29;
             label15.Text = "Nome";
             // 
@@ -848,9 +807,9 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 10F);
-            label16.Location = new Point(117, 296);
+            label16.Location = new Point(102, 222);
             label16.Name = "label16";
-            label16.Size = new Size(65, 23);
+            label16.Size = new Size(53, 19);
             label16.TabIndex = 28;
             label16.Text = "Código";
             // 
@@ -867,11 +826,10 @@
             tabAdicionarProduto.Controls.Add(txtCodigoProduto);
             tabAdicionarProduto.Controls.Add(label17);
             tabAdicionarProduto.Controls.Add(btnAdicionarArtigo);
-            tabAdicionarProduto.Location = new Point(4, 29);
-            tabAdicionarProduto.Margin = new Padding(3, 4, 3, 4);
+            tabAdicionarProduto.Location = new Point(4, 24);
             tabAdicionarProduto.Name = "tabAdicionarProduto";
-            tabAdicionarProduto.Padding = new Padding(3, 4, 3, 4);
-            tabAdicionarProduto.Size = new Size(1262, 972);
+            tabAdicionarProduto.Padding = new Padding(3);
+            tabAdicionarProduto.Size = new Size(1103, 726);
             tabAdicionarProduto.TabIndex = 4;
             tabAdicionarProduto.Text = "Adicionar Produto";
             tabAdicionarProduto.UseVisualStyleBackColor = true;
@@ -880,12 +838,11 @@
             // 
             textBox6.BorderStyle = BorderStyle.None;
             textBox6.Font = new Font("Segoe UI", 10F);
-            textBox6.Location = new Point(86, 93);
-            textBox6.Margin = new Padding(3, 4, 3, 4);
+            textBox6.Location = new Point(75, 70);
             textBox6.Multiline = true;
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
-            textBox6.Size = new Size(1095, 163);
+            textBox6.Size = new Size(958, 122);
             textBox6.TabIndex = 37;
             textBox6.Text = resources.GetString("textBox6.Text");
             // 
@@ -893,9 +850,9 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI", 10F);
-            label21.Location = new Point(167, 508);
+            label21.Location = new Point(146, 381);
             label21.Name = "label21";
-            label21.Size = new Size(84, 23);
+            label21.Size = new Size(68, 19);
             label21.TabIndex = 10;
             label21.Text = "Categoria";
             // 
@@ -903,9 +860,9 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 10F);
-            label20.Location = new Point(167, 436);
+            label20.Location = new Point(146, 327);
             label20.Name = "label20";
-            label20.Size = new Size(53, 23);
+            label20.Size = new Size(43, 19);
             label20.TabIndex = 9;
             label20.Text = "Preço";
             // 
@@ -913,9 +870,9 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 10F);
-            label19.Location = new Point(167, 365);
+            label19.Location = new Point(146, 274);
             label19.Name = "label19";
-            label19.Size = new Size(57, 23);
+            label19.Size = new Size(46, 19);
             label19.TabIndex = 8;
             label19.Text = "Nome";
             // 
@@ -923,9 +880,9 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 10F);
-            label18.Location = new Point(167, 296);
+            label18.Location = new Point(146, 222);
             label18.Name = "label18";
-            label18.Size = new Size(65, 23);
+            label18.Size = new Size(53, 19);
             label18.TabIndex = 7;
             label18.Text = "Código";
             // 
@@ -934,46 +891,42 @@
             comboCategoriasProduto.Cursor = Cursors.Hand;
             comboCategoriasProduto.DropDownStyle = ComboBoxStyle.DropDownList;
             comboCategoriasProduto.FormattingEnabled = true;
-            comboCategoriasProduto.Location = new Point(167, 540);
-            comboCategoriasProduto.Margin = new Padding(3, 4, 3, 4);
+            comboCategoriasProduto.Location = new Point(146, 405);
             comboCategoriasProduto.Name = "comboCategoriasProduto";
-            comboCategoriasProduto.Size = new Size(956, 28);
+            comboCategoriasProduto.Size = new Size(837, 23);
             comboCategoriasProduto.TabIndex = 6;
             // 
             // txtPrecoProduto
             // 
             txtPrecoProduto.Cursor = Cursors.IBeam;
-            txtPrecoProduto.Location = new Point(167, 468);
-            txtPrecoProduto.Margin = new Padding(3, 4, 3, 4);
+            txtPrecoProduto.Location = new Point(146, 351);
             txtPrecoProduto.Name = "txtPrecoProduto";
-            txtPrecoProduto.Size = new Size(956, 27);
+            txtPrecoProduto.Size = new Size(837, 23);
             txtPrecoProduto.TabIndex = 5;
             // 
             // txtNomeProduto
             // 
             txtNomeProduto.Cursor = Cursors.IBeam;
-            txtNomeProduto.Location = new Point(167, 397);
-            txtNomeProduto.Margin = new Padding(3, 4, 3, 4);
+            txtNomeProduto.Location = new Point(146, 298);
             txtNomeProduto.Name = "txtNomeProduto";
-            txtNomeProduto.Size = new Size(956, 27);
+            txtNomeProduto.Size = new Size(837, 23);
             txtNomeProduto.TabIndex = 4;
             // 
             // txtCodigoProduto
             // 
             txtCodigoProduto.Cursor = Cursors.IBeam;
-            txtCodigoProduto.Location = new Point(167, 328);
-            txtCodigoProduto.Margin = new Padding(3, 4, 3, 4);
+            txtCodigoProduto.Location = new Point(146, 246);
             txtCodigoProduto.Name = "txtCodigoProduto";
-            txtCodigoProduto.Size = new Size(956, 27);
+            txtCodigoProduto.Size = new Size(837, 23);
             txtCodigoProduto.TabIndex = 3;
             // 
             // label17
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            label17.Location = new Point(34, 41);
+            label17.Location = new Point(30, 31);
             label17.Name = "label17";
-            label17.Size = new Size(177, 28);
+            label17.Size = new Size(144, 21);
             label17.TabIndex = 2;
             label17.Text = "Adicionar Produto";
             // 
@@ -981,10 +934,9 @@
             // 
             btnAdicionarArtigo.Cursor = Cursors.Hand;
             btnAdicionarArtigo.Font = new Font("Segoe UI", 9.5F);
-            btnAdicionarArtigo.Location = new Point(968, 593);
-            btnAdicionarArtigo.Margin = new Padding(3, 4, 3, 4);
+            btnAdicionarArtigo.Location = new Point(847, 445);
             btnAdicionarArtigo.Name = "btnAdicionarArtigo";
-            btnAdicionarArtigo.Size = new Size(155, 44);
+            btnAdicionarArtigo.Size = new Size(136, 33);
             btnAdicionarArtigo.TabIndex = 0;
             btnAdicionarArtigo.Text = "Adicionar Produto";
             btnAdicionarArtigo.UseVisualStyleBackColor = true;
@@ -1006,11 +958,10 @@
             tabEstatisticas.Controls.Add(VendasPorMes);
             tabEstatisticas.Controls.Add(VendasPorProduto);
             tabEstatisticas.Controls.Add(VendasPorVendedor);
-            tabEstatisticas.Location = new Point(4, 29);
-            tabEstatisticas.Margin = new Padding(3, 4, 3, 4);
+            tabEstatisticas.Location = new Point(4, 24);
             tabEstatisticas.Name = "tabEstatisticas";
-            tabEstatisticas.Padding = new Padding(3, 4, 3, 4);
-            tabEstatisticas.Size = new Size(1262, 972);
+            tabEstatisticas.Padding = new Padding(3);
+            tabEstatisticas.Size = new Size(1103, 726);
             tabEstatisticas.TabIndex = 5;
             tabEstatisticas.Text = "Estatisticas";
             tabEstatisticas.UseVisualStyleBackColor = true;
@@ -1020,10 +971,9 @@
             button3.Cursor = Cursors.Hand;
             button3.Enabled = false;
             button3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(1186, 929);
-            button3.Margin = new Padding(3, 4, 3, 4);
+            button3.Location = new Point(1038, 697);
             button3.Name = "button3";
-            button3.Size = new Size(37, 39);
+            button3.Size = new Size(32, 29);
             button3.TabIndex = 13;
             button3.Text = "<";
             button3.UseVisualStyleBackColor = true;
@@ -1032,10 +982,9 @@
             // 
             btnEstatisticas2.Cursor = Cursors.Hand;
             btnEstatisticas2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEstatisticas2.Location = new Point(1224, 929);
-            btnEstatisticas2.Margin = new Padding(3, 4, 3, 4);
+            btnEstatisticas2.Location = new Point(1071, 697);
             btnEstatisticas2.Name = "btnEstatisticas2";
-            btnEstatisticas2.Size = new Size(37, 39);
+            btnEstatisticas2.Size = new Size(32, 29);
             btnEstatisticas2.TabIndex = 12;
             btnEstatisticas2.Text = ">";
             btnEstatisticas2.UseVisualStyleBackColor = true;
@@ -1045,9 +994,9 @@
             // 
             label27.AutoSize = true;
             label27.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label27.Location = new Point(851, 483);
+            label27.Location = new Point(745, 362);
             label27.Name = "label27";
-            label27.Size = new Size(304, 23);
+            label27.Size = new Size(238, 17);
             label27.TabIndex = 11;
             label27.Text = "Volume de vendas nos últimos 7 dias";
             // 
@@ -1055,9 +1004,9 @@
             // 
             label26.AutoSize = true;
             label26.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label26.Location = new Point(433, 483);
+            label26.Location = new Point(379, 362);
             label26.Name = "label26";
-            label26.Size = new Size(277, 23);
+            label26.Size = new Size(213, 17);
             label26.TabIndex = 10;
             label26.Text = "Vendas por Categoria de Produto";
             // 
@@ -1065,9 +1014,9 @@
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label25.Location = new Point(15, 483);
+            label25.Location = new Point(13, 362);
             label25.Name = "label25";
-            label25.Size = new Size(136, 23);
+            label25.Size = new Size(106, 17);
             label25.TabIndex = 9;
             label25.Text = "Vendas por Mês";
             // 
@@ -1075,9 +1024,9 @@
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label24.Location = new Point(851, 12);
+            label24.Location = new Point(745, 9);
             label24.Name = "label24";
-            label24.Size = new Size(143, 23);
+            label24.Size = new Size(112, 17);
             label24.TabIndex = 8;
             label24.Text = "Vendas por Zona";
             // 
@@ -1085,9 +1034,9 @@
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label23.Location = new Point(433, 12);
+            label23.Location = new Point(379, 9);
             label23.Name = "label23";
-            label23.Size = new Size(169, 23);
+            label23.Size = new Size(131, 17);
             label23.TabIndex = 7;
             label23.Text = "Vendas por Produto";
             // 
@@ -1095,195 +1044,111 @@
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label22.Location = new Point(15, 12);
+            label22.Location = new Point(13, 9);
             label22.Name = "label22";
-            label22.Size = new Size(181, 23);
+            label22.Size = new Size(140, 17);
             label22.TabIndex = 6;
             label22.Text = "Vendas por Vendedor";
             // 
             // VendasPorZona
             // 
-<<<<<<< Updated upstream
-            chartArea10.Name = "ChartArea1";
-            VendasPorZona.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            VendasPorZona.Legends.Add(legend10);
-            VendasPorZona.Location = new Point(851, 39);
-            VendasPorZona.Margin = new Padding(3, 4, 3, 4);
-            VendasPorZona.Name = "VendasPorZona";
-            series10.ChartArea = "ChartArea1";
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            VendasPorZona.Series.Add(series10);
-            VendasPorZona.Size = new Size(393, 412);
-=======
             chartArea1.Name = "ChartArea1";
             VendasPorZona.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             VendasPorZona.Legends.Add(legend1);
-            VendasPorZona.Location = new Point(745, 29);
+            VendasPorZona.Location = new Point(745, 25);
+            VendasPorZona.Margin = new Padding(3, 2, 3, 2);
             VendasPorZona.Name = "VendasPorZona";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             VendasPorZona.Series.Add(series1);
-            VendasPorZona.Size = new Size(344, 309);
->>>>>>> Stashed changes
+            VendasPorZona.Size = new Size(347, 295);
             VendasPorZona.TabIndex = 5;
             VendasPorZona.Text = "chart6";
             // 
             // VendasPor7Dias
             // 
-<<<<<<< Updated upstream
-            chartArea11.Name = "ChartArea1";
-            VendasPor7Dias.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            VendasPor7Dias.Legends.Add(legend11);
-            VendasPor7Dias.Location = new Point(851, 509);
-            VendasPor7Dias.Margin = new Padding(3, 4, 3, 4);
-            VendasPor7Dias.Name = "VendasPor7Dias";
-            series11.ChartArea = "ChartArea1";
-            series11.Legend = "Legend1";
-            series11.Name = "Series1";
-            VendasPor7Dias.Series.Add(series11);
-            VendasPor7Dias.Size = new Size(393, 412);
-=======
             chartArea2.Name = "ChartArea1";
             VendasPor7Dias.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             VendasPor7Dias.Legends.Add(legend2);
-            VendasPor7Dias.Location = new Point(745, 382);
+            VendasPor7Dias.Location = new Point(745, 381);
+            VendasPor7Dias.Margin = new Padding(3, 2, 3, 2);
             VendasPor7Dias.Name = "VendasPor7Dias";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             VendasPor7Dias.Series.Add(series2);
-            VendasPor7Dias.Size = new Size(344, 309);
->>>>>>> Stashed changes
+            VendasPor7Dias.Size = new Size(347, 311);
             VendasPor7Dias.TabIndex = 4;
             VendasPor7Dias.Text = "chart5";
             // 
             // VendasPorCategoria
             // 
-<<<<<<< Updated upstream
-            chartArea12.Name = "ChartArea1";
-            VendasPorCategoria.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            VendasPorCategoria.Legends.Add(legend12);
-            VendasPorCategoria.Location = new Point(433, 509);
-            VendasPorCategoria.Margin = new Padding(3, 4, 3, 4);
-            VendasPorCategoria.Name = "VendasPorCategoria";
-            series12.ChartArea = "ChartArea1";
-            series12.Legend = "Legend1";
-            series12.Name = "Series1";
-            VendasPorCategoria.Series.Add(series12);
-            VendasPorCategoria.Size = new Size(393, 412);
-=======
             chartArea3.Name = "ChartArea1";
             VendasPorCategoria.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             VendasPorCategoria.Legends.Add(legend3);
-            VendasPorCategoria.Location = new Point(379, 382);
+            VendasPorCategoria.Location = new Point(379, 381);
+            VendasPorCategoria.Margin = new Padding(3, 2, 3, 2);
             VendasPorCategoria.Name = "VendasPorCategoria";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             VendasPorCategoria.Series.Add(series3);
-            VendasPorCategoria.Size = new Size(344, 309);
->>>>>>> Stashed changes
+            VendasPorCategoria.Size = new Size(347, 311);
             VendasPorCategoria.TabIndex = 3;
             VendasPorCategoria.Text = "chart4";
             // 
             // VendasPorMes
             // 
-<<<<<<< Updated upstream
-            chartArea13.Name = "ChartArea1";
-            VendasPorMes.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            VendasPorMes.Legends.Add(legend13);
-            VendasPorMes.Location = new Point(15, 509);
-            VendasPorMes.Margin = new Padding(3, 4, 3, 4);
-            VendasPorMes.Name = "VendasPorMes";
-            series13.ChartArea = "ChartArea1";
-            series13.Legend = "Legend1";
-            series13.Name = "Series1";
-            VendasPorMes.Series.Add(series13);
-            VendasPorMes.Size = new Size(393, 412);
-=======
             chartArea4.Name = "ChartArea1";
             VendasPorMes.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             VendasPorMes.Legends.Add(legend4);
-            VendasPorMes.Location = new Point(13, 382);
+            VendasPorMes.Location = new Point(13, 381);
+            VendasPorMes.Margin = new Padding(3, 2, 3, 2);
             VendasPorMes.Name = "VendasPorMes";
             series4.ChartArea = "ChartArea1";
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             VendasPorMes.Series.Add(series4);
-            VendasPorMes.Size = new Size(344, 309);
->>>>>>> Stashed changes
+            VendasPorMes.Size = new Size(347, 311);
             VendasPorMes.TabIndex = 2;
             VendasPorMes.Text = "chart3";
             // 
             // VendasPorProduto
             // 
-<<<<<<< Updated upstream
-            chartArea14.Name = "ChartArea1";
-            VendasPorProduto.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            VendasPorProduto.Legends.Add(legend14);
-            VendasPorProduto.Location = new Point(433, 39);
-            VendasPorProduto.Margin = new Padding(3, 4, 3, 4);
-            VendasPorProduto.Name = "VendasPorProduto";
-            series14.ChartArea = "ChartArea1";
-            series14.Legend = "Legend1";
-            series14.Name = "Series1";
-            VendasPorProduto.Series.Add(series14);
-            VendasPorProduto.Size = new Size(393, 412);
-=======
             chartArea5.Name = "ChartArea1";
             VendasPorProduto.ChartAreas.Add(chartArea5);
             legend5.Name = "Legend1";
             VendasPorProduto.Legends.Add(legend5);
-            VendasPorProduto.Location = new Point(379, 29);
+            VendasPorProduto.Location = new Point(379, 28);
+            VendasPorProduto.Margin = new Padding(3, 2, 3, 2);
             VendasPorProduto.Name = "VendasPorProduto";
             series5.ChartArea = "ChartArea1";
             series5.Legend = "Legend1";
             series5.Name = "Series1";
             VendasPorProduto.Series.Add(series5);
-            VendasPorProduto.Size = new Size(344, 309);
->>>>>>> Stashed changes
+            VendasPorProduto.Size = new Size(347, 295);
             VendasPorProduto.TabIndex = 1;
             VendasPorProduto.Text = "chart2";
             // 
             // VendasPorVendedor
             // 
-<<<<<<< Updated upstream
-            chartArea15.Name = "ChartArea1";
-            VendasPorVendedor.ChartAreas.Add(chartArea15);
-            legend15.Name = "Legend1";
-            VendasPorVendedor.Legends.Add(legend15);
-            VendasPorVendedor.Location = new Point(15, 39);
-            VendasPorVendedor.Margin = new Padding(3, 4, 3, 4);
-            VendasPorVendedor.Name = "VendasPorVendedor";
-            series15.ChartArea = "ChartArea1";
-            series15.Legend = "Legend1";
-            series15.Name = "Series1";
-            VendasPorVendedor.Series.Add(series15);
-            VendasPorVendedor.Size = new Size(393, 412);
-=======
             chartArea6.Name = "ChartArea1";
             VendasPorVendedor.ChartAreas.Add(chartArea6);
             legend6.Name = "Legend1";
             VendasPorVendedor.Legends.Add(legend6);
-            VendasPorVendedor.Location = new Point(13, 29);
+            VendasPorVendedor.Location = new Point(13, 28);
+            VendasPorVendedor.Margin = new Padding(3, 2, 3, 2);
             VendasPorVendedor.Name = "VendasPorVendedor";
             series6.ChartArea = "ChartArea1";
             series6.Legend = "Legend1";
             series6.Name = "Series1";
             VendasPorVendedor.Series.Add(series6);
-            VendasPorVendedor.Size = new Size(344, 309);
->>>>>>> Stashed changes
+            VendasPorVendedor.Size = new Size(347, 295);
             VendasPorVendedor.TabIndex = 0;
             VendasPorVendedor.Text = "chart1";
             // 
@@ -1301,11 +1166,10 @@
             tabEstatisticas2.Controls.Add(label33);
             tabEstatisticas2.Controls.Add(btnEstatisticas1);
             tabEstatisticas2.Controls.Add(btnEstatisticas3);
-            tabEstatisticas2.Location = new Point(4, 29);
-            tabEstatisticas2.Margin = new Padding(3, 4, 3, 4);
+            tabEstatisticas2.Location = new Point(4, 24);
             tabEstatisticas2.Name = "tabEstatisticas2";
-            tabEstatisticas2.Padding = new Padding(3, 4, 3, 4);
-            tabEstatisticas2.Size = new Size(1262, 972);
+            tabEstatisticas2.Padding = new Padding(3);
+            tabEstatisticas2.Size = new Size(1103, 726);
             tabEstatisticas2.TabIndex = 6;
             tabEstatisticas2.Text = "Estatisticas";
             tabEstatisticas2.UseVisualStyleBackColor = true;
@@ -1314,15 +1178,9 @@
             // 
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-<<<<<<< Updated upstream
-            label30.Location = new Point(854, 447);
-            label30.Name = "label30";
-            label30.Size = new Size(326, 23);
-=======
-            label30.Location = new Point(747, 335);
+            label30.Location = new Point(758, 348);
             label30.Name = "label30";
             label30.Size = new Size(253, 17);
->>>>>>> Stashed changes
             label30.TabIndex = 32;
             label30.Text = "Top 5 produtos mais vendidos em valor";
             // 
@@ -1330,154 +1188,99 @@
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-<<<<<<< Updated upstream
-            label29.Location = new Point(438, 447);
-            label29.Name = "label29";
-            label29.Size = new Size(276, 23);
-=======
-            label29.Location = new Point(383, 335);
+            label29.Location = new Point(390, 348);
             label29.Name = "label29";
             label29.Size = new Size(213, 17);
->>>>>>> Stashed changes
             label29.TabIndex = 31;
             label29.Text = "Comissão total de cada vendedor";
+            label29.Click += label29_Click;
             // 
             // label28
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-<<<<<<< Updated upstream
-            label28.Location = new Point(22, 447);
-            label28.Name = "label28";
-            label28.Size = new Size(197, 23);
-=======
-            label28.Location = new Point(19, 335);
+            label28.Location = new Point(19, 348);
             label28.Name = "label28";
             label28.Size = new Size(153, 17);
->>>>>>> Stashed changes
             label28.TabIndex = 30;
             label28.Text = "Total de vendas por dia";
             // 
             // ComissaoTotalVendedor
             // 
-<<<<<<< Updated upstream
-            chartArea16.Name = "ChartArea1";
-            ComissaoTotalVendedor.ChartAreas.Add(chartArea16);
-            legend16.Name = "Legend1";
-            ComissaoTotalVendedor.Legends.Add(legend16);
-            ComissaoTotalVendedor.Location = new Point(438, 473);
-            ComissaoTotalVendedor.Margin = new Padding(3, 4, 3, 4);
-            ComissaoTotalVendedor.Name = "ComissaoTotalVendedor";
-            series16.ChartArea = "ChartArea1";
-            series16.Legend = "Legend1";
-            series16.Name = "Series1";
-            ComissaoTotalVendedor.Series.Add(series16);
-            ComissaoTotalVendedor.Size = new Size(384, 448);
-=======
             chartArea7.Name = "ChartArea1";
             ComissaoTotalVendedor.ChartAreas.Add(chartArea7);
             legend7.Name = "Legend1";
             ComissaoTotalVendedor.Legends.Add(legend7);
-            ComissaoTotalVendedor.Location = new Point(383, 355);
+            ComissaoTotalVendedor.Location = new Point(390, 367);
+            ComissaoTotalVendedor.Margin = new Padding(3, 2, 3, 2);
             ComissaoTotalVendedor.Name = "ComissaoTotalVendedor";
             series7.ChartArea = "ChartArea1";
             series7.Legend = "Legend1";
             series7.Name = "Series1";
             ComissaoTotalVendedor.Series.Add(series7);
-            ComissaoTotalVendedor.Size = new Size(336, 336);
->>>>>>> Stashed changes
+            ComissaoTotalVendedor.Size = new Size(333, 322);
             ComissaoTotalVendedor.TabIndex = 29;
             ComissaoTotalVendedor.Text = "chart3";
             // 
             // Top5MaisVendidosEmValor
             // 
-<<<<<<< Updated upstream
-            chartArea17.Name = "ChartArea1";
-            Top5MaisVendidosEmValor.ChartAreas.Add(chartArea17);
-            legend17.Name = "Legend1";
-            Top5MaisVendidosEmValor.Legends.Add(legend17);
-            Top5MaisVendidosEmValor.Location = new Point(854, 473);
-            Top5MaisVendidosEmValor.Margin = new Padding(3, 4, 3, 4);
-            Top5MaisVendidosEmValor.Name = "Top5MaisVendidosEmValor";
-            series17.ChartArea = "ChartArea1";
-            series17.Legend = "Legend1";
-            series17.Name = "Series1";
-            Top5MaisVendidosEmValor.Series.Add(series17);
-            Top5MaisVendidosEmValor.Size = new Size(384, 448);
-=======
             chartArea8.Name = "ChartArea1";
             Top5MaisVendidosEmValor.ChartAreas.Add(chartArea8);
             legend8.Name = "Legend1";
             Top5MaisVendidosEmValor.Legends.Add(legend8);
-            Top5MaisVendidosEmValor.Location = new Point(747, 355);
+            Top5MaisVendidosEmValor.Location = new Point(758, 367);
+            Top5MaisVendidosEmValor.Margin = new Padding(3, 2, 3, 2);
             Top5MaisVendidosEmValor.Name = "Top5MaisVendidosEmValor";
             series8.ChartArea = "ChartArea1";
             series8.Legend = "Legend1";
             series8.Name = "Series1";
             Top5MaisVendidosEmValor.Series.Add(series8);
-            Top5MaisVendidosEmValor.Size = new Size(336, 336);
->>>>>>> Stashed changes
+            Top5MaisVendidosEmValor.Size = new Size(325, 322);
             Top5MaisVendidosEmValor.TabIndex = 28;
             Top5MaisVendidosEmValor.Text = "chart2";
             // 
             // VendasPorDia
             // 
-<<<<<<< Updated upstream
-            chartArea18.Name = "ChartArea1";
-            VendasPorDia.ChartAreas.Add(chartArea18);
-            legend18.Name = "Legend1";
-            VendasPorDia.Legends.Add(legend18);
-            VendasPorDia.Location = new Point(22, 473);
-            VendasPorDia.Margin = new Padding(3, 4, 3, 4);
-            VendasPorDia.Name = "VendasPorDia";
-            series18.ChartArea = "ChartArea1";
-            series18.Legend = "Legend1";
-            series18.Name = "Series1";
-            VendasPorDia.Series.Add(series18);
-            VendasPorDia.Size = new Size(384, 448);
-=======
             chartArea9.Name = "ChartArea1";
             VendasPorDia.ChartAreas.Add(chartArea9);
             legend9.Name = "Legend1";
             VendasPorDia.Legends.Add(legend9);
-            VendasPorDia.Location = new Point(19, 355);
+            VendasPorDia.Location = new Point(19, 367);
+            VendasPorDia.Margin = new Padding(3, 2, 3, 2);
             VendasPorDia.Name = "VendasPorDia";
             series9.ChartArea = "ChartArea1";
             series9.Legend = "Legend1";
             series9.Name = "Series1";
             VendasPorDia.Series.Add(series9);
-            VendasPorDia.Size = new Size(336, 336);
->>>>>>> Stashed changes
+            VendasPorDia.Size = new Size(335, 322);
             VendasPorDia.TabIndex = 27;
             VendasPorDia.Text = "chart1";
             // 
             // dataGridViewMesProduto
             // 
             dataGridViewMesProduto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMesProduto.Location = new Point(641, 43);
-            dataGridViewMesProduto.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewMesProduto.Location = new Point(561, 32);
             dataGridViewMesProduto.Name = "dataGridViewMesProduto";
             dataGridViewMesProduto.RowHeadersWidth = 51;
-            dataGridViewMesProduto.Size = new Size(597, 381);
+            dataGridViewMesProduto.Size = new Size(522, 286);
             dataGridViewMesProduto.TabIndex = 26;
             // 
             // dataGridViewMesVendedor
             // 
             dataGridViewMesVendedor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMesVendedor.Location = new Point(22, 43);
-            dataGridViewMesVendedor.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewMesVendedor.Location = new Point(19, 32);
             dataGridViewMesVendedor.Name = "dataGridViewMesVendedor";
             dataGridViewMesVendedor.RowHeadersWidth = 51;
-            dataGridViewMesVendedor.Size = new Size(597, 381);
+            dataGridViewMesVendedor.Size = new Size(522, 286);
             dataGridViewMesVendedor.TabIndex = 24;
             // 
             // label32
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label32.Location = new Point(641, 16);
+            label32.Location = new Point(561, 12);
             label32.Name = "label32";
-            label32.Size = new Size(218, 23);
+            label32.Size = new Size(169, 17);
             label32.TabIndex = 23;
             label32.Text = "Vendas por Mês - Produto";
             label32.Click += label32_Click;
@@ -1486,9 +1289,9 @@
             // 
             label33.AutoSize = true;
             label33.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label33.Location = new Point(22, 16);
+            label33.Location = new Point(19, 12);
             label33.Name = "label33";
-            label33.Size = new Size(230, 23);
+            label33.Size = new Size(178, 17);
             label33.TabIndex = 22;
             label33.Text = "Vendas por Mês - Vendedor";
             // 
@@ -1496,10 +1299,9 @@
             // 
             btnEstatisticas1.Cursor = Cursors.Hand;
             btnEstatisticas1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEstatisticas1.Location = new Point(1186, 929);
-            btnEstatisticas1.Margin = new Padding(3, 4, 3, 4);
+            btnEstatisticas1.Location = new Point(1038, 697);
             btnEstatisticas1.Name = "btnEstatisticas1";
-            btnEstatisticas1.Size = new Size(37, 39);
+            btnEstatisticas1.Size = new Size(32, 29);
             btnEstatisticas1.TabIndex = 15;
             btnEstatisticas1.Text = "<";
             btnEstatisticas1.UseVisualStyleBackColor = true;
@@ -1510,20 +1312,18 @@
             btnEstatisticas3.Cursor = Cursors.Hand;
             btnEstatisticas3.Enabled = false;
             btnEstatisticas3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEstatisticas3.Location = new Point(1224, 929);
-            btnEstatisticas3.Margin = new Padding(3, 4, 3, 4);
+            btnEstatisticas3.Location = new Point(1071, 697);
             btnEstatisticas3.Name = "btnEstatisticas3";
-            btnEstatisticas3.Size = new Size(37, 39);
+            btnEstatisticas3.Size = new Size(32, 29);
             btnEstatisticas3.TabIndex = 14;
             btnEstatisticas3.Text = ">";
             btnEstatisticas3.UseVisualStyleBackColor = true;
             // 
             // tabAdicionarCategorias
             // 
-<<<<<<< Updated upstream
             tabAdicionarCategorias.Controls.Add(label36);
-            tabAdicionarCategorias.Controls.Add(label31);
-            tabAdicionarCategorias.Controls.Add(textBox7);
+            tabAdicionarCategorias.Controls.Add(labelEditar);
+            tabAdicionarCategorias.Controls.Add(txtTextoEditar);
             tabAdicionarCategorias.Controls.Add(labelEscolhaCategoria);
             tabAdicionarCategorias.Controls.Add(label35);
             tabAdicionarCategorias.Controls.Add(labelAtencao);
@@ -1537,64 +1337,57 @@
             tabAdicionarCategorias.Controls.Add(cmbCategorias);
             tabAdicionarCategorias.Controls.Add(btnSalvarCategoria);
             tabAdicionarCategorias.Controls.Add(txtNomeCategoria);
-            tabAdicionarCategorias.Location = new Point(4, 29);
-            tabAdicionarCategorias.Margin = new Padding(3, 4, 3, 4);
-            tabAdicionarCategorias.Name = "tabAdicionarCategorias";
-            tabAdicionarCategorias.Padding = new Padding(3, 4, 3, 4);
-            tabAdicionarCategorias.Size = new Size(1262, 972);
-=======
             tabAdicionarCategorias.Location = new Point(4, 24);
             tabAdicionarCategorias.Name = "tabAdicionarCategorias";
             tabAdicionarCategorias.Padding = new Padding(3);
             tabAdicionarCategorias.Size = new Size(1103, 726);
->>>>>>> Stashed changes
             tabAdicionarCategorias.TabIndex = 7;
             tabAdicionarCategorias.Text = "Adicionar Categorias";
             tabAdicionarCategorias.UseVisualStyleBackColor = true;
             tabAdicionarCategorias.Click += tabPage1_Click;
             // 
-<<<<<<< Updated upstream
             // label36
             // 
             label36.AutoSize = true;
             label36.Font = new Font("Segoe UI", 10F);
-            label36.Location = new Point(73, 529);
+            label36.Location = new Point(64, 397);
             label36.Name = "label36";
-            label36.Size = new Size(182, 23);
+            label36.Size = new Size(145, 19);
             label36.TabIndex = 27;
             label36.Text = "Escolha uma categoria";
             // 
-            // label31
+            // labelEditar
             // 
-            label31.AutoSize = true;
-            label31.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label31.ForeColor = Color.Black;
-            label31.Location = new Point(34, 668);
-            label31.Name = "label31";
-            label31.Size = new Size(207, 23);
-            label31.TabIndex = 26;
-            label31.Text = "Editar uma categoria";
+            labelEditar.AutoSize = true;
+            labelEditar.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelEditar.ForeColor = Color.Black;
+            labelEditar.Location = new Point(30, 501);
+            labelEditar.Name = "labelEditar";
+            labelEditar.Size = new Size(163, 18);
+            labelEditar.TabIndex = 26;
+            labelEditar.Text = "Editar uma categoria";
+            labelEditar.Visible = false;
             // 
-            // textBox7
+            // txtTextoEditar
             // 
-            textBox7.BorderStyle = BorderStyle.None;
-            textBox7.Font = new Font("Segoe UI", 10F);
-            textBox7.Location = new Point(34, 714);
-            textBox7.Margin = new Padding(3, 4, 3, 4);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.ReadOnly = true;
-            textBox7.Size = new Size(1195, 65);
-            textBox7.TabIndex = 25;
-            textBox7.Text = "     \r\n       Por favor insira um nome da categoria válido.";
+            txtTextoEditar.BorderStyle = BorderStyle.None;
+            txtTextoEditar.Font = new Font("Segoe UI", 10F);
+            txtTextoEditar.Location = new Point(30, 536);
+            txtTextoEditar.Multiline = true;
+            txtTextoEditar.Name = "txtTextoEditar";
+            txtTextoEditar.ReadOnly = true;
+            txtTextoEditar.Size = new Size(1046, 49);
+            txtTextoEditar.TabIndex = 25;
+            txtTextoEditar.Text = "     \r\n       Por favor insira um nome da categoria válido.";
+            txtTextoEditar.Visible = false;
             // 
             // labelEscolhaCategoria
             // 
             labelEscolhaCategoria.AutoSize = true;
             labelEscolhaCategoria.Font = new Font("Segoe UI", 10F);
-            labelEscolhaCategoria.Location = new Point(73, 818);
+            labelEscolhaCategoria.Location = new Point(64, 614);
             labelEscolhaCategoria.Name = "labelEscolhaCategoria";
-            labelEscolhaCategoria.Size = new Size(261, 23);
+            labelEscolhaCategoria.Size = new Size(209, 19);
             labelEscolhaCategoria.TabIndex = 24;
             labelEscolhaCategoria.Text = "Qual o novo nome da categoria?";
             labelEscolhaCategoria.Visible = false;
@@ -1603,9 +1396,9 @@
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Segoe UI", 10F);
-            label35.Location = new Point(73, 217);
+            label35.Location = new Point(64, 163);
             label35.Name = "label35";
-            label35.Size = new Size(157, 23);
+            label35.Size = new Size(125, 19);
             label35.TabIndex = 23;
             label35.Text = "Nome da categoria";
             // 
@@ -1614,35 +1407,32 @@
             labelAtencao.AutoSize = true;
             labelAtencao.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelAtencao.ForeColor = Color.Red;
-            labelAtencao.Location = new Point(34, 354);
+            labelAtencao.Location = new Point(30, 266);
             labelAtencao.Name = "labelAtencao";
-            labelAtencao.Size = new Size(90, 23);
+            labelAtencao.Size = new Size(72, 18);
             labelAtencao.TabIndex = 22;
             labelAtencao.Text = "Atenção";
-            labelAtencao.Visible = false;
             // 
             // txtMessage
             // 
             txtMessage.BorderStyle = BorderStyle.None;
             txtMessage.Font = new Font("Segoe UI", 10F);
-            txtMessage.Location = new Point(34, 400);
-            txtMessage.Margin = new Padding(3, 4, 3, 4);
+            txtMessage.Location = new Point(30, 300);
             txtMessage.Multiline = true;
             txtMessage.Name = "txtMessage";
             txtMessage.ReadOnly = true;
-            txtMessage.Size = new Size(1195, 95);
+            txtMessage.Size = new Size(1046, 71);
             txtMessage.TabIndex = 21;
             txtMessage.Text = resources.GetString("txtMessage.Text");
-            txtMessage.Visible = false;
             // 
             // label34
             // 
             label34.AutoSize = true;
             label34.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label34.ForeColor = Color.Black;
-            label34.Location = new Point(34, 34);
+            label34.Location = new Point(30, 26);
             label34.Name = "label34";
-            label34.Size = new Size(204, 23);
+            label34.Size = new Size(162, 18);
             label34.TabIndex = 20;
             label34.Text = "Criar nova categoria";
             // 
@@ -1650,20 +1440,20 @@
             // 
             textBox9.BorderStyle = BorderStyle.None;
             textBox9.Font = new Font("Segoe UI", 10F);
-            textBox9.Location = new Point(34, 80);
-            textBox9.Margin = new Padding(3, 4, 3, 4);
+            textBox9.Location = new Point(30, 60);
             textBox9.Multiline = true;
             textBox9.Name = "textBox9";
             textBox9.ReadOnly = true;
-            textBox9.Size = new Size(1195, 93);
+            textBox9.Size = new Size(1046, 70);
             textBox9.TabIndex = 19;
             textBox9.Text = "    \r\n     Pode criar quantas categorias achar necessário.\r\n     Por favor insira um nome válido para a categoria.";
             // 
             // btnGuardarAltCat
             // 
-            btnGuardarAltCat.Location = new Point(1036, 877);
+            btnGuardarAltCat.Location = new Point(906, 658);
+            btnGuardarAltCat.Margin = new Padding(3, 2, 3, 2);
             btnGuardarAltCat.Name = "btnGuardarAltCat";
-            btnGuardarAltCat.Size = new Size(151, 44);
+            btnGuardarAltCat.Size = new Size(132, 33);
             btnGuardarAltCat.TabIndex = 17;
             btnGuardarAltCat.Text = "Guardar Alterações";
             btnGuardarAltCat.UseVisualStyleBackColor = true;
@@ -1672,17 +1462,19 @@
             // 
             // txtEditarCategoria
             // 
-            txtEditarCategoria.Location = new Point(73, 844);
+            txtEditarCategoria.Location = new Point(64, 633);
+            txtEditarCategoria.Margin = new Padding(3, 2, 3, 2);
             txtEditarCategoria.Name = "txtEditarCategoria";
-            txtEditarCategoria.Size = new Size(1114, 27);
+            txtEditarCategoria.Size = new Size(975, 23);
             txtEditarCategoria.TabIndex = 16;
             txtEditarCategoria.Visible = false;
             // 
             // btnEditarCategoria
             // 
-            btnEditarCategoria.Location = new Point(859, 589);
+            btnEditarCategoria.Location = new Point(752, 442);
+            btnEditarCategoria.Margin = new Padding(3, 2, 3, 2);
             btnEditarCategoria.Name = "btnEditarCategoria";
-            btnEditarCategoria.Size = new Size(151, 44);
+            btnEditarCategoria.Size = new Size(132, 33);
             btnEditarCategoria.TabIndex = 15;
             btnEditarCategoria.Text = "Editar Categoria";
             btnEditarCategoria.UseVisualStyleBackColor = true;
@@ -1690,9 +1482,10 @@
             // 
             // btnExcluirCategoria
             // 
-            btnExcluirCategoria.Location = new Point(1036, 589);
+            btnExcluirCategoria.Location = new Point(906, 442);
+            btnExcluirCategoria.Margin = new Padding(3, 2, 3, 2);
             btnExcluirCategoria.Name = "btnExcluirCategoria";
-            btnExcluirCategoria.Size = new Size(151, 44);
+            btnExcluirCategoria.Size = new Size(132, 33);
             btnExcluirCategoria.TabIndex = 3;
             btnExcluirCategoria.Text = "Eliminar Categoria";
             btnExcluirCategoria.UseVisualStyleBackColor = true;
@@ -1702,16 +1495,18 @@
             // 
             cmbCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategorias.FormattingEnabled = true;
-            cmbCategorias.Location = new Point(73, 555);
+            cmbCategorias.Location = new Point(64, 416);
+            cmbCategorias.Margin = new Padding(3, 2, 3, 2);
             cmbCategorias.Name = "cmbCategorias";
-            cmbCategorias.Size = new Size(1114, 28);
+            cmbCategorias.Size = new Size(975, 23);
             cmbCategorias.TabIndex = 2;
             // 
             // btnSalvarCategoria
             // 
-            btnSalvarCategoria.Location = new Point(1021, 276);
+            btnSalvarCategoria.Location = new Point(893, 207);
+            btnSalvarCategoria.Margin = new Padding(3, 2, 3, 2);
             btnSalvarCategoria.Name = "btnSalvarCategoria";
-            btnSalvarCategoria.Size = new Size(166, 44);
+            btnSalvarCategoria.Size = new Size(145, 33);
             btnSalvarCategoria.TabIndex = 1;
             btnSalvarCategoria.Text = "Inserir Categoria";
             btnSalvarCategoria.UseVisualStyleBackColor = true;
@@ -1719,21 +1514,20 @@
             // 
             // txtNomeCategoria
             // 
-            txtNomeCategoria.Location = new Point(73, 243);
+            txtNomeCategoria.Location = new Point(64, 182);
+            txtNomeCategoria.Margin = new Padding(3, 2, 3, 2);
             txtNomeCategoria.Name = "txtNomeCategoria";
-            txtNomeCategoria.Size = new Size(1114, 27);
+            txtNomeCategoria.Size = new Size(975, 23);
             txtNomeCategoria.TabIndex = 0;
             txtNomeCategoria.TextChanged += txtNomeCategoria_TextChanged;
             // 
-=======
->>>>>>> Stashed changes
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label12.Location = new Point(14, 85);
+            label12.Location = new Point(12, 64);
             label12.Name = "label12";
-            label12.Size = new Size(117, 23);
+            label12.Size = new Size(92, 18);
             label12.TabIndex = 22;
             label12.Text = "Utilizadores";
             // 
@@ -1741,10 +1535,9 @@
             // 
             btnAdicionarVendedor.Cursor = Cursors.Hand;
             btnAdicionarVendedor.Font = new Font("Segoe UI", 9.5F);
-            btnAdicionarVendedor.Location = new Point(14, 403);
-            btnAdicionarVendedor.Margin = new Padding(3, 4, 3, 4);
+            btnAdicionarVendedor.Location = new Point(12, 302);
             btnAdicionarVendedor.Name = "btnAdicionarVendedor";
-            btnAdicionarVendedor.Size = new Size(155, 56);
+            btnAdicionarVendedor.Size = new Size(136, 42);
             btnAdicionarVendedor.TabIndex = 23;
             btnAdicionarVendedor.Text = "Adicionar Vendedor";
             btnAdicionarVendedor.UseVisualStyleBackColor = true;
@@ -1754,10 +1547,9 @@
             // 
             btnAdicionarProduto.Cursor = Cursors.Hand;
             btnAdicionarProduto.Font = new Font("Segoe UI", 9.5F);
-            btnAdicionarProduto.Location = new Point(14, 467);
-            btnAdicionarProduto.Margin = new Padding(3, 4, 3, 4);
+            btnAdicionarProduto.Location = new Point(12, 350);
             btnAdicionarProduto.Name = "btnAdicionarProduto";
-            btnAdicionarProduto.Size = new Size(155, 56);
+            btnAdicionarProduto.Size = new Size(136, 42);
             btnAdicionarProduto.TabIndex = 24;
             btnAdicionarProduto.Text = "Adicionar Produto";
             btnAdicionarProduto.UseVisualStyleBackColor = true;
@@ -1767,10 +1559,9 @@
             // 
             button1.Cursor = Cursors.Hand;
             button1.Font = new Font("Segoe UI", 9.5F);
-            button1.Location = new Point(14, 532);
-            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Location = new Point(12, 399);
             button1.Name = "button1";
-            button1.Size = new Size(155, 56);
+            button1.Size = new Size(136, 42);
             button1.TabIndex = 25;
             button1.Text = "Adicionar Categorias";
             button1.UseVisualStyleBackColor = true;
@@ -1778,9 +1569,9 @@
             // 
             // FormBackoffice
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1459, 1085);
+            ClientSize = new Size(1277, 816);
             Controls.Add(button1);
             Controls.Add(btnAdicionarProduto);
             Controls.Add(btnAdicionarVendedor);
@@ -1793,7 +1584,6 @@
             Controls.Add(btnLogout);
             Controls.Add(btnSair);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormBackoffice";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Backoffice";
@@ -1823,11 +1613,8 @@
             ((System.ComponentModel.ISupportInitialize)VendasPorDia).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesProduto).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesVendedor).EndInit();
-<<<<<<< Updated upstream
             tabAdicionarCategorias.ResumeLayout(false);
             tabAdicionarCategorias.PerformLayout();
-=======
->>>>>>> Stashed changes
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1946,7 +1733,7 @@
         private Label labelAtencao;
         private Label labelEscolhaCategoria;
         private Label label36;
-        private Label label31;
-        private TextBox textBox7;
+        private Label labelEditar;
+        private TextBox txtTextoEditar;
     }
 }
