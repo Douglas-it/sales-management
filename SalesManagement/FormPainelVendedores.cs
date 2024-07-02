@@ -68,7 +68,13 @@ namespace SalesManagement
                     SELECT 
                         V.Codigo, V.Nome, V.Comissao, 
                         COALESCE(SUM(Vendas.ValorVenda), 0) AS totalVendasAnual, 
-                        SUM(CASE WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) THEN Vendas.ValorVenda ELSE 0 END) AS totalVendasMes 
+                        SUM(
+                        CASE 
+                            WHEN MONTH(Vendas.DataVenda) = MONTH(GETDATE()) 
+                            THEN Vendas.ValorVenda 
+                            ELSE 0 
+                        END
+                        ) AS totalVendasMes 
                     FROM Vendedores V 
                     LEFT JOIN Vendas ON V.Codigo = Vendas.CodigoVendedor 
                     GROUP BY V.Codigo, V.Nome, V.Comissao";
