@@ -234,7 +234,6 @@ namespace SalesManagement
                     Globals.nomeUtilizador = result.Rows[0]["Utilizador"].ToString();
 
                     int cargo = Convert.ToInt32(result.Rows[0]["Cargo"]);// Obtém o Cargo do Utilizador
-
                     int flag = Convert.ToInt32(result.Rows[0]["flag"]);// Obtém a flag do utilizador
 
                     // Verifica se o utilizador é Admin ou não
@@ -245,14 +244,13 @@ namespace SalesManagement
                     {
                         FormLoginAlterarSenha FormLoginAlterarSenha = new FormLoginAlterarSenha();
                         FormLoginAlterarSenha.ShowDialog();
-                        return true;
                     }
                     else
                     {
                         FormInicial FormInicial = new FormInicial(); // Inicializar novo form
                         FormInicial.Show(); // Mostra Novo Form
-                        return true;
                     }
+                    return true;
                 }
                 else
                 {
@@ -263,9 +261,8 @@ namespace SalesManagement
             catch (Exception ex) // Apanhar exceções
             {
                 MessageBox.Show("Erro ao tentar conectar a base de dados: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
             }
-
-            return false;
         }
     }
 }

@@ -114,7 +114,8 @@ namespace SalesManagement
                 DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
                 // Query para consulta
-                string selectQuery = @"SELECT 
+                string selectQuery = @"
+                SELECT 
                     CASE MONTH(vd.DataVenda)
                         WHEN 1 THEN 'Janeiro'
                         WHEN 2 THEN 'Fevereiro'
@@ -160,11 +161,11 @@ namespace SalesManagement
 
                 // Query para consulta
                 string selectQuery = @"
-                    SELECT v.Nome AS Vendedor, DATENAME(MONTH, vd.DataVenda) AS Mes, SUM(vd.ValorVenda) AS TotalVendas 
-                    FROM Vendedores v 
+                    SELECT DATENAME(MONTH, vd.DataVenda) AS Mes, v.Nome AS Vendedor, SUM(vd.ValorVenda) AS TotalVendas 
+                    FROM Vendedores v
                     JOIN Vendas vd ON v.Codigo = vd.CodigoVendedor 
                     GROUP BY v.Nome, DATENAME(MONTH, vd.DataVenda), MONTH(vd.DataVenda) 
-                    ORDER BY v.Nome, MONTH(vd.DataVenda)";
+                    ORDER BY MONTH(vd.DataVenda)";
 
                 // Obtem os resultados
                 resultado = dbHelper.GetDataTable(selectQuery);
@@ -192,10 +193,10 @@ namespace SalesManagement
 
                 // Query para consulta
                 string selectQuery = @"
-                    SELECT p.Nome AS Produto, DATENAME(MONTH, vd.DataVenda) AS Mes, SUM(vd.ValorVenda) AS TotalVendas 
+                    SELECT DATENAME(MONTH, vd.DataVenda) AS Mes, p.Nome AS Produto, SUM(vd.ValorVenda) AS TotalVendas 
                     FROM Produtos p JOIN Vendas vd ON p.Codigo = vd.CodigoProduto 
                     GROUP BY p.Nome, DATENAME(MONTH, vd.DataVenda), MONTH(vd.DataVenda) 
-                    ORDER BY p.Nome, MONTH(vd.DataVenda)";
+                    ORDER BY MONTH(vd.DataVenda)";
 
                 // Obtem os resultados
                 resultado = dbHelper.GetDataTable(selectQuery);

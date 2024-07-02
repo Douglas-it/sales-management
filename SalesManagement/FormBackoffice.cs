@@ -325,10 +325,66 @@ namespace SalesManagement
             Estatisticas.PreencherGrafico(VendasPorZona, Estatisticas.VendasPorZona(), "Zona", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorMes, Estatisticas.VendasPorMes(), "Mes", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorCategoria, Estatisticas.VendasPorCategoriaProduto(), "Categoria", "TotalVendas");
-            Estatisticas.PreencherGrafico(VendasPorDia, Estatisticas.VendasPorDia(), "DataVenda", "TotalVendas");
-            Estatisticas.PreencherGrafico(VendasPorMesVendedor, Estatisticas.VendasPorMesVendedor(), "Vendedor", "TotalVendas");
-            Estatisticas.PreencherGrafico(vendasPorMesProduto, Estatisticas.VendasPorMesProduto(), "Produto", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPor7Dias, Estatisticas.VendasPorDia(), "DataVenda", "TotalVendas");
 
+            // Tabela de Vendas por Mês e Vendedor
+            // Define os nomes internos das colunas
+            string[] nomeColunas = { "mes", "vendedor", "totalVendas" };
+
+            // Define os nomes visiveis das colunas
+            string[] nomeColunasVisivel = { "Mês", "Vendedor", "Valor de Vendas" };
+
+            // Define se as colunas são editáveis
+            bool[] colunasReadOnly = { true, true, true };
+
+            // Configura se os botões de editar e eliminar estão visíveis
+            bool botaoEditar = false;
+            bool botaoEliminar = false;
+
+            // Cria a tabela
+            OperacoesGerais.ConfigurarDataGridView(dataGridViewMesVendedor, nomeColunas, nomeColunasVisivel, colunasReadOnly, botaoEditar, botaoEliminar);
+
+            // Carregar Dados da base de dados
+            DataTable resultado = Estatisticas.VendasPorMesVendedor();
+            preencherTabelaMesVendedor(resultado);
+
+            // Tabela de Vendas por Mês e Produto
+            // Define os nomes internos das colunas
+            string[] nomeColunas2 = { "mes", "produto", "totalVendas" };
+            string[] nomeColunasVisivel2 = { "Mês", "Produto", "Valor de Vendas" };
+
+            // Cria a tabela
+            OperacoesGerais.ConfigurarDataGridView(dataGridViewMesProduto, nomeColunas2, nomeColunasVisivel2, colunasReadOnly, botaoEditar, botaoEliminar);
+            DataTable resultado2 = Estatisticas.VendasPorMesProduto();
+            preencherTabelaMesProduto(resultado2);
+        }
+
+        private void preencherTabelaMesVendedor(DataTable resultado)
+        {
+            // Loop pelo resultado da e agrupa em linhas para a tabela
+            foreach (DataRow row in resultado.Rows)
+            {
+                // Adiciona os dados na lista
+                dataGridViewMesVendedor.Rows.Add(
+                    row["Mes"].ToString(),
+                    row["Vendedor"].ToString(),
+                    row["TotalVendas"].ToString() + "€"
+                    );
+            }
+        }
+
+        private void preencherTabelaMesProduto(DataTable resultado)
+        {
+            // Loop pelo resultado da e agrupa em linhas para a tabela
+            foreach (DataRow row in resultado.Rows)
+            {
+                // Adiciona os dados na lista
+                dataGridViewMesProduto.Rows.Add(
+                    row["Mes"].ToString(),
+                    row["Produto"].ToString(),
+                    row["TotalVendas"].ToString() + "€"
+                    );
+            }
         }
 
         private void btnEstatisticas2_Click(object sender, EventArgs e)
@@ -343,9 +399,21 @@ namespace SalesManagement
             ShowTab(tabEstatisticas);
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            HideTabs();
+            ShowTab(tabAdicionarCategorias);
+        }
+
         private void label32_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
