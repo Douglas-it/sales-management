@@ -392,7 +392,7 @@ namespace SalesManagement
             // Itera sobre cada linha do DataTable e adiciona uma série para cada vendedor
             foreach (DataRow row in dataTable.Rows)
             {
-                // Aqui você precisa acessar os valores corretos do DataRow usando os nomes dos campos
+                // Obtem os nomes dos campos
                 string label = row[nomeCampoX].ToString();
                 double value = Convert.ToDouble(row[nomeCampoY]);
 

@@ -47,6 +47,7 @@
             btnLimpar.TabIndex = 22;
             btnLimpar.Text = "Limpar";
             btnLimpar.UseVisualStyleBackColor = true;
+            btnLimpar.Click += btnLimpar_Click_1;
             // 
             // inputPesquisa
             // 

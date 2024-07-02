@@ -18,7 +18,7 @@ namespace SalesManagement
             InitializeComponent();
 
             // Define os nomes internos das colunas
-            string[] nomeColunas = { 
+            string[] nomeColunas = {
                 "Codigo",
                 "Nome",
                 "Preco",
@@ -134,13 +134,13 @@ namespace SalesManagement
 
                     dbHelper.ExecuteQuery(DeleteQuery, paramProduto); // Executa a query
 
-                    MessageBox.Show("O Produto foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);  
-                    
+                    MessageBox.Show("O Produto foi eliminado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     //Carrega os dados novamente para atualizar a lista
                     LoadData();
-                } 
+                }
                 catch (Exception ex)
-                {                     
+                {
                     MessageBox.Show("Erro ao tentar apagar o produto: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -166,7 +166,7 @@ namespace SalesManagement
 
         private void inputPesquisa_TextChanged(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -227,6 +227,12 @@ namespace SalesManagement
             {
                 MessageBox.Show("Por favor insira um valor válido para a pesquisa!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnLimpar_Click_1(object sender, EventArgs e)
+        {
+            inputPesquisa.Text = "";
+            LoadData();
         }
     }
 }

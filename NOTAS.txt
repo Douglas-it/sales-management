@@ -1,0 +1,7 @@
+Um utilizador não se pode eliminar a ele próprio
+O código de um vendedor não pode ser alterado
+O código de um produto não pode ser alterado
+Se o comercial tiver vendas não pode ser eliminado
+Um produto com vendas não pode ser editado, deve sim ser criado um novo artigo
+Existem dois tipos de utilizadores: administrador e administrativo
+Uma categoria com vendas não pode ser eliminada

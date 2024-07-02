@@ -39,7 +39,6 @@ namespace SalesManagement
             string codigo = txtCodigo.Text;
             string nome = txtNome.Text;
             string preco = txtPreco.Text;
-            decimal precoDecimal = Convert.ToDecimal(preco);
             string categoria = comboCategoria.Text;
 
             // Verifica se o produto já foi vendido
@@ -60,6 +59,7 @@ namespace SalesManagement
                 return;
             }
 
+            decimal precoDecimal = Convert.ToDecimal(preco);
             // Lógica para Alterar o Produto
             Produtos.AdicionarProduto(codigo, nome, precoDecimal, categoria);
 
