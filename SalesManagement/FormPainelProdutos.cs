@@ -94,11 +94,13 @@ namespace SalesManagement
             }
         }
 
+        // Função para controlar os botões de editar e eliminar (evento)
         private void ListaProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verifica se a célula clicada é um botão ou não
+            // Verifica se a célula clicada é um botão ou não (tendo em conta que o row 0 é o cabeçalho)
             if (e.RowIndex >= 0)
             {
+                // captura o nome da coluna clicada
                 string opcao = ListaProdutos.Columns[e.ColumnIndex].Name;
 
                 if (opcao == "Editar")
@@ -108,6 +110,7 @@ namespace SalesManagement
             }
         }
 
+        // Função para apagar um produto
         private void BotaoApagarProduto(int rowIndex)
         {
             // Obtem o código do Produto
@@ -146,6 +149,7 @@ namespace SalesManagement
             }
         }
 
+        // Função para editar um produto
         private void BotaoEditarProduto(int rowIndex)
         {
             string codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
@@ -153,21 +157,12 @@ namespace SalesManagement
             string preco = ListaProdutos.Rows[rowIndex].Cells["Preco"].Value.ToString().Replace("€", "");
             string categoria = ListaProdutos.Rows[rowIndex].Cells["codigocategoria"].Value.ToString();
 
+            // Inicializa o FormEditarProduto
             FormEditarProduto FormEditarProduto = new FormEditarProduto(codigo, nome, preco, categoria);
             FormEditarProduto.ShowDialog();
 
+            // Carrega os dados novamente para atualizar a lista (após fechar o form)
             LoadData();
-        }
-
-        private void FormProdutos_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void inputPesquisa_TextChanged(object sender, EventArgs e)
-        {
-
-
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -197,6 +192,8 @@ namespace SalesManagement
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             string pesquisa = inputPesquisa.Text;
+
+            // Verifica se a pesquisa é válida
             if (OperacoesGerais.LerStringValida(pesquisa))
             {
                 try

@@ -114,13 +114,13 @@ namespace SalesManagement
         {
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
-                string selectQuery = "SELECT * FROM Zonas" + filtro;
+                string selectQuery = "SELECT * FROM Zonas" + filtro; // Query para selecionar todas as zonas + filtro
 
-                DataTable resultado = dbHelper.GetDataTable(selectQuery);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery); // Obter o resultado da query
 
-                return resultado;
+                return resultado; // Retorna o resultado
             }
             catch (Exception ex)
             {
@@ -129,18 +129,22 @@ namespace SalesManagement
             }
         }
 
+        /*
+         * Função para obter o Id de uma Zona
+         * @param nomeZona: string com o nome da Zona
+         */
         public static int ObterZonaId (string nomeZona)
         {
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
-                string selectQuery = "SELECT Id FROM Zonas WHERE Abreviatura = @nomeZona";
-                SqlParameter paramNome = new SqlParameter("@nomeZona", SqlDbType.VarChar) { Value = nomeZona };
+                string selectQuery = "SELECT Id FROM Zonas WHERE Abreviatura = @nomeZona"; // Query para selecionar o Id da Zona
+                SqlParameter paramNome = new SqlParameter("@nomeZona", SqlDbType.VarChar) { Value = nomeZona }; // Parâmetros para a query
 
-                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome); // Obter o resultado da query
 
-                return Convert.ToInt32(resultado.Rows[0]["Id"]);
+                return Convert.ToInt32(resultado.Rows[0]["Id"]); // Retorna o Id da Zona
             }
             catch (Exception ex)
             {

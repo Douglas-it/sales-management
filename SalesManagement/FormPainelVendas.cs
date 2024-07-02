@@ -148,7 +148,9 @@ namespace SalesManagement
             // Verifica se a célula clicada é um botão ou não
             if (e.RowIndex >= 0)
             {
+                // Obtem o nome da coluna que é clicada
                 string opcao = ListaVendas.Columns[e.ColumnIndex].Name;
+
                 string codigoProduto = ListaVendas.Rows[e.RowIndex].Cells["idProduto"].Value.ToString();
                 string zonaVenda = ListaVendas.Rows[e.RowIndex].Cells["zona"].Value.ToString();
                 string dataVenda = ListaVendas.Rows[e.RowIndex].Cells["dataVenda"].Value.ToString();
@@ -156,10 +158,12 @@ namespace SalesManagement
                 string IdVenda = ListaVendas.Rows[e.RowIndex].Cells["IdVenda"].Value.ToString();
                 string codigoVendedor = ListaVendas.Rows[e.RowIndex].Cells["codigoVendedor"].Value.ToString();
 
+                // Verifica se a opção é Editar ou Eliminar
                 if (opcao == "Editar")
                 {
                     FormEditarVenda formEditarVenda = new FormEditarVenda(codigoProduto, zonaVenda, dataVenda, quantidadeVenda, IdVenda, codigoVendedor);
                     formEditarVenda.ShowDialog();
+
                     LoadData();
                 }
                 else if (opcao == "Eliminar")
@@ -214,14 +218,14 @@ namespace SalesManagement
                         INNER JOIN Vendedores vend ON v.CodigoVendedor = vend.Codigo
                         INNER JOIN Zonas z ON v.Zona = z.Id
                         WHERE 
-                            p.Codigo = @pesquisa OR 
-                            v.CodigoVendedor = @pesquisa OR 
-                            z.Abreviatura = @pesquisa OR 
-                            p.Nome = @pesquisa OR
-                            vend.Nome = @pesquisa";
+                            p.Codigo LIKE @pesquisa OR 
+                            v.CodigoVendedor LIKE @pesquisa OR 
+                            z.Abreviatura LIKE @pesquisa OR 
+                            p.Nome LIKE @pesquisa OR
+                            vend.Nome LIKE @pesquisa";
 
                     // Parâmetros para a query
-                    SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = pesquisa };
+                    SqlParameter param1 = new SqlParameter("@pesquisa", SqlDbType.VarChar) { Value = "%" + pesquisa + "%" };
 
                     // Obter o resultado da query
                     DataTable resultado = dbHelper.GetDataTable(selectQuery, param1);

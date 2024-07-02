@@ -47,10 +47,12 @@ namespace SalesManagement
             
             if (result == DialogResult.OK)
             {
+                // Alterar a senha do utilizador
                 Utilizadores.AlterarSenha(password, Globals.idUtilizador);
                 
                 this.Hide();
 
+                // Mostrar o form inicial
                 FormInicial FormInicial = new FormInicial();
                 FormInicial.Show();
             }

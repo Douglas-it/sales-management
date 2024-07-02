@@ -59,8 +59,10 @@ namespace SalesManagement
                 return;
             }
 
+            // Converte o preço para decimal
             decimal precoDecimal = Convert.ToDecimal(preco);
-            // Lógica para Alterar o Produto
+
+            // Lógica para Adicionar o produto
             Produtos.AdicionarProduto(codigo, nome, precoDecimal, categoria);
 
             this.Close();

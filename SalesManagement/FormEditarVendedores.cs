@@ -28,17 +28,21 @@ namespace SalesManagement
             string nome = txtNome.Text;
             string comissao = txtComissao.Text;
 
+            // Verifica se os campos estão preenchidos de forma correta
             if (!OperacoesGerais.LerStringValida(nome) || !OperacoesGerais.LerStringValida(comissao))
             {
                 MessageBox.Show("Por favor, introduza os dados corretos!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Converte a comissão para decimal
             decimal comissaoEmDecimal = Convert.ToDecimal(comissao);
 
-            bool eliminado = Vendedores.EditarComercial(id, nome, comissaoEmDecimal);
+            // Edita o comercial
+            bool editado = Vendedores.EditarComercial(id, nome, comissaoEmDecimal);
 
-            if (eliminado)
+            // Verifica se o comercial foi editado com sucesso
+            if (editado)
             {
                 MessageBox.Show("O comercial foi atualizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

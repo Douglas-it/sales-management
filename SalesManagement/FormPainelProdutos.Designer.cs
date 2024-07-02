@@ -57,7 +57,6 @@
             inputPesquisa.PlaceholderText = "Pesquise por nome ou código ou categoria";
             inputPesquisa.Size = new Size(292, 23);
             inputPesquisa.TabIndex = 16;
-            inputPesquisa.TextChanged += inputPesquisa_TextChanged;
             // 
             // btnPesquisar
             // 
@@ -117,7 +116,6 @@
             Name = "FormProdutos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Painel de Produtos";
-            Load += FormProdutos_Load;
             ((System.ComponentModel.ISupportInitialize)ListaProdutos).EndInit();
             ResumeLayout(false);
             PerformLayout();

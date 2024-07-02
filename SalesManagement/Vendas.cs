@@ -47,12 +47,14 @@ namespace SalesManagement
         {
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
+                // Query para inserir a venda
                 string insertQuery = @"
                     INSERT INTO Vendas (CodigoVendedor, Zona, DataVenda, Quantidade, CodigoProduto, ValorVenda) VALUES 
                     (@codigoVendedor, @codigoZona, @dataVenda, @quantidade, @codigoProduto, @valorTotal)";
 
+                // Parâmetros para a query
                 SqlParameter paramCodigoProduto = new SqlParameter("@codigoProduto", SqlDbType.VarChar) { Value = codigoProduto };
                 SqlParameter paramCodigoVendedor = new SqlParameter("@codigoVendedor", SqlDbType.Int) { Value = codigoVendedor };
                 SqlParameter paramCodigoZona = new SqlParameter("@codigoZona", SqlDbType.Int) { Value = codigoZona };
@@ -60,6 +62,7 @@ namespace SalesManagement
                 SqlParameter paramQuantidade = new SqlParameter("@quantidade", SqlDbType.Int) { Value = quantidade };
                 SqlParameter paramValorTotal = new SqlParameter("@valorTotal", SqlDbType.Decimal) { Value = valorTotal };
 
+                // Executa a query
                 dbHelper.ExecuteQuery(insertQuery, paramCodigoProduto, paramCodigoVendedor, paramCodigoZona, paramDataVenda, paramQuantidade, paramValorTotal);
 
                 MessageBox.Show("Venda inserida com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -85,8 +88,9 @@ namespace SalesManagement
 
             try
             {
-                DatabaseHelper dbHelper = new DatabaseHelper();
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
 
+                // Query para atualizar a venda
                 string updateQuery = @"
                     UPDATE Vendas 
                     SET 
@@ -98,6 +102,7 @@ namespace SalesManagement
                         ValorVenda = @ValorVenda 
                     WHERE Id = @IdVenda";
 
+                // Parâmetros para a query
                 SqlParameter paramCodigoProduto = new SqlParameter("@CodigoProduto", SqlDbType.VarChar) { Value = codigoProduto };
                 SqlParameter paramCodigoVendedor = new SqlParameter("@CodigoVendedor", SqlDbType.VarChar) { Value = codigoVendedor };
                 SqlParameter paramZona = new SqlParameter("@Zona", SqlDbType.VarChar) { Value = codigoZona };
@@ -106,6 +111,7 @@ namespace SalesManagement
                 SqlParameter paramValorVenda = new SqlParameter("@ValorVenda", SqlDbType.Decimal) { Value = valorVenda };
                 SqlParameter paramIdVenda = new SqlParameter("@IdVenda", SqlDbType.Int) { Value = idVenda };
 
+                // Executa a query
                 dbHelper.ExecuteQuery(updateQuery, paramCodigoProduto, paramCodigoVendedor, paramZona, paramDataVenda, paramQuantidade, paramValorVenda, paramIdVenda);
 
                 MessageBox.Show("A venda foi alterada com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);

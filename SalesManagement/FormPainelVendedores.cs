@@ -92,6 +92,11 @@ namespace SalesManagement
             }
         }
 
+        /*
+         * 
+         * Função para preencher a tabela com os dados
+         * @param resultado: DataTable com os dados a serem preenchidos
+         */
         private void preencherTabela(DataTable resultado)
         {
             // Limpar a lista dos comerciais
@@ -142,12 +147,14 @@ namespace SalesManagement
             // Verifica se a célula clicada é um botão ou não
             if (e.RowIndex >= 0)
             {
+                // Obtem o nome da coluna que é clicada
                 string opcao = ListaComerciais.Columns[e.ColumnIndex].Name;
 
                 string id = ListaComerciais.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 string nome = ListaComerciais.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                 string comissao = ListaComerciais.Rows[e.RowIndex].Cells["comissao"].Value.ToString().Replace("%", "");
 
+                // Verifica se a opção é Editar ou Eliminar
                 if (opcao == "Editar")
                 {
                     FormEditarVendedores formEditarVendedores = new FormEditarVendedores(id, nome, comissao);
@@ -161,6 +168,7 @@ namespace SalesManagement
 
                     if (DialogResult == DialogResult.Yes)
                     {
+                        // Verifica se o Comercial já efetuou vendas
                         if (Vendedores.VerificarVendas(id))
                         {
                             MessageBox.Show("Não é possível eliminar o comercial, pois existem vendas associadas ao mesmo!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -186,6 +194,7 @@ namespace SalesManagement
         {
             string pesquisa = inputPesquisa.Text;
 
+            // Verifica se a pesquisa é válida
             if (OperacoesGerais.LerStringValida(pesquisa))
             {
                 try
