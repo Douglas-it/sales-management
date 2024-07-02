@@ -279,7 +279,14 @@ namespace SalesManagement
             HideTabs();
             ShowTab(tabAdicionarProduto);
 
-            Produtos.ObterCategorias(comboCategoriasProduto);
+            // Limpa a lista de categorias
+            comboCategoriasProduto.Items.Clear();
+
+            // Lista as categorias existentes
+            foreach (DataRow row in Produtos.ObterCategorias().Rows)
+            {
+                comboCategoriasProduto.Items.Add(row["nome"].ToString());
+            }
         }
 
         private void btnAdicionarArtigo_Click(object sender, EventArgs e)
@@ -403,6 +410,13 @@ namespace SalesManagement
         {
             HideTabs();
             ShowTab(tabAdicionarCategorias);
+
+            // Limpa as categorias do combobox
+            cmbCategorias.Items.Clear();
+
+            // Adiciona as categorias existentes no combobox
+            foreach (DataRow row in Produtos.ObterCategorias().Rows)
+                cmbCategorias.Items.Add(row["nome"].ToString());
         }
 
         private void label32_Click(object sender, EventArgs e)
@@ -415,5 +429,136 @@ namespace SalesManagement
 
         }
 
+        private void btnSalvarCategoria_Click(object sender, EventArgs e)
+        {
+            string nomeCategoria = txtNomeCategoria.Text;
+
+            // Verifica se o nome da categoria é válido
+            if (!OperacoesGerais.LerStringValida(nomeCategoria))
+            {
+                MessageBox.Show("Por favor, preencha o nome da categoria.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Filtro para verificar se a categoria já existe
+            string filtro = "WHERE nome = '" + nomeCategoria + "'";
+
+            // Loop na lista de categorias
+            foreach (DataRow row in Produtos.ObterCategorias(filtro).Rows)
+            {
+                // se a categoria já existe
+                if (row["nome"] == nomeCategoria)
+                {
+                    MessageBox.Show("Já existe uma categoria com esse nome.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            try
+            {
+                // Cria a categoria
+                Produtos.CriarCategoria(nomeCategoria);
+                MessageBox.Show("Categoria criada com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpa as categorias existentes no Combobox
+                cmbCategorias.Items.Clear();
+
+                // Atualiza a combobox de categorias
+                foreach (DataRow row in Produtos.ObterCategorias().Rows)
+                    cmbCategorias.Items.Add(row["nome"].ToString());
+
+                txtNomeCategoria.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao adicionar a categoria: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void txtNomeCategoria_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExcluirCategoria_Click(object sender, EventArgs e)
+        {
+            string nomeCategoria = cmbCategorias.Text;
+
+            if (!OperacoesGerais.LerStringValida(nomeCategoria))
+            {
+                MessageBox.Show("Por favor, selecione uma categoria.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                Produtos.EliminarCategoria(nomeCategoria);
+
+                // Limpa as categorias existentes no Combobox
+                cmbCategorias.Items.Clear();
+
+                // Atualiza a combobox de categorias
+                foreach (DataRow row in Produtos.ObterCategorias().Rows)
+                    cmbCategorias.Items.Add(row["nome"].ToString());
+
+                cmbCategorias.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao eliminar a categoria: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditarCategoria_Click(object sender, EventArgs e)
+        {
+            if (!OperacoesGerais.LerStringValida(cmbCategorias.Text))
+            {
+                MessageBox.Show("Por favor, selecione uma categoria.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            labelEscolhaCategoria.Visible = true;
+            labelAtencao.Visible = true;
+            txtMessage.Visible = true;
+            btnGuardarAltCat.Visible = true;
+            txtEditarCategoria.Visible = true;
+        }
+
+        private void btnGuardarAltCat_Click(object sender, EventArgs e)
+        {
+            string novoNomeCategoria = txtEditarCategoria.Text;
+            int idCategoria = Convert.ToInt32(Produtos.ObterIdCategoria(cmbCategorias.Text));
+
+            if (!OperacoesGerais.LerStringValida(novoNomeCategoria))
+            {
+                MessageBox.Show("Por favor, preencha o nome da categoria.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                Produtos.EditarCategoria(novoNomeCategoria, idCategoria);
+
+                // Limpa as categorias existentes no Combobox
+                cmbCategorias.Items.Clear();
+
+                // Atualiza a combobox de categorias
+                foreach (DataRow row in Produtos.ObterCategorias().Rows)
+                    cmbCategorias.Items.Add(row["nome"].ToString());
+
+                cmbCategorias.Text = "";
+                txtEditarCategoria.Text = "";
+                txtEditarCategoria.Visible = false;
+                btnGuardarAltCat.Visible = false;
+                labelEscolhaCategoria.Visible = false;
+                labelAtencao.Visible = false;
+                txtMessage.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao editar a categoria: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

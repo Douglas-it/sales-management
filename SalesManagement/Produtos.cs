@@ -20,7 +20,9 @@ namespace SalesManagement
             try
             {
                 DatabaseHelper dbHelper = new DatabaseHelper();
+
                 string selectQuery = "SELECT * FROM categorias WHERE Nome = @nome";
+
                 SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nomeCategoria };
 
                 DataTable result = dbHelper.GetDataTable(selectQuery, paramNome);
@@ -39,21 +41,155 @@ namespace SalesManagement
          * Função para obter as categorias
          * @param combo - Combobox para preencher
          */
-        public static void ObterCategorias(ComboBox combo)
+        public static DataTable ObterCategorias(string filtro = "")
         {
             try
             {
                 DatabaseHelper dbHelper = new DatabaseHelper();
-                string selectQuery = "SELECT * FROM categorias";
-                DataTable result = dbHelper.GetDataTable(selectQuery);
 
-                foreach (DataRow row in result.Rows)
-                    combo.Items.Add(row["Nome"].ToString());
+                string selectQuery = "SELECT * FROM categorias " + filtro;
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery);
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as categorias: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /*
+         * Função para criar uma nova categoria
+         * @param nomeCategoria
+         */
+        public static void CriarCategoria(string nomeCategoria)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "INSERT INTO Categorias(Nome) VALUES (@nome)";
+
+                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nomeCategoria };
+
+                dbHelper.ExecuteQuery(selectQuery, paramNome);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao obter as categorias: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /*
+         * Função para editar uma categoria
+         * @param nomeCategoria
+         * @param id
+         */
+        public static void EditarCategoria(string nomeCategoria, int id)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "UPDATE Categorias SET nome = @nome WHERE Codigo = @id";
+
+                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nomeCategoria };
+                SqlParameter paramId = new SqlParameter("@id", SqlDbType.Int) { Value = id };
+
+                dbHelper.ExecuteQuery(selectQuery, paramNome, paramId);
+
+                MessageBox.Show("Categoria editada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as categorias: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*
+         * Função para eliminar uma categoria
+         * @param nomeCategoria
+         */
+        public static void EliminarCategoria(string nomeCategoria)
+        {
+            int idCategoria = ObterCategoriaId(nomeCategoria);
+
+            if (VerificarUsoCategoria(idCategoria))
+            {
+                MessageBox.Show("Não é possível eliminar a categoria, pois existem produtos associados a ela.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "DELETE FROM Categorias WHERE nome = @nome";
+
+                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nomeCategoria };
+
+                dbHelper.ExecuteQuery(selectQuery, paramNome);
+
+                MessageBox.Show("Categoria eliminada com sucesso.", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as categorias: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /*
+         * Função para obter o ID de uma categoria
+         * @param nomeCategoria
+         */
+        public static int ObterCategoriaId(string nomeCategoria)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "SELECT * FROM Categorias WHERE nome = @nome";
+
+                SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nomeCategoria };
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramNome);
+
+                return Convert.ToInt32(resultado.Rows[0]["Codigo"].ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as categorias: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
+        /*
+         * Função para verificar se a categoria está a ser usada
+         * @param idCategoria
+         */
+        public static bool VerificarUsoCategoria (int idCategoria)
+        {
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper();
+
+                string selectQuery = "SELECT * FROM Produtos WHERE CodigoCategoria = @idCategoria";
+
+                SqlParameter paramIdCategoria = new SqlParameter("@idCategoria", SqlDbType.Int) { Value = idCategoria };
+
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramIdCategoria);
+
+                if (resultado.Rows.Count > 0)
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao verificar as vendas da categoria: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return false;
         }
 
         /*
@@ -69,9 +205,9 @@ namespace SalesManagement
                 string selectQuery = "SELECT * FROM vendas WHERE CodigoProduto = @codigo";
                 SqlParameter paramCodigo = new SqlParameter("@codigo", SqlDbType.VarChar) { Value = codigo };
 
-                DataTable result = dbHelper.GetDataTable(selectQuery, paramCodigo);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramCodigo);
 
-                if (result.Rows.Count > 0)
+                if (resultado.Rows.Count > 0)
                     return false;
 
                 return true;
@@ -96,9 +232,9 @@ namespace SalesManagement
                 string selectQuery = "SELECT * FROM Produtos WHERE Codigo = @codigo";
                 SqlParameter paramCodigo = new SqlParameter("@codigo", SqlDbType.VarChar) { Value = codigo };
 
-                DataTable result = dbHelper.GetDataTable(selectQuery, paramCodigo);
+                DataTable resultado = dbHelper.GetDataTable(selectQuery, paramCodigo);
 
-                if (result.Rows.Count > 0)
+                if (resultado.Rows.Count > 0)
                     return false;
 
                 return true;
