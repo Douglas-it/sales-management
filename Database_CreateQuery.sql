@@ -1,67 +1,23 @@
 -- Criar tabela de Categorias
 CREATE TABLE Categorias (
-    Codigo INT PRIMARY KEY,
+    Codigo INT PRIMARY KEY IDENTITY(1,1),
     Nome VARCHAR(255) NOT NULL
 );
 
+-- Criar tabela de UtilizadoresCargos
 CREATE TABLE UtilizadoresCargos (
-	CargoId INT PRIMARY KEY NOT NULL,
-	CargoNome VARCHAR(255) NOT NULL
+    CargoId INT PRIMARY KEY NOT NULL,
+    CargoNome VARCHAR(255) NOT NULL
 );
 
+-- Criar tabela de Utilizadores
 CREATE TABLE Utilizadores (
-	Id INT PRIMARY KEY IDENTITY(1,1),
-	Utilizador VARCHAR(255) NOT NULL,
-	Senha VARCHAR(255) NOT NULL,
-	Cargo INT NOT NULL,
-	flag INT,
-	FOREIGN KEY (Cargo) REFERENCES UtilizadoresCargos(CargoId)
-);
-
--- Criar tabela de Vendedores
-CREATE TABLE Vendedores (
-    Codigo VARCHAR(50) PRIMARY KEY,
-    Nome VARCHAR(255) NOT NULL,
-    Comissao DECIMAL(10, 2) NOT NULL
-);
-  
--- Criar tabela de Produtos
-CREATE TABLE Produtos (
-    Codigo VARCHAR(50) PRIMARY KEY,
-    Nome VARCHAR(255) NOT NULL,
-    CodigoCategoria INT NOT NULL,
-    Preco DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (CodigoCategoria) REFERENCES Categorias(Codigo)
-);
-
--- Criar tabela de Vendas
-CREATE TABLE Vendas (
     Id INT PRIMARY KEY IDENTITY(1,1),
-    CodigoVendedor VARCHAR(50) NOT NULL,
-    Zona INT NOT NULL, --ID
-    DataVenda DATE NOT NULL,
-    Quantidade INT NOT NULL,
-    CodigoProduto VARCHAR(50) NOT NULL,
-    ValorVenda DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (CodigoVendedor) REFERENCES Vendedores(Codigo),
-    FOREIGN KEY (CodigoProduto) REFERENCES Produto-- Criar tabela de Categorias
-CREATE TABLE Categorias (
-    Codigo INT PRIMARY KEY,
-    Nome VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE UtilizadoresCargos (
-	CargoId INT PRIMARY KEY NOT NULL,
-	CargoNome VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE Utilizadores (
-	Id INT PRIMARY KEY IDENTITY(1,1),
-	Utilizador VARCHAR(255) NOT NULL,
-	Senha VARCHAR(255) NOT NULL,
-	Cargo INT NOT NULL,
-	flag INT,
-	FOREIGN KEY (Cargo) REFERENCES UtilizadoresCargos(CargoId)
+    Utilizador VARCHAR(255) NOT NULL,
+    Senha VARCHAR(255) NOT NULL,
+    Cargo INT NOT NULL,
+    flag INT,
+    FOREIGN KEY (Cargo) REFERENCES UtilizadoresCargos(CargoId)
 );
 
 -- Criar tabela de Vendedores
@@ -70,7 +26,7 @@ CREATE TABLE Vendedores (
     Nome VARCHAR(255) NOT NULL,
     Comissao DECIMAL(10, 2) NOT NULL
 );
-  
+
 -- Criar tabela de Produtos
 CREATE TABLE Produtos (
     Codigo VARCHAR(50) PRIMARY KEY,
@@ -81,10 +37,10 @@ CREATE TABLE Produtos (
 );
 
 -- Criar tabela de Zonas
-CREATE TABLE Zonas(
-Id int Primary key IDENTITY(1,1),
-NomeZona varchar(10),
-Abreviatura varchar(1)
+CREATE TABLE Zonas (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    NomeZona VARCHAR(10),
+    Abreviatura VARCHAR(1)
 );
 
 -- Criar tabela de Vendas
@@ -98,16 +54,14 @@ CREATE TABLE Vendas (
     ValorVenda DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (CodigoVendedor) REFERENCES Vendedores(Codigo),
     FOREIGN KEY (CodigoProduto) REFERENCES Produtos(Codigo),
-	FOREIGN KEY (Zona) REFERENCES Zonas(Id)
+    FOREIGN KEY (Zona) REFERENCES Zonas(Id)
 );
 
-
-
 -- Inserir dados na tabela Categorias
-INSERT INTO Categorias (Codigo, Nome) VALUES 
-(1, 'Computadores e Periféricos'),
-(2, 'Smartphones e Acessórios'),
-(3, 'Componentes de Hardware');
+INSERT INTO Categorias (Nome) VALUES 
+('Computadores e Periféricos'),
+('Smartphones e Acessórios'),
+('Componentes de Hardware');
 
 -- Inserir dados na tabela UtilizadoresCargos
 INSERT INTO UtilizadoresCargos (CargoId, CargoNome) VALUES
@@ -129,20 +83,20 @@ INSERT INTO Produtos (Codigo, Nome, CodigoCategoria, Preco) VALUES
 
 -- Inserir dados na tabela Vendedores
 INSERT INTO Vendedores (Codigo, Nome, Comissao) VALUES 
-(1, 'João Silva', 5.00),
-(2, 'Maria Oliveira', 7.50),
-(3, 'Carlos Souza', 6.00);
+('1', 'João Silva', 5.00),
+('2', 'Maria Oliveira', 7.50),
+('3', 'Carlos Souza', 6.00);
 
 -- Inserir dados na tabela Zonas
-INSERT INTO Zonas VALUES
+INSERT INTO Zonas (NomeZona, Abreviatura) VALUES
 ('Norte', 'N'),
 ('Centro', 'C'),
 ('Sul', 'S');
 
 -- Inserir dados na tabela Vendas
 INSERT INTO Vendas (CodigoVendedor, Zona, DataVenda, Quantidade, CodigoProduto, ValorVenda) VALUES 
-(1, 1, '2024-01-15', 2, 'P001', 2400.00),
-(2, 3, '2024-02-10', 3, 'P002', 2700.00),
-(3, 2, '2024-03-05', 1, 'P003', 300.00),
-(1, 1, '2024-04-20', 5, 'P005', 500.00),
-(2, 3, '2024-05-25', 1, 'P004', 1500.00);
+('1', 1, '2024-01-15', 2, 'P001', 2400.00),
+('2', 3, '2024-02-10', 3, 'P002', 2700.00),
+('3', 2, '2024-03-05', 1, 'P003', 300.00),
+('1', 1, '2024-04-20', 5, 'P005', 500.00),
+('2', 3, '2024-05-25', 1, 'P004', 1500.00);

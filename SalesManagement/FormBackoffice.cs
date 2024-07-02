@@ -332,7 +332,7 @@ namespace SalesManagement
             Estatisticas.PreencherGrafico(VendasPorZona, Estatisticas.VendasPorZona(), "Zona", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorMes, Estatisticas.VendasPorMes(), "Mes", "TotalVendas");
             Estatisticas.PreencherGrafico(VendasPorCategoria, Estatisticas.VendasPorCategoriaProduto(), "Categoria", "TotalVendas");
-            Estatisticas.PreencherGrafico(VendasPor7Dias, Estatisticas.VendasPorDia(), "DataVenda", "TotalVendas");
+            Estatisticas.PreencherGrafico(VendasPor7Dias, Estatisticas.VendasPor7Dias(), "DataVenda", "TotalVendas");
 
             // Tabela de Vendas por Mês e Vendedor
             // Define os nomes internos das colunas
@@ -364,6 +364,10 @@ namespace SalesManagement
             OperacoesGerais.ConfigurarDataGridView(dataGridViewMesProduto, nomeColunas2, nomeColunasVisivel2, colunasReadOnly, botaoEditar, botaoEliminar);
             DataTable resultado2 = Estatisticas.VendasPorMesProduto();
             preencherTabelaMesProduto(resultado2);
+
+            Estatisticas.PreencherGrafico(VendasPorDia, Estatisticas.VendasPorDia(), "DataVenda", "TotalVendas");
+            Estatisticas.PreencherGrafico(ComissaoTotalVendedor, Estatisticas.ComissaoPorVendedor(), "NomeVendedor", "ComissaoTotal");
+            Estatisticas.PreencherGrafico(Top5MaisVendidosEmValor, Estatisticas.Top5ProdutosMaisVendidos(), "NomeProduto", "TotalVendas");
         }
 
         private void preencherTabelaMesVendedor(DataTable resultado)

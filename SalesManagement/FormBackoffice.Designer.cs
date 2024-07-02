@@ -29,33 +29,33 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBackoffice));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             btnLogout = new Button();
             btnSair = new Button();
             btnCriarConta = new Button();
@@ -151,6 +151,7 @@
             btnEstatisticas1 = new Button();
             btnEstatisticas3 = new Button();
             tabAdicionarCategorias = new TabPage();
+<<<<<<< Updated upstream
             label36 = new Label();
             label31 = new Label();
             textBox7 = new TextBox();
@@ -167,6 +168,8 @@
             cmbCategorias = new ComboBox();
             btnSalvarCategoria = new Button();
             txtNomeCategoria = new TextBox();
+=======
+>>>>>>> Stashed changes
             label12 = new Label();
             btnAdicionarVendedor = new Button();
             btnAdicionarProduto = new Button();
@@ -190,7 +193,10 @@
             ((System.ComponentModel.ISupportInitialize)VendasPorDia).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesProduto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesVendedor).BeginInit();
+<<<<<<< Updated upstream
             tabAdicionarCategorias.SuspendLayout();
+=======
+>>>>>>> Stashed changes
             SuspendLayout();
             // 
             // btnLogout
@@ -1097,6 +1103,7 @@
             // 
             // VendasPorZona
             // 
+<<<<<<< Updated upstream
             chartArea10.Name = "ChartArea1";
             VendasPorZona.ChartAreas.Add(chartArea10);
             legend10.Name = "Legend1";
@@ -1109,11 +1116,25 @@
             series10.Name = "Series1";
             VendasPorZona.Series.Add(series10);
             VendasPorZona.Size = new Size(393, 412);
+=======
+            chartArea1.Name = "ChartArea1";
+            VendasPorZona.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            VendasPorZona.Legends.Add(legend1);
+            VendasPorZona.Location = new Point(745, 29);
+            VendasPorZona.Name = "VendasPorZona";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            VendasPorZona.Series.Add(series1);
+            VendasPorZona.Size = new Size(344, 309);
+>>>>>>> Stashed changes
             VendasPorZona.TabIndex = 5;
             VendasPorZona.Text = "chart6";
             // 
             // VendasPor7Dias
             // 
+<<<<<<< Updated upstream
             chartArea11.Name = "ChartArea1";
             VendasPor7Dias.ChartAreas.Add(chartArea11);
             legend11.Name = "Legend1";
@@ -1126,11 +1147,25 @@
             series11.Name = "Series1";
             VendasPor7Dias.Series.Add(series11);
             VendasPor7Dias.Size = new Size(393, 412);
+=======
+            chartArea2.Name = "ChartArea1";
+            VendasPor7Dias.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            VendasPor7Dias.Legends.Add(legend2);
+            VendasPor7Dias.Location = new Point(745, 382);
+            VendasPor7Dias.Name = "VendasPor7Dias";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            VendasPor7Dias.Series.Add(series2);
+            VendasPor7Dias.Size = new Size(344, 309);
+>>>>>>> Stashed changes
             VendasPor7Dias.TabIndex = 4;
             VendasPor7Dias.Text = "chart5";
             // 
             // VendasPorCategoria
             // 
+<<<<<<< Updated upstream
             chartArea12.Name = "ChartArea1";
             VendasPorCategoria.ChartAreas.Add(chartArea12);
             legend12.Name = "Legend1";
@@ -1143,11 +1178,25 @@
             series12.Name = "Series1";
             VendasPorCategoria.Series.Add(series12);
             VendasPorCategoria.Size = new Size(393, 412);
+=======
+            chartArea3.Name = "ChartArea1";
+            VendasPorCategoria.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            VendasPorCategoria.Legends.Add(legend3);
+            VendasPorCategoria.Location = new Point(379, 382);
+            VendasPorCategoria.Name = "VendasPorCategoria";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            VendasPorCategoria.Series.Add(series3);
+            VendasPorCategoria.Size = new Size(344, 309);
+>>>>>>> Stashed changes
             VendasPorCategoria.TabIndex = 3;
             VendasPorCategoria.Text = "chart4";
             // 
             // VendasPorMes
             // 
+<<<<<<< Updated upstream
             chartArea13.Name = "ChartArea1";
             VendasPorMes.ChartAreas.Add(chartArea13);
             legend13.Name = "Legend1";
@@ -1160,11 +1209,25 @@
             series13.Name = "Series1";
             VendasPorMes.Series.Add(series13);
             VendasPorMes.Size = new Size(393, 412);
+=======
+            chartArea4.Name = "ChartArea1";
+            VendasPorMes.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            VendasPorMes.Legends.Add(legend4);
+            VendasPorMes.Location = new Point(13, 382);
+            VendasPorMes.Name = "VendasPorMes";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            VendasPorMes.Series.Add(series4);
+            VendasPorMes.Size = new Size(344, 309);
+>>>>>>> Stashed changes
             VendasPorMes.TabIndex = 2;
             VendasPorMes.Text = "chart3";
             // 
             // VendasPorProduto
             // 
+<<<<<<< Updated upstream
             chartArea14.Name = "ChartArea1";
             VendasPorProduto.ChartAreas.Add(chartArea14);
             legend14.Name = "Legend1";
@@ -1177,11 +1240,25 @@
             series14.Name = "Series1";
             VendasPorProduto.Series.Add(series14);
             VendasPorProduto.Size = new Size(393, 412);
+=======
+            chartArea5.Name = "ChartArea1";
+            VendasPorProduto.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            VendasPorProduto.Legends.Add(legend5);
+            VendasPorProduto.Location = new Point(379, 29);
+            VendasPorProduto.Name = "VendasPorProduto";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            VendasPorProduto.Series.Add(series5);
+            VendasPorProduto.Size = new Size(344, 309);
+>>>>>>> Stashed changes
             VendasPorProduto.TabIndex = 1;
             VendasPorProduto.Text = "chart2";
             // 
             // VendasPorVendedor
             // 
+<<<<<<< Updated upstream
             chartArea15.Name = "ChartArea1";
             VendasPorVendedor.ChartAreas.Add(chartArea15);
             legend15.Name = "Legend1";
@@ -1194,6 +1271,19 @@
             series15.Name = "Series1";
             VendasPorVendedor.Series.Add(series15);
             VendasPorVendedor.Size = new Size(393, 412);
+=======
+            chartArea6.Name = "ChartArea1";
+            VendasPorVendedor.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            VendasPorVendedor.Legends.Add(legend6);
+            VendasPorVendedor.Location = new Point(13, 29);
+            VendasPorVendedor.Name = "VendasPorVendedor";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            VendasPorVendedor.Series.Add(series6);
+            VendasPorVendedor.Size = new Size(344, 309);
+>>>>>>> Stashed changes
             VendasPorVendedor.TabIndex = 0;
             VendasPorVendedor.Text = "chart1";
             // 
@@ -1224,9 +1314,15 @@
             // 
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+<<<<<<< Updated upstream
             label30.Location = new Point(854, 447);
             label30.Name = "label30";
             label30.Size = new Size(326, 23);
+=======
+            label30.Location = new Point(747, 335);
+            label30.Name = "label30";
+            label30.Size = new Size(253, 17);
+>>>>>>> Stashed changes
             label30.TabIndex = 32;
             label30.Text = "Top 5 produtos mais vendidos em valor";
             // 
@@ -1234,9 +1330,15 @@
             // 
             label29.AutoSize = true;
             label29.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+<<<<<<< Updated upstream
             label29.Location = new Point(438, 447);
             label29.Name = "label29";
             label29.Size = new Size(276, 23);
+=======
+            label29.Location = new Point(383, 335);
+            label29.Name = "label29";
+            label29.Size = new Size(213, 17);
+>>>>>>> Stashed changes
             label29.TabIndex = 31;
             label29.Text = "Comissão total de cada vendedor";
             // 
@@ -1244,14 +1346,21 @@
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+<<<<<<< Updated upstream
             label28.Location = new Point(22, 447);
             label28.Name = "label28";
             label28.Size = new Size(197, 23);
+=======
+            label28.Location = new Point(19, 335);
+            label28.Name = "label28";
+            label28.Size = new Size(153, 17);
+>>>>>>> Stashed changes
             label28.TabIndex = 30;
             label28.Text = "Total de vendas por dia";
             // 
             // ComissaoTotalVendedor
             // 
+<<<<<<< Updated upstream
             chartArea16.Name = "ChartArea1";
             ComissaoTotalVendedor.ChartAreas.Add(chartArea16);
             legend16.Name = "Legend1";
@@ -1264,11 +1373,25 @@
             series16.Name = "Series1";
             ComissaoTotalVendedor.Series.Add(series16);
             ComissaoTotalVendedor.Size = new Size(384, 448);
+=======
+            chartArea7.Name = "ChartArea1";
+            ComissaoTotalVendedor.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            ComissaoTotalVendedor.Legends.Add(legend7);
+            ComissaoTotalVendedor.Location = new Point(383, 355);
+            ComissaoTotalVendedor.Name = "ComissaoTotalVendedor";
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            ComissaoTotalVendedor.Series.Add(series7);
+            ComissaoTotalVendedor.Size = new Size(336, 336);
+>>>>>>> Stashed changes
             ComissaoTotalVendedor.TabIndex = 29;
             ComissaoTotalVendedor.Text = "chart3";
             // 
             // Top5MaisVendidosEmValor
             // 
+<<<<<<< Updated upstream
             chartArea17.Name = "ChartArea1";
             Top5MaisVendidosEmValor.ChartAreas.Add(chartArea17);
             legend17.Name = "Legend1";
@@ -1281,11 +1404,25 @@
             series17.Name = "Series1";
             Top5MaisVendidosEmValor.Series.Add(series17);
             Top5MaisVendidosEmValor.Size = new Size(384, 448);
+=======
+            chartArea8.Name = "ChartArea1";
+            Top5MaisVendidosEmValor.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            Top5MaisVendidosEmValor.Legends.Add(legend8);
+            Top5MaisVendidosEmValor.Location = new Point(747, 355);
+            Top5MaisVendidosEmValor.Name = "Top5MaisVendidosEmValor";
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            Top5MaisVendidosEmValor.Series.Add(series8);
+            Top5MaisVendidosEmValor.Size = new Size(336, 336);
+>>>>>>> Stashed changes
             Top5MaisVendidosEmValor.TabIndex = 28;
             Top5MaisVendidosEmValor.Text = "chart2";
             // 
             // VendasPorDia
             // 
+<<<<<<< Updated upstream
             chartArea18.Name = "ChartArea1";
             VendasPorDia.ChartAreas.Add(chartArea18);
             legend18.Name = "Legend1";
@@ -1298,6 +1435,19 @@
             series18.Name = "Series1";
             VendasPorDia.Series.Add(series18);
             VendasPorDia.Size = new Size(384, 448);
+=======
+            chartArea9.Name = "ChartArea1";
+            VendasPorDia.ChartAreas.Add(chartArea9);
+            legend9.Name = "Legend1";
+            VendasPorDia.Legends.Add(legend9);
+            VendasPorDia.Location = new Point(19, 355);
+            VendasPorDia.Name = "VendasPorDia";
+            series9.ChartArea = "ChartArea1";
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            VendasPorDia.Series.Add(series9);
+            VendasPorDia.Size = new Size(336, 336);
+>>>>>>> Stashed changes
             VendasPorDia.TabIndex = 27;
             VendasPorDia.Text = "chart1";
             // 
@@ -1358,6 +1508,7 @@
             // btnEstatisticas3
             // 
             btnEstatisticas3.Cursor = Cursors.Hand;
+            btnEstatisticas3.Enabled = false;
             btnEstatisticas3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEstatisticas3.Location = new Point(1224, 929);
             btnEstatisticas3.Margin = new Padding(3, 4, 3, 4);
@@ -1369,6 +1520,7 @@
             // 
             // tabAdicionarCategorias
             // 
+<<<<<<< Updated upstream
             tabAdicionarCategorias.Controls.Add(label36);
             tabAdicionarCategorias.Controls.Add(label31);
             tabAdicionarCategorias.Controls.Add(textBox7);
@@ -1390,11 +1542,18 @@
             tabAdicionarCategorias.Name = "tabAdicionarCategorias";
             tabAdicionarCategorias.Padding = new Padding(3, 4, 3, 4);
             tabAdicionarCategorias.Size = new Size(1262, 972);
+=======
+            tabAdicionarCategorias.Location = new Point(4, 24);
+            tabAdicionarCategorias.Name = "tabAdicionarCategorias";
+            tabAdicionarCategorias.Padding = new Padding(3);
+            tabAdicionarCategorias.Size = new Size(1103, 726);
+>>>>>>> Stashed changes
             tabAdicionarCategorias.TabIndex = 7;
             tabAdicionarCategorias.Text = "Adicionar Categorias";
             tabAdicionarCategorias.UseVisualStyleBackColor = true;
             tabAdicionarCategorias.Click += tabPage1_Click;
             // 
+<<<<<<< Updated upstream
             // label36
             // 
             label36.AutoSize = true;
@@ -1566,6 +1725,8 @@
             txtNomeCategoria.TabIndex = 0;
             txtNomeCategoria.TextChanged += txtNomeCategoria_TextChanged;
             // 
+=======
+>>>>>>> Stashed changes
             // label12
             // 
             label12.AutoSize = true;
@@ -1662,8 +1823,11 @@
             ((System.ComponentModel.ISupportInitialize)VendasPorDia).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesProduto).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesVendedor).EndInit();
+<<<<<<< Updated upstream
             tabAdicionarCategorias.ResumeLayout(false);
             tabAdicionarCategorias.PerformLayout();
+=======
+>>>>>>> Stashed changes
             ResumeLayout(false);
             PerformLayout();
         }

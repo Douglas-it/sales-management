@@ -243,10 +243,10 @@ namespace SalesManagement
         }
 
         /*
-         * Função para obter Vendas por Dia
+         * Função para obter Vendas por 7 dias
          * @return DataTable
          */
-        public static DataTable VendasPorDia()
+        public static DataTable VendasPor7Dias()
         {
             DataTable resultado = new DataTable(); // Inicia um novo DataTable
 
@@ -274,7 +274,95 @@ namespace SalesManagement
             return resultado;
         }
 
+        /*
+         * Função para obter Vendas por dia corrente
+         * @return DataTable
+         */
+        public static DataTable VendasPorDia()
+        {
+            DataTable resultado = new DataTable(); // Inicia um novo DataTable
 
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
+
+                // Query para consulta
+                string selectQuery = @"
+                    SELECT DataVenda, SUM(ValorVenda) AS TotalVendas
+                    FROM Vendas
+                    WHERE CONVERT(DATE, DataVenda) = CONVERT(DATE, GETDATE())
+                    GROUP BY DataVenda";
+
+                // Obtem os resultados
+                resultado = dbHelper.GetDataTable(selectQuery);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar vendas: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Retorna os resultados
+            return resultado;
+        }
+
+        /*
+         * Função para obter Comissão total de cada vendedor
+         * @return DataTable
+         */
+        public static DataTable ComissaoPorVendedor()
+        {
+            DataTable resultado = new DataTable(); // Inicia um novo DataTable
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
+
+                // Query para consulta
+                string selectQuery = @"
+                    SELECT v.Nome AS NomeVendedor, SUM(vd.ValorVenda * (v.Comissao / 100)) AS ComissaoTotal
+                    FROM Vendedores v
+                    JOIN Vendas vd ON v.Codigo = vd.CodigoVendedor
+                    GROUP BY v.Nome";
+
+                // Obtem os resultados
+                resultado = dbHelper.GetDataTable(selectQuery);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar vendas: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Retorna os resultados
+            return resultado;
+        }
+
+        public static DataTable Top5ProdutosMaisVendidos()
+        {
+            DataTable resultado = new DataTable(); // Inicia um novo DataTable
+
+            try
+            {
+                DatabaseHelper dbHelper = new DatabaseHelper(); // Inicializa a classe DatabaseHelper
+
+                // Query para consulta
+                string selectQuery = @"
+                    SELECT TOP 5 p.Nome AS NomeProduto, SUM(v.ValorVenda) AS TotalVendas
+                    FROM Produtos p
+                    JOIN Vendas v ON p.Codigo = v.CodigoProduto
+                    GROUP BY p.Nome
+                    ORDER BY TotalVendas DESC";
+
+                // Obtem os resultados
+                resultado = dbHelper.GetDataTable(selectQuery);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao listar vendas: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Retorna os resultados
+            return resultado;
+        }
 
         /* Função para preencher um gráfico
          * @param Chart
@@ -306,7 +394,7 @@ namespace SalesManagement
             {
                 // Aqui você precisa acessar os valores corretos do DataRow usando os nomes dos campos
                 string label = row[nomeCampoX].ToString();
-                string value = row[nomeCampoY].ToString();
+                double value = Convert.ToDouble(row[nomeCampoY]);
 
                 // Verifica se o nome já está sendo usado
                 int suffix = 1;
