@@ -23,7 +23,11 @@ namespace SalesManagement
             this.txtNome.Text = nome; // Preenche o campo de nome do Produto
             this.txtPreco.Text = preco; // Preenche o campo de preço do Produto
 
-            Produtos.ObterCategorias(comboCategoria); // Preenche o combobox de categorias
+            Produtos.ObterCategorias(); // Preenche o combobox de categorias
+
+            foreach (DataRow categoria in Produtos.ObterCategorias().Rows)
+                this.comboCategoria.Items.Add(categoria["Nome"].ToString());
+
 
             this.comboCategoria.Text = nomeCategoria; // Atribui a categoria do produto ao combobox
         }

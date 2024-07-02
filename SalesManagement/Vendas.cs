@@ -114,6 +114,6 @@ namespace SalesManagement
             {
                 MessageBox.Show("Erro ao tentar alterar a venda: " + ex.Message, "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-}
+        }
     }
 }
