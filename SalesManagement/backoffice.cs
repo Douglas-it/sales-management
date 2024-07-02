@@ -24,7 +24,7 @@ namespace SalesManagement
                 SqlParameter paramNome = new SqlParameter("@nome", SqlDbType.VarChar) { Value = nome };
                 SqlParameter paramCodigo = new SqlParameter("@codigo", SqlDbType.VarChar) { Value = codigo };
                 SqlParameter paramPreco = new SqlParameter("@preco", SqlDbType.Float) { Value = preco };
-                SqlParameter paramCategoria = new SqlParameter("@CodigoCategoria", SqlDbType.VarChar) { Value = Produtos.ObterIdCategoria(categoria) };
+                SqlParameter paramCategoria = new SqlParameter("@CodigoCategoria", SqlDbType.VarChar) { Value = Produtos.ObterCategoriaId(categoria) };
 
                 dbHelper.ExecuteQuery(insertQuery, paramNome, paramCodigo, paramPreco, paramCategoria);
 
