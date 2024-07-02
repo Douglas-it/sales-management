@@ -110,8 +110,10 @@ namespace SalesManagement
 
         private void BotaoApagarProduto(int rowIndex)
         {
+            // Obtem o código do Produto
             string codigo = ListaProdutos.Rows[rowIndex].Cells["Codigo"].Value.ToString();
 
+            // Verifica se o Produto já foi vendido
             if (!Produtos.VerificarProduto(codigo))
             {
                 MessageBox.Show("Não é possível eliminar o produto, pois o mesmo já foi vendido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);

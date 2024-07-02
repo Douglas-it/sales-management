@@ -54,6 +54,7 @@ namespace SalesManagement
         // Atualizar o total da venda, com base na quantidade
         private void txtQuantidade_TextChanged(object sender, EventArgs e)
         {
+            // Se a quantidade for válida
             if (OperacoesGerais.LerInteiroValido(txtQuantidade.Text, 1))
             {
                 decimal valorTotal = Convert.ToDecimal(txtPreco.Text) * Convert.ToDecimal(txtQuantidade.Text);
@@ -77,6 +78,7 @@ namespace SalesManagement
             int codigoVendedor = Vendedores.ObterIdComercial(vendedor); // Obtem o codigo do vendedor
             int codigoZona = OperacoesGerais.ObterZonaId(comboZona.Text); // Obtem o ID da zona
 
+            // Verifica se a quantidade é válida
             if (!OperacoesGerais.LerInteiroValido(quantidade, 1))
             {
                 MessageBox.Show("Quantidade inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
